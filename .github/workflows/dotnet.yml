@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./ASPNETCoreBlazor
     - name: Build
       run: dotnet build ./ASPNETCoreBlazor --no-restore
     - name: Test
