@@ -14,4 +14,9 @@
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\" />
+    <Folder Include="Shared\Wrappers\" />
+  </ItemGroup>
+
 </Project>
