@@ -25,7 +25,7 @@ jobs:
       run: dotnet restore
     - name: Build
       working-directory: ./Content/Starter
-      run: dotnet build ./ASPNETCoreBlazor --no-restore
+      run: dotnet build --no-restore
     - name: Test
       working-directory: ./Content/Starter
-      run: dotnet test ./ASPNETCoreBlazor --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
