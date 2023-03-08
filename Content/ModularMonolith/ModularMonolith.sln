@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{5EFD35D5-4900-4756-9C87-9BB98381C3E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1995FE19-6EBE-4C77-B59C-7D6901B3BD88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Web\Server\Server.csproj", "{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7} = {1995FE19-6EBE-4C77-B59C-7D6901B3BD88}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}
+	EndGlobalSection
+EndGlobal
