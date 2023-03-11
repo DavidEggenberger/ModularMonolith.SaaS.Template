@@ -1,0 +1,23 @@
+﻿<ErrorBoundary @ref="errorBoundary">
+    <ChildContent>
+        @ChildContent
+    </ChildContent>
+    <ErrorContent Context="Exception">
+        <div class="alert alert-primary">
+            <h3>@Exception.GetType()</h3>
+            <h3>@Exception.Message</h3>
+            <button class="btn btn-info" @onclick="() => errorBoundary.Recover()">Clear</button>
+        </div>
+    </ErrorContent>
+</ErrorBoundary>
+
+@code{
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private ErrorBoundary errorBoundary;
+    protected override async Task OnInitializedAsync()
+    {
+        errorBoundary = new ErrorBoundary();
+    }
+}

@@ -1,10 +1,14 @@
+using Client.Authentication;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +20,22 @@ namespace Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddHttpClient(AuthenticationConstants.DefaultHttpClient, client =>
+            {
+                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            });
+
+            builder.Services.AddHttpClient(AuthenticationConstants.AuthenticatedHttpClient, client =>
+            {
+                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler<AuthorizedHandler>();
+
+            builder.Services.AddTransient<AuthorizedHandler>();
+
+            builder.Services.TryAddSingleton<AuthenticationStateProvider, HostAuthenticationStateProvider>();
+            builder.Services.AddAuthorizationCore();
 
             await builder.Build().RunAsync();
         }

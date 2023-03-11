@@ -8,23 +8,20 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Shared.Constants;
 using System.Net.Http.Json;
 using Shared.Authentication;
-using Client.Authentication.AntiforgeryToken;
 
 namespace Client.Authentication
 {
     public class HostAuthenticationStateProvider : AuthenticationStateProvider
     {
-        private readonly AntiforgeryTokenService antiforgeryTokenService;
         private readonly NavigationManager navigationManager;
         private readonly HttpClient httpClient;
         private static readonly TimeSpan UserCacheRefreshInterval = TimeSpan.FromSeconds(60);
         private DateTimeOffset userLastCheck = DateTimeOffset.FromUnixTimeSeconds(0);
         private ClaimsPrincipal cachedUser = new ClaimsPrincipal(new ClaimsIdentity());
-        public HostAuthenticationStateProvider(NavigationManager navigationManager, HttpClient httpClient, AntiforgeryTokenService antiforgeryTokenService)
+        public HostAuthenticationStateProvider(NavigationManager navigationManager, HttpClient httpClient)
         {
             this.navigationManager = navigationManager;
             this.httpClient = httpClient;
-            this.antiforgeryTokenService = antiforgeryTokenService;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
