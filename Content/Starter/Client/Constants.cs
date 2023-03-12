@@ -1,6 +1,6 @@
-﻿namespace Client.Authentication
+﻿namespace Client
 {
-    public class AuthenticationConstants
+    public class Constants
     {
         public const string DefaultHttpClient = nameof(DefaultHttpClient);
         public const string AuthenticatedHttpClient = nameof(AuthenticatedHttpClient);

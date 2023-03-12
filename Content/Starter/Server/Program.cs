@@ -1,3 +1,4 @@
+using Azure.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -18,6 +19,11 @@ namespace WebServer
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                //.ConfigureAppConfiguration((hostingcontext, config) =>
+                //{
+                //    config.AddAzureKeyVault(new Uri(""),
+                //        new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "" }));
+                //})
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

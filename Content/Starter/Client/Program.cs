@@ -20,13 +20,13 @@ namespace Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-            builder.Services.AddHttpClient(AuthenticationConstants.DefaultHttpClient, client =>
+            builder.Services.AddHttpClient(Constants.DefaultHttpClient, client =>
             {
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             });
 
-            builder.Services.AddHttpClient(AuthenticationConstants.AuthenticatedHttpClient, client =>
+            builder.Services.AddHttpClient(Constants.AuthenticatedHttpClient, client =>
             {
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
