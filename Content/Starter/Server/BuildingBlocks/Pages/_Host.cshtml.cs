@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebServer.Pages
+namespace Server.Pages
 {
     public class IndexModel : PageModel
     {

@@ -5,11 +5,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Server.SignalR;
+using Server.BuildingBlocks.SignalR;
+using Server.Modules;
+using Server.Modules.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +34,10 @@ namespace WebServer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages(options =>
+            {
+                options.RootDirectory = "/BuildingBlocks/Pages";
+            });
             services.AddControllers();
 
             services.AddSingleton<IUserIdProvider, UserIdProvider>();
@@ -104,6 +111,30 @@ namespace WebServer
                     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
             });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["AzureSQLConnection"], sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });                
+            });
+
+            services.AddDbContext<ApplicationIdentityDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["AzureSQLConnection"], sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });
+            });
+            services.AddIdentityCore<ApplicationUser>(options =>
+            {
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+/ ";
+                options.User.RequireUniqueEmail = false;
+                options.Stores.MaxLengthForKeys = 128;
+            })
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<ApplicationIdentityDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

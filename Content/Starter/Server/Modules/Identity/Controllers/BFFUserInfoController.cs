@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Authentication;
 using System.Linq;
 
-namespace Server.Controllers.Authentication
+namespace Server.Modules.Identity.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
