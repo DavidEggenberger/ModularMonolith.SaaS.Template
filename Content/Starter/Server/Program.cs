@@ -19,11 +19,13 @@ namespace WebServer
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.ConfigureAppConfiguration((hostingcontext, config) =>
-                //{
-                //    config.AddAzureKeyVault(new Uri(""),
-                //        new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "" }));
-                //})
+            #if ( EnableAzureKeyVault == True )
+                .ConfigureAppConfiguration((hostingcontext, config) =>
+                {
+                    config.AddAzureKeyVault(new Uri(""),
+                        new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "" }));
+                })
+            #endif
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

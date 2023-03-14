@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageType>Template</PackageType>
+		<PackageVersion>1.0</PackageVersion>
+		<PackageId>Auth0.Templates</PackageId>
+		<Title>Auth0 Templates</Title>
+		​    <Authors>Andrea Chiarelli</Authors>
+		​    <Description>Template for creating an ASP.NET web application with Auth0 authentication.</Description>
+		​    <PackageTags>dotnet-new;templates;auth0</PackageTags>
+
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+
+		<IncludeContentInPack>true</IncludeContentInPack>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<ContentTargetFolders>content</ContentTargetFolders>
+		<NoWarn>$(NoWarn);NU5128</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="content\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+		<Compile Remove="**\*" />
+	</ItemGroup>
+
+</Project>

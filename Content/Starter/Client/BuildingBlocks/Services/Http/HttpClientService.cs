@@ -5,7 +5,7 @@ using System;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Client.Services.Http
+namespace Client.BuildingBlocks.Services.Http
 {
     public class HttpClientService
     {

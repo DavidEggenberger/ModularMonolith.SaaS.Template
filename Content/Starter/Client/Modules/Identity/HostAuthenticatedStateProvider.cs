@@ -9,7 +9,7 @@ using Shared.Constants;
 using System.Net.Http.Json;
 using Shared.Authentication;
 
-namespace Client.Authentication
+namespace Client.Modules.Identity
 {
     public class HostAuthenticationStateProvider : AuthenticationStateProvider
     {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Wrappers\SignalRWrapper.razor" />
+    <Content Remove="BuildingBlocks\Wrappers\SignalRWrapper.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,15 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Wrappers\SignalRWrapper.razor" />
+    <UpToDateCheckInput Remove="BuildingBlocks\Wrappers\SignalRWrapper.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Wrappers\SignalRWrapper.razor" />
+    <_ContentIncludedByDefault Remove="BuildingBlocks\Wrappers\SignalRWrapper.razor" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Wrappers\SignalRWrapper.razor" />
+    <None Include="BuildingBlocks\Wrappers\SignalRWrapper.razor" />
   </ItemGroup>
 
 </Project>

@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Mvc;
+using Client.BuildingBlocks.Services.Http;
 
-namespace Client.Services.Http
+namespace Client.BuildingBlocks.Services.Http
 {
     public class AuthorizedHttpClientService
     {
