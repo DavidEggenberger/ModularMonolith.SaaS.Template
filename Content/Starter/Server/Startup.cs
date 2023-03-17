@@ -38,16 +38,6 @@ namespace WebServer
             services.RegisterBuildingBlocks();
 
             services.RegisterIdentityModule(Configuration);
-
-
-
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //{
-            //    options.UseSqlServer(Configuration["AzureSQLConnection"], sqlServerOptions =>
-            //    {
-            //        sqlServerOptions.EnableRetryOnFailure(5);
-            //    });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +62,8 @@ namespace WebServer
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseBuildingBlocks();
 
             app.UseEndpoints(endpoints =>
             {

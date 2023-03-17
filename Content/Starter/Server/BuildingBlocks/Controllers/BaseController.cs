@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Server.Modules.Identity;
 using System;
 
-namespace Server.BuildingBlocks
+namespace Server.BuildingBlocks.Controllers
 {
     public class BaseController : ControllerBase
     {
