@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "identity": "DavidEggenberger.ASPNETCore.Blazor.Templates.ModularMonolith",
+  "author": "David Eggenberger",
+  "name": "ASPNETCore Blazor ModularMonolith Template",
+  "shortName": "ASPNETCore Blazor ModularMonolith Template",
+  "sourceName": "ModularMonolith",
+  "preferNameDirectory": true,
+  "tags": {
+    "language": "C#",
+    "type": "solution",
+    "platform": "web"
+  },
+  "symbols": {
+    "EnableAzureKeyVault": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "",
+      "defaultValue": "false"
+    }
+  }
+}

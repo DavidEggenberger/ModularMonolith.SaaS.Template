@@ -21,6 +21,7 @@ namespace WebServer
             Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration((hostingcontext, config) =>
                 {
+                    
                     config.AddAzureKeyVault(new Uri("https://starthack23vault.vault.azure.net/"),
                         new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "19a9b86b-f6fc-40b7-b98d-8f2c525ee690" }));
                 })
