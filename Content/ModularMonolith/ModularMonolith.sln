@@ -9,31 +9,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{D3B7FB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{1995FE19-6EBE-4C77-B59C-7D6901B3BD88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Server", "Web\Web.Server\Web.Server.csproj", "{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Server", "Source\Web\Web.Server\Web.Server.csproj", "{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Client", "Web\Web.Client\Web.Client.csproj", "{D759AE00-E537-4F80-963F-057FB842BDFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Client", "Source\Web\Web.Client\Web.Client.csproj", "{D759AE00-E537-4F80-963F-057FB842BDFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Client", "Shared\Shared.Client\Shared.Client.csproj", "{9B3B06E8-07E2-48FF-B802-3E670D36EFF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Client", "Source\Shared\Shared.Client\Shared.Client.csproj", "{9B3B06E8-07E2-48FF-B802-3E670D36EFF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Kernel", "Shared\Shared.Kernel\Shared.Kernel.csproj", "{34E0E3B1-C74E-4779-B890-525A446640DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Kernel", "Source\Shared\Shared.Kernel\Shared.Kernel.csproj", "{34E0E3B1-C74E-4779-B890-525A446640DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{BE4D9025-30EF-45B4-AD28-2925AD35E227}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Source\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{BE4D9025-30EF-45B4-AD28-2925AD35E227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Server", "Shared\Shared.Server\Shared.Server.csproj", "{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Server", "Source\Shared\Shared.Server\Shared.Server.csproj", "{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.IntegrationEvents", "Modules\Identity\Modules.Identity.IntegrationEvents\Modules.Identity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.IntegrationEvents", "Source\Modules\Identity\Modules.Identity.IntegrationEvents\Modules.Identity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F738ECB7-F490-411F-BDB1-0FE532C2BE63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Features", "Modules\Identity\Modules.Identity.Features\Modules.Identity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.Identity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Client", "Modules\Identity\Web\Modules.Identity.Web.Client\Modules.Identity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.Identity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Shared", "Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.Identity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Shared", "Source\Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.Identity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Server", "Modules\Identity\Web\Modules.Identity.Web.Server\Modules.Identity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Server", "Source\Modules\Identity\Web\Modules.Identity.Web.Server\Modules.Identity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
