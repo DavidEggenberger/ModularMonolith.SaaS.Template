@@ -13,27 +13,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Server", "Source\Web\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Client", "Source\Web\Web.Client\Web.Client.csproj", "{D759AE00-E537-4F80-963F-057FB842BDFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Client", "Source\Shared\Web\Shared.Client\Shared.Client.csproj", "{9B3B06E8-07E2-48FF-B802-3E670D36EFF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Web.Client", "Source\Shared\Web\Shared.Client\Shared.Web.Client.csproj", "{9B3B06E8-07E2-48FF-B802-3E670D36EFF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Kernel", "Source\Shared\Shared.Kernel\Shared.Kernel.csproj", "{34E0E3B1-C74E-4779-B890-525A446640DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Kernel", "Source\Shared\Shared.Kernel\Shared.Kernel.csproj", "{34E0E3B1-C74E-4779-B890-525A446640DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Source\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{BE4D9025-30EF-45B4-AD28-2925AD35E227}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Source\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{BE4D9025-30EF-45B4-AD28-2925AD35E227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Server", "Source\Shared\Web\Shared.Server\Shared.Server.csproj", "{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Server", "Source\Shared\Web\Shared.Server\Shared.Web.Server.csproj", "{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.IntegrationEvents", "Source\Modules\Identity\Modules.Identity.IntegrationEvents\Modules.Identity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.IntegrationEvents", "Source\Modules\Identity\Modules.Identity.IntegrationEvents\Modules.Identity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F738ECB7-F490-411F-BDB1-0FE532C2BE63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.Identity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.Identity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.Identity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.Identity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Shared", "Source\Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.Identity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Shared", "Source\Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.Identity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Identity.Web.Server", "Source\Modules\Identity\Web\Modules.Identity.Web.Server\Modules.Identity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Server", "Source\Modules\Identity\Web\Modules.Identity.Web.Server\Modules.Identity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Features", "Source\Shared\Shared.Features\Shared.Features.csproj", "{DA2BAFBE-B808-4096-8B81-620D0E4DC62C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.IntegrationEvents", "Source\Shared\Shared.IntegrationEvents\Shared.IntegrationEvents\Shared.IntegrationEvents.csproj", "{BCCA7A2B-523C-4274-A962-7D91A9D6553D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Web.Shared", "Source\Shared\Web\Shared.Web.Shared\Shared.Web.Shared.csproj", "{367AB788-BDC0-42A8-9794-3F857F245426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +93,18 @@ Global
 		{D5B57887-1F64-4F6F-8793-0530DB9942DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5B57887-1F64-4F6F-8793-0530DB9942DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5B57887-1F64-4F6F-8793-0530DB9942DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCCA7A2B-523C-4274-A962-7D91A9D6553D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCCA7A2B-523C-4274-A962-7D91A9D6553D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCCA7A2B-523C-4274-A962-7D91A9D6553D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCCA7A2B-523C-4274-A962-7D91A9D6553D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367AB788-BDC0-42A8-9794-3F857F245426}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367AB788-BDC0-42A8-9794-3F857F245426}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367AB788-BDC0-42A8-9794-3F857F245426}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367AB788-BDC0-42A8-9794-3F857F245426}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,10 +112,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{29C9E3A6-5F8B-4F30-B241-BD104DAB34B7} = {1995FE19-6EBE-4C77-B59C-7D6901B3BD88}
 		{D759AE00-E537-4F80-963F-057FB842BDFA} = {1995FE19-6EBE-4C77-B59C-7D6901B3BD88}
-		{9B3B06E8-07E2-48FF-B802-3E670D36EFF9} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{9B3B06E8-07E2-48FF-B802-3E670D36EFF9} = {B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}
 		{34E0E3B1-C74E-4779-B890-525A446640DD} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
 		{BE4D9025-30EF-45B4-AD28-2925AD35E227} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
-		{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33} = {B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}
 		{8A93A41B-E764-4538-9A95-3F2497A5A5F2} = {F738ECB7-F490-411F-BDB1-0FE532C2BE63}
 		{F738ECB7-F490-411F-BDB1-0FE532C2BE63} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
 		{F813B837-ABC4-4014-8EFE-E41B0115E215} = {F738ECB7-F490-411F-BDB1-0FE532C2BE63}
@@ -103,6 +123,10 @@ Global
 		{D5015915-70A7-43CE-8E29-34F6C71F960E} = {F813B837-ABC4-4014-8EFE-E41B0115E215}
 		{74FE9343-CE51-4716-BADD-2603348C1677} = {F813B837-ABC4-4014-8EFE-E41B0115E215}
 		{D5B57887-1F64-4F6F-8793-0530DB9942DB} = {F813B837-ABC4-4014-8EFE-E41B0115E215}
+		{B5D10C98-7564-48D3-BCE5-51CB5B10ECD5} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{BCCA7A2B-523C-4274-A962-7D91A9D6553D} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{367AB788-BDC0-42A8-9794-3F857F245426} = {B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}
