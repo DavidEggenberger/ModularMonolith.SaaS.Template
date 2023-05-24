@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Shared.Kernel.Authorization.Services
+namespace Shared.Kernel.BuildingBlocks
 {
     internal interface ITenantAuthorizationService
     {
