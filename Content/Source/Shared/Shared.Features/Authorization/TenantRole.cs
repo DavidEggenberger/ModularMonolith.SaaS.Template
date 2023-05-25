@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.DomainKernel
+﻿namespace Shared.Features.Authorization
 {
     public enum TenantRole
     {
