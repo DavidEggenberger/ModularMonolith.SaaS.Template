@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.MultiTenancy.Services;
+using Shared.Features.Infrastructure.MultiTenancy.Services;
 
-namespace Shared.Infrastructure.MultiTenancy
+namespace Shared.Features.Infrastructure.MultiTenancy
 {
     public static class MultiTenancyDIRegistrator
     {

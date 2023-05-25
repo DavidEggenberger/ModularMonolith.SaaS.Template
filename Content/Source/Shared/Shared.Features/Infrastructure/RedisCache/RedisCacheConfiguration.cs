@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.RedisCache
+﻿namespace Shared.Features.Infrastructure.RedisCache
 {
     public class RedisCacheConfiguration
     {

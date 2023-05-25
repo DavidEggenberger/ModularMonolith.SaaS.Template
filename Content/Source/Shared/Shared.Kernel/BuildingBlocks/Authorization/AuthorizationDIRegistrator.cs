@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using WebServer.Authorization;
 using Shared.Shared.Kernel.Constants;
 
-namespace Shared.Shared.Kernel.BuildingBlocks.Authorization
+namespace Shared.Kernel.BuildingBlocks.Authorization
 {
     public static class AuthorizationDIRegistrator
     {

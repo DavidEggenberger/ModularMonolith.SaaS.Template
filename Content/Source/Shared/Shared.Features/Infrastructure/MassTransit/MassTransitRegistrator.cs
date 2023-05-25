@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Infrastructure.MassTransit
+namespace Shared.Features.Infrastructure.MassTransit
 {
     public static class MassTransitRegistrator
     {

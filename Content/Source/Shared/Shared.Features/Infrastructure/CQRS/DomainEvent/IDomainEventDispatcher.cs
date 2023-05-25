@@ -1,7 +1,6 @@
-﻿using Shared.Domain.Interfaces;
-using Shared.SharedKernel.Interfaces;
+﻿using Shared.Features.DomainKernel.Events;
 
-namespace Shared.Infrastructure.CQRS.DomainEvent
+namespace Shared.Features.Infrastructure.CQRS.DomainEvent
 {
     public interface IDomainEventDispatcher
     {

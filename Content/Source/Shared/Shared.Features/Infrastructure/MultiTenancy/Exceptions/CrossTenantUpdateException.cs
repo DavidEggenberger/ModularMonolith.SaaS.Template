@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Shared.Infrastructure.MultiTenancy.Exceptions
+namespace Shared.Features.Infrastructure.MultiTenancy.Exceptions
 {
     [Serializable]
     internal class CrossTenantUpdateException : Exception

@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 
-namespace Shared.Infrastructure.MassTransit
+namespace Shared.Features.Infrastructure.MassTransit
 {
     public class IntegrationEventMassTransitProducer : IIntegrationEventPublisher
     {

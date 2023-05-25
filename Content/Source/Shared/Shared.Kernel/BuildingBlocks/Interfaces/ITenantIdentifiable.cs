@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.DomainKernel.Interfaces
+﻿namespace Shared.Features.BuildingBlocks.Interfaces
 {
     public interface ITenantIdentifiable
     {

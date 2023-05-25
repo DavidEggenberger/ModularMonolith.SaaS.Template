@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Infrastructure.EFCore
+namespace Shared.Features.Infrastructure.EFCore
 {
     public static class EFCoreDIRegistrator
     {

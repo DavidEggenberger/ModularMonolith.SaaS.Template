@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Shared.SharedKernel.Exstensions;
+using Shared.Kernel.Extensions;
 
-namespace Shared.Infrastructure.MultiTenancy.Services
+namespace Shared.Features.Infrastructure.MultiTenancy.Services
 {
     public class TenantResolver : ITenantResolver
     {

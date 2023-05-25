@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.CQRS.Command
+﻿namespace Shared.Features.Infrastructure.CQRS.Command
 {
     public interface ICommandDispatcher
     {

@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.Authorization
+﻿namespace Shared.Kernel.BuildingBlocks.Authorization
 {
     public enum SubscriptionPlanType
     {

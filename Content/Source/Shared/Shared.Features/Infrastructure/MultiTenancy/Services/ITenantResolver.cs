@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.MultiTenancy.Services
+﻿namespace Shared.Features.Infrastructure.MultiTenancy.Services
 {
     public interface ITenantResolver
     {

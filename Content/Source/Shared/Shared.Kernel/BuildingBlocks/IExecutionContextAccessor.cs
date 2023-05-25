@@ -1,4 +1,5 @@
-﻿using Shared.Kernel.DomainKernel;
+﻿using Shared.Features.BuildingBlocks.Interfaces;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Shared.Kernel.BuildingBlocks
 {

@@ -1,4 +1,4 @@
-﻿namespace Shared.Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal
+﻿namespace Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal
 {
     internal class UserIdClaimNotFoundException
     {

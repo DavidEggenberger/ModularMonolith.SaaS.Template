@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.EmailSender.Configuration
+﻿namespace Shared.Features.Infrastructure.EmailSender.Configuration
 {
     public class SendGridEmailOptions
     {

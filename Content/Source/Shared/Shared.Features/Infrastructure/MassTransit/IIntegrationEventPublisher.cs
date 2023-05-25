@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.MassTransit
+﻿namespace Shared.Features.Infrastructure.MassTransit
 {
     public interface IIntegrationEventPublisher
     {

@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Shared.Infrastructure.EmailSender.Configuration;
+using Shared.Features.Infrastructure.EmailSender.Configuration;
 
-namespace Shared.Infrastructure.EmailSender.Services
+namespace Shared.Features.Infrastructure.EmailSender.Services
 {
     public class SendGridEmailSender : IEmailSender
     {

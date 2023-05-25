@@ -1,6 +1,6 @@
 ﻿using Shared.Domain.Exceptions;
-using Shared.Features.DomainKernel.Interfaces.Events;
-using Shared.SharedKernel.Interfaces;
+using Shared.Features.BuildingBlocks.Interfaces;
+using Shared.Features.DomainKernel.Events;
 
 namespace Shared.Domain
 {
