@@ -21,11 +21,11 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      working-directory: ./Content/ModularMonolith
+      working-directory: ./Content
       run: dotnet restore
     - name: Build
-      working-directory: ./Content/ModularMonolith
+      working-directory: ./Content
       run: dotnet build --no-restore
     - name: Test
-      working-directory: ./Content/ModularMonolith
+      working-directory: ./Content
       run: dotnet test --no-build --verbosity normal
