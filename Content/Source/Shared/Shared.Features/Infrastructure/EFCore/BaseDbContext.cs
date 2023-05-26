@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Shared.Features.Infrastructure.MultiTenancy.EFCore;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Features.Infrastructure.CQRS.DomainEvent;
+using Shared.Kernel.BuildingBlocks.Authorization.Services;
 
 namespace Shared.Features.Infrastructure.EFCore
 {

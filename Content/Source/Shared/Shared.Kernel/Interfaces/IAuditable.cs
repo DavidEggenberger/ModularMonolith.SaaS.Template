@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shared.Web.Shared.DTOs.Interfaces
+namespace Shared.Kernel.Interfaces
 {
     public interface IAuditable
     {

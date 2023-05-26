@@ -1,5 +1,4 @@
-﻿using Shared.Features.BuildingBlocks.Interfaces;
-using Shared.Kernel.BuildingBlocks.Authorization;
+﻿using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Shared.Kernel.BuildingBlocks
 {

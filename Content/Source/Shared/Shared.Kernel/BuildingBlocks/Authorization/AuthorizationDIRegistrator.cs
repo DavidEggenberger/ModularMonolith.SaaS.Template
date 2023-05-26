@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authorization;
-using WebServer.Authorization;
-using Shared.Shared.Kernel.Constants;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 
 namespace Shared.Kernel.BuildingBlocks.Authorization
 {

@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.Constants;
+﻿using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal;
 using System.ComponentModel;
 using System.Security.Claims;

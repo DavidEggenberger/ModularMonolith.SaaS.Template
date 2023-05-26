@@ -3,7 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Client.Modules.Identity
+namespace Modules.Identity.Web.Client
 {
     public class AuthorizedHandler : DelegatingHandler
     {

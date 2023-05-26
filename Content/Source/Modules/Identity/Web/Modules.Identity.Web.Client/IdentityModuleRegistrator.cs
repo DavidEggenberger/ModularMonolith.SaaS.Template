@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Client.Modules.Identity
+namespace Modules.Identity.Web.Client
 {
     public static class IdentityModuleRegistrator
     {

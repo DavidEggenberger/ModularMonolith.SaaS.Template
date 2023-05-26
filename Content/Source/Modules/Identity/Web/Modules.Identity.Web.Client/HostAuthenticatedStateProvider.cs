@@ -5,11 +5,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Components.Authorization;
-using Shared.Constants;
 using System.Net.Http.Json;
-using Shared.Authentication;
+using Modules.Identity.Web.Shared.DTOs;
+using Modules.Identity.Web.Shared;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 
-namespace Client.Modules.Identity
+namespace Modules.Identity.Web.Client
 {
     public class HostAuthenticationStateProvider : AuthenticationStateProvider
     {

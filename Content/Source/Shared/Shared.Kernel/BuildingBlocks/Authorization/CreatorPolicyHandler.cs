@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Shared.Shared.Kernel.Exstensions;
-using Shared.Shared.Kernel.Interfaces;
+using Shared.Kernel.Extensions;
+using Shared.Kernel.Interfaces;
 
 namespace Shared.Kernel.BuildingBlocks.Authorization
 {

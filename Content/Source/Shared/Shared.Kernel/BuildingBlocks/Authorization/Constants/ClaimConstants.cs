@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace Shared.Kernel.Constants
+namespace Shared.Kernel.BuildingBlocks.Authorization.Constants
 {
     public class ClaimConstants
     {

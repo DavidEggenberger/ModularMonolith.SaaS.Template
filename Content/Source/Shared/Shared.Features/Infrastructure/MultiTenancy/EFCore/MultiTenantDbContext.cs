@@ -5,8 +5,8 @@ using System.Reflection;
 using Shared.Domain.Attributes;
 using Shared.Features.Infrastructure.MultiTenancy.Services;
 using Shared.Features.Infrastructure.MultiTenancy.Exceptions;
-using Shared.Features.DomainKernel.Interfaces;
 using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.Infrastructure.MultiTenancy.EFCore
 {
