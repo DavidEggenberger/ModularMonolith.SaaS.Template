@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Identity.Web.Shared.DTOs
+namespace Modules.TenantIdentity.Web.Shared.DTOs
 {
     public class BFFUserInfoDTO
     {

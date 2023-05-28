@@ -19,19 +19,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Kernel", "Source\Sha
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Server", "Source\Shared\Web\Shared.Web.Server\Shared.Web.Server.csproj", "{0572CDB4-2EEC-4EFB-B119-81F4CDD84A33}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.IntegrationEvents", "Source\Modules\Identity\Modules.Identity.IntegrationEvents\Modules.Identity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.IntegrationEvents", "Source\Modules\Identity\Modules.Identity.IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F738ECB7-F490-411F-BDB1-0FE532C2BE63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.Identity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TetnantIdentity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.TetnantIdentity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.Identity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.TenantIdentity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Shared", "Source\Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.Identity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Shared", "Source\Modules\Identity\Web\Modules.Identity.Web.Shared\Modules.TenantIdentity.Web.Shared.csproj", "{74FE9343-CE51-4716-BADD-2603348C1677}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Identity.Web.Server", "Source\Modules\Identity\Web\Modules.Identity.Web.Server\Modules.Identity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Server", "Source\Modules\Identity\Web\Modules.Identity.Web.Server\Modules.TenantIdentity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}"
 EndProject
