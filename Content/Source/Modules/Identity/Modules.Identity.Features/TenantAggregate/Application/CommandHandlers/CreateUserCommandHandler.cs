@@ -4,7 +4,7 @@ using System.Threading;
 using Modules.IdentityModule.Domain;
 using Modules.TenantIdentityModule.Layers.Infrastructure;
 
-namespace Application.Shared.Modules.Layers.Infrastructure.Identity.CommandHandler
+namespace Modules.TenantIdentityModule.Application.CommandHandlers
 {
     //public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
     //{
