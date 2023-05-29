@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 
-namespace Modules.TetnantIdentity.Features.UserAggregate.Domain
+namespace Modules.TenantIdentity.Features.UserAggregate.Domain
 {
     public class ApplicationUser : IdentityUser<Guid>
     {

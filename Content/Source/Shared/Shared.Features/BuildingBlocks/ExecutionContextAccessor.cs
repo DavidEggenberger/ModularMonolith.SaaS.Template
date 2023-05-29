@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TenantIdentity.Features.UserAggregate.Domain
+namespace Shared.Features.BuildingBlocks
 {
-    internal class ApplicationUserSettings
+    public class ExecutionContextAccessor
     {
     }
 }

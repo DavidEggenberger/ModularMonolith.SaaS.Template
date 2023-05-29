@@ -1,6 +1,6 @@
 ﻿using Modules.IdentityModule.Domain;
-using Modules.TenantIdentityModule.Domain;
-using Shared.Infrastructure.CQRS.Query;
+using Modules.TenantIdentity.Features.UserAggregate.Domain;
+using Shared.Features.Infrastructure.CQRS.Query;
 using System.Security.Claims;
 
 namespace Shared.Modules.TenantIdentityModule.Application.Queries

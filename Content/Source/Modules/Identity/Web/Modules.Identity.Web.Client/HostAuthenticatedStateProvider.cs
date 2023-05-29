@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Json;
-using Modules.Identity.Web.Shared.DTOs;
-using Modules.Identity.Web.Shared;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Modules.TenantIdentity.Web.Shared;
+using Modules.TenantIdentity.Web.Shared.DTOs;
 
 namespace Modules.Identity.Web.Client
 {

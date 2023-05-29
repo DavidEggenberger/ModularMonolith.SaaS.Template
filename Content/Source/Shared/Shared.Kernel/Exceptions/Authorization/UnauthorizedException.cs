@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TenantIdentity.Features.UserAggregate.Domain
+namespace Shared.Kernel.Exceptions.Authorization
 {
-    internal class ApplicationUserSettings
+    public class UnauthorizedException : Exception
     {
     }
 }

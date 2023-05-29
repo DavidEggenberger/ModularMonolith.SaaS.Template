@@ -2,11 +2,11 @@
 using Domain.Aggregates.TenantAggregate.Exceptions;
 using Shared.Domain;
 using Shared.Domain.Attributes;
-using Shared.SharedKernel.Authorization.Services;
-using SharedKernel.DomainKernel;
+using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Services;
 using System;
 
-namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.TenantAggregate.Domain
 {
     [AggregateRoot]
     public class Tenant : Entity
@@ -26,7 +26,7 @@ namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
         public string Name { get; set; }
         public TenantStyling Styling { get; set; }
         public TenantSettings Settings { get; set; }
-        public global::Domain.Aggregates.TenantAggregate.Enums.SubscriptionPlanType CurrentSubscriptionPlanType => tenantSubscriptions.Single(t => t.Status != SubscriptionStatus.Inactive).SubscriptionPlanType;
+        public SubscriptionPlanType CurrentSubscriptionPlanType => tenantSubscriptions.Single(t => t.Status != SubscriptionStatus.Inactive).SubscriptionPlanType;
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
         public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
@@ -34,7 +34,7 @@ namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
         public IReadOnlyCollection<TenantSubscription> TenantSubscriptions => tenantSubscriptions.AsReadOnly();
         private List<TenantSubscription> tenantSubscriptions = new List<TenantSubscription>();
 
-        public void AddUser(Guid userId, Role role)
+        public void AddUser(Guid userId, TenantRole role)
         {
             TenantAuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
@@ -48,7 +48,7 @@ namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
                 memberships.Add(new TenantMembership(userId, role));
             }
         }
-        public void ChangeRoleOfMember(Guid userId, Role newRole)
+        public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
             TenantAuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
@@ -69,7 +69,7 @@ namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
 
             memberships.Remove(memberships.Single(m => m.UserId == userId));
         }
-        public void InviteUserToRole(Guid userId, Role role)
+        public void InviteUserToRole(Guid userId, TenantRole role)
         {
             TenantAuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
@@ -80,7 +80,7 @@ namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
 
             invitations.Add(new TenantInvitation { UserId = userId, Role = role });
         }
-        public void AddSubscription(string stripeSubscriptionId, global::Domain.Aggregates.TenantAggregate.Enums.SubscriptionPlanType type, DateTime startDate, DateTime endDate, bool isTrial)
+        public void AddSubscription(string stripeSubscriptionId, SubscriptionPlanType type, DateTime startDate, DateTime endDate, bool isTrial)
         {
             foreach (var subscription in tenantSubscriptions)
             {

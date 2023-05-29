@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TetnantIdentity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.TetnantIdentity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TentantIdentity.Features", "Source\Modules\Identity\Modules.Identity.Features\Modules.TentantIdentity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Client", "Source\Modules\Identity\Web\Modules.Identity.Web.Client\Modules.TenantIdentity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
 EndProject

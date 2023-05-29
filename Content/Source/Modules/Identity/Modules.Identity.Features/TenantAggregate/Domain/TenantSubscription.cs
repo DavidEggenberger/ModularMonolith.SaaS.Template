@@ -1,7 +1,8 @@
 ﻿using Domain.Aggregates.TenantAggregate.Enums;
 using Shared.Domain;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
-namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.TenantAggregate.Domain
 {
     public class TenantSubscription : Entity
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.TenantAggregate.Domain
 {
     public class TenantSettings : Entity
     {

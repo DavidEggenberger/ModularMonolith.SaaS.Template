@@ -1,4 +1,4 @@
-﻿using Shared.Infrastructure.CQRS.Command;
+﻿using Shared.Features.Infrastructure.CQRS.Command;
 
 namespace Shared.Modules.Layers.Infrastructure.Identity.Commands
 {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.IdentityModule.Domain.Exceptions
+namespace Shared.Web.Client.BuildingBlocks
 {
-    public class UnauthorizedException : Exception
+    public class ExecutionContextAccessor
     {
     }
 }

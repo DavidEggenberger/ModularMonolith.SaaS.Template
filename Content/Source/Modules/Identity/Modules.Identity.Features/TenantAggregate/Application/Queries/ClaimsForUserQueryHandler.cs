@@ -1,8 +1,7 @@
-﻿using Shared.SharedKernel.Constants;
-using Modules.TenantIdentityModule.Domain;
-using Shared.Infrastructure.CQRS.Query;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Threading;
+using Shared.Features.Infrastructure.CQRS.Query;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 
 namespace Shared.Modules.TenantIdentityModule.Application.Queries
 {

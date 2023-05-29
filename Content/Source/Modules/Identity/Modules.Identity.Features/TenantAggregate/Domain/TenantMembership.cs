@@ -1,18 +1,19 @@
 ﻿using Domain.Aggregates.TenantAggregate.Enums;
 using Shared.Domain;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
-namespace Modules.TetnantIdentity.Features.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.TenantAggregate.Domain
 {
     public class TenantMembership : Entity
     {
         private TenantMembership() { }
-        public TenantMembership(Guid userId, Role role)
+        public TenantMembership(Guid userId, TenantRole role)
         {
             UserId = userId;
             Role = role;
         }
         public Guid UserId { get; set; }
         public Tenant Tenant { get; set; }
-        public Role Role { get; set; }
+        public TenantRole Role { get; set; }
     }
 }

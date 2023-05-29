@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentityModule.Domain;
-using Shared.Infrastructure.CQRS.Query;
+﻿using Modules.TenantIdentity.Features.TenantAggregate.Domain;
+using Shared.Features.Infrastructure.CQRS.Query;
 
 namespace Shared.Modules.TenantIdentityModule.Application.Queries
 {
