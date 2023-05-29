@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Kernel\Shared.Kernel.csproj" />
+    <ProjectReference Include="..\Modules.TenantIdentity.Web.Shared\Modules.TenantIdentity.Web.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
