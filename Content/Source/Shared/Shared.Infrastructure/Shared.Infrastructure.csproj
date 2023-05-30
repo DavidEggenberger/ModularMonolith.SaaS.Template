@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DomainFeatures\Shared.DomainFeatures.csproj" />
+    <ProjectReference Include="..\Kernel\Shared.Kernel.csproj" />
+  </ItemGroup>
+
+</Project>

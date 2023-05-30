@@ -1,4 +1,4 @@
-﻿using Shared.DomainFeatures.Infrastructure.CQRS.Command;
+﻿using Shared.Infrastructure.CQRS.Command;
 
 namespace Modules.TenantIdentity.DomainFeatures.Application.Commands
 {

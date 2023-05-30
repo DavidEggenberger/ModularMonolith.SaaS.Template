@@ -1,4 +1,4 @@
-﻿using Shared.DomainFeatures.Infrastructure.CQRS.Query;
+﻿using Shared.Infrastructure.CQRS.Query;
 using System.Threading;
 using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
