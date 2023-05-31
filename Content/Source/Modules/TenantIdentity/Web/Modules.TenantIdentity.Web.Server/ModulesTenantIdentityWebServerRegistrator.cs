@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.DomainFeatures.BuildingBlocks
+namespace Modules.TenantIdentity.Web.Server
 {
-    public class ExecutionContextAccessor
+    public static class ModulesTenantIdentityWebServerRegistrator
     {
+
     }
 }

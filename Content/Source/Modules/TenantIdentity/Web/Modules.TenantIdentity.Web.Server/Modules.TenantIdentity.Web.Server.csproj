@@ -4,4 +4,12 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ModulesTenantIdentityWebServerRegistrator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="ModulesTenantIdentityWebServerRegistrator.cs" />
+  </ItemGroup>
+
 </Project>

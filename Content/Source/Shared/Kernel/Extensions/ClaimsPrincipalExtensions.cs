@@ -1,4 +1,5 @@
-﻿using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+﻿using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal;
 using System.ComponentModel;
 using System.Security.Claims;
@@ -27,6 +28,16 @@ namespace Shared.Kernel.Extensions
         {
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
             return (T)converter.ConvertFrom(claimsPrincipal?.FindFirst(ClaimConstants.TenantPlanClaimType).Value);
+        }
+
+        public static TenantRole GetRoleInTenant(this ClaimsPrincipal claimsPrincipal)
+        {
+            return (TenantRole)Enum.Parse(typeof(TenantRole), claimsPrincipal?.FindFirst(ClaimConstants.UserRoleInTenantClaimType).Value);
+        }
+
+        public static SubscriptionPlanType GetTenantSubscriptionType(this ClaimsPrincipal claimsPrincipal)
+        {
+            return (SubscriptionPlanType)Enum.Parse(typeof(SubscriptionPlanType), claimsPrincipal?.FindFirst(ClaimConstants.TenantPlanClaimType).Value);
         }
 
         public static string GetRoleClaim(this ClaimsPrincipal claimsPrincipal)
