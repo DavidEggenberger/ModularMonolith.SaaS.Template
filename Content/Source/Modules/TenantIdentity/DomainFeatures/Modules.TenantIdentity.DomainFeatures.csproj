@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="UserAggregate\Application\" />
+    <Folder Include="UserAggregate\Application\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

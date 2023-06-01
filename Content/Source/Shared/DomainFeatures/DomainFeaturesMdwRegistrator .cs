@@ -14,7 +14,7 @@ namespace Shared.DomainFeatures
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IApplicationBuilder RegisterDomainFeatures(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder RegisterDomainFeaturesMiddleware(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.UseMiddleware<ExecutionAccessingMiddleware>();
 

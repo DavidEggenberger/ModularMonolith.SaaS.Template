@@ -34,7 +34,7 @@ namespace Shared.DomainFeatures.BuildingBlocks.ExecutionAccessor
         {
             get
             {
-                return capturedHttpContext.User.GetTenantSubscriptionType();
+                return capturedHttpContext.User.GetTenantSubscriptionPlanType();
             }
         }
 

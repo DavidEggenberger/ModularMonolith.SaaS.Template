@@ -35,7 +35,7 @@ namespace Shared.Kernel.Extensions
             return (TenantRole)Enum.Parse(typeof(TenantRole), claimsPrincipal?.FindFirst(ClaimConstants.UserRoleInTenantClaimType).Value);
         }
 
-        public static SubscriptionPlanType GetTenantSubscriptionType(this ClaimsPrincipal claimsPrincipal)
+        public static SubscriptionPlanType GetTenantSubscriptionPlanType(this ClaimsPrincipal claimsPrincipal)
         {
             return (SubscriptionPlanType)Enum.Parse(typeof(SubscriptionPlanType), claimsPrincipal?.FindFirst(ClaimConstants.TenantPlanClaimType).Value);
         }

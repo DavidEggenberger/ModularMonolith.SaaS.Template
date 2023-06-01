@@ -12,4 +12,14 @@
     <None Include="ModulesTenantIdentityWebServerRegistrator.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Shared\Web\Shared.Web.Server\Shared.Web.Server.csproj" />
+    <ProjectReference Include="..\..\DomainFeatures\Modules.TenantIdentity.DomainFeatures.csproj" />
+    <ProjectReference Include="..\Modules.TenantIdentity.Web.Shared\Modules.TenantIdentity.Web.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

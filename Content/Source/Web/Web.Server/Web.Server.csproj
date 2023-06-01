@@ -15,4 +15,8 @@
     <Folder Include="BuildingBlocks\RateLimiting\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
+  </ItemGroup>
+
 </Project>
