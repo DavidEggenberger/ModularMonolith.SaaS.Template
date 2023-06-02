@@ -4,9 +4,9 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
-    public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
+    public class ApplicationUserConfiguration : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<ApplicationUser> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             
         }

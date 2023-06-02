@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
 {
-    internal class ApplicationUserSettings
+    internal class UserSettings
     {
     }
 }

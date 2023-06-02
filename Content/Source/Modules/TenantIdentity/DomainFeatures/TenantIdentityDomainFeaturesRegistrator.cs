@@ -94,7 +94,7 @@ namespace Modules.TenantIdentity.DomainFeatures
                     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
             });
-            var identityService = services.AddIdentityCore<ApplicationUser>(options =>
+            var identityService = services.AddIdentityCore<User>(options =>
             {
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+/ ";
                 options.User.RequireUniqueEmail = true;
@@ -103,7 +103,7 @@ namespace Modules.TenantIdentity.DomainFeatures
                 options.ClaimsIdentity.UserNameClaimType = ClaimConstants.UserNameClaimType;
             })
                 .AddDefaultTokenProviders()
-                .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory<ApplicationUser>>()
+                .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory<User>>()
                 .AddUserManager<ApplicationUserManager>()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddSignInManager();

@@ -9,7 +9,7 @@ using Shared.SharedKernel.Constants;
 using ApplicationUserManager = Shared.Modules.Layers.Infrastructure.Identity.ApplicationUserManager;
 using Shared.SharedKernel.Exstensions;
 
-namespace WebServer.Controllers.Identity
+namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {
     [Route("api/[controller]")]
     [AllowAnonymous]

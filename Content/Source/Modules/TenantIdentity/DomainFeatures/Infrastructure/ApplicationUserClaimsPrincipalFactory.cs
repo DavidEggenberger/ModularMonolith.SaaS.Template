@@ -6,7 +6,7 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
-    public class ApplicationUserClaimsPrincipalFactory<User> : IUserClaimsPrincipalFactory<User> where User : ApplicationUser
+    public class ApplicationUserClaimsPrincipalFactory<User> : IUserClaimsPrincipalFactory<User> where User : UserAggregate.Domain.User
     {
         private readonly ApplicationUserManager applicationUserManager;
         private readonly IQueryDispatcher queryDispatcher;
@@ -17,7 +17,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
         }
         public async Task<ClaimsPrincipal> CreateAsync(User user)
         {
-            ApplicationUser applicationUser = await applicationUserManager.FindByIdAsync(user.Id);
+            UserAggregate.Domain.User applicationUser = await applicationUserManager.FindByIdAsync(user.Id);
 
             //var claimsForUserQuery = new ClaimsForUserQuery { User = applicationUser };
             //var claimsForUserQuery = new ClaimsForUserQuery();

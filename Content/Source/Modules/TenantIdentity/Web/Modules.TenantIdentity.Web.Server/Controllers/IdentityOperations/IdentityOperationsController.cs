@@ -6,6 +6,7 @@ using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.Web.Shared.DTOs;
+using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Web.Server;
@@ -14,16 +15,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebServer.Controllers.Identity
+namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {
     [Route("api/[controller]")]
     [Authorize]
     [ApiController]
-    public class IdentityController : BaseController
+    public class IdentityOperationsController : BaseController
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly SignInManager<User> signInManager;
 
-        public IdentityController(SignInManager<ApplicationUser> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
+        public IdentityOperationsController(SignInManager<User> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
         }
@@ -45,7 +46,7 @@ namespace WebServer.Controllers.Identity
         [HttpGet("selectTenant/{TeamId}")]
         public async Task<ActionResult> SetTenantForCurrentUser(Guid tenantId, [FromQuery] string redirectUri)
         {
-            ApplicationUser applicationUser = await applicationUserManager.FindByClaimsPrincipalAsync(HttpContext.User);
+            User applicationUser = await applicationUserManager.FindByClaimsPrincipalAsync(HttpContext.User);
 
             var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = applicationUser.Id };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembership>>(tenantMembershipsOfUserQuery);

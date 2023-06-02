@@ -6,7 +6,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Application.Commands
 {
     public class CreateUserCommand : ICommand
     {
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
         public ExternalLoginInfo LoginInfo { get; set; }
     }
 }

@@ -5,17 +5,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Web.Server;
 
-namespace WebServer.Controllers.Identity
+namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApplicationUserController : ControllerBase
+    public class ApplicationUserController : BaseController
     {
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly ApplicationUserManager applicationUserManager;
-        private readonly IMapper mapper;
-        private readonly IQueryDispatcher queryDispatcher;
         public ApplicationUserController(SignInManager<ApplicationUser> signInManager, ApplicationUserManager applicationUserManager, IMapper mapper)
         {
             this.signInManager = signInManager;

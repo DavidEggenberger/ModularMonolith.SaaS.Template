@@ -9,17 +9,17 @@ using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class ApplicationUserManager : UserManager<User>
     {
         private readonly TenantIdentityDbContext identificationDbContext;
-        public ApplicationUserManager(TenantIdentityDbContext identificationDbContext, IUserStore<ApplicationUser> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<ApplicationUser> passwordHasher, IEnumerable<IUserValidator<ApplicationUser>> userValidators, IEnumerable<IPasswordValidator<ApplicationUser>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<ApplicationUserManager> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
+        public ApplicationUserManager(TenantIdentityDbContext identificationDbContext, IUserStore<User> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<User> passwordHasher, IEnumerable<IUserValidator<User>> userValidators, IEnumerable<IPasswordValidator<User>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<ApplicationUserManager> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             this.identificationDbContext = identificationDbContext;
         }
 
-        public async Task<ApplicationUser> FindByClaimsPrincipalAsync(ClaimsPrincipal claimsPrincipal)
+        public async Task<User> FindByClaimsPrincipalAsync(ClaimsPrincipal claimsPrincipal)
         {
-            ApplicationUser user = await base.GetUserAsync(claimsPrincipal);
+            User user = await base.GetUserAsync(claimsPrincipal);
             if (user == null)
             {
                 throw new IdentityOperationException();
@@ -27,9 +27,9 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 
             return user;
         }
-        public async Task<ApplicationUser> FindByIdAsync(Guid id)
+        public async Task<User> FindByIdAsync(Guid id)
         {
-            ApplicationUser applicationUser;
+            User applicationUser;
             try
             {
                 applicationUser = await identificationDbContext.Users.SingleAsync(x => x.Id == id);
@@ -46,9 +46,9 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
             throw new NotImplementedException();
         }
 
-        public async Task<ApplicationUser> FindUserByStripeCustomerId(string stripeCustomerId)
+        public async Task<User> FindUserByStripeCustomerId(string stripeCustomerId)
         {
-            ApplicationUser applicationUser;
+            User applicationUser;
             try
             {
                 applicationUser = await identificationDbContext.Users.SingleAsync(u => u.StripeCustomerId == stripeCustomerId);
@@ -59,7 +59,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
                 throw new IdentityOperationException();
             }
         }
-        public async Task SetTenantAsSelected(ApplicationUser applicationUser, Guid tenantId)
+        public async Task SetTenantAsSelected(User applicationUser, Guid tenantId)
         {
             applicationUser.SelectedTenantId = tenantId;
             await identificationDbContext.SaveChangesAsync();

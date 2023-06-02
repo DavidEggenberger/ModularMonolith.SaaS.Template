@@ -6,7 +6,7 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
-    public class IdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public class IdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         private readonly IConfiguration configuration;
         public IdentityDbContext(IConfiguration configuration, DbContextOptions<IdentityDbContext> options) : base(options)
@@ -28,7 +28,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<ApplicationUser>(new ApplicationUserConfiguration());
+            modelBuilder.ApplyConfiguration<User>(new ApplicationUserConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

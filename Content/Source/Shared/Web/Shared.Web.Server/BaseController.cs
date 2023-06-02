@@ -16,7 +16,5 @@ namespace Shared.Web.Server
             commandDiscpatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
         }
-
-
     }
 }

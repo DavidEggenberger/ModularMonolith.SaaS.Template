@@ -6,6 +6,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Application.Queries
 {
     public class ClaimsForUserQuery : IQuery<IEnumerable<Claim>>
     {
-        public ApplicationUser User { get; set; }
+        public User User { get; set; }
     }
 }

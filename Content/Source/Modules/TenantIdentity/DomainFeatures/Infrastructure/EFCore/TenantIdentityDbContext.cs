@@ -7,7 +7,7 @@ using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
-    public class TenantIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    public class TenantIdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         private readonly IConfiguration configuration;
         public TenantIdentityDbContext(IConfiguration configuration, DbContextOptions<IdentityDbContext> options) : base(options)

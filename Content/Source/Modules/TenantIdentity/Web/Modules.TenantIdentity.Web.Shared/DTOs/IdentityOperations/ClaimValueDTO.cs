@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TenantIdentity.Web.Shared.DTOs
+namespace Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations
 {
     public class ClaimValueDTO
     {

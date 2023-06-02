@@ -3,7 +3,7 @@ using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
 {
-    public class ApplicationUser : IdentityUser<Guid>
+    public class User : IdentityUser<Guid>
     {
         public string PictureUri { get; set; }
         public bool IsOnline => CountOfOpenTabs > 0;
