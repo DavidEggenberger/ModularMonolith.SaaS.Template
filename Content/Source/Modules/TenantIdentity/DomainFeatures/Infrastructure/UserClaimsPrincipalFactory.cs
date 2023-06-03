@@ -6,11 +6,11 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
-    public class ApplicationUserClaimsPrincipalFactory<User> : IUserClaimsPrincipalFactory<User> where User : UserAggregate.Domain.User
+    public class UserClaimsPrincipalFactory<User> : IUserClaimsPrincipalFactory<User> where User : UserAggregate.Domain.User
     {
-        private readonly ApplicationUserManager applicationUserManager;
+        private readonly UserManager applicationUserManager;
         private readonly IQueryDispatcher queryDispatcher;
-        public ApplicationUserClaimsPrincipalFactory(ApplicationUserManager applicationUserManager, IQueryDispatcher queryDispatcher)
+        public UserClaimsPrincipalFactory(UserManager applicationUserManager, IQueryDispatcher queryDispatcher)
         {
             this.applicationUserManager = applicationUserManager;
             this.queryDispatcher = queryDispatcher;

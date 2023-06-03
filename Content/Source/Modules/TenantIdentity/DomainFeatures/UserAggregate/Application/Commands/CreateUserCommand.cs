@@ -2,7 +2,7 @@
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Shared.Infrastructure.CQRS.Command;
 
-namespace Modules.TenantIdentity.DomainFeatures.Application.Commands
+namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands
 {
     public class CreateUserCommand : ICommand
     {

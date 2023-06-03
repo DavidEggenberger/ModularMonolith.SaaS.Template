@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ModulesTenantIdentityWebServerRegistrator.cs" />
+    <Compile Remove="ModuleRegistrator.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="ModulesTenantIdentityWebServerRegistrator.cs" />
+    <None Include="ModuleRegistrator.cs" />
   </ItemGroup>
 
   <ItemGroup>

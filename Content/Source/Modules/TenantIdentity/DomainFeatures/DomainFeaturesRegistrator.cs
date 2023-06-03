@@ -13,7 +13,7 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
-    public static class TenantIdentityDomainFeaturesRegistrator
+    public static class DomainFeaturesRegistrator
     {
         public static IServiceCollection RegisterIdentity(this IServiceCollection services, IConfiguration configuration)
         {
@@ -103,7 +103,7 @@ namespace Modules.TenantIdentity.DomainFeatures
                 options.ClaimsIdentity.UserNameClaimType = ClaimConstants.UserNameClaimType;
             })
                 .AddDefaultTokenProviders()
-                .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory<User>>()
+                .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<User>>()
                 .AddUserManager<ApplicationUserManager>()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddSignInManager();

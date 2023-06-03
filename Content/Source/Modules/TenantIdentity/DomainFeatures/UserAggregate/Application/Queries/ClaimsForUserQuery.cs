@@ -2,7 +2,7 @@
 using Shared.Infrastructure.CQRS.Query;
 using System.Security.Claims;
 
-namespace Modules.TenantIdentity.DomainFeatures.Application.Queries
+namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries
 {
     public class ClaimsForUserQuery : IQuery<IEnumerable<Claim>>
     {

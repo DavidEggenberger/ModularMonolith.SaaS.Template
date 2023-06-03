@@ -9,10 +9,10 @@ using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
-    public class ApplicationUserManager : UserManager<User>
+    public class UserManager : UserManager<User>
     {
         private readonly TenantIdentityDbContext identificationDbContext;
-        public ApplicationUserManager(TenantIdentityDbContext identificationDbContext, IUserStore<User> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<User> passwordHasher, IEnumerable<IUserValidator<User>> userValidators, IEnumerable<IPasswordValidator<User>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<ApplicationUserManager> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
+        public UserManager(TenantIdentityDbContext identificationDbContext, IUserStore<User> store, IOptions<IdentityOptions> optionsAccessor, IPasswordHasher<User> passwordHasher, IEnumerable<IUserValidator<User>> userValidators, IEnumerable<IPasswordValidator<User>> passwordValidators, ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager> logger) : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
             this.identificationDbContext = identificationDbContext;
         }

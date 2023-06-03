@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 

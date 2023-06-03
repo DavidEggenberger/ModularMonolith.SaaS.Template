@@ -8,6 +8,7 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using System.Collections.Generic;
 using Shared.Web.Server;
 using System;
+using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {
@@ -25,7 +26,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<ActionResult<TeamDTO>> CreateTeam(TeamDTO team)
+        public async Task<ActionResult<TenantDTO>> CreateTeam(TenantDTO team)
         {
             User applicationUser = await applicationUserManager.FindByClaimsPrincipalAsync(HttpContext.User);
 
@@ -34,7 +35,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         }
 
         [HttpGet]
-        public async Task<TeamAdminInfoDTO> GetAdminInfo()
+        public async Task<TenantDetailDTO> GetAdminInfo()
         {
             Team team = await teamManager.FindByClaimsPrincipalAsync(HttpContext.User);
             TeamMetrics teamMetrics = teamManager.GetMetricsForTeam(team);
@@ -45,7 +46,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 
 
         [HttpGet("allTeams")]
-        public async Task<IEnumerable<TeamDTO>> GetAllTeamsForUser()
+        public async Task<IEnumerable<TenantDTO>> GetAllTeamsForUser()
         {
             User applicationUser = await applicationUserManager.FindByClaimsPrincipalAsync(HttpContext.User);
             List<Team> teamMemberships = applicationUserManager.GetAllTeamsWhereUserIsMember(applicationUser);

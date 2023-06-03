@@ -28,7 +28,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<User>(new ApplicationUserConfiguration());
+            modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }
