@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations
+namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant
 {
-    public class InviteUserToTenantDTO
+    public class TenantMembershipDTO
     {
     }
 }

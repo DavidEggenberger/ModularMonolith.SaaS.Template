@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations
 {
-    internal class RevokeMemberInvitationToTenantDTO
+    public class RevokeUserInvitationToTenantDTO
     {
     }
 }

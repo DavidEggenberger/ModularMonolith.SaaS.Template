@@ -1,40 +1,40 @@
-﻿using Shared.Modules.Layers.Infrastructure.Identity;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Modules.Layers.Application.CQRS.Command;
-using Module.Shared.Modules.Layers.Infrastructure;
-using Shared.Modules.Layers.Infrastructure.Identity.Commands;
-using Shared.SharedKernel.Constants;
-using ApplicationUserManager = Shared.Modules.Layers.Infrastructure.Identity.ApplicationUserManager;
-using Shared.SharedKernel.Exstensions;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Shared.Kernel.Extensions;
+using Shared.Web.Server;
+using System;
+using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {
     [Route("api/[controller]")]
     [AllowAnonymous]
     [ApiController]
-    public class ExternalLoginCallbackController : ControllerBase
+    public class ExternalLoginCallbackController : BaseController
     {
-        private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly ApplicationUserManager userManager;
-        private readonly ICommandDispatcher commandDispatcher;
-        public ExternalLoginCallbackController(SignInManager<ApplicationUser> signInManager, ApplicationUserManager userManager, ICommandDispatcher commandDispatcher)
+        private readonly SignInManager<User> signInManager;
+        private readonly UserManager<User> userManager;
+        public ExternalLoginCallbackController(SignInManager<User> signInManager, UserManager<User> userManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
-            this.commandDispatcher = commandDispatcher;
         }
 
         [HttpGet("ExternalLoginCallback")]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null)
         {
             var info = await signInManager.GetExternalLoginInfoAsync();
+
             var user = await userManager.FindByLoginAsync(info.LoginProvider, info.ProviderKey);
 
             if (info is not null && user is null)
             {
-                ApplicationUser _user = new ApplicationUser
+                User _user = new User
                 {
                     UserName = info.Principal.Identity.Name,
                     Email = info.Principal.GetClaimValue(ClaimConstants.EmailClaimType),

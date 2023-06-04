@@ -1,4 +1,5 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
+using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.DomainFeatures;
 using Shared.DomainFeatures.Attributes;
 using Shared.Kernel.BuildingBlocks.Authorization;
@@ -97,5 +98,9 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         {
             return memberships.Any(membership => membership.UserId == userId);
         }
+
+        public TenantDTO ToDTO() => new TenantDTO();
+        public TenantDetailDTO ToDetailDTO() => new TenantDetailDTO();
+
     }
 }

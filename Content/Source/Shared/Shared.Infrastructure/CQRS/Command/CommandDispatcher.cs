@@ -14,7 +14,7 @@ namespace Shared.Infrastructure.CQRS.Command
             var handler = serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
             return handler.HandleAsync(command, cancellation);
         }
-        public Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command, CancellationToken cancellation = default) where TCommand : ICommand
+        public Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command, CancellationToken cancellation = default) where TCommand : ICommand<TResult>
         {
             var handler = serviceProvider.GetRequiredService<ICommandHandler<TCommand, TResult>>();
             return handler.HandleAsync(command, cancellation);

@@ -1,4 +1,5 @@
-﻿using Shared.DomainFeatures;
+﻿using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
+using Shared.DomainFeatures;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
@@ -14,5 +15,10 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         public Guid UserId { get; set; }
         public Tenant Tenant { get; set; }
         public TenantRole Role { get; set; }
+
+        public TenantMembershipDTO ToDTO()
+        {
+            return new TenantMembershipDTO();
+        }
     }
 }
