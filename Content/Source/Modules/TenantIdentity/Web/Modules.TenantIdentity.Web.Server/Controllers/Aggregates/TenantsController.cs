@@ -95,18 +95,17 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         [HttpPut("memberships")]
         public async Task<ActionResult> UpdateTenantMembership(ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
         {
-            Team team = await teamManager.FindByClaimsPrincipalAsync(HttpContext.User);
-            User applicationUser = await applicationUserManager.FindByIdAsync(changeRoleOfTeamMemberDTO.UserId);
-            await teamManager.ChangeRoleOfMemberAsync(applicationUser, team, (TeamRole)changeRoleOfTeamMemberDTO.TargetRole);
+            await commandDispatcher.DispatchAsync<UpdateTenantMembership>(new UpdateTenantMembership { });
+
             return Ok();
         }
 
         [HttpDelete("memberships/{userId}")]
-        public async Task DeleteTenantMembership(Guid id)
+        public async Task<ActionResult> DeleteTenantMembership(Guid id)
         {
-            User applicationUser = await applicationUserManager.FindByIdAsync(id);
-            Team team = await teamManager.FindByClaimsPrincipalAsync(HttpContext.User);
-            await teamManager.RemoveMemberAsync(team, applicationUser);
+            await commandDispatcher.DispatchAsync<DeleteTenantMembership>(new DeleteTenantMembership { });
+
+            return Ok();
         }
     }
 }

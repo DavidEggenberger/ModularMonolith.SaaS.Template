@@ -1,19 +1,24 @@
-﻿using System.Security.Claims;
-using System.Threading;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
+﻿using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using System.Security.Claims;
+using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.Application.Queries
+namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries
 {
-    public class ClaimsForUserQueryHandler : IQueryHandler<ClaimsForUserQuery, IEnumerable<Claim>>
+    public class GetClaimsForUser : IQuery<IEnumerable<Claim>>
+    {
+        public User User { get; set; }
+    }
+
+    public class ClaimsForUserQueryHandler : IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
     {
         private readonly IQueryDispatcher queryDispatcher;
         public ClaimsForUserQueryHandler(IQueryDispatcher queryDispatcher)
         {
             this.queryDispatcher = queryDispatcher;
         }
-        public async Task<IEnumerable<Claim>> HandleAsync(ClaimsForUserQuery query, CancellationToken cancellation)
+        public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
         {
             List<Claim> claims = new List<Claim>
             {

@@ -103,8 +103,7 @@ namespace Modules.TenantIdentity.DomainFeatures
                 options.ClaimsIdentity.UserNameClaimType = ClaimConstants.UserNameClaimType;
             })
                 .AddDefaultTokenProviders()
-                .AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<User>>()
-                .AddUserManager<ApplicationUserManager>()
+                .AddClaimsPrincipalFactory<ContextUserClaimsPrincipalFactory<User>>()
                 .AddEntityFrameworkStores<IdentityDbContext>()
                 .AddSignInManager();
 

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Modules.TenantIdentity.DomainFeatures.Application.Queries;
 using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.Web.Shared.DTOs;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
@@ -43,19 +44,19 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
             };
         }
 
-        [HttpGet("selectTenant/{TeamId}")]
+        [HttpGet("selectTenant/{TenantId}")]
         public async Task<ActionResult> SetTenantForCurrentUser(Guid tenantId, [FromQuery] string redirectUri)
         {
-            User applicationUser = await applicationUserManager.FindByClaimsPrincipalAsync(HttpContext.User);
+            var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
 
-            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = applicationUser.Id };
+            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = user.Id };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembership>>(tenantMembershipsOfUserQuery);
 
             if (tenantMemberships.Select(t => t.Tenant.Id).Contains(tenantId))
             {
                 var setSelectedTenantForUser = new SetSelectedTenantForUser { };
                 await commandDispatcher.DispatchAsync(setSelectedTenantForUser);
-                await signInManager.RefreshSignInAsync(applicationUser);
+                await signInManager.RefreshSignInAsync(user);
             }
             else
             {
