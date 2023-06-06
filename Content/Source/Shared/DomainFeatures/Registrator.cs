@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.DomainFeatures.Authorization;
 using Shared.DomainFeatures.BuildingBlocks.ExecutionAccessor;
 using Shared.Kernel.BuildingBlocks;
@@ -6,7 +8,7 @@ using Shared.Kernel.BuildingBlocks.Authorization.Services;
 
 namespace Shared.DomainFeatures
 {
-    public static class DomainFeaturesDIRegistrator
+    public static class Registrator
     {
         /// <summary>
         /// Registers the <see cref="UserAuthorizationService"/>
@@ -16,7 +18,10 @@ namespace Shared.DomainFeatures
         public static IServiceCollection RegisterDomainFeaturesServices(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<IExecutionContextAccessor, ExecutionContextAccessor>();
+            services.AddScoped<IExecutionContextAccessor>(provider =>
+            {
+                return new ExecutionContextAccessor(provider.GetRequiredService<IHttpContextAccessor>().HttpContext);
+            });
             services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
 
             return services;

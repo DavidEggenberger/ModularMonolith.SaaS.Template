@@ -41,7 +41,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
                     PictureUri = info.Principal.GetClaimValue(ClaimConstants.PictureClaimType)
                 };
 
-                var createUserCommand = new CreateUserCommand { User = _user };
+                var createUserCommand = new CreateNewUser { User = _user };
                 await commandDispatcher.DispatchAsync(createUserCommand);
             }
 

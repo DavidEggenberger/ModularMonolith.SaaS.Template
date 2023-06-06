@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Modules.TenantIdentity.Web.Server;
 using Shared.DomainFeatures;
 
 namespace Web.Server
@@ -20,7 +21,9 @@ namespace Web.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .RegisterTenantIdentityModuleControllers();
+
             services.AddRazorPages();
 
             services.RegisterDomainFeaturesServices();
@@ -47,10 +50,9 @@ namespace Web.Server
 
             app.UseAuthorization();
 
-            app.RegisterDomainFeaturesMiddleware();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }

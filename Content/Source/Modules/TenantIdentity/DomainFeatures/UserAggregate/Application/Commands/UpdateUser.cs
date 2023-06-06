@@ -2,7 +2,7 @@
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands
 {
-    public class UpdateUserCommand : ICommand
+    public class UpdateUser : ICommand
     {
     }
 }

@@ -13,12 +13,11 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
-    public static class DomainFeaturesRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterIdentity(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
-            //services.AddScoped<IUserResolver, UserResolver>();
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
