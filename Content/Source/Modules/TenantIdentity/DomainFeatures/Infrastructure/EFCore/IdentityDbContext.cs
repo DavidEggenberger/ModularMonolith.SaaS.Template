@@ -9,21 +9,22 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
     public class IdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         private readonly IConfiguration configuration;
-        public IdentityDbContext(IConfiguration configuration, DbContextOptions<IdentityDbContext> options) : base(options)
+        public IdentityDbContext(DbContextOptions<IdentityDbContext> options) : base(options)
         {
-            this.configuration = configuration;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if(optionsBuilder.IsConfigured is false)
             {
+                optionsBuilder.UseInMemoryDatabase("InMemoryDb");
                 //optionsBuilder.UseSqlServer(configuration.GetConnectionString("IdentityDbLocalConnectionString"), sqlServerOptions =>
                 //{
                 //    //sqlServerOptions.MigrationsAssembly(typeof(IAssemblyMarker).GetTypeInfo().Assembly.GetName().Name);
                 //    sqlServerOptions.EnableRetryOnFailure(5);
                 //});
             }   
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

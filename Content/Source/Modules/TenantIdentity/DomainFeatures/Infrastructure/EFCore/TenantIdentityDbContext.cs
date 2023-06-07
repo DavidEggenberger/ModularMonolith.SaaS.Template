@@ -9,16 +9,18 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
     public class TenantIdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
-        private readonly IConfiguration configuration;
-        public TenantIdentityDbContext(IConfiguration configuration, DbContextOptions<IdentityDbContext> options) : base(options)
+
+        public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions) : base(dbContextOptions)
         {
-            this.configuration = configuration;
+
         }
 
-        //public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions, IServiceProvider serviceProvider, IConfiguration configuration) : base(dbContextOptions, serviceProvider, configuration)
-        //{
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
+        {
+            builder.UseInMemoryDatabase("asdfasdf");
+            base.OnConfiguring(builder);
+        }
 
-        //}
         public DbSet<Tenant> Tenants { get; set; }
     }
 }

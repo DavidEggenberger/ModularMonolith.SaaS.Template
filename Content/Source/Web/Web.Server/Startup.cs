@@ -4,8 +4,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Modules.TenantIdentity.DomainFeatures;
 using Modules.TenantIdentity.Web.Server;
 using Shared.DomainFeatures;
+using Shared.Infrastructure;
+using System.Reflection;
 
 namespace Web.Server
 {
@@ -26,7 +29,15 @@ namespace Web.Server
 
             services.AddRazorPages();
 
-            services.RegisterDomainFeaturesServices();
+            services.RegisterSharedDomainFeaturesServices();
+
+            services.RegisterSharedInfrastructure(new Assembly[]
+            {
+                typeof(Modules.TenantIdentity.DomainFeatures.Registrator).Assembly,
+
+            });
+
+            services.RegisterTenantIdentityModule(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

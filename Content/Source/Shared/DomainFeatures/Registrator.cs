@@ -15,7 +15,7 @@ namespace Shared.DomainFeatures
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterDomainFeaturesServices(this IServiceCollection services)
+        public static IServiceCollection RegisterSharedDomainFeaturesServices(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
             services.AddScoped<IExecutionContextAccessor>(provider =>

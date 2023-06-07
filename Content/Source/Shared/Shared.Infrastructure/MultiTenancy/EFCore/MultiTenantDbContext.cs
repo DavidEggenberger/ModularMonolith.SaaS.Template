@@ -28,6 +28,7 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
         {
             if(optionsBuilder.IsConfigured is false)
             {
+                optionsBuilder.UseInMemoryDatabase("adsfasf");
                 //optionsBuilder.UseSqlServer(configuration.GetConnectionString("ApplicationDbContextConnection"), options =>
                 //{
                 //    options.MigrationsAssembly(typeof(IAssemblyMarker).GetTypeInfo().Assembly.GetName().Name);

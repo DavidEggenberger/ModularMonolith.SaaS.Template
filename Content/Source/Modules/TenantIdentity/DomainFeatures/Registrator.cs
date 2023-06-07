@@ -10,14 +10,17 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+using IdentityDbContext = Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.IdentityDbContext;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterIdentity(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection RegisterTenantIdentityModule(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
+            services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {

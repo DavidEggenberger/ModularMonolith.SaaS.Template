@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DomainFeatures\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\Kernel\Shared.Kernel.csproj" />
   </ItemGroup>

@@ -9,10 +9,8 @@ namespace Shared.Infrastructure.CQRS
 {
     public static class CQRSDIRegistrator
     {
-        public static IServiceCollection RegisterCQRS(this IServiceCollection services, Assembly assembly)
+        public static IServiceCollection RegisterCQRS(this IServiceCollection services, Assembly[] assemblies)
         {
-            Assembly[] assemblies = new Assembly[] { assembly };
-
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
             services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
