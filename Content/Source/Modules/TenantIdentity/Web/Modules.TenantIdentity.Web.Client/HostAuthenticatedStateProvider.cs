@@ -9,6 +9,7 @@ using System.Net.Http.Json;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Modules.TenantIdentity.Web.Shared;
 using Modules.TenantIdentity.Web.Shared.DTOs;
+using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
 
 namespace Modules.Identity.Web.Client
 {

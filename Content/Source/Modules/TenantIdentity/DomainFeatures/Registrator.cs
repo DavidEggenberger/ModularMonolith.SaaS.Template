@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using IdentityDbContext = Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.IdentityDbContext;
+using IdentityDbContext = Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.TenantIdentityDbContext;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
@@ -27,7 +27,7 @@ namespace Modules.TenantIdentity.DomainFeatures
                 options.ValidationInterval = TimeSpan.FromSeconds(0);
             });
 
-            services.AddDbContext<IdentityDbContext>();
+            services.AddDbContext<TenantIdentityDbContext>();
 
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {
