@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Server", "Source
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.IntegrationEvents", "Source\Modules\TenantIdentity\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj", "{8A93A41B-E764-4538-9A95-3F2497A5A5F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{F738ECB7-F490-411F-BDB1-0FE532C2BE63}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TenantIdentity", "TenantIdentity", "{F738ECB7-F490-411F-BDB1-0FE532C2BE63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
@@ -39,7 +39,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.DomainFeatures", "So
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Shared", "Source\Shared\Web\Shared.Web.Shared\Shared.Web.Shared.csproj", "{367AB788-BDC0-42A8-9794-3F857F245426}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Infrastructure", "Source\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "Source\Shared\Shared.Infrastructure\Shared.Infrastructure.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPages", "{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web.Server", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.Server.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +103,10 @@ Global
 		{F467D121-BDE5-451B-B175-B01F3E7E634F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F467D121-BDE5-451B-B175-B01F3E7E634F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F467D121-BDE5-451B-B175-B01F3E7E634F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +128,8 @@ Global
 		{DA2BAFBE-B808-4096-8B81-620D0E4DC62C} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
 		{367AB788-BDC0-42A8-9794-3F857F245426} = {B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}
 		{F467D121-BDE5-451B-B175-B01F3E7E634F} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
+		{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
+		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0} = {5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}

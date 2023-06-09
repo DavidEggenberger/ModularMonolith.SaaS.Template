@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Modules.LandingPages.Web.Server;
+using Modules.LandingPages.Web.Server.MyFeature.Pages;
 using Modules.TenantIdentity.DomainFeatures;
 using Modules.TenantIdentity.Web.Server;
 using Shared.DomainFeatures;
@@ -27,7 +29,8 @@ namespace Web.Server
             services.AddControllers()
                 .RegisterTenantIdentityModuleControllers();
 
-            services.AddRazorPages();
+            services.AddRazorPages()
+                .RegisterLandingPagesModulePages();
 
             services.RegisterSharedDomainFeaturesServices();
 
@@ -59,12 +62,15 @@ namespace Web.Server
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
+
+                endpoints.RegisterLandingPagesModuleFallbackPage();
             });
         }
     }
