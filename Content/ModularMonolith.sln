@@ -45,6 +45,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web.Server", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.Server.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{78544110-543F-4351-8096-077CC56B4E1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Web.Styles", "Source\Shared\Web\Shared.Web.Styles\Shared.Web.Styles.csproj", "{209603EB-1DDD-489D-85C5-FDB5013B4DFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +111,10 @@ Global
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{209603EB-1DDD-489D-85C5-FDB5013B4DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{209603EB-1DDD-489D-85C5-FDB5013B4DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{209603EB-1DDD-489D-85C5-FDB5013B4DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{209603EB-1DDD-489D-85C5-FDB5013B4DFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +138,8 @@ Global
 		{F467D121-BDE5-451B-B175-B01F3E7E634F} = {D3B7FB8B-F843-4BB2-9A39-FCF048E743DB}
 		{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0} = {5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}
+		{78544110-543F-4351-8096-077CC56B4E1E} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
+		{209603EB-1DDD-489D-85C5-FDB5013B4DFE} = {B5D10C98-7564-48D3-BCE5-51CB5B10ECD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}
