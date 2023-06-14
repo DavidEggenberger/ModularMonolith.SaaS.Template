@@ -12,11 +12,14 @@ namespace Shared.Web.Server
         protected readonly ICommandDispatcher commandDispatcher;
         protected readonly IQueryDispatcher queryDispatcher;
         protected readonly IExecutionContextAccessor executionContextAccessor;
+        protected readonly IWebContextAccessor webContextAccessor;
+
         public BaseController(IServiceProvider serviceProvider)
         {
             commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
             executionContextAccessor = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
+            webContextAccessor = serviceProvider.GetService<IWebContextAccessor>();
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
 {
-    public class User : IdentityUser<Guid>
+    public class User : IdentityUser<Guid>, IUser
     {
         public string PictureUri { get; set; }
         public bool IsOnline => CountOfOpenTabs > 0;

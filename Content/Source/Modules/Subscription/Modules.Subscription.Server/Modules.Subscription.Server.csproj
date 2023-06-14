@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Web\Server\Shared.Web.Server.csproj" />
     <ProjectReference Include="..\Modules.Subscription.DomainFeatures\Modules.Subscription.DomainFeatures.csproj" />
   </ItemGroup>
 

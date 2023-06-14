@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Subscription.DomainFeatures.Domain
+namespace Shared.Kernel.BuildingBlocks
 {
-    public class Subscription
+    public interface IWebContextAccessor
     {
+        public Uri BaseURI { get; set; }
     }
 }

@@ -1,26 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 
 namespace WebServer.Controllers.Stripe
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AuthorizeTeamAdmin]
+    [AuthorizeTenantAdmin]
     public class StripeSessionController : ControllerBase
     {
         private readonly string returnUrl;
-        public StripeSessionController(IStripeSessionService stripeSessionService, IServerInformationProvider serverInformationProvider, IStripeSubscriptionService stripeSubscriptionService)
+        public StripeSessionController(IWebContextAccessor webContextInformationProvider)
         {
-            this.stripeSessionService = stripeSessionService;
-            this.stripeSubscriptionService = stripeSubscriptionService;
-            returnUrl = serverInformationProvider.BaseURI.AbsoluteUri;
+            returnUrl = webContextInformationProvider.BaseURI.AbsoluteUri;
         }
 
-        public async Task<IActionResult> CancelSubscription()
-        {
-            return Ok();
-        }
-
-        [HttpPost("Subscribe/Premium")]
+        [HttpPost("checkout/Premium")]
         public async Task<ActionResult> RedirectToStripePremiumSubscription()
         {
             var premiumSubscription = stripeSubscriptionService.GetSubscriptionType(SubscriptionPlanType.Professional);
@@ -30,7 +25,7 @@ namespace WebServer.Controllers.Stripe
             return new StatusCodeResult(303);
         }
 
-        [HttpPost("Subscribe/Enterprise")]
+        [HttpPost("checkout/Enterprise")]
         public async Task<ActionResult> RedirectToStripeEnterpriseSubscription()
         {
             var enterpriseSubscription = stripeSubscriptionService.GetSubscriptionType(SubscriptionPlanType.Enterprise);
@@ -40,7 +35,7 @@ namespace WebServer.Controllers.Stripe
             return new StatusCodeResult(303);
         }
 
-        [Route("create-portal-session")]
+        [Route("/portal-session")]
         [HttpPost]
         public async Task<ActionResult> Create()
         {

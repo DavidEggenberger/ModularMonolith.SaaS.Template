@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Kernel.BuildingBlocks;
 using System;
 using System.Linq;
 
 namespace Web.Server.BuildingBlocks.HostingInformation
 {
-    public class ServerInformationProvider : IServerInformationProvider
+    public class ServerInformationProvider : IWebContextAccessor
     {
         public Uri BaseURI { get; set; }
         public ServerInformationProvider(IServiceProvider serviceProvider)

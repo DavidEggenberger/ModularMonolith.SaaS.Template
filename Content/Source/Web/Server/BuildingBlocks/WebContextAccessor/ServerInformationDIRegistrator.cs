@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Web.Server.BuildingBlocks.HostingInformation
 {
@@ -7,7 +8,7 @@ namespace Web.Server.BuildingBlocks.HostingInformation
     {
         public static IServiceCollection RegisterServerInformationProvider(this IServiceCollection serviceCollection)
         {
-            return serviceCollection.AddSingleton<IServerInformationProvider, ServerInformationProvider>();
+            return serviceCollection.AddSingleton<IWebContextAccessor, ServerInformationProvider>();
         }
     }
 }
