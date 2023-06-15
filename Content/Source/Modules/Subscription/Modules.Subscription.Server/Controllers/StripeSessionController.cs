@@ -1,35 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Modules.Subscription.DomainFeatures.Application.Commands;
 using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
+using Shared.Web.Server;
 
-namespace WebServer.Controllers.Stripe
+namespace Modules.Subscription.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [AuthorizeTenantAdmin]
-    public class StripeSessionController : ControllerBase
+    public class StripeSessionController : BaseController
     {
-        private readonly string returnUrl;
-        public StripeSessionController(IWebContextAccessor webContextInformationProvider)
+        public StripeSessionController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            returnUrl = webContextInformationProvider.BaseURI.AbsoluteUri;
+            
         }
 
-        [HttpPost("checkout/Premium")]
-        public async Task<ActionResult> RedirectToStripePremiumSubscription()
+        [HttpPost("checkout/{subscriptionPlanType}")]
+        public async Task<ActionResult> RedirectToStripePremiumSubscription([FromRoute] SubscriptionPlanType subscriptionPlanType)
         {
-            var premiumSubscription = stripeSubscriptionService.GetSubscriptionType(SubscriptionPlanType.Professional);
-            var checkoutSession = await stripeSessionService.CreateCheckoutSessionAsync(returnUrl, ApplicationUser, Tenant.Id, premiumSubscription);
-
-            Response.Headers.Add("Location", checkoutSession.Url);
-            return new StatusCodeResult(303);
-        }
-
-        [HttpPost("checkout/Enterprise")]
-        public async Task<ActionResult> RedirectToStripeEnterpriseSubscription()
-        {
-            var enterpriseSubscription = stripeSubscriptionService.GetSubscriptionType(SubscriptionPlanType.Enterprise);
-            var checkoutSession = await stripeSessionService.CreateCheckoutSessionAsync(returnUrl, ApplicationUser, Tenant.Id, enterpriseSubscription);
+            var createStripeCheckoutSession = new CreateStripeCheckoutSession 
+            { 
+                SubscriptionPlanType = subscriptionPlanType,
+                TenantId = executionContextAccessor.TenantId,
+                RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri
+            };
+            var checkoutSession = await commandDispatcher.DispatchAsync<CreateStripeCheckoutSession, Stripe.Checkout.Session>(createStripeCheckoutSession);
 
             Response.Headers.Add("Location", checkoutSession.Url);
             return new StatusCodeResult(303);
@@ -39,7 +36,11 @@ namespace WebServer.Controllers.Stripe
         [HttpPost]
         public async Task<ActionResult> Create()
         {
-            var billingPortalSession = await stripeSessionService.CreateBillingPortalSessionAsync(returnUrl, ApplicationUser.StripeCustomerId);
+            var createBillingPortalSession = new CreateStripeBillingPortalSession
+            {
+                RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri
+            };
+            var billingPortalSession = await commandDispatcher.DispatchAsync<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>(createBillingPortalSession);
 
             Response.Headers.Add("Location", billingPortalSession.Url);
             return new StatusCodeResult(303);
