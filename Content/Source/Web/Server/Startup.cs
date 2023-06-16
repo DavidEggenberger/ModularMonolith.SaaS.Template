@@ -37,7 +37,7 @@ namespace Web.Server
             services.RegisterSharedInfrastructure(new Assembly[]
             {
                 typeof(Modules.TenantIdentity.DomainFeatures.Registrator).Assembly,
-
+                typeof(Modules.Subscription.DomainFeatures.Registrator).Assembly,
             });
 
             services.RegisterTenantIdentityModule(Configuration);

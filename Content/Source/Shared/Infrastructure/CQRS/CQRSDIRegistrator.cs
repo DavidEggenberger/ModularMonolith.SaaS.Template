@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using Shared.Infrastructure.CQRS.DomainEvent;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Infrastructure.CQRS.Command;
+using Shared.Infrastructure.CQRS.IntegrationEvent;
+using Shared.Infrastructure.CQRS.DomainEvent;
 
 namespace Shared.Infrastructure.CQRS
 {
@@ -13,6 +14,7 @@ namespace Shared.Infrastructure.CQRS
         {
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
+            services.TryAddScoped<IIntegrationEventDispatcher, IntegrationEventDispatcher>();
             services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
             // INFO: Using https://www.nuget.org/packages/Scrutor for registering all Query and Command handlers by convention
@@ -42,6 +44,16 @@ namespace Shared.Infrastructure.CQRS
                         .AddClasses(filter =>
                         {
                             filter.AssignableTo(typeof(IDomainEventHandler<>));
+                        })
+                        .AsImplementedInterfaces()
+                        .WithScopedLifetime();
+            });
+            services.Scan(selector =>
+            {
+                selector.FromAssemblies(assemblies)
+                        .AddClasses(filter =>
+                        {
+                            filter.AssignableTo(typeof(IIntegrationEventHandler<>));
                         })
                         .AsImplementedInterfaces()
                         .WithScopedLifetime();

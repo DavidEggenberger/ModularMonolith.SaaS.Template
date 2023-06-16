@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\TenantIdentity\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj" />
   </ItemGroup>
 
 </Project>

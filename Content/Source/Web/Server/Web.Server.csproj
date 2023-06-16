@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.Server.csproj" />
+    <ProjectReference Include="..\..\Modules\Subscription\Modules.Subscription.Server\Modules.Subscription.Server.csproj" />
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj" />
     <ProjectReference Include="..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />

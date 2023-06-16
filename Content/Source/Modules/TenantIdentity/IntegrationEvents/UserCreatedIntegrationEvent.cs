@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Shared.Infrastructure.CQRS.Command;
+using System;
 
 namespace Modules.TenantIdentity.IntegrationEvents
 {
-    public class UserCreatedIntegrationEvent
+    public class UserCreatedIntegrationEvent : ICommand
     {
         public Guid UserId { get; set; }
         public string Email { get; set; }
