@@ -1,13 +1,14 @@
 ﻿using Modules.TenantIdentity.IntegrationEvents;
 using Shared.Infrastructure.CQRS.Command;
+using Shared.Infrastructure.CQRS.IntegrationEvent;
 
 namespace Modules.Subscription.DomainFeatures.Application.IntegrationEvents
 {
-    public class UserUpdatedIntegrationEventHandler : ICommandHandler<UserCreatedIntegrationEvent>
+    public class UserUpdatedIntegrationEventHandler : IIntegrationEventHandler<UserEmailUpdatedIntegrationEvent>
     {
-        public Task HandleAsync(UserCreatedIntegrationEvent command, CancellationToken cancellationToken)
+        public async Task HandleAsync(UserEmailUpdatedIntegrationEvent userEmailUpdatedIntegrationEvent, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

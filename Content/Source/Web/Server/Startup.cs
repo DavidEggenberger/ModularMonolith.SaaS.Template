@@ -8,6 +8,7 @@ using Modules.LandingPages.Web.Server;
 using Modules.LandingPages.Web.Server.MyFeature.Pages;
 using Modules.TenantIdentity.DomainFeatures;
 using Modules.TenantIdentity.Web.Server;
+using Modules.Subscription.Server;
 using Shared.DomainFeatures;
 using Shared.Infrastructure;
 using System.Reflection;
@@ -27,7 +28,8 @@ namespace Web.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .RegisterTenantIdentityModuleControllers();
+                .RegisterTenantIdentityModuleControllers()
+                .RegisterSubscriptionModuleControllers(Configuration);
 
             services.AddRazorPages()
                 .RegisterLandingPagesModulePages();
@@ -36,8 +38,8 @@ namespace Web.Server
 
             services.RegisterSharedInfrastructure(new Assembly[]
             {
-                typeof(Modules.TenantIdentity.DomainFeatures.Registrator).Assembly,
-                typeof(Modules.Subscription.DomainFeatures.Registrator).Assembly,
+                typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,
+                typeof(Modules.Subscription.Server.Registrator).Assembly,
             });
 
             services.RegisterTenantIdentityModule(Configuration);

@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Modules.Subscription.DomainFeatures.Domain
 {
-    public class StripeCustomer
+    public enum StripeSubscriptionStatus
     {
-        public Guid UserId { get; set; }
-        public string StripeCustomerId { get; set; }
+        Active,
+        Canceled,
+        Trialing,
+        Unpaid
     }
 }

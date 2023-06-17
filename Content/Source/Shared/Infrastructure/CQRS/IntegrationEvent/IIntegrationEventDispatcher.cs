@@ -4,6 +4,6 @@ namespace Shared.Infrastructure.CQRS.IntegrationEvent
 {
     public interface IIntegrationEventDispatcher
     {
-        void Raise<TDomainEvent>(TDomainEvent command, CancellationToken cancellation) where TDomainEvent : IDomainEvent;
+        void Raise<TIIntegrationEvent>(TIIntegrationEvent command, CancellationToken cancellation) where TIIntegrationEvent : IIntegrationEvent;
     }
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Infrastructure.CQRS.IntegrationEvent
+namespace Shared.Kernel.Interfaces
 {
-    public interface IIntegrationEvent
+    public interface IUserIdentifiable
     {
+        public Guid UserId { get; set; }
     }
 }
