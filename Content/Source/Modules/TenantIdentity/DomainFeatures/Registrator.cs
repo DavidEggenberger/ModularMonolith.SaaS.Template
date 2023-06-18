@@ -12,12 +12,14 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using IdentityDbContext = Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.TenantIdentityDbContext;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterTenantIdentityModule(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection RegisterTenantIdentityModule(this IServiceCollection services, IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();

@@ -2,8 +2,8 @@
 
 namespace Shared.Infrastructure.CQRS.IntegrationEvent
 {
-    public interface IIntegrationEventHandler<in TIIntegrationEvent> where TIIntegrationEvent : IIntegrationEvent
+    public interface IIntegrationEventHandler<in TIntegrationEvent> where TIntegrationEvent : IIntegrationEvent
     {
-        Task HandleAsync(TIIntegrationEvent integrationEvent, CancellationToken cancellation);
+        Task HandleAsync(TIntegrationEvent integrationEvent, CancellationToken cancellation);
     }
 }

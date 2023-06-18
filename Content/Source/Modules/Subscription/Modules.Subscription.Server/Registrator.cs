@@ -7,15 +7,9 @@ namespace Modules.Subscription.Server
 {
     public static class Registrator
     {
-        public static IMvcBuilder RegisterSubscriptionModuleControllers(this IMvcBuilder mvcBuilder, IConfiguration configuration)
+        public static IMvcBuilder RegisterSubscriptionModuleControllers(this IMvcBuilder mvcBuilder)
         {
             mvcBuilder.AddApplicationPart(typeof(Registrator).Assembly);            
-            StripeConfiguration.ApiKey = configuration["Stripe:StripeKey"];
-            mvcBuilder.Services.Configure<StripeOptions>(stripeOptions =>
-            {
-                stripeOptions.ProfessionalPlanPriceId = configuration["Stripe:StripeKey"];
-                stripeOptions.EnterprisePlanPriceId = configuration["Stripe:StripeKey"];
-            });
 
             return mvcBuilder;
         }

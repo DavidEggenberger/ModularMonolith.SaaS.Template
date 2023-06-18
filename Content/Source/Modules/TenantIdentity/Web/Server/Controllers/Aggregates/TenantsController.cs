@@ -53,8 +53,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
-            await commandDispatcher.DispatchAsync<UserCreatedIntegrationEvent>(new UserCreatedIntegrationEvent { Email = "david" });
-
             var userId = executionContextAccessor.UserId;
             List<TenantMembership> teamMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembership>>(null);
             

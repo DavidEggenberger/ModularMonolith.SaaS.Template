@@ -12,24 +12,27 @@ using Modules.Subscription.Server;
 using Shared.DomainFeatures;
 using Shared.Infrastructure;
 using System.Reflection;
+using Modules.Subscription.DomainFeatures;
 
 namespace Web.Server
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
+            HostEnvironment = hostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostEnvironment HostEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
                 .RegisterTenantIdentityModuleControllers()
-                .RegisterSubscriptionModuleControllers(Configuration);
+                .RegisterSubscriptionModuleControllers();
 
             services.AddRazorPages()
                 .RegisterLandingPagesModulePages();
@@ -41,8 +44,10 @@ namespace Web.Server
                 typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,
                 typeof(Modules.Subscription.Server.Registrator).Assembly,
             });
+            
+            services.RegisterTenantIdentityModule(Configuration, HostEnvironment);
+            services.RegisterSubscriptionModule(Configuration, HostEnvironment);
 
-            services.RegisterTenantIdentityModule(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

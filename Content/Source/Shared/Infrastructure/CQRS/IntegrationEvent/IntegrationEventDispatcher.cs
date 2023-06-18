@@ -10,12 +10,12 @@ namespace Shared.Infrastructure.CQRS.IntegrationEvent
         {
             this.serviceProvider = serviceProvider;
         }
-        public void Raise<TDomainEvent>(TDomainEvent command, CancellationToken cancellation = default) where TDomainEvent : IDomainEvent
+        public void Raise<TIntegrationEvent>(TIntegrationEvent integrationEvent, CancellationToken cancellation = default) where TIntegrationEvent : IIntegrationEvent
         {
-            var eventHandlers = serviceProvider.GetServices<IIntegrationEventHandler<TDomainEvent>>();
+            var eventHandlers = serviceProvider.GetServices<IIntegrationEventHandler<TIntegrationEvent>>();
             foreach (var eventHandler in eventHandlers)
             {
-                eventHandler.HandleAsync(command, cancellation);
+                eventHandler.HandleAsync(integrationEvent, cancellation);
             }
         }
     }
