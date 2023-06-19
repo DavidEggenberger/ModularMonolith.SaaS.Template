@@ -7,6 +7,8 @@ using Shared.Infrastructure.MultiTenancy.Exceptions;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
 using Shared.DomainFeatures.Attributes;
+using Microsoft.Extensions.Hosting;
+using Shared.Infrastructure.EFCore;
 
 namespace Shared.Infrastructure.MultiTenancy.EFCore
 {
@@ -16,6 +18,8 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
         private readonly IExecutionContextAccessor userResolver;
         private readonly Guid tenantId;
         private readonly IConfiguration configuration;
+        private readonly IServiceProvider serviceProvider;
+
         public MultiTenantDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider, IConfiguration configuration) : base(dbContextOptions)
         {
             tenantResolver = serviceProvider.GetRequiredService<ITenantResolver>();
@@ -24,17 +28,24 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
             this.configuration = configuration;
         }
 
-        protected sealed override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(optionsBuilder.IsConfigured is false)
+            var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
+
+            if (hostEnvironment.IsDevelopment())
             {
-                optionsBuilder.UseInMemoryDatabase("adsfasf");
-                //optionsBuilder.UseSqlServer(configuration.GetConnectionString("ApplicationDbContextConnection"), options =>
-                //{
-                //    options.MigrationsAssembly(typeof(IAssemblyMarker).GetTypeInfo().Assembly.GetName().Name);
-                //    options.EnableRetryOnFailure(5);
-                //    options.MigrationsHistoryTable("EFCore_MigrationHistory");
-                //});
+                optionsBuilder.UseSqlServer(configuration[EFCoreConfigurationConstants.DevelopmentSQLServerConnectionString], sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });
+            }
+            if (hostEnvironment.IsProduction())
+            {
+                optionsBuilder.UseSqlServer(configuration[EFCoreConfigurationConstants.ProductionSQLServerConnectionString], sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                    sqlServerOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
+                });
             }
         }
 

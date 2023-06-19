@@ -11,12 +11,14 @@ namespace Modules.Subscription.DomainFeatures
     {
         public static IServiceCollection RegisterSubscriptionModule(this IServiceCollection services, IConfiguration configuration, IHostEnvironment webHostEnvironment)
         {
-            StripeConfiguration.ApiKey = configuration["Stripe:StripeKey"];
+            StripeConfiguration.ApiKey = configuration[StripeConfigurationConstants.StripeAPIKey];
             services.Configure<StripeOptions>(stripeOptions =>
             {
-                stripeOptions.ProfessionalPlanPriceId = configuration["Stripe:StripeKey"];
-                stripeOptions.EnterprisePlanPriceId = configuration["Stripe:StripeKey"];
+                stripeOptions.ProfessionalPlanPriceId = configuration[StripeConfigurationConstants.StripeProfessionalPlanId];
+                stripeOptions.EnterprisePlanPriceId = configuration[StripeConfigurationConstants.StripeEnterprisePlanId];
             });
+
+
 
             return services;
         }
