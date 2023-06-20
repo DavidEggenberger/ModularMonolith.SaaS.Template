@@ -4,7 +4,7 @@ namespace Web.Server.BuildingBlocks.ModelValidation
 {
     public static class SecurityHeadersMdwRegistrator
     {
-        public static IApplicationBuilder UseSecurityHeaders(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder RegisterSecurityHeaders(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder.Use((context, next) =>
             {

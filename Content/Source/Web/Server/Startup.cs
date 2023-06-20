@@ -13,6 +13,7 @@ using Shared.DomainFeatures;
 using Shared.Infrastructure;
 using System.Reflection;
 using Modules.Subscription.DomainFeatures;
+using Web.Server.BuildingBlocks;
 
 namespace Web.Server
 {
@@ -37,8 +38,8 @@ namespace Web.Server
             services.AddRazorPages()
                 .RegisterLandingPagesModulePages();
 
+            services.RegisterBuildingBlocks();
             services.RegisterSharedDomainFeaturesServices();
-
             services.RegisterSharedInfrastructure(new Assembly[]
             {
                 typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,
@@ -71,6 +72,8 @@ namespace Web.Server
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.RegisterBuildingBlocks();   
 
             app.UseEndpoints(endpoints =>
             {

@@ -4,9 +4,9 @@ using System;
 using System.Net.Http.Headers;
 using Web.Client.BuildingBlocks.Services.Http;
 
-namespace Client.BuildingBlocks
+namespace Web.Client.BuildingBlocks
 {
-    public static class BuildingBlocksRegistrator
+    public static class Registrator
     {
         public static void RegisterBuildingBlocks(this WebAssemblyHostBuilder builder)
         {

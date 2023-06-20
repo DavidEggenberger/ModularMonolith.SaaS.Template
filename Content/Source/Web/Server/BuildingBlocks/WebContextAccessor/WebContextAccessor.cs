@@ -8,10 +8,10 @@ using System.Linq;
 
 namespace Web.Server.BuildingBlocks.HostingInformation
 {
-    public class ServerInformationProvider : IWebContextAccessor
+    public class WebContextAccessor : IWebContextAccessor
     {
         public Uri BaseURI { get; set; }
-        public ServerInformationProvider(IServiceProvider serviceProvider)
+        public WebContextAccessor(IServiceProvider serviceProvider)
         {
             var server = serviceProvider.GetService<IServer>();
 
