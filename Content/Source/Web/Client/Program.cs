@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Web.Client.BuildingBlocks;
 
 namespace Web.Client
 {
@@ -17,7 +18,7 @@ namespace Web.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.RegisterBuildingBlocks();
 
             await builder.Build().RunAsync();
         }

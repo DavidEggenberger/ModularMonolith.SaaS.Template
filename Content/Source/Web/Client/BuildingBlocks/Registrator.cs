@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Modules.Identity.Web.Client;
 using System;
 using System.Net.Http.Headers;
 using Web.Client.BuildingBlocks.Services.Http;
@@ -16,11 +17,11 @@ namespace Web.Client.BuildingBlocks
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             });
 
-            //builder.Services.AddHttpClient(HttpClientConstants.AuthenticatedHttpClient, client =>
-            //{
-            //    client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
-            //    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            //}).AddHttpMessageHandler<AuthorizedHandler>();
+            builder.Services.AddHttpClient(HttpClientConstants.AuthenticatedHttpClient, client =>
+            {
+                client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }).AddHttpMessageHandler<AuthorizedHandler>();
 
             builder.Services.AddScoped<HttpClientService>();
             builder.Services.AddScoped<AuthorizedHttpClientService>();

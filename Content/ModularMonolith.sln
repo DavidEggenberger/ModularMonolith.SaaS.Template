@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Styles", "Source
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.DomainFeatures", "Source\Modules\Subscription\Modules.Subscription.DomainFeatures\Modules.Subscription.DomainFeatures.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Subscription.Server", "Source\Modules\Subscription\Modules.Subscription.Server\Modules.Subscription.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Server", "Source\Modules\Subscription\Modules.Subscription.Server\Modules.Subscription.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
