@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modules.Subscription.DomainFeatures
 {
-    public class StripeConfigurationConstants
+    public class StripeConfiguration
     {
         public const string StripeAPIKey = "Stripe:StripeAPIKey";
         public const string StripeProfessionalPlanId = "Stripe:StripeProfessionalPlanId";

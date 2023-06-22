@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using IdentityDbContext = Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.TenantIdentityDbContext;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Modules.TenantIdentity.DomainFeatures.Configuration;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
@@ -23,6 +23,8 @@ namespace Modules.TenantIdentity.DomainFeatures
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
+
+            services.RegisterConfiguration(configuration);
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
@@ -35,29 +37,29 @@ namespace Modules.TenantIdentity.DomainFeatures
             {
                 options.DefaultScheme = IdentityConstants.ApplicationScheme;
                 options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-            });
-                //.AddLinkedIn(options =>
-                //{
-                //    options.ClientId = "test";
-                //    options.ClientSecret = "test";
-                //})
-                //.AddMicrosoftAccount(options =>
-                //{
-                //    options.ClientId = "test";
-                //    options.ClientSecret = "test";
-                //})
-                //.AddGoogle(options =>
-                //{
-                //    options.ClientId = configuration["SocialLogins:Google:ClientId"];
-                //    options.ClientSecret = configuration["SocialLogins:Google:ClientSecret"];
-                //    options.Scope.Add("profile");
-                //    options.Events.OnCreatingTicket = (context) =>
-                //    {
-                //        var picture = context.User.GetProperty("picture").GetString();
-                //        context.Identity.AddClaim(new Claim("picture", picture));
-                //        return Task.CompletedTask;
-                //    };
-                //});
+            })
+                .AddLinkedIn(options =>
+                {
+                    options.ClientId = "test";
+                    options.ClientSecret = "test";
+                })
+                .AddMicrosoftAccount(options =>
+                {
+                    options.ClientId = "test";
+                    options.ClientSecret = "test";
+                })
+                .AddGoogle(options =>
+                {
+                    options.ClientId = configuration["SocialLogins:Google:ClientId"];
+                    options.ClientSecret = configuration["SocialLogins:Google:ClientSecret"];
+                    options.Scope.Add("profile");
+                    options.Events.OnCreatingTicket = (context) =>
+                    {
+                        var picture = context.User.GetProperty("picture").GetString();
+                        context.Identity.AddClaim(new Claim("picture", picture));
+                        return Task.CompletedTask;
+                    };
+                });
             authenticationBuilder.AddIdentityCookies(options =>
             {
                 options.ApplicationCookie.Configure(options =>
@@ -108,7 +110,7 @@ namespace Modules.TenantIdentity.DomainFeatures
             })
                 .AddDefaultTokenProviders()
                 .AddClaimsPrincipalFactory<ContextUserClaimsPrincipalFactory<User>>()
-                .AddEntityFrameworkStores<IdentityDbContext>()
+                .AddEntityFrameworkStores<TenantIdentityDbContext>()
                 .AddSignInManager();
 
             return services;
