@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.TenantIdentity.DomainFeatures.Configuration
+namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration
 {
     public class TenantIdentityConfiguration
     {

@@ -13,7 +13,7 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Modules.TenantIdentity.DomainFeatures.Configuration;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
