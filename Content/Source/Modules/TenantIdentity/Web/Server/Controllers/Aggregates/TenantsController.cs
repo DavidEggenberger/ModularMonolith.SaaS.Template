@@ -63,8 +63,8 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         public async Task<ActionResult<TenantDTO>> CreateTenant(TenantDTO team)
         {
             var userId = executionContextAccessor.UserId;
-            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, TenantDTO>(null);
-
+            //var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, TenantDTO>(null);
+            var createdTenant = new TenantDTO();
             var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
             await signInManager.RefreshSignInAsync(user);
             

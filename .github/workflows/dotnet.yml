@@ -16,12 +16,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
       with:
        node-version: 16
        cache: 'npm'
-    - name: Install TailwindCss
+    - name: Install TailwindCSS
       run: npm install -g tailwindcss
+    - name: Build TailwindCSS
+      working-directory: ./Content/Source/Shared/Web/Styles
+      run: npx tailwindcss -i ./src/TailwindSource.css -o ./wwwroot/dist/output.css --watch --minify
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:

@@ -9,7 +9,7 @@ namespace Shared.Web.Styles
     public class ContentConstants
     {
         public const string ContentPath = $"/_content/Shared.Web.Styles";
-        public const string BaseStyles = $"/_content/Shared.Web.Styles/BaseStyles.css";
+        public const string TailwindOutputPath = $"/_content/Shared.Web.Styles/dist/output.css";
 
     }
 }

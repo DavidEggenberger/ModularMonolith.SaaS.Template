@@ -22,8 +22,8 @@ namespace Web.Server
                 .ConfigureAppConfiguration((hostingcontext, config) =>
                 {
                     //#if (EnableAzureKeyVault)
-                    config.AddAzureKeyVault(new Uri("https://{yourKeyVault}.vault.azure.net/"),
-                        new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "{YourMangedIdentityClientId}" }));
+                    //config.AddAzureKeyVault(new Uri("https://{yourKeyVault}.vault.azure.net/"),
+                    //    new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "{YourMangedIdentityClientId}" }));
                     //#endif
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
