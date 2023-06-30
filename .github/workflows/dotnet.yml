@@ -25,8 +25,8 @@ jobs:
     - name: Install TailwindCSS
       run: npm install -g tailwindcss
     - name: Build TailwindCSS
-      working-directory: ./Content/Source/Shared/Web/Styles
-      run: npx tailwindcss -i ./src/TailwindSource.css -o ./wwwroot/dist/output.css --watch --minify
+      working-directory: ./Content/Source/Shared/Web/Styles/wwwroot
+      run: npx tailwindcss -i ./TailwindSource.css -o ./dist/output.css --watch --minify
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
