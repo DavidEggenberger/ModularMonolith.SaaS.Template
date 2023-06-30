@@ -19,9 +19,9 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-       node-version: 16
-       cache: 'npm'
-       working-directory: ./Content/Source/Shared/Web/Styles
+        node-version: 16
+        cache: 'npm'
+        cache-dependency-path: ./Content/Source/Shared/Web/Styles
     - name: Install TailwindCSS
       run: npm install -g tailwindcss
     - name: Build TailwindCSS
