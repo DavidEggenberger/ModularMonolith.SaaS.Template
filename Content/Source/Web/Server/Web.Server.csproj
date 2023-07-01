@@ -23,7 +23,6 @@
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj" />
     <ProjectReference Include="..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Shared\Web\Styles\Shared.Web.Styles.csproj" />
   </ItemGroup>
 
 </Project>

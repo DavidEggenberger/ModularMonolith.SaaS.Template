@@ -2,19 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <Folder Include="wwwRoot\" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\dist\" />
-  </ItemGroup>
-
-
 
 </Project>

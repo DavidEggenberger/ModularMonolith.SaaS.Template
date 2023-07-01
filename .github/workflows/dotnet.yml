@@ -21,12 +21,12 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-        cache-dependency-path: ./Content/Source/Shared/Web/Styles
+        cache-dependency-path: ./Content/Source
     - name: Install TailwindCSS
       run: npm install -g tailwindcss
     - name: Build TailwindCSS
-      working-directory: ./Content/Source/Shared/Web/Styles/wwwroot
-      run: npx tailwindcss -i ./TailwindSource.css -o ./dist/output.css --watch --minify
+      working-directory: ./Content/Source
+      run: npx tailwindcss -i ./TailwindSource.css -o ./Shared/Web/Styles/wwwroot/dist/output.css --watch --minify
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Server</title>
-    <link rel="stylesheet" href=@($"{ContentConstants.TailwindOutputPath}") />
+    <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
 <body>
     <header>
@@ -21,20 +21,20 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link bg-white border-white text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container  border-black bg-white border-white bg-sky-500/100">
+    <div class="container block border-black bg-black bg-sky-500/50">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top flex footer text-muted">
         <div class="container">
             &copy; 2023 - Server - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
