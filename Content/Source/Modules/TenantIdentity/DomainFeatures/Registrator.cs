@@ -14,13 +14,15 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
+using MassTransit.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
     public static class Registrator
     {
         public static IServiceCollection RegisterTenantIdentityModule(this IServiceCollection services, IConfiguration configuration, IHostEnvironment hostEnvironment)
-        {
+        {                
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
 
@@ -33,6 +35,8 @@ namespace Modules.TenantIdentity.DomainFeatures
 
             services.AddDbContext<TenantIdentityDbContext>();
 
+            var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<IOptions<TenantIdentityConfiguration>>().Value;
+
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {
                 options.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -40,18 +44,18 @@ namespace Modules.TenantIdentity.DomainFeatures
             })
                 .AddLinkedIn(options =>
                 {
-                    options.ClientId = "test";
-                    options.ClientSecret = "test";
+                    options.ClientId = tenantIdentityConfiguration.LinkedinClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.LinkedinClientSecret;
                 })
                 .AddMicrosoftAccount(options =>
                 {
-                    options.ClientId = "test";
-                    options.ClientSecret = "test";
+                    options.ClientId = tenantIdentityConfiguration.MicrosoftClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.MicrosoftClientSecret;
                 })
                 .AddGoogle(options =>
                 {
-                    options.ClientId = configuration["SocialLogins:Google:ClientId"];
-                    options.ClientSecret = configuration["SocialLogins:Google:ClientSecret"];
+                    options.ClientId = tenantIdentityConfiguration.GoogleClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.GoogleClientSecret;
                     options.Scope.Add("profile");
                     options.Events.OnCreatingTicket = (context) =>
                     {

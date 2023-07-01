@@ -11,17 +11,17 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration
     {
         public ValidateOptionsResult Validate(string name, TenantIdentityConfiguration tenantIdentityConfiguration)
         {
-            if (string.IsNullOrEmpty(tenantIdentityConfiguration.StripeAPIKey))
+            if (string.IsNullOrEmpty(tenantIdentityConfiguration.GoogleClientId))
             {
                 return ValidateOptionsResult.Fail("");
             }
 
-            if (string.IsNullOrEmpty(tenantIdentityConfiguration.StripeEnterprisePlanId))
+            if (string.IsNullOrEmpty(tenantIdentityConfiguration.MicrosoftClientId))
             {
                 return ValidateOptionsResult.Fail("");
             }
 
-            if (string.IsNullOrEmpty(tenantIdentityConfiguration.StripeProfessionalPlanId))
+            if (string.IsNullOrEmpty(tenantIdentityConfiguration.GoogleClientSecret))
             {
                 return ValidateOptionsResult.Fail("");
             }
