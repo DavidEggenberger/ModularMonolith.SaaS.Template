@@ -1,4 +1,5 @@
 ﻿using Shared.Infrastructure.CQRS.Command;
+using Shared.Kernel.BuildingBlocks.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
 {
     public class UpdateTenantMembership : ICommand
     {
+        public TenantRole Role { get; set; }
     }
 }

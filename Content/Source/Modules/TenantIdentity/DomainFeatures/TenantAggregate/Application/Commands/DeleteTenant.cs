@@ -9,5 +9,6 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
 {
     public class DeleteTenant : ICommand
     {
+        public Guid TenantId { get; set; }
     }
 }

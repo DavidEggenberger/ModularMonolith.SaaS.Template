@@ -23,6 +23,12 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
             this.hostEnvironment = hostEnvironment;
         }
 
+        public DbSet<Tenant> Tenants { get; set; }
+
+
+
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (hostEnvironment.IsDevelopment())
@@ -42,7 +48,5 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
             modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<Tenant> Tenants { get; set; }
     }
 }

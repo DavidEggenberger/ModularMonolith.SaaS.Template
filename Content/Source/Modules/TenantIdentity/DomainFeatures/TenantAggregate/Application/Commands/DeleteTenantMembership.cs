@@ -9,5 +9,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
 {
     public class DeleteTenantMembership : ICommand
     {
+        public Guid UserId { get; set; }
+        public Guid TenantId { get; set; }
     }
 }
