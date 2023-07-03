@@ -23,10 +23,14 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
             this.hostEnvironment = hostEnvironment;
         }
 
+        public override DbSet<User> Users { get; set; }
+        public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
-
-
-
+        public DbSet<TenantInvitation> TenantInvitations { get; set; }
+        public DbSet<TenantMembership> TenantMeberships { get; set; }
+        public DbSet<TenantSettings> TenantSettings { get; set; }
+        public DbSet<TenantStyling> TenantStylings { get; set; }
+        public DbSet<TenantSubscription> TenantSubscriptions { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -47,6 +51,15 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
         {
             modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
             base.OnModelCreating(modelBuilder);
+        }
+
+        public async Task<IEnumerable<Tenant>> GetAllTenantsForUser(Guid userId)
+        {
+            return await Users.Where(u => u.Id == userId)
+                .Include(t => t.TenantMemberships)
+                .ThenInclude(tm => tm.Tenant)
+                .SelectMany(u => u.TenantMemberships.Select(tm => tm.Tenant))
+                .ToListAsync();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
+using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 using Shared.Kernel.BuildingBlocks;
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
@@ -11,6 +12,7 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
         public int CountOfOpenTabs { get; set; }
         public string StripeCustomerId { get; set; }
         public Guid SelectedTenantId { get; set; }
+        public IList<TenantMembership> TenantMemberships { get; set; }
 
         public void IncrementOpenTabCount()
         {
