@@ -60,8 +60,11 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         }
 
         [HttpPost]
-        public async Task<ActionResult<TenantDTO>> CreateTenant(TenantDTO team)
+        public async Task<ActionResult<TenantDTO>> CreateTenant(CreateTenantDTO createTenantDTO)
         {
+            validationService.ThrowIfInvalidModel(createTenantDTO);
+            var t = validationService.Validate(createTenantDTO);
+
             var userId = executionContextAccessor.UserId;
             //var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, TenantDTO>(null);
             var createdTenant = new TenantDTO();

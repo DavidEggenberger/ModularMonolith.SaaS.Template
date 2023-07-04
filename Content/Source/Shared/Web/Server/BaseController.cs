@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.ModelValidation;
 using System;
 
 namespace Shared.Web.Server
@@ -13,6 +14,7 @@ namespace Shared.Web.Server
         protected readonly IQueryDispatcher queryDispatcher;
         protected readonly IExecutionContextAccessor executionContextAccessor;
         protected readonly IWebContextAccessor webContextAccessor;
+        protected readonly IValidationService validationService;
 
         public BaseController(IServiceProvider serviceProvider)
         {
@@ -20,6 +22,7 @@ namespace Shared.Web.Server
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
             executionContextAccessor = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
             webContextAccessor = serviceProvider.GetService<IWebContextAccessor>();
+            validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
     }
 }

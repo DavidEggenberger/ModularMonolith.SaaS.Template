@@ -11,20 +11,19 @@ using static FluentValidation.AssemblyScanner;
 
 namespace Shared.Kernel.BuildingBlocks.ModelValidation
 {
-    public class ValidationService
+    public class ValidationService : IValidationService
     {
-        private readonly List<AssemblyScanResult> assemblyScanResult;
+        private readonly List<AssemblyScanResult> assemblyScanResult = new List<AssemblyScanResult>();
         private readonly IServiceProvider serviceProvider;
-        public ValidationService(IServiceProvider serviceProvider, Assembly assembly)
+
+        public ValidationService(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
-            assemblyScanResult = new List<AssemblyScanResult>();
-            assemblyScanResult.AddRange(FindValidatorsInAssembly(assembly));
         }
 
         public ValidationServiceResult Validate<T>(T model)
         {
-            var validator = GetValidatorForModel(model);
+            var validator = GetValidatorForModel(model, typeof(T));
             if (validator == null)
             {
                 //throw new ValidationServiceException("No Validator is registerd");
@@ -39,20 +38,22 @@ namespace Shared.Kernel.BuildingBlocks.ModelValidation
 
         public void ThrowIfInvalidModel<T>(T model)
         {
-            var validator = GetValidatorForModel(model);
+            var validator = GetValidatorForModel(model, typeof(T));
             if (validator == null)
             {
                 //throw new ValidationServiceException("No Validator is registerd");
             }
             ValidationResult validationResult = validator.Validate(new ValidationContext<T>(model));
-            if(validationResult.IsValid is false)
+            if (validationResult.IsValid is false)
             {
                 throw new Exception();
             }
         }
 
-        private IValidator GetValidatorForModel(object model)
+        private IValidator GetValidatorForModel(object model, Type modelType)
         {
+            assemblyScanResult.AddRange(FindValidatorsInAssembly(modelType.Assembly));
+
             var interfaceValidatorType = typeof(IValidator<>).MakeGenericType(model.GetType());
 
             Type modelValidatorType = assemblyScanResult.FirstOrDefault(i => interfaceValidatorType.IsAssignableFrom(i.InterfaceType))?.ValidatorType;

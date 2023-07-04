@@ -2,5 +2,6 @@
 {
     public class TenantDTO
     {
+        public string Name { get; set; }
     }
 }

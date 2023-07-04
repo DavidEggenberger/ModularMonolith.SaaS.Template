@@ -6,7 +6,7 @@ namespace Web.Server.BuildingBlocks.ModelValidation
 {
     public static class ModelValidationDIRegistrator
     {
-        public static IServiceCollection RegisterModelValidation(this IServiceCollection services)
+        public static IServiceCollection RegisterModelValidationResponseFactory(this IServiceCollection services)
         {
             return services.Configure<ApiBehaviorOptions>(options =>
             {
