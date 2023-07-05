@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Web.Server.BuildingBlocks.ModelValidation
 {
     public static class ModelValidationDIRegistrator
     {
-        public static IServiceCollection RegisterModelValidationResponseFactory(this IServiceCollection services)
+        public static IServiceCollection RegisterModelValidation(this IServiceCollection services)
         {
+            services.RegisterModelValidationService();
+
             return services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = context =>

@@ -526,6 +526,22 @@ video {
   visibility: collapse;
 }
 
+.row-span-1 {
+  grid-row: span 1 / span 1;
+}
+
+.row-span-6 {
+  grid-row: span 6 / span 6;
+}
+
+.row-start-1 {
+  grid-row-start: 1;
+}
+
+.row-start-2 {
+  grid-row-start: 2;
+}
+
 .grid {
   display: grid;
 }
@@ -534,8 +550,8 @@ video {
   height: 100vh;
 }
 
-.grid-rows-main {
-  grid-template-rows: 80px repeat(10, minmax(0, 1fr)) 60px;
+.grid-rows-60px-12rows {
+  grid-template-rows: 60px repeat(12, minmax(0, 1fr));
 }
 
 .px-3 {

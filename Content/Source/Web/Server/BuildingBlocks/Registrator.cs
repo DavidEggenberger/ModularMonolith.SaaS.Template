@@ -6,7 +6,6 @@ using Web.Server.BuildingBlocks.ModelValidation;
 using Web.Server.BuildingBlocks.Swagger;
 using WebServer.Modules.ModelValidation;
 using WebServer.Modules.Swagger;
-using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Web.Server.BuildingBlocks
 {
@@ -17,11 +16,10 @@ namespace Web.Server.BuildingBlocks
             services.RegisterAntiforgeryToken();
             services.RegisterApiVersioning();
             services.RegisterLogging();
-            services.RegisterModelValidationResponseFactory();
+            services.RegisterModelValidation();
             services.RegisterSwagger();
             services.RegisterWebContextAccessor();
-            services.RegisterModelValidationResponseFactory();
-            services.RegisterModelValidationService();
+            services.RegisterModelValidation();
 
             return services;
         }

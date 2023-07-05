@@ -22,8 +22,10 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
             this.hostEnvironment = hostEnvironment;
         }
 
+        public DbSet<StripeCustomer> StripeCustomers { get; set; }
         public DbSet<StripeSubscription> Subscriptions { get; set; }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Subscription");

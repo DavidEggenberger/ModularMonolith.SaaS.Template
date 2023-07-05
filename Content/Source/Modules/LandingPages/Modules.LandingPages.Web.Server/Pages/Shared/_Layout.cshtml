@@ -6,19 +6,17 @@
     <title>@ViewData["Title"] ModularMonolith</title>
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
-<body class="h-screen grid grid-rows-main">
-   <menu>
+<body class="h-screen grid grid-rows-60px-12rows">
+   <nav class="row-start-1 row-span-1">
 
-   </menu>
+   </nav>
 
-    <main role="main" class="">
+    <main class="row-start-2 row-span-6">
         @RenderBody()
     </main>
 
     <footer class="">
-        <div class="">
-            &copy; 2023 - Server - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+        
     </footer>
 </body>
 </html>
