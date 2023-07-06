@@ -3,10 +3,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Shared.Infrastructure.MultiTenancy.EFCore;
-using Shared.Kernel.BuildingBlocks.Authorization.Services;
 using Shared.DomainFeatures;
 using Shared.Infrastructure.CQRS.IntegrationEvent;
 using Shared.Infrastructure.CQRS.DomainEvent;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Shared.Infrastructure.EFCore
 {
@@ -18,7 +18,7 @@ namespace Shared.Infrastructure.EFCore
             this.domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
         }
 
-        public IUserAuthorizationService TenantAuthorizationService { get; set; }
+        public IAuthorizationService TenantAuthorizationService { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

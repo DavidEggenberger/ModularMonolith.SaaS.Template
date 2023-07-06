@@ -9,6 +9,7 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Shared.Infrastructure.EFCore;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
@@ -16,11 +17,13 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
     {
         private readonly IConfiguration configuration;
         private readonly IHostEnvironment hostEnvironment;
+        public readonly IAuthorizationService AuthorizationService;
 
-        public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions, IConfiguration configuration, IHostEnvironment hostEnvironment) : base(dbContextOptions)
+        public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions, IConfiguration configuration, IHostEnvironment hostEnvironment, IAuthorizationService authorizationService) : base(dbContextOptions)
         {
             this.configuration = configuration;
             this.hostEnvironment = hostEnvironment;
+            this.AuthorizationService = authorizationService;
         }
 
         public override DbSet<User> Users { get; set; }

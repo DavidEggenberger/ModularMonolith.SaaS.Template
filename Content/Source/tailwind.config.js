@@ -15,7 +15,6 @@ module.exports = {
           'height-xl': { 'raw': '(min-height: 1000px)' },
           'height-2xl': { 'raw': '(min-height: 1300px)' },
 
-          'width-xsm': { 'raw': '(min-width: 350px)' },
           'width-sm': { 'raw': '(min-width: 640px)' },
           'width-md': { 'raw': '(min-width: 768px)' },
           'width-lg': { 'raw': '(min-width: 1024px)' },

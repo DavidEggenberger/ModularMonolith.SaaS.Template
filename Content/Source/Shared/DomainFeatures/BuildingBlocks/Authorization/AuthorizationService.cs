@@ -1,15 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Shared.Kernel.BuildingBlocks.Authorization;
-using Shared.Kernel.BuildingBlocks.Authorization.Services;
 using Shared.Kernel.Exceptions.Authorization;
 using Shared.Kernel.Extensions;
 
 namespace Shared.DomainFeatures.Authorization
 {
-    public class UserAuthorizationService : IUserAuthorizationService
+    public class AuthorizationService : IAuthorizationService
     {
         private readonly IHttpContextAccessor httpContextAccessor;
-        public UserAuthorizationService(IHttpContextAccessor httpContextAccessor)
+        public AuthorizationService(IHttpContextAccessor httpContextAccessor)
         {
             this.httpContextAccessor = httpContextAccessor;
         }

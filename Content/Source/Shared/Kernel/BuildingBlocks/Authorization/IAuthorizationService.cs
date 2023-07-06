@@ -1,6 +1,6 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Authorization.Services
+﻿namespace Shared.Kernel.BuildingBlocks.Authorization
 {
-    public interface IUserAuthorizationService
+    public interface IAuthorizationService
     {
         void ThrowIfUserIsNotInRole(TenantRole role);
         TenantRole GetRoleOfUserInTenant();

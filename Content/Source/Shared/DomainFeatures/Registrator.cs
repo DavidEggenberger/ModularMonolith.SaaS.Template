@@ -4,14 +4,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.DomainFeatures.Authorization;
 using Shared.DomainFeatures.BuildingBlocks.ExecutionAccessor;
 using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Authorization.Services;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Shared.DomainFeatures
 {
     public static class Registrator
     {
         /// <summary>
-        /// Registers the <see cref="UserAuthorizationService"/>
+        /// Registers the <see cref="AuthorizationService"/>
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
@@ -22,7 +22,7 @@ namespace Shared.DomainFeatures
             {
                 return new ExecutionContextAccessor(provider.GetRequiredService<IHttpContextAccessor>().HttpContext);
             });
-            services.AddScoped<IUserAuthorizationService, UserAuthorizationService>();
+            services.AddScoped<IAuthorizationService, AuthorizationService>();
 
             return services;
         }

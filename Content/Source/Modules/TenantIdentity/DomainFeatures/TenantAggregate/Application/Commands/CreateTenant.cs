@@ -19,29 +19,18 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
         public Guid CreatorId { get; set; }
     }
 
-    public class CreateTenantValidator : AbstractValidator<CreateTenant>
-    {
-        public CreateTenantValidator()
-        {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Name must be set");
-        }
-    }
-
     public class CreateTenantCommandHandler : ICommandHandler<CreateTenant, Tenant>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        private readonly ValidationService validationService;
-        public CreateTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext, ValidationService validationService)
+        public CreateTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
         {
             this.tenantIdentityDbContext = tenantIdentityDbContext;
-            this.validationService = validationService;
         }
 
         public async Task<Tenant> HandleAsync(CreateTenant createTenant, CancellationToken cancellationToken)
         {
-            validationService.ThrowIfInvalidModel(createTenant);
-
             var tenantsOfUser = await tenantIdentityDbContext.GetAllTenantsForUser(createTenant.CreatorId);
+
 
             return new Tenant("");
         }
