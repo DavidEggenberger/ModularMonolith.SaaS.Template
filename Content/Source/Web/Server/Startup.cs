@@ -39,7 +39,6 @@ namespace Web.Server
                 .RegisterLandingPagesModulePages();
 
             services.RegisterBuildingBlocks();
-            services.RegisterSharedDomainFeaturesServices();
             services.RegisterSharedInfrastructure(new Assembly[]
             {
                 typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,

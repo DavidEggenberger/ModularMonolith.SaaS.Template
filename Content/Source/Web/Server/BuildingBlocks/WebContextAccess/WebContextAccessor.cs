@@ -6,7 +6,7 @@ using Shared.Kernel.BuildingBlocks;
 using System;
 using System.Linq;
 
-namespace Web.Server.BuildingBlocks.HostingInformation
+namespace Web.Server.BuildingBlocks.WebContextAccess
 {
     public class WebContextAccessor : IWebContextAccessor
     {

@@ -1,8 +1,8 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
-using Shared.DomainFeatures;
-using Shared.DomainFeatures.Attributes;
+using Shared.Infrastructure.DomainKernel;
+using Shared.Infrastructure.DomainKernel.Attributes;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain

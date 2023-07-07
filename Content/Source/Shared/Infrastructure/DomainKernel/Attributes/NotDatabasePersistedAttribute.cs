@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.DomainFeatures.DomainKernel.Attributes
+namespace Shared.Infrastructure.DomainKernel.Attributes
 {
     public class NotDatabasePersistedAttribute : Attribute
     {

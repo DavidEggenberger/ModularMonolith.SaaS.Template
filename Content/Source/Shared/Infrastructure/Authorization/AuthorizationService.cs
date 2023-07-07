@@ -3,7 +3,7 @@ using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.Exceptions.Authorization;
 using Shared.Kernel.Extensions;
 
-namespace Shared.DomainFeatures.Authorization
+namespace Shared.Infrastructure.Authorization
 {
     public class AuthorizationService : IAuthorizationService
     {

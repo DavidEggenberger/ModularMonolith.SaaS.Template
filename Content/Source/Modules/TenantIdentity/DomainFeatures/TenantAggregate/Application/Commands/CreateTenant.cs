@@ -32,7 +32,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
             var tenantsOfUser = await tenantIdentityDbContext.GetAllTenantsForUser(createTenant.CreatorId);
 
 
-            return new Tenant("");
+            return await Tenant.CreateTenant("");
         }
     }
 }

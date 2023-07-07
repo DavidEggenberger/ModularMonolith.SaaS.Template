@@ -2,8 +2,9 @@
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.Extensions;
+using System;
 
-namespace Shared.DomainFeatures.BuildingBlocks.ExecutionAccessor
+namespace Shared.DomainFeatures.BuildingBlocks.ExecutionContextAccess
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {

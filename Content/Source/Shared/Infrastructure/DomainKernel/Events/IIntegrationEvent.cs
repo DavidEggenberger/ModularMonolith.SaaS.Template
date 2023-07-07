@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.DomainKernel.Events
+﻿namespace Shared.Infrastructure.DomainKernel.Events
 {
     public interface IIntegrationEvent
     {

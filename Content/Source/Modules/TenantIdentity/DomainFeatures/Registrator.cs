@@ -14,7 +14,6 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
-using MassTransit.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace Modules.TenantIdentity.DomainFeatures

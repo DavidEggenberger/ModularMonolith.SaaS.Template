@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Internal;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.Subscription.DomainFeatures.Infrastructure;
