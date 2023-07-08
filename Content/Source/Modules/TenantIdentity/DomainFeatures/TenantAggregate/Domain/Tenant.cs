@@ -30,7 +30,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         public IReadOnlyCollection<TenantSubscription> TenantSubscriptions => tenantSubscriptions.AsReadOnly();
         private List<TenantSubscription> tenantSubscriptions = new List<TenantSubscription>();
 
-        public static async Task<Tenant> CreateTenant(string name)
+        public static async Task<Tenant> CreateTenantAsync(string name)
         {
             return new Tenant
             {
