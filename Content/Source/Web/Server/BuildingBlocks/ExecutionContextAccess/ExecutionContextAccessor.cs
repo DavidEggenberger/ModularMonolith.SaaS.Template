@@ -4,7 +4,7 @@ using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.Extensions;
 using System;
 
-namespace Shared.DomainFeatures.BuildingBlocks.ExecutionContextAccess
+namespace Shared.Infrastructure.DomainKernel.BuildingBlocks.ExecutionContextAccess
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {

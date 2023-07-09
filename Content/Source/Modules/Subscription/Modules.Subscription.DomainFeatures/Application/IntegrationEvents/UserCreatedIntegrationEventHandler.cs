@@ -1,5 +1,4 @@
 ﻿using Modules.TenantIdentity.IntegrationEvents;
-using Shared.DomainFeatures.DomainKernel.Events;
 using Shared.Infrastructure.CQRS.IntegrationEvent;
 using System;
 using System.Collections.Generic;

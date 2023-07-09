@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.DomainFeatures.BuildingBlocks.ExecutionContextAccess;
+using Shared.Infrastructure.DomainKernel.BuildingBlocks.ExecutionContextAccess;
 using Shared.Kernel.BuildingBlocks;
 
 namespace Web.Server.BuildingBlocks.ExecutionContextAccess

@@ -1,4 +1,4 @@
-﻿using Shared.DomainFeatures.DomainKernel.Events;
+﻿using Shared.Infrastructure.DomainKernel.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;

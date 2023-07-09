@@ -6,9 +6,9 @@ using Shared.Infrastructure.MultiTenancy.Services;
 using Shared.Infrastructure.MultiTenancy.Exceptions;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
-using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.DomainKernel.Attributes;
+using Microsoft.Extensions.Hosting;
 
 namespace Shared.Infrastructure.MultiTenancy.EFCore
 {
@@ -30,7 +30,7 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var hostEnvironment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+            var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
 
             if (hostEnvironment.IsDevelopment())
             {

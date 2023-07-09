@@ -1,5 +1,5 @@
-﻿using Shared.DomainFeatures.DomainKernel.Events;
-using Shared.Infrastructure.CQRS.Command;
+﻿using Shared.Infrastructure.CQRS.Command;
+using Shared.Infrastructure.DomainKernel.Events;
 using System;
 
 namespace Modules.TenantIdentity.IntegrationEvents
