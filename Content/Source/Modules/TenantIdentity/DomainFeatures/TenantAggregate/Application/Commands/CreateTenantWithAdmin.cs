@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands
 {
-    public class CreateTenant : ICommand<Tenant>
+    public class CreateTenantWithAdmin : ICommand<Tenant>
     {
         public string Name { get; set; }
-        public Guid CreatorId { get; set; }
+        public Guid AdminId { get; set; }
     }
 
-    public class CreateTenantCommandHandler : ICommandHandler<CreateTenant, Tenant>
+    public class CreateTenantCommandHandler : ICommandHandler<CreateTenantWithAdmin, Tenant>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
         public CreateTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
@@ -27,12 +27,9 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
             this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
 
-        public async Task<Tenant> HandleAsync(CreateTenant createTenant, CancellationToken cancellationToken)
+        public async Task<Tenant> HandleAsync(CreateTenantWithAdmin createTenant, CancellationToken cancellationToken)
         {
-            var tenantsOfUser = await tenantIdentityDbContext.GetAllTenantsForUser(createTenant.CreatorId);
-
-
-            return await Tenant.CreateTenantAsync("");
+            return await Tenant.CreateTenantWithAdminAsync("", Guid.Empty);
         }
     }
 }

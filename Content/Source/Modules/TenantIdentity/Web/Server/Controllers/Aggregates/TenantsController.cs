@@ -64,12 +64,12 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         {
             validationService.ThrowIfInvalidModel(createTenantDTO);
 
-            var createTenant = new CreateTenant
+            var createTenant = new CreateTenantWithAdmin
             {
-                CreatorId = executionContextAccessor.UserId,
+                AdminId = executionContextAccessor.UserId,
                 Name = createTenantDTO.Name
             };
-            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, Tenant>(null);
+            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, Tenant>(null);
 
             var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
             await signInManager.RefreshSignInAsync(user);

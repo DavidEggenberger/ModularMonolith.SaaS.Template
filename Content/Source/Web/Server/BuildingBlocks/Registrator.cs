@@ -34,6 +34,7 @@ namespace Web.Server.BuildingBlocks
             applicationBuilder.RegisterLogging();
             applicationBuilder.RegisterSecurityHeaders();
             applicationBuilder.RegisterSwagger();
+            applicationBuilder.RegisterExecutionContextAccessingMiddleware();
 
             return applicationBuilder;
         }

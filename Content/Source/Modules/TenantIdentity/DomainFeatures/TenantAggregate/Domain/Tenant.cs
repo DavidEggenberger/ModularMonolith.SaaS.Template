@@ -30,14 +30,16 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         public IReadOnlyCollection<TenantSubscription> TenantSubscriptions => tenantSubscriptions.AsReadOnly();
         private List<TenantSubscription> tenantSubscriptions = new List<TenantSubscription>();
 
-        public static async Task<Tenant> CreateTenantAsync(string name)
+        public static async Task<Tenant> CreateTenantWithAdminAsync(string name, Guid adminUserId)
         {
+
             return new Tenant
             {
 
 
             };
         }
+
         public void AddUser(Guid userId, TenantRole role)
         {
             AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
@@ -52,6 +54,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
                 memberships.Add(new TenantMembership(userId, role));
             }
         }
+
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
             AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
@@ -60,8 +63,8 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
             {
                 throw new MemberNotFoundException();
             }
-
         }
+
         public void RemoveUser(Guid userId)
         {
             AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
@@ -73,6 +76,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
             memberships.Remove(memberships.Single(m => m.UserId == userId));
         }
+
         public void InviteUserToRole(Guid userId, TenantRole role)
         {
             AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
@@ -84,6 +88,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
             invitations.Add(new TenantInvitation { UserId = userId, Role = role });
         }
+
         public void AddSubscription(string stripeSubscriptionId, SubscriptionPlanType type, DateTime startDate, DateTime endDate, bool isTrial)
         {
             foreach (var subscription in tenantSubscriptions)
@@ -99,6 +104,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
                 Status = isTrial ? SubscriptionStatus.ActiveTrial : SubscriptionStatus.ActivePayed,
             });
         }
+
         public bool CheckIfMember(Guid userId)
         {
             return memberships.Any(membership => membership.UserId == userId);

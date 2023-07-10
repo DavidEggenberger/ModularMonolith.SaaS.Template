@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.DomainKernel.BuildingBlocks.ExecutionContextAccess;
 using Shared.Kernel.BuildingBlocks;
@@ -10,12 +11,21 @@ namespace Web.Server.BuildingBlocks.ExecutionContextAccess
         public static IServiceCollection RegisterExecutionContextAccessor(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            //services.AddScoped<IExecutionContextAccessor>(provider =>
-            //{
-            //    return new ExecutionContextAccessor(provider.GetRequiredService<IHttpContextAccessor>().HttpContext);
-            //});
+            services.AddScoped<ExecutionContextAccessor>();
             services.AddScoped<IExecutionContextAccessor, ExecutionContextAccessor>();
             return services;
+        }
+
+        public static IApplicationBuilder RegisterExecutionContextAccessingMiddleware(this IApplicationBuilder applicationBuilder)
+        {
+            applicationBuilder.Use(async (context, next) =>
+            {
+                var executionContextAccessor = context.RequestServices.GetService<ExecutionContextAccessor>();
+                executionContextAccessor.CaptureHttpContext(context);
+                await next(context);
+            });
+
+            return applicationBuilder;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.Exceptions.Authorization;
 using Shared.Kernel.Extensions;
@@ -7,19 +8,20 @@ namespace Shared.Infrastructure.Authorization
 {
     public class AuthorizationService : IAuthorizationService
     {
-        private readonly IHttpContextAccessor httpContextAccessor;
-        public AuthorizationService(IHttpContextAccessor httpContextAccessor)
+        private readonly IExecutionContextAccessor executionContextAccessor;
+        public AuthorizationService(IExecutionContextAccessor executionContextAccessor)
         {
-            this.httpContextAccessor = httpContextAccessor;
+            this.executionContextAccessor = executionContextAccessor;
         }
+
         public TenantRole GetRoleOfUserInTenant()
         {
-            return (TenantRole)Enum.Parse(typeof(TenantRole), httpContextAccessor.HttpContext.User.GetRoleClaim());
+            return executionContextAccessor.TenantRole;
         }
 
         public void ThrowIfUserIsNotInRole(TenantRole role)
         {
-            if (httpContextAccessor.HttpContext.User.GetRoleClaim() != role.ToString())
+            if (executionContextAccessor.TenantRole != role)
             {
                 throw new UnauthorizedException();
             }

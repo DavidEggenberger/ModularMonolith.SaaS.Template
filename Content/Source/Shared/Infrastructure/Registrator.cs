@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.Authorization;
 using Shared.Infrastructure.CQRS;
 using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.EmailSender;
@@ -19,6 +20,7 @@ namespace Shared.Infrastructure
         {
             var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
 
+            services.RegisterAuthorization();
             services.RegisterCQRS(assemblies);
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);

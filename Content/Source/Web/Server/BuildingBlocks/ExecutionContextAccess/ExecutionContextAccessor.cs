@@ -8,11 +8,11 @@ namespace Shared.Infrastructure.DomainKernel.BuildingBlocks.ExecutionContextAcce
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {
-        private readonly HttpContext capturedHttpContext;
+        private HttpContext capturedHttpContext;
 
-        public ExecutionContextAccessor(HttpContext httpContext)
+        public void CaptureHttpContext(HttpContext httpContext)
         {
-            this.capturedHttpContext = httpContext;
+            capturedHttpContext = httpContext;
         }
 
         public Guid UserId
