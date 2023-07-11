@@ -32,7 +32,6 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
         public static async Task<Tenant> CreateTenantWithAdminAsync(string name, Guid adminUserId)
         {
-
             return new Tenant
             {
 
@@ -108,6 +107,11 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         public bool CheckIfMember(Guid userId)
         {
             return memberships.Any(membership => membership.UserId == userId);
+        }
+
+        public void CheckIfUserCanDeleteTenant()
+        {
+            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
         }
 
         public TenantDTO ToDTO() => new TenantDTO();

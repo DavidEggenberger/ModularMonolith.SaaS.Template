@@ -36,27 +36,27 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
             var tenantId = executionContextAccessor.TenantId;
-            Tenant tenant = await queryDispatcher.DispatchAsync<GetTenantByID, Tenant>(new GetTenantByID { TenantId = tenantId });
+            TenantDTO tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
 
-            return Ok(tenant.ToDTO());
+            return Ok(tenant);
         }
 
         [HttpGet("{tenantId}/details")]
         public async Task<ActionResult<TenantDetailDTO>> GetTenantDetail()
         {
             var tenantId = executionContextAccessor.TenantId;
-            Tenant tenant = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, Tenant>(new GetTenantDetailsByID { TenantId = tenantId });
+            TenantDetailDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantDetailDTO>(new GetTenantDetailsByID { TenantId = tenantId });
 
-            return Ok(tenant.ToDetailDTO());
+            return Ok(tenantDetail);
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
             var userId = executionContextAccessor.UserId;
-            List<TenantMembership> teamMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembership>>(null);
+            List<TenantMembershipDTO> teamMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(null);
             
-            return Ok(teamMemberships.Select(t => t.ToDTO()));
+            return Ok(teamMemberships);
         }
 
         [HttpPost]
