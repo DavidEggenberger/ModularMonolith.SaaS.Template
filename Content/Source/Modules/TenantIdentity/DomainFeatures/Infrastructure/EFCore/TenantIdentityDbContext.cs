@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Shared.Infrastructure.EFCore;
 using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Infrastructure.DomainKernel.Exceptions;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
@@ -63,6 +64,30 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
                 .ThenInclude(tm => tm.Tenant)
                 .SelectMany(u => u.TenantMemberships.Select(tm => tm.Tenant))
                 .ToListAsync();
+        }
+
+        public async Task<Tenant> GetTenantByIdAsync(Guid tenantId)
+        {
+            var tenant = await Tenants.FirstOrDefaultAsync(t => t.TenantId == tenantId);
+            if (tenant == null)
+            {
+                throw new NotFoundException();
+            }
+            return tenant;
+        }
+
+        public async Task<Tenant> GetTenantExtendedByIdAsync(Guid tenantId)
+        {
+            var tenant = await Tenants
+                .Include(t => t.Memberships)
+                .Include(t => t.Invitations)
+                .Include(t => t.TenantSubscriptions)
+                .FirstOrDefaultAsync(t => t.TenantId == tenantId);
+            if (tenant == null)
+            {
+                throw new NotFoundException();
+            }
+            return tenant;
         }
     }
 }

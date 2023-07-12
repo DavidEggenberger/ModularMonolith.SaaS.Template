@@ -21,7 +21,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Application.Queries
 
         public async Task<TenantDTO> HandleAsync(GetTenantByID query, CancellationToken cancellation)
         {
-            var tenant = await tenantIdentityDbContext.Tenants.Where(t => t.TenantId == query.TenantId).SingleAsync();
+            var tenant = await tenantIdentityDbContext.GetTenantByIdAsync(query.TenantId);
             return tenant.ToDTO();
         }
     }

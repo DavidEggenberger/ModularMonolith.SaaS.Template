@@ -1,4 +1,5 @@
-﻿using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
+﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Security.Claims;
@@ -14,9 +15,12 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Querie
     public class ClaimsForUserQueryHandler : IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
     {
         private readonly IQueryDispatcher queryDispatcher;
-        public ClaimsForUserQueryHandler(IQueryDispatcher queryDispatcher)
+        private readonly TenantIdentityDbContext tenantIdentityDbContext;
+
+        public ClaimsForUserQueryHandler(IQueryDispatcher queryDispatcher, TenantIdentityDbContext tenantIdentityDbContext)
         {
             this.queryDispatcher = queryDispatcher;
+            this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
         {
@@ -28,19 +32,16 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Querie
                 new Claim(ClaimConstants.PictureClaimType, query.User.PictureUri)
             };
 
-            //var tenantByIdQuery = new GetTenantByQuery() { TenantId = query.User.SelectedTenantId };
-            //Tenant currentTenant = await queryDispatcher.DispatchAsync<GetTenantByQuery, Tenant>(tenantByIdQuery);
+            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(query.User.SelectedTenantId);
+            var tenantMembership = tenant.Memberships.Single(m => m.UserId == query.User.Id);
 
-            //var tenantMembershipQuery = new GetTenantMembershipQuery { TenantId = query.User.SelectedTenantId, UserId = query.User.Id };
-            //TenantMembership tenantMembership = await queryDispatcher.DispatchAsync<GetTenantMembershipQuery, TenantMembership>(tenantMembershipQuery);
-
-            //claims.AddRange(new List<Claim>
-            //{
-            //    new Claim(ClaimConstants.TenantPlanClaimType, currentTenant.CurrentSubscriptionPlanType.ToString()),
-            //    new Claim(ClaimConstants.TenantNameClaimType, currentTenant.Name),
-            //    new Claim(ClaimConstants.TenantIdClaimType, currentTenant.Id.ToString()),
-            //    new Claim(ClaimConstants.UserRoleInTenantClaimType, tenantMembership.Role.ToString()),
-            //});
+            claims.AddRange(new List<Claim>
+            {
+                new Claim(ClaimConstants.TenantPlanClaimType, tenant.CurrentSubscriptionPlanType.ToString()),
+                new Claim(ClaimConstants.TenantNameClaimType, tenant.Name),
+                new Claim(ClaimConstants.TenantIdClaimType, tenant.Id.ToString()),
+                new Claim(ClaimConstants.UserRoleInTenantClaimType, tenantMembership.Role.ToString()),
+            });
 
             return claims;
         }

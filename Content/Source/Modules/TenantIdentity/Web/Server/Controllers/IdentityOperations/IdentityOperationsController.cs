@@ -7,6 +7,7 @@ using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.Web.Shared.DTOs;
+using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Infrastructure.CQRS.Query;
@@ -50,9 +51,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
             var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
 
             var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = user.Id };
-            var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembership>>(tenantMembershipsOfUserQuery);
+            var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(tenantMembershipsOfUserQuery);
 
-            if (tenantMemberships.Select(t => t.Tenant.Id).Contains(tenantId))
+            if (tenantMemberships.Select(t => t.TenantId).Contains(tenantId))
             {
                 var setSelectedTenantForUser = new SetSelectedTenantForUser { };
                 await commandDispatcher.DispatchAsync(setSelectedTenantForUser);

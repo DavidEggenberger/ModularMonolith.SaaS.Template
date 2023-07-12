@@ -3,6 +3,8 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure.DomainKernel.Attributes;
+using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
@@ -10,13 +12,15 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
     [AggregateRoot]
     public class Tenant : Entity
     {
+        private readonly IExecutionContextAccessor executionContextAccessor;
+        private readonly IAuthorizationService _authorizationService;
+
         private Tenant() { }
-        public Tenant(TenantIdentityDbContext tenantIdentityDbContext)
+        public Tenant(TenantIdentityDbContext tenantIdentityDbContext, IExecutionContextAccessor executionContextAccessor)
         {
-            AuthorizationService = tenantIdentityDbContext.AuthorizationService;
+            _authorizationService = tenantIdentityDbContext.AuthorizationService;
+            this.executionContextAccessor = executionContextAccessor;
         }
-        
-        public IAuthorizationService AuthorizationService { get; set; }
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
@@ -41,7 +45,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
         public void AddUser(Guid userId, TenantRole role)
         {
-            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             TenantMembership tenantMembership;
             if ((tenantMembership = memberships.SingleOrDefault(m => m.UserId == userId)) is not null)
@@ -56,7 +60,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
-            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -66,7 +70,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
         public void RemoveUser(Guid userId)
         {
-            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -78,7 +82,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 
         public void InviteUserToRole(Guid userId, TenantRole role)
         {
-            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId))
             {
@@ -104,14 +108,23 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
             });
         }
 
+        public async void DeleteTenantMembership(Guid membershipId)
+        {
+            var tenantMembership = Memberships.SingleOrDefault(t => t.Id == membershipId);
+            if(tenantMembership == null)
+            {
+                throw new NotFoundException();
+            }
+        }
+
         public bool CheckIfMember(Guid userId)
         {
             return memberships.Any(membership => membership.UserId == userId);
         }
 
-        public void CheckIfUserCanDeleteTenant()
+        public void ThrowIfUserCantDeleteTenant()
         {
-            AuthorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
         }
 
         public TenantDTO ToDTO() => new TenantDTO();

@@ -16,7 +16,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
         }
         public async Task<ClaimsPrincipal> CreateAsync(TUser user)
         {
-            var _user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
+            var _user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { UserId = user.Id });
 
             var claimsForUserQuery = new GetClaimsForUser { User = _user };
             var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForUser, IEnumerable<Claim>>(claimsForUserQuery);

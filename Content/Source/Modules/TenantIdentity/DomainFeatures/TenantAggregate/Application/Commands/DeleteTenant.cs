@@ -36,7 +36,7 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
                 throw new NotFoundException();
             }
 
-            tenant.CheckIfUserCanDeleteTenant();
+            tenant.ThrowIfUserCantDeleteTenant();
 
             tenantIdentityDbContext.Entry(tenant.Id).State = EntityState.Deleted;
             await tenantIdentityDbContext.SaveChangesAsync();

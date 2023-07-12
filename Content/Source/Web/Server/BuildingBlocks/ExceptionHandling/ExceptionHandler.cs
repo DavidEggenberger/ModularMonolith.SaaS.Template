@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Shared.Infrastructure.DomainKernel.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             this.logger = logger;
             exceptionHandlers = new Dictionary<Type, Func<Exception, Task<ActionResult>>>
             {
-                //[typeof(IdentityOperationException)] = HandleIdentityOperationExceptionAsync,
+                [typeof(NotFoundException)] = HandleNotFoundException,
             };
         }
 
@@ -42,6 +43,15 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             }
         }
 
+        private async Task<ActionResult> HandleNotFoundException(Exception exception)
+        {
+            ProblemDetails problemDetails = new ProblemDetails
+            {
+                Status = StatusCodes.Status404NotFound,
+                Title = "Not Found"
+            };
+            return new ObjectResult(problemDetails);
+        }
         private async Task<ActionResult> HandleIdentityOperationExceptionAsync(Exception exception)
         {
             ProblemDetails problemDetails = new ProblemDetails
