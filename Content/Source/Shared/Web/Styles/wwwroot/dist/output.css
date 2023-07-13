@@ -550,8 +550,9 @@ video {
   height: 100vh;
 }
 
-.grid-rows-60px-12rows {
-  grid-template-rows: 60px repeat(12, minmax(0, 1fr));
+.bg-green-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
 
 .px-3 {
@@ -566,4 +567,22 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
+}
+
+@media (max-width: 300px) {
+  .width-xxsm\:grid-rows-40px-12rows {
+    grid-template-rows: 40px repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (mim-width: 480px) {
+  .width-xsm\:grid-rows-40px-12rows {
+    grid-template-rows: 40px repeat(12, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .width-md\:grid-rows-80px-12rows {
+    grid-template-rows: 80px repeat(12, minmax(0, 1fr));
+  }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.Kernel.Exceptions.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             exceptionHandlers = new Dictionary<Type, Func<Exception, Task<ActionResult>>>
             {
                 [typeof(NotFoundException)] = HandleNotFoundException,
+                [typeof(UnauthorizedException)] = HandleUnauthorizedException
             };
         }
 
@@ -48,18 +50,18 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             ProblemDetails problemDetails = new ProblemDetails
             {
                 Status = StatusCodes.Status404NotFound,
-                Title = "Not Found"
+                Title = exception.Message
             };
             return new ObjectResult(problemDetails);
         }
-        private async Task<ActionResult> HandleIdentityOperationExceptionAsync(Exception exception)
+        private async Task<ActionResult> HandleUnauthorizedException(Exception exception)
         {
             ProblemDetails problemDetails = new ProblemDetails
             {
-                Status = StatusCodes.Status500InternalServerError,
-                Title = "An internal server error ocurred"
+                Status = StatusCodes.Status401Unauthorized,
+                Title = exception.Message
             };
-            return Problem(exception.Message);
+            return new ObjectResult(exception.Message);
         }
         private async Task<ActionResult> HandleUnknownExceptionAsync(Exception exception)
         {
@@ -68,7 +70,7 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
                 Status = StatusCodes.Status500InternalServerError,
                 Title = "An internal server error ocurred"
             };
-            return Problem();
+            return new ObjectResult(exception);
         }
     }
 }
