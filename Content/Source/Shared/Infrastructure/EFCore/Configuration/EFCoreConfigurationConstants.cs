@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Infrastructure.EFCore
+namespace Shared.Infrastructure.EFCore.Configuration
 {
     public class EFCoreConfigurationConstants
     {

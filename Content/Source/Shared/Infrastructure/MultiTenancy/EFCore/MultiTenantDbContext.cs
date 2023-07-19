@@ -6,9 +6,9 @@ using Shared.Infrastructure.MultiTenancy.Services;
 using Shared.Infrastructure.MultiTenancy.Exceptions;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
-using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
+using Shared.Infrastructure.EFCore.Configuration;
 
 namespace Shared.Infrastructure.MultiTenancy.EFCore
 {

@@ -9,7 +9,7 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Querie
 {
     public class GetClaimsForUser : IQuery<IEnumerable<Claim>>
     {
-        public User User { get; set; }
+        public Guid UserId { get; set; }
     }
 
     public class ClaimsForUserQueryHandler : IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
@@ -24,16 +24,18 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Querie
         }
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
         {
+            var user = await tenantIdentityDbContext.GetUserByIdAsync(query.UserId);
+
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimConstants.UserNameClaimType, query.User.UserName),
-                new Claim(ClaimConstants.UserIdClaimType, query.User.Id.ToString()),
-                new Claim(ClaimConstants.EmailClaimType, query.User.Email),
-                new Claim(ClaimConstants.PictureClaimType, query.User.PictureUri)
+                new Claim(ClaimConstants.UserNameClaimType, user.UserName),
+                new Claim(ClaimConstants.UserIdClaimType, user.Id.ToString()),
+                new Claim(ClaimConstants.EmailClaimType, user.Email),
+                new Claim(ClaimConstants.PictureClaimType, user.PictureUri)
             };
 
-            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(query.User.SelectedTenantId);
-            var tenantMembership = tenant.Memberships.Single(m => m.UserId == query.User.Id);
+            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(user.SelectedTenantId);
+            var tenantMembership = tenant.Memberships.Single(m => m.UserId == user.Id);
 
             claims.AddRange(new List<Claim>
             {

@@ -10,6 +10,5 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Querie
 {
     public class GetUserById : IQuery<User>
     {
-        public Guid UserId { get; set; }
     }
 }

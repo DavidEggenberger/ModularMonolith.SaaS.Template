@@ -8,9 +8,9 @@ using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Shared.Infrastructure.EFCore;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.Infrastructure.EFCore.Configuration;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
@@ -64,6 +64,16 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
                 .ThenInclude(tm => tm.Tenant)
                 .SelectMany(u => u.TenantMemberships.Select(tm => tm.Tenant))
                 .ToListAsync();
+        }
+
+        public async Task<User> GetUserByIdAsync(Guid userId)
+        {
+            var user = await Users.FirstOrDefaultAsync(t => t.Id == userId);
+            if (user == null)
+            {
+                throw new NotFoundException();
+            }
+            return user;
         }
 
         public async Task<Tenant> GetTenantByIdAsync(Guid tenantId)
