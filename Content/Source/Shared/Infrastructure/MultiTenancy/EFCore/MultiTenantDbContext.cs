@@ -17,15 +17,15 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
         private readonly ITenantResolver tenantResolver;
         private readonly IExecutionContextAccessor userResolver;
         private readonly Guid tenantId;
-        private readonly IConfiguration configuration;
+        private readonly EFCoreConfiguration configuration;
         private readonly IServiceProvider serviceProvider;
 
-        public MultiTenantDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider, IConfiguration configuration) : base(dbContextOptions)
+        public MultiTenantDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions)
         {
             tenantResolver = serviceProvider.GetRequiredService<ITenantResolver>();
             userResolver = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
             tenantId = tenantResolver.CanResolveTenant() is true ? tenantResolver.ResolveTenantId() : Guid.NewGuid();// Ensure Guid for EF Core Migrations
-            this.configuration = configuration;
+            configuration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -34,14 +34,14 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
 
             if (hostEnvironment.IsDevelopment())
             {
-                optionsBuilder.UseSqlServer(configuration[EFCoreConfigurationConstants.DevelopmentSQLServerConnectionString], sqlServerOptions =>
+                optionsBuilder.UseSqlServer(configuration.DevelopmentSQLServerConnectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                 });
             }
             if (hostEnvironment.IsProduction())
             {
-                optionsBuilder.UseSqlServer(configuration[EFCoreConfigurationConstants.ProductionSQLServerConnectionString], sqlServerOptions =>
+                optionsBuilder.UseSqlServer(configuration.ProductionSQLServerConnectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                     sqlServerOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);

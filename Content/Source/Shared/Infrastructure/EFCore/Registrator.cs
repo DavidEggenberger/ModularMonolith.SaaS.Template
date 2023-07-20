@@ -5,11 +5,12 @@ using Shared.Infrastructure.EFCore.Configuration;
 
 namespace Shared.Infrastructure.EFCore
 {
-    public static class EFCoreDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterEFCore(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<EFCoreConfiguration>(configuration.GetSection(nameof(EFCoreConfiguration)));
+            services.AddScoped<EFCoreConfiguration>(sp => sp.GetRequiredService<IOptions<EFCoreConfiguration>>().Value);
             services.AddSingleton<IValidateOptions<EFCoreConfiguration>, EFCoreConfigurationValidator>();
 
             return services;

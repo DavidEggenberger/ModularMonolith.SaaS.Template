@@ -34,7 +34,7 @@ namespace Modules.TenantIdentity.DomainFeatures
 
             services.AddDbContext<TenantIdentityDbContext>();
 
-            var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<IOptions<TenantIdentityConfiguration>>().Value;
+            var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {

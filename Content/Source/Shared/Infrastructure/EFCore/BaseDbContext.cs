@@ -7,13 +7,14 @@ using Shared.Infrastructure.CQRS.IntegrationEvent;
 using Shared.Infrastructure.CQRS.DomainEvent;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Infrastructure.DomainKernel;
+using Shared.Infrastructure.EFCore.Configuration;
 
 namespace Shared.Infrastructure.EFCore
 {
     public class BaseDbContext<T> : MultiTenantDbContext<T> where T : DbContext
     {
         private readonly IDomainEventDispatcher domainEventDispatcher;
-        public BaseDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider, IConfiguration configuration) : base(dbContextOptions, serviceProvider, configuration)
+        public BaseDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions, serviceProvider)
         {
             this.domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
         }

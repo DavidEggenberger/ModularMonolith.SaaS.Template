@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Modules.Subscription.DomainFeatures.Domain;
 using Shared.Infrastructure.EFCore;
+using Shared.Infrastructure.EFCore.Configuration;
 using Shared.Infrastructure.MultiTenancy.EFCore;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,9 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
 {
     public class SubscriptionDbContext : BaseDbContext<SubscriptionDbContext>
     {
-        private readonly IHostEnvironment hostEnvironment;
-        private readonly IConfiguration configuration;
-
-        public SubscriptionDbContext(DbContextOptions<SubscriptionDbContext> dbContextOptions, IServiceProvider serviceProvider, IConfiguration configuration, IHostEnvironment hostEnvironment) : base(dbContextOptions, serviceProvider, configuration)
+        public SubscriptionDbContext(DbContextOptions<SubscriptionDbContext> dbContextOptions, IServiceProvider serviceProvider, IHostEnvironment hostEnvironment) : base(dbContextOptions, serviceProvider)
         {
-            this.hostEnvironment = hostEnvironment;
+            
         }
 
         public DbSet<StripeCustomer> StripeCustomers { get; set; }
