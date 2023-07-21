@@ -9,4 +9,5 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Comman
         public User User { get; set; }
         public ExternalLoginInfo LoginInfo { get; set; }
     }
+
 }
