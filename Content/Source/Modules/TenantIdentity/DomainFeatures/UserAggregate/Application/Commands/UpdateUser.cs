@@ -4,5 +4,6 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Comman
 {
     public class UpdateUser : ICommand
     {
+
     }
 }

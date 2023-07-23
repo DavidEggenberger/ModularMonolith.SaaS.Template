@@ -26,6 +26,11 @@ namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Comman
         {
             var user = await tenantIdentityDbContext.GetUserByIdAsync(command.UserId);
 
+            if (user.SelectedTenantId == command.SelectedTenantId)
+            {
+                return;
+            }
+
             user.SelectedTenantId = command.SelectedTenantId;
 
             await tenantIdentityDbContext.SaveChangesAsync(cancellationToken);
