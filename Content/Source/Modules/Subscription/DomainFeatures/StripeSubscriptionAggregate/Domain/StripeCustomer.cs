@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Subscription.DomainFeatures.Domain
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain
 {
     public class StripeCustomer
     {

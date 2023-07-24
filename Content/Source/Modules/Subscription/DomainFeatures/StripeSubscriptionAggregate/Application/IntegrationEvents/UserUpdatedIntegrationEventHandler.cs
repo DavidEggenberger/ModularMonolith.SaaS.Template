@@ -2,13 +2,13 @@
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Infrastructure.CQRS.IntegrationEvent;
 
-namespace Modules.Subscription.DomainFeatures.Application.IntegrationEvents
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.IntegrationEvents
 {
     public class UserUpdatedIntegrationEventHandler : IIntegrationEventHandler<UserEmailUpdatedIntegrationEvent>
     {
         public async Task HandleAsync(UserEmailUpdatedIntegrationEvent userEmailUpdatedIntegrationEvent, CancellationToken cancellationToken)
         {
-            
+
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Shared.Infrastructure.CQRS.Command;
 using Stripe;
 
-namespace Modules.Subscription.DomainFeatures.Application.Commands.Subscription
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.Commands.Subscription
 {
     public class CreateSubscription : ICommand
     {

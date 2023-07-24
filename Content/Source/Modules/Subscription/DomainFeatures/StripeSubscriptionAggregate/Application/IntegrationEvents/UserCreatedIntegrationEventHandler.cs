@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Subscription.DomainFeatures.Application.IntegrationEvents
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.IntegrationEvents
 {
     public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler<UserCreatedIntegrationEvent>
     {
         public async Task HandleAsync(UserCreatedIntegrationEvent userCreatedIntegrationEvent, CancellationToken cancellation)
         {
-            
+
         }
     }
 }

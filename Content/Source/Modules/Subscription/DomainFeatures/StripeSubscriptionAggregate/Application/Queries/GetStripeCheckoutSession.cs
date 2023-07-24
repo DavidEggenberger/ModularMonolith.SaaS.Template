@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Subscription.DomainFeatures.Application.Queries
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.Queries
 {
     public class GetStripeCheckoutSession : IQuery<Stripe.Checkout.Session>
     {

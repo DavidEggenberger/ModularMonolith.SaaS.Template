@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modules.Subscription.DomainFeatures.Application.Commands
+namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
 {
     public class CreateStripeBillingPortalSession : ICommand<Stripe.BillingPortal.Session>
     {

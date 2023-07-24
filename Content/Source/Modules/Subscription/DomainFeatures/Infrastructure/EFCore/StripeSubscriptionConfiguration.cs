@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.Subscription.DomainFeatures.Domain;
+using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

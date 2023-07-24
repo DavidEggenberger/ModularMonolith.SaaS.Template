@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Modules.Subscription.DomainFeatures.Application.Queries;
-using Modules.Subscription.DomainFeatures.Domain;
+using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.Queries;
+using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Web.Server;
