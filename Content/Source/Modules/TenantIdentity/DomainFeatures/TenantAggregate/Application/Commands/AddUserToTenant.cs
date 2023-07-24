@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands
 {
-    public class CreateTenantMembership : ICommand
+    public class AddUserToTenant : ICommand
     {
         public Guid TenantId { get; set; }
         public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
-    public class CreateTenantMembershipCommandHandler : ICommandHandler<CreateTenantMembership>
+    public class AddUserToTenantCommandHandler : ICommandHandler<AddUserToTenant>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public CreateTenantMembershipCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
+        public AddUserToTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
         {
             this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
 
-        public async Task HandleAsync(CreateTenantMembership command, CancellationToken cancellationToken)
+        public async Task HandleAsync(AddUserToTenant command, CancellationToken cancellationToken)
         {
             var tenant = await tenantIdentityDbContext.GetTenantByIdAsync(command.TenantId);
 

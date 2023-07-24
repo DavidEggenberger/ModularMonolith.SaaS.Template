@@ -94,7 +94,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         {
             var userId = executionContextAccessor.UserId;
 
-            await commandDispatcher.DispatchAsync<CreateTenantMembership>(null);
+            await commandDispatcher.DispatchAsync<AddUserToTenant>(null);
             
             return Ok();
         }
@@ -110,7 +110,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         [HttpDelete("memberships/{userId}")]
         public async Task<ActionResult> DeleteTenantMembership(Guid id)
         {
-            await commandDispatcher.DispatchAsync<DeleteTenantMembership>(new DeleteTenantMembership { });
+            await commandDispatcher.DispatchAsync<RemoveUserFromTenant>(new RemoveUserFromTenant { });
 
             return Ok();
         }

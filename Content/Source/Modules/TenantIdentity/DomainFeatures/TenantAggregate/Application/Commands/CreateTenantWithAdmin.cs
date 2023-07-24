@@ -13,23 +13,28 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands
 {
-    public class CreateTenantWithAdmin : ICommand<Tenant>
+    public class CreateTenantWithAdmin : ICommand<TenantDTO>
     {
         public string Name { get; set; }
         public Guid AdminId { get; set; }
     }
 
-    public class CreateTenantCommandHandler : ICommandHandler<CreateTenantWithAdmin, Tenant>
+    public class CreateTenantWithAdminCommandHandler : ICommandHandler<CreateTenantWithAdmin, TenantDTO>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public CreateTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
+        public CreateTenantWithAdminCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
         {
             this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
 
-        public async Task<Tenant> HandleAsync(CreateTenantWithAdmin createTenant, CancellationToken cancellationToken)
+        public async Task<TenantDTO> HandleAsync(CreateTenantWithAdmin createTenant, CancellationToken cancellationToken)
         {
-            return await Tenant.CreateTenantWithAdminAsync("", Guid.Empty);
+            var tenant = await Tenant.CreateTenantWithAdminAsync(createTenant.Name, Guid.Empty);
+
+            tenantIdentityDbContext.Tenants.Add(tenant);
+            await tenantIdentityDbContext.SaveChangesAsync(cancellationToken);
+
+            return tenant.ToDTO();
         }
     }
 }

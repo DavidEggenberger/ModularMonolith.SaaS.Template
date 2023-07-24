@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Web\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TenantAggregate\Application\IntegrationEvents\" />
+  </ItemGroup>
+
 </Project>

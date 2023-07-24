@@ -10,6 +10,8 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Comm
 {
     public class UpdateTenantMembership : ICommand
     {
+        public Guid TenantId { get; set; }
+        public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
 }
