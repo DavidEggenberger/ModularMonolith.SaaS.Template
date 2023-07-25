@@ -1,5 +1,4 @@
-﻿using Shared.Infrastructure.DomainKernel.Events;
-using Shared.Infrastructure.DomainKernel.Exceptions;
+﻿using Shared.Infrastructure.DomainKernel.Exceptions;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Infrastructure.DomainKernel

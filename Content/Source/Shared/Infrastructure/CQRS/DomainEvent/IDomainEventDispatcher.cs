@@ -1,4 +1,4 @@
-﻿using Shared.Infrastructure.DomainKernel.Events;
+﻿using Shared.Infrastructure.DomainKernel;
 
 namespace Shared.Infrastructure.CQRS.DomainEvent
 {
