@@ -4,8 +4,8 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using Shared.Infrastructure.CQRS.Command;
 using Modules.Subscription.DomainFeatures.Infrastructure;
-using Modules.Subscription.DomainFeatures.Application.Commands.Subscription;
 using Shared.Web.Server;
+using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Application.Commands.Subscription;
 
 namespace Modules.Subscription.Server.WebHooks
 {
@@ -35,7 +35,7 @@ namespace Modules.Subscription.Server.WebHooks
                 if (stripeEvent.Type == Events.CustomerSubscriptionCreated)
                 {
                     var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new CreateSubscription { Subscription = subscription });
+                    await commandDispatcher.DispatchAsync(new CreateSubscriptionForTenant { Subscription = subscription });
                 }
                 else if (stripeEvent.Type == Events.CustomerSubscriptionUpdated)
                 {
