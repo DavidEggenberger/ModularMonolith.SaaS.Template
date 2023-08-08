@@ -8,6 +8,4 @@ namespace Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Applic
         public Guid TenantId { get; set; }
         public Stripe.Subscription Subscription { get; set; }
     }
-
-
 }

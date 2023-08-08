@@ -9,10 +9,10 @@ using Modules.LandingPages.Web.Server.MyFeature.Pages;
 using Modules.TenantIdentity.DomainFeatures;
 using Modules.TenantIdentity.Web.Server;
 using Modules.Subscription.Server;
+using Modules.Subscription.DomainFeatures;
 using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure;
 using System.Reflection;
-using Modules.Subscription.DomainFeatures;
 using Web.Server.BuildingBlocks;
 
 namespace Web.Server

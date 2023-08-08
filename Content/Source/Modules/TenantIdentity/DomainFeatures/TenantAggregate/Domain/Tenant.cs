@@ -58,6 +58,11 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
             }
         }
 
+        public void ChangeRoleOfUser(Guid userId, TenantRole role)
+        {
+
+        }
+
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
             _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);

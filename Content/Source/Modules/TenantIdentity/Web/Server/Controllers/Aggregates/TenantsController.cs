@@ -69,12 +69,12 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
                 AdminId = executionContextAccessor.UserId,
                 Name = createTenantDTO.Name
             };
-            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, Tenant>(null);
+            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(null);
 
             var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
             await signInManager.RefreshSignInAsync(user);
             
-            return CreatedAtAction(nameof(CreateTenant), createdTenant.ToDTO());
+            return CreatedAtAction(nameof(CreateTenant), createdTenant);
         }
 
         [HttpDelete("{id}")]
