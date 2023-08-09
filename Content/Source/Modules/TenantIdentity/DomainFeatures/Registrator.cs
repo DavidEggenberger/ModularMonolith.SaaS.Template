@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
+using Shared.Infrastructure.EFCore;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
@@ -33,6 +34,7 @@ namespace Modules.TenantIdentity.DomainFeatures
             });
 
             services.AddDbContext<TenantIdentityDbContext>();
+            services.MigrateContext<TenantIdentityDbContext>();
 
             var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 
