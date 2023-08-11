@@ -16,14 +16,10 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
     public class TenantIdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
-        private readonly IOptions<EFCoreConfiguration> configuration;
-        private readonly IHostEnvironment hostEnvironment;
         public readonly IAuthorizationService AuthorizationService;
 
-        public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions, IOptions<EFCoreConfiguration> configuration, IHostEnvironment hostEnvironment, IAuthorizationService authorizationService) : base(dbContextOptions)
+        public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions) : base(dbContextOptions)
         {
-            this.configuration = configuration;
-            this.hostEnvironment = hostEnvironment;
             this.AuthorizationService = authorizationService;
         }
 
@@ -39,15 +35,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (hostEnvironment.IsDevelopment())
-            {
-                optionsBuilder.UseSqlServer(configuration.Value.DevelopmentSQLServerConnectionString);
-            }
-            if (hostEnvironment.IsProduction())
-            {
-                optionsBuilder.UseSqlServer(configuration.Value.ProductionSQLServerConnectionString);
-            }
-
             base.OnConfiguring(optionsBuilder);
         }
 

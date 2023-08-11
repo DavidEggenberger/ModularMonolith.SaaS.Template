@@ -3,7 +3,7 @@ using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure.DomainKernel.Attributes;
 using System.Reflection;
 
-namespace Shared.Infrastructure.MultiTenancy.EFCore
+namespace Shared.Infrastructure.EFCore.MultiTenancy
 {
     public static class MultiTenancyEntityConfiguration
     {

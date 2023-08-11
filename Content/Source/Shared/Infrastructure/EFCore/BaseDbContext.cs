@@ -2,12 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Shared.Infrastructure.MultiTenancy.EFCore;
 using Shared.Infrastructure.CQRS.IntegrationEvent;
 using Shared.Infrastructure.CQRS.DomainEvent;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure.EFCore.Configuration;
+using Shared.Infrastructure.EFCore.MultiTenancy;
 
 namespace Shared.Infrastructure.EFCore
 {

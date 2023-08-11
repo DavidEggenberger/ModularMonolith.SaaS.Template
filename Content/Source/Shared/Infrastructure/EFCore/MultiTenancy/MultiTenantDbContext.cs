@@ -9,16 +9,18 @@ using Shared.Kernel.Interfaces;
 using Shared.Infrastructure.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
-namespace Shared.Infrastructure.MultiTenancy.EFCore
+namespace Shared.Infrastructure.EFCore.MultiTenancy
 {
     public class MultiTenantDbContext<T> : DbContext where T : DbContext
     {
-        private readonly ITenantResolver tenantResolver;
-        private readonly IExecutionContextAccessor userResolver;
-        private readonly Guid tenantId;
-        private readonly EFCoreConfiguration configuration;
-        private readonly IServiceProvider serviceProvider;
+        protected readonly ITenantResolver tenantResolver;
+        protected readonly IExecutionContextAccessor userResolver;
+        protected readonly Guid tenantId;
+        protected readonly EFCoreConfiguration configuration;
+        protected readonly IServiceProvider serviceProvider;
+        protected readonly IAuthorizationService authorizationService;
 
         public MultiTenantDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions)
         {
@@ -26,6 +28,7 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
             userResolver = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
             tenantId = tenantResolver.CanResolveTenant() is true ? tenantResolver.ResolveTenantId() : Guid.NewGuid();// Ensure Guid for EF Core Migrations
             configuration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
+            authorizationService = serviceProvider.GetRequiredService<IAuthorizationService>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -127,7 +130,7 @@ namespace Shared.Infrastructure.MultiTenancy.EFCore
         {
             foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(t => t.ClrType.GetCustomAttribute<AggregateRootAttribute>() is not null))
             {
-                if(typeof(ITenantIdentifiable).IsAssignableFrom(entityType.ClrType) is false)
+                if (typeof(ITenantIdentifiable).IsAssignableFrom(entityType.ClrType) is false)
                 {
                     throw new EntityNotTenantIdentifiableException(entityType.ClrType.Name);
                 }
