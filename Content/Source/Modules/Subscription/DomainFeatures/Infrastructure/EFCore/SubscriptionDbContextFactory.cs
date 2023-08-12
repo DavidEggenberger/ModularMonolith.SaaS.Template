@@ -1,24 +1,35 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain;
-using Shared.Infrastructure.EFCore;
+using Microsoft.Extensions.Options;
 using Shared.Infrastructure.EFCore.Configuration;
-using Shared.Infrastructure.MultiTenancy.EFCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
 {
     public class SubscriptionDbContextFactory : IDesignTimeDbContextFactory<SubscriptionDbContext>
     {
+        private readonly IHostEnvironment hostEnvironment;
+        private readonly IOptions<EFCoreConfiguration> configuration;
+
+        public SubscriptionDbContextFactory()
+        {
+                
+        }
+
         public SubscriptionDbContext CreateDbContext(string[] args)
         {
-            throw new NotImplementedException();
+            var optionsBuilder = new DbContextOptionsBuilder<SubscriptionDbContext>();
+
+            if (hostEnvironment.IsDevelopment())
+            {
+                optionsBuilder.UseSqlServer(configuration.Value.DevelopmentSQLServerConnectionString);
+            }
+            if (hostEnvironment.IsProduction())
+            {
+                optionsBuilder.UseSqlServer(configuration.Value.ProductionSQLServerConnectionString);
+            }
+
+            return new SubscriptionDbContext(optionsBuilder.Options);
         }
     }
 }

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting;
 using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain;
 using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.EFCore.Configuration;
-using Shared.Infrastructure.MultiTenancy.EFCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
