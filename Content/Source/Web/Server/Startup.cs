@@ -14,6 +14,9 @@ using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure;
 using System.Reflection;
 using Web.Server.BuildingBlocks;
+using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
+using Microsoft.EntityFrameworkCore;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 
 namespace Web.Server
 {
@@ -44,10 +47,9 @@ namespace Web.Server
                 typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,
                 typeof(Modules.Subscription.Server.Registrator).Assembly,
             });
-            
-            services.RegisterTenantIdentityModule(Configuration, HostEnvironment);
-            services.RegisterSubscriptionModule(Configuration, HostEnvironment);
 
+            services.RegisterSubscriptionModule();
+            services.RegisterTenantIdentityModule(Configuration, HostEnvironment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

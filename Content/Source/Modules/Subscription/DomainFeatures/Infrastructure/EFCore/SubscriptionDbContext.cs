@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
 {
-    public class SubscriptionDbContext : BaseDbContext<SubscriptionDbContext>
+    public class SubscriptionDbContext : DbContext
     {
-        public SubscriptionDbContext(DbContextOptions<SubscriptionDbContext> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions, serviceProvider)
+        public SubscriptionDbContext(DbContextOptions<SubscriptionDbContext> dbContextOptions) : base(dbContextOptions)
         {
             
         }
@@ -22,10 +22,18 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
         public DbSet<StripeCustomer> StripeCustomers { get; set; }
         public DbSet<StripeSubscription> Subscriptions { get; set; }
 
-        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("afasdfasfsdafdafsasdfasdfadsf");
+
+            base.OnConfiguring(optionsBuilder);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Subscription");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

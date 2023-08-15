@@ -20,13 +20,12 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         public TenantIdentityDbContext(DbContextOptions<TenantIdentityDbContext> dbContextOptions) : base(dbContextOptions)
         {
-            this.AuthorizationService = authorizationService;
         }
 
         public override DbSet<User> Users { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
-        public DbSet<TenantInvitation> TenantInvitations { get; set; }
+        //public DbSet<TenantInvitation> TenantInvitations { get; set; }
         public DbSet<TenantMembership> TenantMeberships { get; set; }
         public DbSet<TenantSettings> TenantSettings { get; set; }
         public DbSet<TenantStyling> TenantStylings { get; set; }
@@ -35,6 +34,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer("asdff");
             base.OnConfiguring(optionsBuilder);
         }
 

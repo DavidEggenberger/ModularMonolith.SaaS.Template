@@ -14,9 +14,8 @@ namespace Shared.Infrastructure.EFCore
     public class BaseDbContext<T> : MultiTenantDbContext<T> where T : DbContext
     {
         private readonly IDomainEventDispatcher domainEventDispatcher;
-        public BaseDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions, serviceProvider)
+        public BaseDbContext(DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
-            this.domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
         }
 
         public IAuthorizationService TenantAuthorizationService { get; set; }

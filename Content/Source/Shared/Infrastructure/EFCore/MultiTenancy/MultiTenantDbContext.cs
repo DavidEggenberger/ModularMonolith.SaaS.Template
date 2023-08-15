@@ -22,33 +22,31 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
         protected readonly IServiceProvider serviceProvider;
         protected readonly IAuthorizationService authorizationService;
 
-        public MultiTenantDbContext(DbContextOptions<T> dbContextOptions, IServiceProvider serviceProvider) : base(dbContextOptions)
+        public MultiTenantDbContext(DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
-            tenantResolver = serviceProvider.GetRequiredService<ITenantResolver>();
-            userResolver = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
-            tenantId = tenantResolver.CanResolveTenant() is true ? tenantResolver.ResolveTenantId() : Guid.NewGuid();// Ensure Guid for EF Core Migrations
-            configuration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
-            authorizationService = serviceProvider.GetRequiredService<IAuthorizationService>();
+            //tenantResolver = serviceProvider.GetRequiredService<ITenantResolver>();
+            //userResolver = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
+            //tenantId = tenantResolver.CanResolveTenant() is true ? tenantResolver.ResolveTenantId() : Guid.NewGuid();// Ensure Guid for EF Core Migrations
+            //configuration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
+            //authorizationService = serviceProvider.GetRequiredService<IAuthorizationService>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
+            //var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
 
-            if (hostEnvironment.IsDevelopment())
+            //if (hostEnvironment.IsDevelopment())
+            //{
+            //    optionsBuilder.UseSqlServer(configuration.DevelopmentSQLServerConnectionString, sqlServerOptions =>
+            //    {
+            //        sqlServerOptions.EnableRetryOnFailure(5);
+            //    });
+            //}
+            //if (hostEnvironment.IsProduction())
+            //{
+            if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(configuration.DevelopmentSQLServerConnectionString, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                });
-            }
-            if (hostEnvironment.IsProduction())
-            {
-                optionsBuilder.UseSqlServer(configuration.ProductionSQLServerConnectionString, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                    sqlServerOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
-                });
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
             }
         }
 
