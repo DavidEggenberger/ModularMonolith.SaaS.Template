@@ -10,7 +10,12 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration
         public static IServiceCollection RegisterConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<TenantIdentityConfiguration>(configuration.GetSection(nameof(TenantIdentityConfiguration)));
-            services.AddScoped<TenantIdentityConfiguration>(sp => sp.GetRequiredService<IOptions<TenantIdentityConfiguration>>().Value);
+            services.AddScoped<TenantIdentityConfiguration>(sp => 
+            {
+                TenantIdentityConfiguration tc = new TenantIdentityConfiguration();
+                sp.GetRequiredService<IConfiguration>().GetSection("TenantIdentityConfiguration").Bind(tc);
+                return tc;
+            });
             services.AddSingleton<IValidateOptions<TenantIdentityConfiguration>, TenantIdentityConfigurationValidator>();
 
             return services;

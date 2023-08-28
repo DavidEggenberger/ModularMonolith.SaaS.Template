@@ -19,7 +19,7 @@ namespace Shared.Infrastructure
         public static IServiceCollection RegisterSharedInfrastructure(this IServiceCollection services, Assembly[] assemblies)
         {
             var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
-
+            
             services.RegisterAuthorization();
             services.RegisterCQRS(assemblies);
             services.RegisterEFCore(configuration);

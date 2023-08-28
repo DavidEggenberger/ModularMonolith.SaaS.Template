@@ -1,35 +1,29 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
-using Modules.LandingPages.Web.Server.MyFeature.Pages;
 using Modules.TenantIdentity.DomainFeatures;
 using Modules.TenantIdentity.Web.Server;
 using Modules.Subscription.Server;
 using Modules.Subscription.DomainFeatures;
-using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure;
 using System.Reflection;
 using Web.Server.BuildingBlocks;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
-using Microsoft.EntityFrameworkCore;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 
 namespace Web.Server
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
         {
             Configuration = configuration;
             HostEnvironment = hostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
-        public IHostEnvironment HostEnvironment { get; }
+        public IWebHostEnvironment HostEnvironment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -48,8 +42,6 @@ namespace Web.Server
                 typeof(Modules.Subscription.Server.Registrator).Assembly,
             });
 
-            services.RegisterSubscriptionModule();
-            services.RegisterTenantIdentityModule(Configuration, HostEnvironment);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

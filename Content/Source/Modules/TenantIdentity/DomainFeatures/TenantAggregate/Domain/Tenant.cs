@@ -15,10 +15,10 @@ namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
         private readonly IExecutionContextAccessor executionContextAccessor;
         private readonly IAuthorizationService _authorizationService;
 
-        private Tenant() { }
+        public Tenant() { }
         public Tenant(TenantIdentityDbContext tenantIdentityDbContext, IExecutionContextAccessor executionContextAccessor)
         {
-            _authorizationService = tenantIdentityDbContext.AuthorizationService;
+            //_authorizationService = tenantIdentityDbContext.AuthorizationService;
             this.executionContextAccessor = executionContextAccessor;
         }
 

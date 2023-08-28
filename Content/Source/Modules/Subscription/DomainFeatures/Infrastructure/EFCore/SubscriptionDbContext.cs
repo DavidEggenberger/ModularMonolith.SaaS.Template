@@ -14,6 +14,10 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
 {
     public class SubscriptionDbContext : DbContext
     {
+        public SubscriptionDbContext()
+        {
+            
+        }
         public SubscriptionDbContext(DbContextOptions<SubscriptionDbContext> dbContextOptions) : base(dbContextOptions)
         {
             

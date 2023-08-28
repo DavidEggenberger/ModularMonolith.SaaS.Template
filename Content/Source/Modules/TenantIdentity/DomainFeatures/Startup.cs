@@ -7,26 +7,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Microsoft.AspNetCore.Hosting;
+using Shared.Infrastructure.Modules;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
-using Microsoft.Extensions.Options;
-using Shared.Infrastructure.EFCore;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
-    public static class Registrator
+    public class Startup : IModuleStartup
     {
-        public static IServiceCollection RegisterTenantIdentityModule(this IServiceCollection services, IConfiguration configuration, IHostEnvironment hostEnvironment)
-        {                
+        public void ConfigureServices(IServiceCollection services)
+        {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
 
-            services.RegisterConfiguration(configuration);
+            //services.RegisterConfiguration(configuration);
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
@@ -34,9 +31,13 @@ namespace Modules.TenantIdentity.DomainFeatures
             });
 
             services.AddDbContext<TenantIdentityDbContext>();
-            services.MigrateContext<TenantIdentityDbContext>();
 
-            var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
+            //if (webHostEnvironment.IsProduction())
+            //{
+            //    services.MigrateContext<TenantIdentityDbContext>();
+            //}
+
+            //var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {
@@ -45,18 +46,18 @@ namespace Modules.TenantIdentity.DomainFeatures
             })
                 .AddLinkedIn(options =>
                 {
-                    options.ClientId = tenantIdentityConfiguration.LinkedinClientId;
-                    options.ClientSecret = tenantIdentityConfiguration.LinkedinClientSecret;
+                    options.ClientId = "dadsfadsf";
+                    options.ClientSecret = "dadsfadsf";
                 })
                 .AddMicrosoftAccount(options =>
                 {
-                    options.ClientId = tenantIdentityConfiguration.MicrosoftClientId;
-                    options.ClientSecret = tenantIdentityConfiguration.MicrosoftClientSecret;
+                    options.ClientId = "dadsfadsf";
+                    options.ClientSecret = "dadsfadsf";
                 })
                 .AddGoogle(options =>
                 {
-                    options.ClientId = tenantIdentityConfiguration.GoogleClientId;
-                    options.ClientSecret = tenantIdentityConfiguration.GoogleClientSecret;
+                    options.ClientId = "dadsfadsf";
+                    options.ClientSecret = "dadsfadsf";
                     options.Scope.Add("profile");
                     options.Events.OnCreatingTicket = (context) =>
                     {
@@ -117,8 +118,11 @@ namespace Modules.TenantIdentity.DomainFeatures
                 .AddClaimsPrincipalFactory<ContextUserClaimsPrincipalFactory<User>>()
                 .AddEntityFrameworkStores<TenantIdentityDbContext>()
                 .AddSignInManager();
+        }
 
-            return services;
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        {
+            
         }
     }
 }

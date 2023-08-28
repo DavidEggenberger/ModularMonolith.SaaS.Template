@@ -1,23 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Modules.Subscription.DomainFeatures.Infrastructure;
 using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
 using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
-using Stripe;
+using Shared.Infrastructure.Modules;
 
 namespace Modules.Subscription.DomainFeatures
 {
-    public static class Registrator
+    public class Startup : IModuleStartup
     {
-        public static IServiceCollection RegisterSubscriptionModule(this IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            //services.RegisterConfiguration(configuration);
             services.AddDbContext<SubscriptionDbContext>();
+            services.RegisterConfiguration(services.BuildServiceProvider().GetRequiredService<IConfiguration>());
+        }
 
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        {
 
-            return services;
         }
     }
 }

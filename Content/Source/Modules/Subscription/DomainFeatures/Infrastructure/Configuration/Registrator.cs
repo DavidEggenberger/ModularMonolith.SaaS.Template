@@ -12,7 +12,12 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.Configuration
             Stripe.StripeConfiguration.ApiKey = configuration[SubscriptionConfiguration.StripeAPIKeyConstant];
 
             services.Configure<SubscriptionConfiguration>(configuration.GetSection(nameof(SubscriptionConfiguration)));
-            services.AddScoped<SubscriptionConfiguration>(sp => sp.GetRequiredService<IOptions<SubscriptionConfiguration>>().Value);
+            services.AddScoped<SubscriptionConfiguration>(sp =>
+            {
+                SubscriptionConfiguration sc = new SubscriptionConfiguration();
+                sp.GetRequiredService<IConfiguration>().GetSection("SubscriptionConfiguration").Bind(sc);
+                return sc;
+            });
             services.AddSingleton<IValidateOptions<SubscriptionConfiguration>, SubscriptionConfigurationValidator>();
 
             return services;
