@@ -8,7 +8,7 @@ using Shared.Infrastructure.Modules;
 
 namespace Modules.Subscription.DomainFeatures
 {
-    public class Startup : IModuleStartup
+    public class SubscriptionStartup : IModuleStartup
     {
         public void ConfigureServices(IServiceCollection services)
         {

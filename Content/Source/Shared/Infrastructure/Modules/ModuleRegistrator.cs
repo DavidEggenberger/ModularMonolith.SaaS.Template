@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.ApplicationParts;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Shared.Infrastructure.Modules
 {
@@ -19,5 +21,19 @@ namespace Shared.Infrastructure.Modules
 
             return services;
         }
+
+        public static IApplicationBuilder UseModules(this IApplicationBuilder app, IHostEnvironment env)
+        {
+            // Adds endpoints defined in modules
+            var modules = app
+                .ApplicationServices
+                .GetRequiredService<IEnumerable<Module>>();
+            foreach (var module in modules)
+            {
+                module.Startup.Configure(app, env);
+            }
+
+            return app;
+        }      
     }
 }

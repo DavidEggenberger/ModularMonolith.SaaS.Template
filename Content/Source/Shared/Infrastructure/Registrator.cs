@@ -4,6 +4,7 @@ using Shared.Infrastructure.Authorization;
 using Shared.Infrastructure.CQRS;
 using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.EmailSender;
+using Shared.Infrastructure.Modules;
 using Shared.Infrastructure.MultiTenancy;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,14 @@ namespace Shared.Infrastructure
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterSharedInfrastructure(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection RegisterSharedInfrastructure(this IServiceCollection services)
         {
-            var configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
+            var serviceProvider = services.BuildServiceProvider();
+            var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+            var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModuleStartup>>();
             
             services.RegisterAuthorization();
-            services.RegisterCQRS(assemblies);
+            services.RegisterCQRS(startupModules.Select(x => x.GetType().Assembly).ToArray());
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);
             services.RegisterMultiTenancy();

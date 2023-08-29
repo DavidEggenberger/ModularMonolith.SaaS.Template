@@ -16,7 +16,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Modules.TenantIdentity.DomainFeatures
 {
-    public class Startup : IModuleStartup
+    public class TenantIdentityStartup : IModuleStartup
     {
         public void ConfigureServices(IServiceCollection services)
         {

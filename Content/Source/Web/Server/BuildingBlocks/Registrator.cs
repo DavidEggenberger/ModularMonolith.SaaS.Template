@@ -13,7 +13,7 @@ namespace Web.Server.BuildingBlocks
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterBuildingBlocks(this IServiceCollection services)
+        public static IServiceCollection AddBuildingBlocks(this IServiceCollection services)
         {
             services.RegisterAntiforgeryToken();
             services.RegisterApiVersioning();

@@ -11,6 +11,9 @@ using Modules.Subscription.DomainFeatures;
 using Shared.Infrastructure;
 using System.Reflection;
 using Web.Server.BuildingBlocks;
+using Shared.Infrastructure.Modules;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Routing;
 
 namespace Web.Server
 {
@@ -28,20 +31,15 @@ namespace Web.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
-                .RegisterTenantIdentityModuleControllers()
-                .RegisterSubscriptionModuleControllers();
+            services.AddControllers();
+            services.AddRazorPages();
 
-            services.AddRazorPages()
-                .RegisterLandingPagesModulePages();
+            services.AddBuildingBlocks();
+            services.RegisterSharedInfrastructure();
 
-            services.RegisterBuildingBlocks();
-            services.RegisterSharedInfrastructure(new Assembly[]
-            {
-                typeof(Modules.TenantIdentity.Web.Server.Registrator).Assembly,
-                typeof(Modules.Subscription.Server.Registrator).Assembly,
-            });
-
+            services.AddModule<TenantIdentityStartup>();
+            services.AddModule<SubscriptionStartup>();
+            services.AddModule<LandingPagesStartup>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,14 +64,14 @@ namespace Web.Server
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.RegisterBuildingBlocks();   
+            app.RegisterBuildingBlocks();
+
+            app.UseModules(env);
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
-
-                endpoints.RegisterLandingPagesModuleFallbackPage();
             });
         }
     }
