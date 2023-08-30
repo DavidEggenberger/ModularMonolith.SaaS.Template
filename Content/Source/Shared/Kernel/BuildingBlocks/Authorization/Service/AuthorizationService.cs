@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Shared.Kernel.BuildingBlocks;
+﻿using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.Exceptions.Authorization;
 using Shared.Kernel.Extensions;
