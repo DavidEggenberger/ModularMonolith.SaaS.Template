@@ -17,7 +17,7 @@ namespace Shared.Infrastructure
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterSharedInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services)
         {
             var serviceProvider = services.BuildServiceProvider();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();

@@ -35,7 +35,7 @@ namespace Web.Server
             services.AddRazorPages();
 
             services.AddBuildingBlocks();
-            services.RegisterSharedInfrastructure();
+            services.AddSharedInfrastructure();
 
             services.AddModule<TenantIdentityStartup>();
             services.AddModule<SubscriptionStartup>();
@@ -64,7 +64,7 @@ namespace Web.Server
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.RegisterBuildingBlocks();
+            app.UseBuildingBlocks();
 
             app.UseModules(env);
 
