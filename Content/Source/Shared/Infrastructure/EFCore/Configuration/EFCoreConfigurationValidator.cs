@@ -11,12 +11,7 @@ namespace Shared.Infrastructure.EFCore.Configuration
     {
         public ValidateOptionsResult Validate(string name, EFCoreConfiguration efCoreConfiguration)
         {
-            if (string.IsNullOrEmpty(efCoreConfiguration.DevelopmentSQLServerConnectionString))
-            {
-                return ValidateOptionsResult.Fail("");
-            }
-
-            if (string.IsNullOrEmpty(efCoreConfiguration.ProductionSQLServerConnectionString))
+            if (string.IsNullOrEmpty(efCoreConfiguration.SQLServerConnectionString))
             {
                 return ValidateOptionsResult.Fail("");
             }

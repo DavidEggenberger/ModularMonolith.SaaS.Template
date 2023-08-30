@@ -1,7 +1,7 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;

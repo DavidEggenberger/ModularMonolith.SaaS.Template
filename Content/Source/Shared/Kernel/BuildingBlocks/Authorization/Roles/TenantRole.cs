@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Authorization
+﻿namespace Shared.Kernel.BuildingBlocks.Authorization.Roles
 {
     public enum TenantRole
     {

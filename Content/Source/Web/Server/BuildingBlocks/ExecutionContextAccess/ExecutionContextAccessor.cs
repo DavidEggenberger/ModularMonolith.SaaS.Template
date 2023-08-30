@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.Extensions;
 using System;
 
-namespace Shared.Infrastructure.DomainKernel.BuildingBlocks.ExecutionContextAccess
+namespace Web.Server.BuildingBlocks.ExecutionContextAccess
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {

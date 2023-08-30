@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.Authorization;
+﻿using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.Linq;

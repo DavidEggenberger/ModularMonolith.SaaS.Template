@@ -1,5 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal;
 using System.ComponentModel;
 using System.Security.Claims;

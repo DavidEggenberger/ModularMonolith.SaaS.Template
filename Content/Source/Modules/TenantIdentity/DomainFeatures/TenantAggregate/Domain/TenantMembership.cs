@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Infrastructure.DomainKernel;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 {

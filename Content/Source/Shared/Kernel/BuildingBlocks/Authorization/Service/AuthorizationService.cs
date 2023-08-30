@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.Exceptions.Authorization;
 using Shared.Kernel.Extensions;
 
-namespace Shared.Infrastructure.Authorization
+namespace Shared.Kernel.BuildingBlocks.Authorization.Service
 {
     public class AuthorizationService : IAuthorizationService
     {

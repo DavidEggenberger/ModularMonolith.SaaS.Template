@@ -44,7 +44,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
             if (hostEnvironment.IsDevelopment())
             {
-                optionsBuilder.UseSqlServer(configuration.DevelopmentSQLServerConnectionString, sqlServerOptions =>
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                 });

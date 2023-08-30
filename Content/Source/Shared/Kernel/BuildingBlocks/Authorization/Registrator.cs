@@ -1,13 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Shared.Kernel.BuildingBlocks.Authorization.Service;
 
 namespace Shared.Kernel.BuildingBlocks.Authorization
 {
-    public static class AuthorizationDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterAuthorization(this IServiceCollection services)
         {
+            services.AddScoped<Shared.Kernel.BuildingBlocks.Authorization.Service.IAuthorizationService, AuthorizationService>();
+
             services.AddAuthorizationCore(options =>
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

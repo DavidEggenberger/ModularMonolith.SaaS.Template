@@ -6,6 +6,8 @@ using Shared.Infrastructure.DomainKernel.Attributes;
 using Shared.Infrastructure.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Authorization.Roles;
+using Shared.Kernel.BuildingBlocks.Authorization.Service;
 
 namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
 {

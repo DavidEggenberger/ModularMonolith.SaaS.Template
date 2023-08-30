@@ -22,7 +22,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AuthorizeTenantAdmin]
     public class TenantsController : BaseController
     {
         private readonly SignInManager<User> signInManager;
@@ -33,6 +32,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         }
 
         [HttpGet("{tenantId}")]
+        [AuthorizeTenantAdmin]
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
             var tenantId = executionContextAccessor.TenantId;
@@ -51,6 +51,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
             var userId = executionContextAccessor.UserId;

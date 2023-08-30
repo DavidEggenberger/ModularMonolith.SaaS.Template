@@ -37,7 +37,7 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
 
             if (hostEnvironment.IsDevelopment())
             {
-                optionsBuilder.UseSqlServer(configuration.DevelopmentSQLServerConnectionString, sqlServerOptions =>
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                 });

@@ -8,7 +8,6 @@ namespace Shared.Infrastructure.EFCore.Configuration
 {
     public class EFCoreConfiguration
     {
-        public string DevelopmentSQLServerConnectionString { get; set; }
-        public string ProductionSQLServerConnectionString { get; set; }
+        public string SQLServerConnectionString { get; set; }
     }
 }
