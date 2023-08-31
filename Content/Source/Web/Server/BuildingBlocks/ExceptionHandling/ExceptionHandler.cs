@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shared.Infrastructure.DomainKernel.Exceptions;
-using Shared.Kernel.Exceptions.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

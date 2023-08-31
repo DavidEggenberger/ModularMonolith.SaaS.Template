@@ -2,7 +2,7 @@
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
-using Shared.Kernel.Extensions;
+using Shared.Kernel.Extensions.ClaimsPrincipal;
 using System;
 
 namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor

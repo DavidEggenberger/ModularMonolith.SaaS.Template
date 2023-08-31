@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Kernel.Exceptions.Authorization
+namespace Shared.Kernel.BuildingBlocks.Auth.Exceptions
 {
     public class UnauthorizedException : Exception
     {

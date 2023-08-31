@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.Kernel.Exceptions.Extensions.ClaimsPrincipal
+namespace Shared.Kernel.Extensions.ClaimsPrincipal.Exceptions
 {
-    public class ClaimNotFoundException : Exception
+    public class NoRoleClaimException : Exception
     {
     }
 }
