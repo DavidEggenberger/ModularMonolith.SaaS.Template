@@ -5,7 +5,6 @@ using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.EmailSender;
 using Shared.Infrastructure.Modules;
 using Shared.Infrastructure.MultiTenancy;
-using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Shared.Infrastructure
 {
@@ -17,7 +16,6 @@ namespace Shared.Infrastructure
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModuleStartup>>();
 
-            services.RegisterAuthorization();
             services.RegisterCQRS(startupModules.Select(x => x.GetType().Assembly).ToArray());
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);

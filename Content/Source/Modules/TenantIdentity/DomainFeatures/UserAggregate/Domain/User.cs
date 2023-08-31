@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Domain.Exceptions;
 using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
-using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain
 {

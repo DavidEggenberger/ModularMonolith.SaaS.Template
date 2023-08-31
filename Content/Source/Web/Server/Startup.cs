@@ -14,6 +14,7 @@ using Web.Server.BuildingBlocks;
 using Shared.Infrastructure.Modules;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Routing;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Web.Server
 {
@@ -33,6 +34,8 @@ namespace Web.Server
         {
             services.AddControllers();
             services.AddRazorPages();
+
+            services.AddAuth();
 
             services.AddBuildingBlocks();
             services.AddSharedInfrastructure();

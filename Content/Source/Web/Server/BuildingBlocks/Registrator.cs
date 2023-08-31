@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Web.Server.BuildingBlocks.ExecutionContextAccess;
+using Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor;
+using Web.Server.BuildingBlocks.ContextAccessor.WebContextAccessor;
 using Web.Server.BuildingBlocks.HostingInformation;
 using Web.Server.BuildingBlocks.Logging;
 using Web.Server.BuildingBlocks.ModelValidation;
 using Web.Server.BuildingBlocks.Swagger;
-using Web.Server.BuildingBlocks.WebContextAccess;
 using WebServer.Modules.ModelValidation;
 using WebServer.Modules.Swagger;
 

@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.Extensions;
 using System;
 
-namespace Web.Server.BuildingBlocks.ExecutionContextAccess
+namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {

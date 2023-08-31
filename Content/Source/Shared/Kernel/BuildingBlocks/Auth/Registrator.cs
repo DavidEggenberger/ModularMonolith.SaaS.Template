@@ -7,7 +7,7 @@ namespace Shared.Kernel.BuildingBlocks.Authorization
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterAuthorization(this IServiceCollection services)
+        public static IServiceCollection AddAuth(this IServiceCollection services)
         {
             services.AddScoped<Shared.Kernel.BuildingBlocks.Authorization.Service.IAuthorizationService, AuthorizationService>();
 

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks;
 
-namespace Web.Server.BuildingBlocks.ExecutionContextAccess
+namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor
 {
     public static class Registrator
     {

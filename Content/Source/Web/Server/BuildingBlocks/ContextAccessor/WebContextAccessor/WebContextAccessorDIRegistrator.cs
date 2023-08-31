@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks;
 
-namespace Web.Server.BuildingBlocks.WebContextAccess
+namespace Web.Server.BuildingBlocks.ContextAccessor.WebContextAccessor
 {
     public static class WebContextAccessorDIRegistrator
     {
