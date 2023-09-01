@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
     <PackageReference Include="Azure.Identity" Version="1.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
@@ -26,6 +27,7 @@
     <ProjectReference Include="..\..\Modules\Subscription\Server\Modules.Subscription.Server.csproj" />
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj" />
     <ProjectReference Include="..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Client\Web.Client.csproj" />
   </ItemGroup>
 
 </Project>

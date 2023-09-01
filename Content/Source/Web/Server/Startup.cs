@@ -5,15 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
 using Modules.TenantIdentity.DomainFeatures;
-using Modules.TenantIdentity.Web.Server;
-using Modules.Subscription.Server;
 using Modules.Subscription.DomainFeatures;
 using Shared.Infrastructure;
-using System.Reflection;
 using Web.Server.BuildingBlocks;
 using Shared.Infrastructure.Modules;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Routing;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Web.Server
@@ -60,6 +55,7 @@ namespace Web.Server
             }
 
             app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -75,6 +71,8 @@ namespace Web.Server
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
+                
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }

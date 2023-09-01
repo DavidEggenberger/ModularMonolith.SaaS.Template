@@ -1,0 +1,25 @@
+﻿@page
+
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] ModularMonolith</title>
+    <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
+</head>
+<body class="h-screen grid width-xxsm:grid-rows-40px-12rows width-xsm:grid-rows-40px-12rows width-md:grid-rows-80px-12rows">
+    <nav class="row-start-1 row-span-1 bg-green-300">
+
+    </nav>
+
+    <main class="row-start-2 row-span-6">
+        <partial name="LandingPage" model="new Page1Model()"/>
+    </main>
+
+    <footer class="">
+    </footer>
+</body>
+</html>
+
+
