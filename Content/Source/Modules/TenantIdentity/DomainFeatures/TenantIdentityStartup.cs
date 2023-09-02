@@ -41,8 +41,8 @@ namespace Modules.TenantIdentity.DomainFeatures
 
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {
-                options.DefaultScheme = IdentityConstants.ApplicationScheme;
-                options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+                options.DefaultScheme = AuthConstant.ApplicationAuthenticationScheme;
+                options.DefaultSignInScheme = AuthConstant.ApplicationAuthenticationScheme;
             })
                 .AddLinkedIn(options =>
                 {

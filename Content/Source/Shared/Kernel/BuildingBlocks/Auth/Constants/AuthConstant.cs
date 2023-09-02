@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Kernel.BuildingBlocks.Authorization.Constants
 {
-    public class SchemesConstant
+    public class AuthConstant
     {
-
+        public const string ApplicationAuthenticationScheme = nameof(ApplicationAuthenticationScheme);
     }
 }

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Modules.LandingPages.Web.Server.MyFeature.Pages
 {
-    public class Page1Model : PageModel
+    public class LandingPageModel : PageModel
     {
+        public const string Page = "LandingPage";
+
         public void OnGet()
         {
 
