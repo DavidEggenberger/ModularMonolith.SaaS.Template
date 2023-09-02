@@ -1,8 +1,11 @@
-﻿<ExceptionHandlingWrapper>
-    <SignalRWrapper>
-        @ChildContent
-    </SignalRWrapper>
-</ExceptionHandlingWrapper>
+﻿<CascadingAuthenticationState>
+    <ExceptionHandlingWrapper>
+        <SignalRWrapper>
+            @ChildContent
+        </SignalRWrapper>
+    </ExceptionHandlingWrapper>
+</CascadingAuthenticationState>
+
 
 @code{
     [Parameter]

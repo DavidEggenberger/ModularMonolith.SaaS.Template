@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Modules.Identity.Web.Client;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Shared.Kernel.BuildingBlocks.Authorization;
 using System;
 using System.Net.Http.Headers;
+using Web.Client.BuildingBlocks.Auth;
+using Web.Client.BuildingBlocks.Auth.Antiforgery;
 using Web.Client.BuildingBlocks.Services.Http;
 
 namespace Web.Client.BuildingBlocks
@@ -11,6 +15,13 @@ namespace Web.Client.BuildingBlocks
     {
         public static void RegisterBuildingBlocks(this WebAssemblyHostBuilder builder)
         {
+            builder.Services.AddScoped<AntiforgeryTokenService>();
+
+            builder.Services.AddTransient<AuthorizedHandler>();
+            builder.Services.TryAddSingleton<AuthenticationStateProvider, HostAuthenticationStateProvider>();
+
+            builder.Services.AddAuth();
+
             builder.Services.AddHttpClient(HttpClientConstants.DefaultHttpClient, client =>
             {
                 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);

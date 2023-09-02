@@ -1,29 +1,31 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components;
+using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
+using Modules.TenantIdentity.Web.Shared;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Net.Http;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
-using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Json;
-using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Modules.TenantIdentity.Web.Shared;
-using Modules.TenantIdentity.Web.Shared.DTOs;
-using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
+using Web.Client.BuildingBlocks.Auth.Antiforgery;
 
-namespace Modules.Identity.Web.Client
+namespace Web.Client.BuildingBlocks.Auth
 {
     public class HostAuthenticationStateProvider : AuthenticationStateProvider
     {
+        private readonly AntiforgeryTokenService antiforgeryTokenService;
         private readonly NavigationManager navigationManager;
         private readonly HttpClient httpClient;
         private static readonly TimeSpan UserCacheRefreshInterval = TimeSpan.FromSeconds(60);
         private DateTimeOffset userLastCheck = DateTimeOffset.FromUnixTimeSeconds(0);
         private ClaimsPrincipal cachedUser = new ClaimsPrincipal(new ClaimsIdentity());
-        public HostAuthenticationStateProvider(NavigationManager navigationManager, HttpClient httpClient)
+        public HostAuthenticationStateProvider(NavigationManager navigationManager, HttpClient httpClient, AntiforgeryTokenService antiforgeryTokenService)
         {
             this.navigationManager = navigationManager;
             this.httpClient = httpClient;
+            this.antiforgeryTokenService = antiforgeryTokenService;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
