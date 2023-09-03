@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Infrastructure.DomainKernel.Exceptions;
@@ -10,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore.Configuration;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {

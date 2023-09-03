@@ -12,6 +12,8 @@ using Shared.Infrastructure.Modules;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Modules.Subscription.Server;
+using Modules.TenantIdentity.Server;
 
 namespace Web.Server
 {
@@ -47,9 +49,9 @@ namespace Web.Server
             services.AddBuildingBlocks();
             services.AddSharedInfrastructure();
 
-            services.AddModule<TenantIdentityStartup>();
-            services.AddModule<SubscriptionStartup>();
-            services.AddModule<LandingPagesStartup>();
+            services.AddModule<TenantIdentityModuleStartup>();
+            services.AddModule<SubscriptionModuleStartup>();
+            services.AddModule<LandingPagesModuleStartup>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

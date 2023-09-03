@@ -2,8 +2,8 @@
 using System.Security.Claims;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Domain;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
@@ -10,13 +9,13 @@ using Shared.Web.Server;
 using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;
-using Modules.TenantIdentity.DomainFeatures.Application.Queries;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands;
-using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Queries;
 using System.Linq;
 using Modules.TenantIdentity.IntegrationEvents;
+using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.Commands;
+using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.Queries;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {
@@ -51,7 +50,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = AuthConstant.ApplicationAuthenticationScheme)]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
             var userId = executionContextAccessor.UserId;

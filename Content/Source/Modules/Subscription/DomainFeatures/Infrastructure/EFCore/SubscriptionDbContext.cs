@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Modules.Subscription.DomainFeatures.StripeSubscriptionAggregate.Domain;
+using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain;
 using Shared.Infrastructure.EFCore;
 using Shared.Infrastructure.EFCore.Configuration;
 using System;
