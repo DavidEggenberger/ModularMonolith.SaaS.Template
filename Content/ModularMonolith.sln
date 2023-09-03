@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Server", "Source\Modules\Subscription\Server\Modules.Subscription.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web.Styles", "Source\Shared\Web\Styles\Shared.Web.Styles.csproj", "{D6A73553-E343-4A94-A888-CA495C719A68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Web", "Source\Shared\Web\Shared\Shared.Web.csproj", "{D6A73553-E343-4A94-A888-CA495C719A68}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.IntegrationEvents", "Source\Modules\Subscription\IntegrationEvents\Modules.Subscription.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
 EndProject

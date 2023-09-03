@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.Web.Shared
+﻿namespace Shared.Web
 {
     public class EndpointConstants
     {
