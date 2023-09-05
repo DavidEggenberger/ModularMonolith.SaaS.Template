@@ -7,13 +7,13 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Applica
 {
     public class CreateNewUser : ICommand
     {
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
         public ExternalLoginInfo LoginInfo { get; set; }
     }
     public class CreateNewUserCommandHandler : ICommandHandler<CreateNewUser>
     {
-        private readonly UserManager<User> userManager;
-        public CreateNewUserCommandHandler(UserManager<User> userManager)
+        private readonly UserManager<ApplicationUser> userManager;
+        public CreateNewUserCommandHandler(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
         }

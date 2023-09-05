@@ -26,13 +26,6 @@ namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
         public DbSet<StripeCustomer> StripeCustomers { get; set; }
         public DbSet<StripeSubscription> Subscriptions { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("afasdfasfsdafdafsasdfasdfadsf");
-
-            base.OnConfiguring(optionsBuilder);
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Subscription");

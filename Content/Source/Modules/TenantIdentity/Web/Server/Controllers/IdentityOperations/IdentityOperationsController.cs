@@ -20,9 +20,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
     [ApiController]
     public class IdentityOperationsController : BaseController
     {
-        private readonly SignInManager<User> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public IdentityOperationsController(SignInManager<User> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
+        public IdentityOperationsController(SignInManager<ApplicationUser> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
         }
@@ -44,7 +44,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
         [HttpGet("selectTenant/{TenantId}")]
         public async Task<ActionResult> SetTenantForCurrentUser(Guid tenantId, [FromQuery] string redirectUri)
         {
-            var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
+            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
 
             var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = user.Id };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(tenantMembershipsOfUserQuery);

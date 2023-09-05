@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
+using Shared.Infrastructure.EFCore;
 
 namespace Modules.TenantIdentity.Server
 {
@@ -25,7 +27,7 @@ namespace Modules.TenantIdentity.Server
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
 
-            //services.RegisterConfiguration(configuration);
+            services.RegisterConfiguration(configuration);
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
@@ -34,10 +36,10 @@ namespace Modules.TenantIdentity.Server
 
             services.AddDbContext<TenantIdentityDbContext>();
 
-            //if (webHostEnvironment.IsProduction())
-            //{
-            //    services.MigrateContext<TenantIdentityDbContext>();
-            //}
+            if (webHostEnvironment.IsProduction())
+            {
+                services.MigrateContext<TenantIdentityDbContext>();
+            }
 
             //var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 

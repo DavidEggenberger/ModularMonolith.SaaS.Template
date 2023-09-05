@@ -1,24 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Shared.Infrastructure.CQRS.IntegrationEvent;
 using Shared.Infrastructure.CQRS.DomainEvent;
 using Shared.Infrastructure.DomainKernel;
-using Shared.Infrastructure.EFCore.Configuration;
 using Shared.Infrastructure.EFCore.MultiTenancy;
-using Shared.Kernel.BuildingBlocks.Authorization.Service;
 
 namespace Shared.Infrastructure.EFCore
 {
     public class BaseDbContext<T> : MultiTenantDbContext<T> where T : DbContext
     {
         private readonly IDomainEventDispatcher domainEventDispatcher;
-        public BaseDbContext(DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
+        public BaseDbContext(IServiceProvider serviceProvider, DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
+            domainEventDispatcher = serviceProvider.GetService<IDomainEventDispatcher>();
         }
-
-        public IAuthorizationService TenantAuthorizationService { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

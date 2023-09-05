@@ -23,9 +23,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
     [ApiController]
     public class TenantsController : BaseController
     {
-        private readonly SignInManager<User> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
 
-        public TenantsController(SignInManager<User> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
+        public TenantsController(SignInManager<ApplicationUser> signInManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
         }
@@ -71,7 +71,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
             };
             var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(null);
 
-            var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
+            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
             await signInManager.RefreshSignInAsync(user);
             
             return CreatedAtAction(nameof(CreateTenant), createdTenant);
@@ -84,7 +84,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
             await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { });
 
             var userId = executionContextAccessor.UserId;
-            var user = await queryDispatcher.DispatchAsync<GetUserById, User>(new GetUserById { });
+            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
 
             await signInManager.RefreshSignInAsync(user);
         }

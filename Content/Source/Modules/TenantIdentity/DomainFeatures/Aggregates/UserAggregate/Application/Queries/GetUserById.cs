@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries
 {
-    public class GetUserById : IQuery<User>
+    public class GetUserById : IQuery<ApplicationUser>
     {
         public Guid UserId { get; set; }
     }
-    public class GetUserByIdHandler : IQueryHandler<GetUserById, User>
+    public class GetUserByIdHandler : IQueryHandler<GetUserById, ApplicationUser>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
         public GetUserByIdHandler(TenantIdentityDbContext tenantIdentityDbContext)
@@ -22,7 +22,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Applica
             this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
 
-        public async Task<User> HandleAsync(GetUserById query, CancellationToken cancellation)
+        public async Task<ApplicationUser> HandleAsync(GetUserById query, CancellationToken cancellation)
         {
             return await tenantIdentityDbContext.GetUserByIdAsync(query.UserId);
         }

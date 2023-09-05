@@ -16,9 +16,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
     [ApiController]
     public class ExternalLoginCallbackController : BaseController
     {
-        private readonly SignInManager<User> signInManager;
-        private readonly UserManager<User> userManager;
-        public ExternalLoginCallbackController(SignInManager<User> signInManager, UserManager<User> userManager, IServiceProvider serviceProvider) : base(serviceProvider)
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        public ExternalLoginCallbackController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -33,7 +33,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 
             if (info is not null && user is null)
             {
-                User _user = new User
+                ApplicationUser _user = new ApplicationUser
                 {
                     UserName = info.Principal.Identity.Name,
                     Email = info.Principal.GetClaimValue(ClaimConstants.EmailClaimType),

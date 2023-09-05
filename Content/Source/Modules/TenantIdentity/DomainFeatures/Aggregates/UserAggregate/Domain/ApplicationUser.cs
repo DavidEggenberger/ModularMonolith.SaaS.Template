@@ -10,7 +10,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain
         public string PictureUri { get; set; }
         public bool IsOnline => CountOfOpenTabs > 0;
         public int CountOfOpenTabs { get; set; }
-        public string StripeCustomerId { get; set; }
         public Guid SelectedTenantId { get; set; }
         public IList<TenantMembership> TenantMemberships { get; set; }
 

@@ -7,7 +7,7 @@ using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
-    public class ContextUserClaimsPrincipalFactory<TUser> : IUserClaimsPrincipalFactory<TUser> where TUser : User
+    public class ContextUserClaimsPrincipalFactory<TUser> : IUserClaimsPrincipalFactory<TUser> where TUser : ApplicationUser
     {
         private readonly IQueryDispatcher queryDispatcher;
         public ContextUserClaimsPrincipalFactory(IQueryDispatcher queryDispatcher)

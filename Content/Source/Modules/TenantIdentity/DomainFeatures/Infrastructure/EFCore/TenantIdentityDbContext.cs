@@ -13,7 +13,7 @@ using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain;
 
 namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
-    public class TenantIdentityDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+    public class TenantIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         private readonly IServiceProvider serviceProvider;
         private readonly EFCoreConfiguration configuration;
@@ -28,7 +28,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
             configuration = serviceProvider.GetService<EFCoreConfiguration>();
         }
 
-        public override DbSet<User> Users { get; set; }
+        public override DbSet<ApplicationUser> Users { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantInvitation> TenantInvitations { get; set; }
@@ -62,7 +62,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
+            modelBuilder.ApplyConfiguration<ApplicationUser>(new UserConfiguration());
             modelBuilder.HasDefaultSchema("Identity");
             base.OnModelCreating(modelBuilder);
         }
@@ -76,7 +76,7 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
                 .ToListAsync();
         }
 
-        public async Task<User> GetUserByIdAsync(Guid userId)
+        public async Task<ApplicationUser> GetUserByIdAsync(Guid userId)
         {
             var user = await Users.FirstOrDefaultAsync(t => t.Id == userId);
             if (user == null)
