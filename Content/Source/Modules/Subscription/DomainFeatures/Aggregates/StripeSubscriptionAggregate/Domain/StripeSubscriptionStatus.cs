@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain
+﻿namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain
 {
     public enum StripeSubscriptionStatus
     {

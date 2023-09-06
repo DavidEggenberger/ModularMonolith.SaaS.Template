@@ -1,5 +1,4 @@
-﻿using Shared.Infrastructure.CQRS.Command;
-using Shared.Kernel.BuildingBlocks.Events;
+﻿using Shared.Kernel.BuildingBlocks.Events;
 using System;
 
 namespace Modules.TenantIdentity.IntegrationEvents

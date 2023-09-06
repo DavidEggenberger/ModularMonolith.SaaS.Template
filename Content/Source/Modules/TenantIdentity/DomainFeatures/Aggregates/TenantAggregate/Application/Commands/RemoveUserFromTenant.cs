@@ -1,13 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Shared.Infrastructure.CQRS.Command;
 using Shared.Kernel.BuildingBlocks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.Commands
 {

@@ -1,12 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using static FluentValidation.AssemblyScanner;
 
 namespace Shared.Kernel.BuildingBlocks.ModelValidation

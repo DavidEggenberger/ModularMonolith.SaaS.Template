@@ -10,7 +10,7 @@ namespace Modules.Subscription.Server
 {
     public class SubscriptionModuleStartup : IModuleStartup
     {
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IConfiguration config = null)
         {
             services.AddDbContext<SubscriptionDbContext>();
             services.RegisterConfiguration(services.BuildServiceProvider().GetRequiredService<IConfiguration>());

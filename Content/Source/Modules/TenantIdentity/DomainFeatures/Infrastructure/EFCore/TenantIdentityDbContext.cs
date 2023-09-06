@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate;
-using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Infrastructure.DomainKernel.Exceptions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore.Configuration;
@@ -29,7 +27,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
         }
 
         public override DbSet<ApplicationUser> Users { get; set; }
-        public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantInvitation> TenantInvitations { get; set; }
         public DbSet<TenantMembership> TenantMeberships { get; set; }

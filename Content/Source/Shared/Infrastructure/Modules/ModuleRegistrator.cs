@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -7,7 +8,7 @@ namespace Shared.Infrastructure.Modules
 {
     public static class ModuleRegistrator
     {
-        public static IServiceCollection AddModule<TStartup>(this IServiceCollection services)
+        public static IServiceCollection AddModule<TStartup>(this IServiceCollection services, IConfiguration config = null)
             where TStartup : IModuleStartup, new()
         {
             // Register assembly in MVC so it can find controllers of the module
@@ -15,7 +16,7 @@ namespace Shared.Infrastructure.Modules
                 manager.ApplicationParts.Add(new AssemblyPart(typeof(TStartup).Assembly)));
 
             var startup = new TStartup();
-            startup.ConfigureServices(services);
+            startup.ConfigureServices(services, config);
 
             services.AddSingleton(new Module(startup));
 

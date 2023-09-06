@@ -16,16 +16,15 @@ using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
-using Shared.Infrastructure.EFCore;
 
 namespace Modules.TenantIdentity.Server
 {
     public class TenantIdentityModuleStartup : IModuleStartup
     {
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services, IConfiguration configuration = null)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
-            services.AddScoped<ContextUserClaimsPrincipalFactory<User>>();
+            services.AddScoped<ContextUserClaimsPrincipalFactory<ApplicationUser>>();
 
             services.RegisterConfiguration(configuration);
 
@@ -36,10 +35,10 @@ namespace Modules.TenantIdentity.Server
 
             services.AddDbContext<TenantIdentityDbContext>();
 
-            if (webHostEnvironment.IsProduction())
-            {
-                services.MigrateContext<TenantIdentityDbContext>();
-            }
+            //if (webHostEnvironment.IsProduction())
+            //{
+            //    services.MigrateContext<TenantIdentityDbContext>();
+            //}
 
             //var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 
@@ -111,7 +110,7 @@ namespace Modules.TenantIdentity.Server
                     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
                 });
             });
-            var identityService = services.AddIdentityCore<User>(options =>
+            var identityService = services.AddIdentityCore<ApplicationUser>(options =>
             {
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+/ ";
                 options.User.RequireUniqueEmail = true;
@@ -120,7 +119,7 @@ namespace Modules.TenantIdentity.Server
                 options.ClaimsIdentity.UserNameClaimType = ClaimConstants.UserNameClaimType;
             })
                 .AddDefaultTokenProviders()
-                .AddClaimsPrincipalFactory<ContextUserClaimsPrincipalFactory<User>>()
+                .AddClaimsPrincipalFactory<ContextUserClaimsPrincipalFactory<ApplicationUser>>()
                 .AddEntityFrameworkStores<TenantIdentityDbContext>()
                 .AddSignInManager();
         }

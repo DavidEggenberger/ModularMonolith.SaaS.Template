@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands;
-using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using Shared.Web.Server;

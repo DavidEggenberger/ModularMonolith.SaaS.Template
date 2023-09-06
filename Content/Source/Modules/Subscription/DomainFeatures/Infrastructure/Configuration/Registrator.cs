@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Modules.Subscription.DomainFeatures.Infrastructure;
 
 namespace Modules.Subscription.DomainFeatures.Infrastructure.Configuration
 {

@@ -1,7 +1,5 @@
-﻿using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
+﻿using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
-using Shared.Kernel.Extensions;
 
 namespace Shared.Kernel.BuildingBlocks.Authorization.Service
 {

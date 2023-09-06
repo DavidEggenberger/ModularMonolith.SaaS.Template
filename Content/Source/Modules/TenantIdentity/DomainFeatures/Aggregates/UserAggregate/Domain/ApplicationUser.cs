@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain
 {
-    public class User : IdentityUser<Guid>, IUser
+    public class ApplicationUser : IdentityUser<Guid>, IUser
     {
         public string PictureUri { get; set; }
         public bool IsOnline => CountOfOpenTabs > 0;

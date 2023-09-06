@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 
 namespace Web.Server.BuildingBlocks.Swagger
 {

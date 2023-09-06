@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
-using Modules.TenantIdentity.DomainFeatures;
-using Modules.Subscription.DomainFeatures;
 using Shared.Infrastructure;
 using Web.Server.BuildingBlocks;
 using Shared.Infrastructure.Modules;
@@ -49,7 +47,7 @@ namespace Web.Server
             services.AddBuildingBlocks();
             services.AddSharedInfrastructure();
 
-            services.AddModule<TenantIdentityModuleStartup>();
+            services.AddModule<TenantIdentityModuleStartup>(Configuration);
             services.AddModule<SubscriptionModuleStartup>();
             services.AddModule<LandingPagesModuleStartup>();
         }

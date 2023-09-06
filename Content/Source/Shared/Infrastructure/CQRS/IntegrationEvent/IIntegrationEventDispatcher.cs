@@ -1,5 +1,4 @@
-﻿using Shared.Infrastructure.CQRS.Command;
-using Shared.Kernel.BuildingBlocks.Events;
+﻿using Shared.Kernel.BuildingBlocks.Events;
 
 namespace Shared.Infrastructure.CQRS.IntegrationEvent
 {
