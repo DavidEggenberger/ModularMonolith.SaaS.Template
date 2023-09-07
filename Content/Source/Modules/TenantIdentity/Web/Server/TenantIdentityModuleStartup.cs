@@ -40,7 +40,7 @@ namespace Modules.TenantIdentity.Server
             //    services.MigrateContext<TenantIdentityDbContext>();
             //}
 
-            //var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
+            var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 
             AuthenticationBuilder authenticationBuilder = services.AddAuthentication(options =>
             {
@@ -49,18 +49,18 @@ namespace Modules.TenantIdentity.Server
             })
                 .AddLinkedIn(options =>
                 {
-                    options.ClientId = "dadsfadsf";
-                    options.ClientSecret = "dadsfadsf";
+                    options.ClientId = tenantIdentityConfiguration.LinkedinClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.LinkedinClientSecret;
                 })
                 .AddMicrosoftAccount(options =>
                 {
-                    options.ClientId = "dadsfadsf";
-                    options.ClientSecret = "dadsfadsf";
+                    options.ClientId = tenantIdentityConfiguration.MicrosoftClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.MicrosoftClientSecret;
                 })
                 .AddGoogle(options =>
                 {
-                    options.ClientId = "dadsfadsf";
-                    options.ClientSecret = "dadsfadsf";
+                    options.ClientId = tenantIdentityConfiguration.GoogleClientId;
+                    options.ClientSecret = tenantIdentityConfiguration.GoogleClientSecret;
                     options.Scope.Add("profile");
                     options.Events.OnCreatingTicket = (context) =>
                     {

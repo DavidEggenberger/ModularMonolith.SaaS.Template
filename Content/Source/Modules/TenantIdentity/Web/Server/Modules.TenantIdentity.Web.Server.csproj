@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Shared\Web\Server\Shared.Web.Server.csproj" />
     <ProjectReference Include="..\..\DomainFeatures\Modules.TenantIdentity.DomainFeatures.csproj" />
     <ProjectReference Include="..\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
   </ItemGroup>

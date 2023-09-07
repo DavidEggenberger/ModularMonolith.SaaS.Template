@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="BaseComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwRoot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="BaseComponent.razor" />
   </ItemGroup>
 
 </Project>

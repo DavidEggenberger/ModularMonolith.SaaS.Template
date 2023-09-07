@@ -6,7 +6,7 @@ using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
 using System;
 
-namespace Shared.Web.Server
+namespace Shared.Infrastructure
 {
     public class BaseController : ControllerBase
     {
