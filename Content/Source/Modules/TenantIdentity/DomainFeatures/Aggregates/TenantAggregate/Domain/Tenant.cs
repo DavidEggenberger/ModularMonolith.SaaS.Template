@@ -5,7 +5,6 @@ using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure.DomainKernel.Attributes;
 using Shared.Infrastructure.DomainKernel.Exceptions;
-using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.BuildingBlocks.Authorization.Service;
@@ -15,14 +14,12 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domai
     [AggregateRoot]
     public class Tenant : Entity
     {
-        private readonly IExecutionContextAccessor executionContextAccessor;
         private readonly IAuthorizationService _authorizationService;
 
         public Tenant() { }
-        public Tenant(TenantIdentityDbContext tenantIdentityDbContext, IExecutionContextAccessor executionContextAccessor)
+        public Tenant(TenantIdentityDbContext tenantIdentityDbContext)
         {
             //_authorizationService = tenantIdentityDbContext.AuthorizationService;
-            this.executionContextAccessor = executionContextAccessor;
         }
 
         public override Guid TenantId { get => base.TenantId; }

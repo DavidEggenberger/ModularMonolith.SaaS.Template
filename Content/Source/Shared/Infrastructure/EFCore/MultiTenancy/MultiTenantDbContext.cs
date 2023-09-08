@@ -9,6 +9,7 @@ using Shared.Infrastructure.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using Shared.Infrastructure.EFCore.Interceptors;
 
 namespace Shared.Infrastructure.EFCore.MultiTenancy
 {
@@ -48,6 +49,8 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
                     optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
                 }
             }
+
+            optionsBuilder.AddInterceptors(new ServiceProviderInterceptor());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
