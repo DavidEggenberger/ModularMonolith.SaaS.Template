@@ -16,11 +16,15 @@ using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
+using System.Reflection;
+using Modules.TenantIdentity.DomainFeatures;
 
 namespace Modules.TenantIdentity.Server
 {
     public class TenantIdentityModuleStartup : IModuleStartup
     {
+        public Assembly DomainFeaturesAssembly => typeof(IAssemblyMarker).Assembly;
+
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration = null)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();

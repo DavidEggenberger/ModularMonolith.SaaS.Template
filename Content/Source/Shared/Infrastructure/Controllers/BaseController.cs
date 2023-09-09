@@ -4,7 +4,6 @@ using Shared.Infrastructure.CQRS.Command;
 using Shared.Infrastructure.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
-using System;
 
 namespace Shared.Infrastructure
 {

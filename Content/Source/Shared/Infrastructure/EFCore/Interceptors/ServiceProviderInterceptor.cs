@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Shared.Infrastructure.DomainKernel;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Infrastructure.EFCore.Interceptors
 {

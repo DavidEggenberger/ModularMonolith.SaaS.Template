@@ -1,6 +1,5 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Enums;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Exceptions;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Infrastructure.DomainKernel;
 using Shared.Infrastructure.DomainKernel.Attributes;
@@ -17,10 +16,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domai
         private readonly IAuthorizationService _authorizationService;
 
         public Tenant() { }
-        public Tenant(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            //_authorizationService = tenantIdentityDbContext.AuthorizationService;
-        }
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
@@ -45,7 +40,6 @@ namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domai
 
         public void AddUser(Guid userId, TenantRole role)
         {
-            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             TenantMembership tenantMembership;
             if ((tenantMembership = memberships.SingleOrDefault(m => m.UserId == userId)) is not null)

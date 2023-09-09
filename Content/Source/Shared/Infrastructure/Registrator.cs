@@ -14,9 +14,9 @@ namespace Shared.Infrastructure
         {
             var serviceProvider = services.BuildServiceProvider();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModuleStartup>>();
+            var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
 
-            services.RegisterCQRS(startupModules.Select(x => x.GetType().Assembly).ToArray());
+            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.DomainFeaturesAssembly is not null).Select(x => x.Startup.DomainFeaturesAssembly).ToArray());
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);
             services.RegisterMultiTenancy();
