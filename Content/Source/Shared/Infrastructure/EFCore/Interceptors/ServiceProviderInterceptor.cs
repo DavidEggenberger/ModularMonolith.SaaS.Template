@@ -11,9 +11,9 @@ namespace Shared.Infrastructure.EFCore.Interceptors
             MaterializationInterceptionData materializationData,
             object instance)
         {
-            if (instance is IExecutionContextAccessable entity)
+            if (instance is Entity entity)
             {
-                entity.ExecutionContextAccessor = materializationData.Context.GetService<IExecutionContextAccessor>();
+                entity.SetExecutionContextAccessor(materializationData.Context.GetService<IExecutionContextAccessor>());
             }
 
             return instance;
