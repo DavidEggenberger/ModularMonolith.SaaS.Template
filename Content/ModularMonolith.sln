@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Infrastructure", "So
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPages", "{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web.Server", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.Server.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{78544110-543F-4351-8096-077CC56B4E1E}"
 EndProject

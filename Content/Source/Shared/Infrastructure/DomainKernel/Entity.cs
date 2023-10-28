@@ -6,12 +6,6 @@ namespace Shared.Infrastructure.DomainKernel
 {
     public abstract class Entity : IAuditable, IIdentifiable, ITenantIdentifiable, IConcurrent
     {
-        protected IExecutionContextAccessor ExecutionContextAccessor { get; private set; }
-        public void SetExecutionContextAccessor(IExecutionContextAccessor ExecutionContextAccessor)
-        {
-            this.ExecutionContextAccessor = ExecutionContextAccessor;
-        }
-
         public Guid Id { get; set; }
         public virtual Guid TenantId { get; set; }
         public Guid CreatedByUserId { get; set; }

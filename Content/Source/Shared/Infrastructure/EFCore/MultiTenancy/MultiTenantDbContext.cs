@@ -9,7 +9,6 @@ using Shared.Infrastructure.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.EFCore.Configuration;
 using Microsoft.AspNetCore.Authorization;
-using Shared.Infrastructure.EFCore.Interceptors;
 
 namespace Shared.Infrastructure.EFCore.MultiTenancy
 {
@@ -20,7 +19,6 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
         protected readonly Guid tenantId;
         protected readonly EFCoreConfiguration configuration;
         protected readonly IServiceProvider serviceProvider;
-        protected readonly IAuthorizationService authorizationService;
 
         public MultiTenantDbContext(DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
@@ -28,7 +26,6 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
             userResolver = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
             tenantId = tenantResolver.CanResolveTenant() is true ? tenantResolver.ResolveTenantId() : Guid.NewGuid();// Ensure Guid for EF Core Migrations
             configuration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
-            authorizationService = serviceProvider.GetRequiredService<IAuthorizationService>();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -49,8 +46,6 @@ namespace Shared.Infrastructure.EFCore.MultiTenancy
                     optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
                 }
             }
-
-            optionsBuilder.AddInterceptors(new ServiceProviderInterceptor());
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
