@@ -21,22 +21,19 @@ jobs:
       with:
         node-version: 16
         cache: 'npm'
-        cache-dependency-path: ./Content/Source
+        cache-dependency-path: ./Source
     - name: Install TailwindCSS
       run: npm install -g tailwindcss
     - name: Build TailwindCSS
-      working-directory: ./Content/Source
+      working-directory: ./Source
       run: npx tailwindcss -i ./TailwindSource.css -o ./Shared/Web/Styles/wwwroot/dist/output.css --watch --minify
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      working-directory: ./Content
       run: dotnet restore
     - name: Build
-      working-directory: ./Content
       run: dotnet build --no-restore
     - name: Test
-      working-directory: ./Content
       run: dotnet test --no-build --verbosity normal
