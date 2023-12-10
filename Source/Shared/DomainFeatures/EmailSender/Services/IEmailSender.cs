@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.EmailSender.Services
+﻿namespace Shared.DomainFeatures.EmailSender.Services
 {
     public interface IEmailSender
     {

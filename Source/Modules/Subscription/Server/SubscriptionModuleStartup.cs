@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Modules.Subscription.DomainFeatures;
 using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
 using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
-using Shared.Infrastructure.Modules;
+using Shared.DomainFeatures.Modules;
 using System.Reflection;
 
 namespace Modules.Subscription.Server

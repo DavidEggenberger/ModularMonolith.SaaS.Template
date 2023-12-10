@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using Shared.Infrastructure.CQRS.Query;
+using Shared.DomainFeatures.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries;

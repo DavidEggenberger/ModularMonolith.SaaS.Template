@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.CQRS;
-using Shared.Infrastructure.EFCore;
-using Shared.Infrastructure.EmailSender;
-using Shared.Infrastructure.Modules;
-using Shared.Infrastructure.MultiTenancy;
+using Shared.DomainFeatures.CQRS;
+using Shared.DomainFeatures.EFCore;
+using Shared.DomainFeatures.EmailSender;
+using Shared.DomainFeatures.Modules;
+using Shared.DomainFeatures.MultiTenancy;
 
-namespace Shared.Infrastructure
+namespace Shared.DomainFeatures
 {
     public static class Registrator
     {

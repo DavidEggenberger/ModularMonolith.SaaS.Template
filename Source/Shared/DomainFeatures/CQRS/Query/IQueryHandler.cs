@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.CQRS.Query
+﻿namespace Shared.DomainFeatures.CQRS.Query
 {
     public interface IQueryHandler<in TQuery, TQueryResult> where TQuery : IQuery<TQueryResult>
     {

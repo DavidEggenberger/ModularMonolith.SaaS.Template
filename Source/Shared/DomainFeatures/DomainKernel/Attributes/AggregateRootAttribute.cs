@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.DomainKernel.Attributes
+﻿namespace Shared.DomainFeatures.DomainKernel.Attributes
 {
     public class AggregateRootAttribute : Attribute
     {

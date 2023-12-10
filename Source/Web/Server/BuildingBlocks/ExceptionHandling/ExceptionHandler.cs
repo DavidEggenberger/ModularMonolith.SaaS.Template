@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.DomainFeatures.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using System;
 using System.Collections.Generic;

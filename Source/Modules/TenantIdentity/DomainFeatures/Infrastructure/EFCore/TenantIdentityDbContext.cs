@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate;
-using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.DomainFeatures.DomainKernel.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Infrastructure.EFCore.Configuration;
+using Shared.DomainFeatures.EFCore.Configuration;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain;
 

@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.BlobStorage
+﻿namespace Shared.DomainFeatures.BlobStorage
 {
     public class AzureBlobStorageClient
     {

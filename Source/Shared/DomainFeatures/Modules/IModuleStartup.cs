@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
 
-namespace Shared.Infrastructure.Modules
+namespace Shared.DomainFeatures.Modules
 {
     public interface IModuleStartup
     {

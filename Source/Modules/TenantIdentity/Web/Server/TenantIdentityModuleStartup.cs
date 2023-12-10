@@ -9,7 +9,7 @@ using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Security.Claims;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.Infrastructure.Modules;
+using Shared.DomainFeatures.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;

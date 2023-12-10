@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Shared.Infrastructure.CQRS.Command;
+using Shared.DomainFeatures.CQRS.Command;
 using System.Threading;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Commands

@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.CQRS.Query
+﻿namespace Shared.DomainFeatures.CQRS.Query
 {
     public interface IQuery<IResponse>
     {

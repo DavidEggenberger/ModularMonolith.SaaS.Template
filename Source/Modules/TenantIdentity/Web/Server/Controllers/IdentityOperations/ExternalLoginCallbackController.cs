@@ -5,7 +5,7 @@ using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
-using Shared.Infrastructure;
+using Shared.DomainFeatures;
 using System;
 using System.Threading.Tasks;
 

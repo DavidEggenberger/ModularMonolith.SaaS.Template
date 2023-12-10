@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Infrastructure.Modules;
+using Shared.DomainFeatures.Modules;
 using System.Reflection;
 
 namespace Modules.LandingPages.Web.Server

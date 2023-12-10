@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.MultiTenancy.Exceptions
+﻿namespace Shared.DomainFeatures.MultiTenancy.Exceptions
 {
     public class EntityNotTenantIdentifiableException : Exception
     {

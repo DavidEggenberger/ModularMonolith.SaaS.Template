@@ -1,5 +1,5 @@
 ﻿using Modules.Subscription.IntegrationEvents;
-using Shared.Infrastructure.CQRS.IntegrationEvent;
+using Shared.DomainFeatures.CQRS.IntegrationEvent;
 using System.Threading;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.IntegrationEventHandlers

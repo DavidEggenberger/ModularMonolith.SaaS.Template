@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.EFCore.Configuration
+﻿namespace Shared.DomainFeatures.EFCore.Configuration
 {
     public class EFCoreConfigurationConstants
     {

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Queries;
 using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain;
 using Shared.Kernel.BuildingBlocks.Authorization;
-using Shared.Infrastructure;
+using Shared.DomainFeatures;
 
 namespace Modules.Subscription.Server.Controllers
 {

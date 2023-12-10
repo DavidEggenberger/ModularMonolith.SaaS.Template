@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Shared.Infrastructure.CQRS.DomainEvent;
-using Shared.Infrastructure.DomainKernel;
-using Shared.Infrastructure.EFCore.MultiTenancy;
+using Shared.DomainFeatures.CQRS.DomainEvent;
+using Shared.DomainFeatures.DomainKernel;
+using Shared.DomainFeatures.EFCore.MultiTenancy;
 
-namespace Shared.Infrastructure.EFCore
+namespace Shared.DomainFeatures.EFCore
 {
     public class BaseDbContext<T> : MultiTenantDbContext<T> where T : DbContext
     {

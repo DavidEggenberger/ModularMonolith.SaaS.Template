@@ -1,5 +1,5 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.Infrastructure.CQRS.Command;
+using Shared.DomainFeatures.CQRS.Command;
 using System.Threading;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Commands

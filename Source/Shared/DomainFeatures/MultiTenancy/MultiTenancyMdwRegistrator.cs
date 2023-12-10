@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Shared.Infrastructure.MultiTenancy
+namespace Shared.DomainFeatures.MultiTenancy
 {
     public static class MultiTenancyMdwRegistrator
     {

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Shared.Infrastructure;
+using Shared.DomainFeatures;
 using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;

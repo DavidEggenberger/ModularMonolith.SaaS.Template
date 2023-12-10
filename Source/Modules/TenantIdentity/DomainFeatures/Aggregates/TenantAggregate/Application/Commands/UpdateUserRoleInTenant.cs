@@ -1,5 +1,5 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.Infrastructure.CQRS.Command;
+using Shared.DomainFeatures.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using System.Threading;
 

@@ -1,9 +1,9 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Enums;
 using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
-using Shared.Infrastructure.DomainKernel;
-using Shared.Infrastructure.DomainKernel.Attributes;
-using Shared.Infrastructure.DomainKernel.Exceptions;
+using Shared.DomainFeatures.DomainKernel;
+using Shared.DomainFeatures.DomainKernel.Attributes;
+using Shared.DomainFeatures.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.BuildingBlocks.Authorization.Service;

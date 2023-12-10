@@ -4,14 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
-using Shared.Infrastructure;
 using Web.Server.BuildingBlocks;
-using Shared.Infrastructure.Modules;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Modules.Subscription.Server;
 using Modules.TenantIdentity.Server;
+using Shared.DomainFeatures.Modules;
+using Shared.DomainFeatures;
 
 namespace Web.Server
 {

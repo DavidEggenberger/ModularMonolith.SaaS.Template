@@ -7,7 +7,7 @@ using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application
 using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
-using Shared.Infrastructure;
+using Shared.DomainFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;

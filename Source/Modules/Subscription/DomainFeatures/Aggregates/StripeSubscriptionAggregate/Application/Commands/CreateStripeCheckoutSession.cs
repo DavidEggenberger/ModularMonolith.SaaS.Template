@@ -1,4 +1,4 @@
-﻿using Shared.Infrastructure.CQRS.Command;
+﻿using Shared.DomainFeatures.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
 namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands

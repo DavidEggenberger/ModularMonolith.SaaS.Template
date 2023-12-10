@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.BlobStorageProvider
+﻿namespace Shared.DomainFeatures.BlobStorageProvider
 {
     public interface IBlobStorageClient
     {

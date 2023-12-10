@@ -1,4 +1,4 @@
-﻿namespace Shared.Infrastructure.CQRS.Command
+﻿namespace Shared.DomainFeatures.CQRS.Command
 {
     public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {

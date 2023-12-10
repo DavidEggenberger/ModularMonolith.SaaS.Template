@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.Infrastructure.CQRS.Query;
+using Shared.DomainFeatures.CQRS.Query;
 using System.Threading;
 
 namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries
