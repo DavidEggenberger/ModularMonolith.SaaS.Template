@@ -26,7 +26,7 @@
     <ProjectReference Include="..\..\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.csproj" />
     <ProjectReference Include="..\..\Modules\Subscription\Server\Modules.Subscription.Server.csproj" />
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj" />
-    <ProjectReference Include="..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Shared\Infrastructure\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\..\Shared\Web\Shared.Web.csproj" />
     <ProjectReference Include="..\Client\Web.Client.csproj" />
   </ItemGroup>

@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Infrastructure\Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Infrastructure\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\..\..\Shared\Kernel\Shared.Kernel.csproj" />
     <ProjectReference Include="..\..\Subscription\IntegrationEvents\Modules.Subscription.IntegrationEvents.csproj" />
     <ProjectReference Include="..\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj" />
