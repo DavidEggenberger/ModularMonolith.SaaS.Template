@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Client\Modules.TenantIdentity.Web.Client.csproj" />
-    <ProjectReference Include="..\..\Shared\Web\Shared.Web.csproj" />
   </ItemGroup>
 
 </Project>

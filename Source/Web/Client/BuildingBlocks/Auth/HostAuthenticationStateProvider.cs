@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
 using Web.Client.BuildingBlocks.Auth.Antiforgery;
-using Shared.Web;
+using Shared.Kernel.Constants;
 
 namespace Web.Client.BuildingBlocks.Auth
 {
