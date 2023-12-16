@@ -37,7 +37,7 @@ Besides modularity the template also follows a very pragmatic approach. Instead 
  **TenantAggregate**: <br/>
   **Application**: Contains the application logic split into Commands, Queries and IntegrationEventHandlers<br/> 
    **Commands**: The Commands with their respective CommandHandlers <br/>
-   **IntegrationEventHandlers**: The IntegrationEventHandlers handling IntegationEvents published from other Modules <br/>
+   **IntegrationEventHandlers**: IntegrationEventHandlers handling IntegationEvents published from other Modules<br/>
    **Queries**: The Queries with their respective QueryHandlers <br/>
   **Domain**: The aggregate's entities moduled following the principles of Domain Driven Design <br/> 
  **Infrastructure**: EF Core DbContext and Configuration for the whole Module
