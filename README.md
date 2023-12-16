@@ -29,5 +29,17 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 **DomainFeatures**: Defines the Commands/Queries and the respective Command/QueryHandlers <br/>
 **IntegrationEvents**: Project that can be referenced by other Modules. When the **DomainFeatures** publish an IntegrationEvent it can then be handled. This allows for cross Module communication.
 
-Besides modularity the template also follows a very pragmatic approach. The infrastructure components defined in **Shared.DomainFeatures** are not abstracted behind an interface. Instead they are directly used by the **DomainFeatures** of the respective modules. 
+Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure the template organizes its code in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **DomainFeatures** project. 
+
+<img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/DomainFeaturesOverview.png" />
+
+**Aggregates**: Domain Driven Design Pattern to organize entities: "cluster of domain objects that can be treated as a single unit (Martin Fowler)"<br/>
+ **TenantAggregate**: <br/>
+  **Application**: Contains the application logic split into Commands, Queries and IntegrationEventHandlers<br/> 
+   **Commands**: The Commands with their respective CommandHandlers <br/>
+   **IntegrationEventHandlers**: The IntegrationEventHandlers handling IntegationEvents published from other Modules <br/>
+   **Queries**: The Queries with their respective QueryHandlers <br/>
+  **Domain**: The aggregate's entities moduled following the principles of Domain Driven Design <br/> 
+ **Infrastructure**: EF Core DbContext and Configuration for the whole Module
+
 
