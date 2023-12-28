@@ -1,6 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks.Authorization;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Domain
 {
     public class StripeSubscription
     {

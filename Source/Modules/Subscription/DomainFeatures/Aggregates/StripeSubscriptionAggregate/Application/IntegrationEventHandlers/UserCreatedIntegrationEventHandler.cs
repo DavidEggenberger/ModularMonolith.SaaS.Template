@@ -1,7 +1,7 @@
 ﻿using Modules.TenantIdentity.IntegrationEvents;
-using Shared.DomainFeatures.CQRS.IntegrationEvent;
+using Shared.Features.CQRS.IntegrationEvent;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.IntegrationEventHandlers
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.IntegrationEventHandlers
 {
     public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler<UserCreatedIntegrationEvent>
     {

@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Stripe;
-using Modules.Subscription.DomainFeatures.Infrastructure;
-using Shared.DomainFeatures;
-using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands.Subscription;
+using Modules.Subscription.Features.Infrastructure;
+using Shared.Features;
+using Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands.Subscription;
 
 namespace Modules.Subscription.Server.WebHooks
 {

@@ -1,14 +1,14 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Enums;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Exceptions;
+﻿using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Enums;
+using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
-using Shared.DomainFeatures.DomainKernel;
-using Shared.DomainFeatures.DomainKernel.Attributes;
-using Shared.DomainFeatures.DomainKernel.Exceptions;
+using Shared.Features.DomainKernel;
+using Shared.Features.DomainKernel.Attributes;
+using Shared.Features.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.BuildingBlocks.Authorization.Service;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
     [AggregateRoot]
     public class Tenant : Entity

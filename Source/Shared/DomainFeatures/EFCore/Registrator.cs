@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Shared.DomainFeatures.EFCore.Configuration;
+using Shared.Features.EFCore.Configuration;
 
-namespace Shared.DomainFeatures.EFCore
+namespace Shared.Features.EFCore
 {
     public static class Registrator
     {

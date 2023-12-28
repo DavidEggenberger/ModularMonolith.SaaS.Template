@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain;
+using Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Domain;
 
-namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
+namespace Modules.Subscription.Features.Infrastructure.EFCore
 {
     public class SubscriptionDbContext : DbContext
     {

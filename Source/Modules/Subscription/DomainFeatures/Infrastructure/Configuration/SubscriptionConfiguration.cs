@@ -1,4 +1,4 @@
-﻿namespace Modules.Subscription.DomainFeatures.Infrastructure.Configuration
+﻿namespace Modules.Subscription.Features.Infrastructure.Configuration
 {
     public class SubscriptionConfiguration
     {

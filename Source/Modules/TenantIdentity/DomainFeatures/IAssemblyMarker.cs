@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.DomainFeatures
+﻿namespace Modules.TenantIdentity.Features
 {
     public interface IAssemblyMarker
     {

@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using Shared.DomainFeatures.MultiTenancy.Services;
-using Shared.DomainFeatures.MultiTenancy.Exceptions;
+using Shared.Features.MultiTenancy.Services;
+using Shared.Features.MultiTenancy.Exceptions;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
-using Shared.DomainFeatures.DomainKernel.Attributes;
+using Shared.Features.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
-using Shared.DomainFeatures.EFCore.Configuration;
+using Shared.Features.EFCore.Configuration;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Shared.DomainFeatures.EFCore.MultiTenancy
+namespace Shared.Features.EFCore.MultiTenancy
 {
     public class MultiTenantDbContext<T> : DbContext where T : DbContext
     {

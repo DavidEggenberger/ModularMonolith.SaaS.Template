@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace Shared.DomainFeatures.EFCore.Configuration
+namespace Shared.Features.EFCore.Configuration
 {
     internal class EFCoreConfigurationValidator : IValidateOptions<EFCoreConfiguration>
     {

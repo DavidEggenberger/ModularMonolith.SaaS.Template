@@ -1,6 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks;
 
-namespace Shared.DomainFeatures.DomainKernel
+namespace Shared.Features.DomainKernel
 { 
     public interface IExecutionContextAccessable
     {

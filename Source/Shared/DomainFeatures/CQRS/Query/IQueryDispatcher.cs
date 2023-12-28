@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.CQRS.Query
+﻿namespace Shared.Features.CQRS.Query
 {
     public interface IQueryDispatcher
     {

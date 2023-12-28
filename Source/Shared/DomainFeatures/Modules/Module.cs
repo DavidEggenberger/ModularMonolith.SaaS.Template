@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Shared.DomainFeatures.Modules
+namespace Shared.Features.Modules
 {
     public class Module
     {

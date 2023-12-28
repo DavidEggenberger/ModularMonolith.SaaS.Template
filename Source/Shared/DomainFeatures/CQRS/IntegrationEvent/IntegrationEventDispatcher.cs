@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Events;
 
-namespace Shared.DomainFeatures.CQRS.IntegrationEvent
+namespace Shared.Features.CQRS.IntegrationEvent
 {
     public class IntegrationEventDispatcher : IIntegrationEventDispatcher
     {

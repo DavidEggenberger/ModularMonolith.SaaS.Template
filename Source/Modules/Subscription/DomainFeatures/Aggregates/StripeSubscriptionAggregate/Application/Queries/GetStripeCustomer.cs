@@ -1,7 +1,7 @@
-﻿using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Domain;
-using Shared.DomainFeatures.CQRS.Query;
+﻿using Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Domain;
+using Shared.Features.CQRS.Query;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Queries
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.Queries
 {
     public class GetStripeCustomer : IQuery<StripeCustomer>
     {

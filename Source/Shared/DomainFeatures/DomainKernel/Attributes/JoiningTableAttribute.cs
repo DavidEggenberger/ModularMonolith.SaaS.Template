@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.DomainKernel.Attributes
+﻿namespace Shared.Features.DomainKernel.Attributes
 {
     public class JoiningTableAttribute : Attribute
     {

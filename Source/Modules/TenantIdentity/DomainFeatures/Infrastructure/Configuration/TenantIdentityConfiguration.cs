@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration
+﻿namespace Modules.TenantIdentity.Features.Infrastructure.Configuration
 {
     public class TenantIdentityConfiguration
     {

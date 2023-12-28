@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.DomainFeatures.CQRS.Query
+namespace Shared.Features.CQRS.Query
 {
     public class QueryDispatcher : IQueryDispatcher
     {

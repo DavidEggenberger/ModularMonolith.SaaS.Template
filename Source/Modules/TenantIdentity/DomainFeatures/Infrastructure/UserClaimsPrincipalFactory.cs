@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using Shared.DomainFeatures.CQRS.Query;
+using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries;
 
-namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
+namespace Modules.TenantIdentity.Features.Infrastructure
 {
     public class ContextUserClaimsPrincipalFactory<TUser> : IUserClaimsPrincipalFactory<TUser> where TUser : ApplicationUser
     {

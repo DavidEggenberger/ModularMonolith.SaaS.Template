@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.DomainFeatures.EmailSender.Services;
+using Shared.Features.EmailSender.Services;
 
-namespace Shared.DomainFeatures.EmailSender
+namespace Shared.Features.EmailSender
 {
     public static class EmailSenderDIRegistrator
     {

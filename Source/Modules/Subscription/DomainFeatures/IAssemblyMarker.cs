@@ -1,4 +1,4 @@
-﻿namespace Modules.Subscription.DomainFeatures
+﻿namespace Modules.Subscription.Features
 {
     public interface IAssemblyMarker
     {

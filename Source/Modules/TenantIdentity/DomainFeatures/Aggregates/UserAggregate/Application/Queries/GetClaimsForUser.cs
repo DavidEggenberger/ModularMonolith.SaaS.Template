@@ -1,10 +1,10 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.DomainFeatures.CQRS.Query;
+﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
+using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Security.Claims;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries
+namespace Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries
 {
     public class GetClaimsForUser : IQuery<IEnumerable<Claim>>
     {

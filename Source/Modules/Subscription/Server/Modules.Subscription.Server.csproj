@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
-    <ProjectReference Include="..\DomainFeatures\Modules.Subscription.DomainFeatures.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Features\Shared.Features.csproj" />
+    <ProjectReference Include="..\Features\Modules.Subscription.Features.csproj" />
   </ItemGroup>
 
 </Project>

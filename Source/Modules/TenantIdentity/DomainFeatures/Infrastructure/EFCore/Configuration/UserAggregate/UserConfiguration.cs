@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 
-namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate
+namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.UserAggregate
 {
     public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

@@ -1,6 +1,6 @@
-﻿using Shared.DomainFeatures.DomainKernel.Exceptions;
+﻿using Shared.Features.DomainKernel.Exceptions;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Exceptions
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Exceptions
 {
     public class TabsAlreadyClosedException : DomainException
     {

@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Shared.DomainFeatures;
+using Shared.Features;
 using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Queries;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.Commands;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Commands;
+using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Queries;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {

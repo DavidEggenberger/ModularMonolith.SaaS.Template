@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
-    <ProjectReference Include="..\..\DomainFeatures\Modules.TenantIdentity.DomainFeatures.csproj" />
+    <ProjectReference Include="..\..\..\..\Shared\DomainFeatures\Shared.Features.csproj" />
+    <ProjectReference Include="..\..\DomainFeatures\Modules.TenantIdentity.Features.csproj" />
     <ProjectReference Include="..\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
   </ItemGroup>
 

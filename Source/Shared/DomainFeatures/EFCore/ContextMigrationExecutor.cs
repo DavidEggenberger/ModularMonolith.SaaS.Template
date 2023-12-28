@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.DomainFeatures.EFCore
+namespace Shared.Features.EFCore
 {
     public static class ContextMigrationExecutor
     {

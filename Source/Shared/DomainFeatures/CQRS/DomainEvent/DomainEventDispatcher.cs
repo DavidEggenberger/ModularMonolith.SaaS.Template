@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.DomainFeatures.DomainKernel;
+using Shared.Features.DomainKernel;
 
-namespace Shared.DomainFeatures.CQRS.DomainEvent
+namespace Shared.Features.CQRS.DomainEvent
 {
     public class DomainEventDispatcher : IDomainEventDispatcher
     {

@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore.Configuration.UserAggregate;
-using Shared.DomainFeatures.DomainKernel.Exceptions;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.UserAggregate;
+using Shared.Features.DomainKernel.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.DomainFeatures.EFCore.Configuration;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain;
+using Shared.Features.EFCore.Configuration;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
 
-namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
+namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
     public class TenantIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {

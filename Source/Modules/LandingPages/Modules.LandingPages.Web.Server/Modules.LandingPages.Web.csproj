@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
+    <ProjectReference Include="..\..\..\Shared\DomainFeatures\Shared.Features.csproj" />
   </ItemGroup>
   
 

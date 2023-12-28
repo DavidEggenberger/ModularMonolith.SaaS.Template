@@ -1,7 +1,7 @@
-﻿using Shared.DomainFeatures.CQRS.Command;
+﻿using Shared.Features.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Authorization;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands
 {
     public class CreateStripeCheckoutSession : ICommand<Stripe.Checkout.Session>
     {

@@ -1,6 +1,6 @@
-﻿using Shared.DomainFeatures.CQRS.Query;
+﻿using Shared.Features.CQRS.Query;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Queries
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.Queries
 {
     public class GetStripeCheckoutSession : IQuery<Stripe.Checkout.Session>
     {

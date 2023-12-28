@@ -1,8 +1,8 @@
 ﻿using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
-using Shared.DomainFeatures.DomainKernel;
+using Shared.Features.DomainKernel;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
     public class TenantMembership : Entity
     {

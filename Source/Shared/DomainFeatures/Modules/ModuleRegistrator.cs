@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Shared.DomainFeatures.Modules
+namespace Shared.Features.Modules
 {
     public static class ModuleRegistrator
     {

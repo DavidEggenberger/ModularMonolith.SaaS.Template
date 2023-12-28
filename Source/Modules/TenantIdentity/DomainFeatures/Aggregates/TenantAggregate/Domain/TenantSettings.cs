@@ -1,6 +1,6 @@
-﻿using Shared.DomainFeatures.DomainKernel;
+﻿using Shared.Features.DomainKernel;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
     public class TenantSettings : Entity
     {

@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Domain.Enums
+﻿namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Enums
 {
     public enum SubscriptionStatus
     {

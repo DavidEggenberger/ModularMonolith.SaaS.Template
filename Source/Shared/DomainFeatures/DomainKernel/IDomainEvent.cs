@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.DomainKernel
+﻿namespace Shared.Features.DomainKernel
 {
     public interface IDomainEvent
     {

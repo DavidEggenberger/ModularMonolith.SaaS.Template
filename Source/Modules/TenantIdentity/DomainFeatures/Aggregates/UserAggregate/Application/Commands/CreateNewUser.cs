@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Shared.DomainFeatures.CQRS.Command;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
+using Shared.Features.CQRS.Command;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Commands
 {
     public class CreateNewUser : ICommand
     {

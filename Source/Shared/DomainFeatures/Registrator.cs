@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.DomainFeatures.CQRS;
-using Shared.DomainFeatures.EFCore;
-using Shared.DomainFeatures.EmailSender;
-using Shared.DomainFeatures.Modules;
-using Shared.DomainFeatures.MultiTenancy;
+using Shared.Features.CQRS;
+using Shared.Features.EFCore;
+using Shared.Features.EmailSender;
+using Shared.Features.Modules;
+using Shared.Features.MultiTenancy;
 
-namespace Shared.DomainFeatures
+namespace Shared.Features
 {
     public static class Registrator
     {
@@ -16,7 +16,7 @@ namespace Shared.DomainFeatures
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
 
-            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.DomainFeaturesAssembly is not null).Select(x => x.Startup.DomainFeaturesAssembly).ToArray());
+            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(x => x.Startup.FeaturesAssembly).ToArray());
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);
             services.RegisterMultiTenancy();

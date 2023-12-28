@@ -1,6 +1,6 @@
-﻿using Shared.DomainFeatures.CQRS.Command;
+﻿using Shared.Features.CQRS.Command;
 
-namespace Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands
+namespace Modules.Subscription.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands
 {
     public class CreateStripeBillingPortalSession : ICommand<Stripe.BillingPortal.Session>
     {

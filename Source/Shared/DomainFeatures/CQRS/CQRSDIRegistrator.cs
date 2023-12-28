@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using Shared.DomainFeatures.CQRS.Query;
-using Shared.DomainFeatures.CQRS.Command;
-using Shared.DomainFeatures.CQRS.IntegrationEvent;
-using Shared.DomainFeatures.CQRS.DomainEvent;
+using Shared.Features.CQRS.Query;
+using Shared.Features.CQRS.Command;
+using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.CQRS.DomainEvent;
 
-namespace Shared.DomainFeatures.CQRS
+namespace Shared.Features.CQRS
 {
     public static class CQRSDIRegistrator
     {

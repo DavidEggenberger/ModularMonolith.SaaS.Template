@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.DomainKernel.Exceptions
+﻿namespace Shared.Features.DomainKernel.Exceptions
 {
     public class InvalidEntityDeleteException : DomainException
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace Shared.DomainFeatures.MultiTenancy
+namespace Shared.Features.MultiTenancy
 {
     public class MultiTenancySecurityMiddleware
     {

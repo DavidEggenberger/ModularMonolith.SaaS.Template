@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Modules.Subscription.DomainFeatures.Infrastructure.Configuration
+namespace Modules.Subscription.Features.Infrastructure.Configuration
 {
     public static class Registrator
     {

@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.EFCore.Migrations
+﻿namespace Shared.Features.EFCore.Migrations
 {
     public interface IMigrationAssemblyMarker
     {

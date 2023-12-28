@@ -1,8 +1,8 @@
 ﻿using Modules.Subscription.IntegrationEvents;
-using Shared.DomainFeatures.CQRS.IntegrationEvent;
+using Shared.Features.CQRS.IntegrationEvent;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.Aggregates.TenantAggregate.Application.IntegrationEventHandlers
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.IntegrationEventHandlers
 {
     public class TenantSubscriptionCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantSubscriptionCreatedIntegrationEvent>
     {

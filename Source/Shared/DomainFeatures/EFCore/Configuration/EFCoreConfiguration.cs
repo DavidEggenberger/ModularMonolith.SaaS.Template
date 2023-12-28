@@ -1,4 +1,4 @@
-﻿namespace Shared.DomainFeatures.EFCore.Configuration
+﻿namespace Shared.Features.EFCore.Configuration
 {
     public class EFCoreConfiguration
     {

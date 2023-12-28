@@ -7,23 +7,23 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using System.Security.Claims;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
-using Shared.DomainFeatures.Modules;
+using Modules.TenantIdentity.Features.Infrastructure;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore;
+using Shared.Features.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
-using Modules.TenantIdentity.DomainFeatures.Aggregates.UserAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
+using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using System.Reflection;
-using Modules.TenantIdentity.DomainFeatures;
+using Modules.TenantIdentity.Features;
 
 namespace Modules.TenantIdentity.Server
 {
     public class TenantIdentityModuleStartup : IModuleStartup
     {
-        public Assembly DomainFeaturesAssembly => typeof(IAssemblyMarker).Assembly;
+        public Assembly FeaturesAssembly => typeof(IAssemblyMarker).Assembly;
 
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration = null)
         {

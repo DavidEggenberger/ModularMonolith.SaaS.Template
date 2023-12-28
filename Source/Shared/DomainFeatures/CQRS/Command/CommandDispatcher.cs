@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.DomainFeatures.CQRS.Command
+namespace Shared.Features.CQRS.Command
 {
     public class CommandDispatcher : ICommandDispatcher
     {

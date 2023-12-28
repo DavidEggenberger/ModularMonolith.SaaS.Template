@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.DomainFeatures.CQRS.Command;
-using Shared.DomainFeatures.CQRS.Query;
+using Shared.Features.CQRS.Command;
+using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
 
-namespace Shared.DomainFeatures
+namespace Shared.Features
 {
     public class BaseController : ControllerBase
     {

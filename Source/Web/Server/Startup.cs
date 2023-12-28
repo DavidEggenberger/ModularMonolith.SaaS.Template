@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using Modules.Subscription.Server;
 using Modules.TenantIdentity.Server;
-using Shared.DomainFeatures.Modules;
-using Shared.DomainFeatures;
+using Shared.Features.Modules;
+using Shared.Features;
 
 namespace Web.Server
 {
