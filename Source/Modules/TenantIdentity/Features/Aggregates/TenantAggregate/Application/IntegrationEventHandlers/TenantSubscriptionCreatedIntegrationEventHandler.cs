@@ -1,4 +1,4 @@
-﻿using Modules.Subscription.IntegrationEvents;
+﻿using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.CQRS.IntegrationEvent;
 using System.Threading;
 

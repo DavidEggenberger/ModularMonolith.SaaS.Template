@@ -20,7 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\DomainFeatures\Shared.Features.csproj" />
     <ProjectReference Include="..\..\..\Shared\Kernel\Shared.Kernel.csproj" />
-    <ProjectReference Include="..\..\Subscription\IntegrationEvents\Modules.Subscription.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\..\Subscriptions\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\..\Subscription\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj" />
     <ProjectReference Include="..\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj" />
     <ProjectReference Include="..\Web\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
   </ItemGroup>

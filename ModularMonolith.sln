@@ -35,13 +35,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{78544110-543F-4351-8096-077CC56B4E1E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscriptions", "Subscriptions", "{78544110-543F-4351-8096-077CC56B4E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Features", "Source\Modules\Subscription\Features\Modules.Subscription.Features.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Features", "Source\Modules\Subscriptions\Features\Modules.Subscriptions.Features.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Server", "Source\Modules\Subscription\Server\Modules.Subscription.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Server", "Source\Modules\Subscriptions\Server\Modules.Subscriptions.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.IntegrationEvents", "Source\Modules\Subscription\IntegrationEvents\Modules.Subscription.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.IntegrationEvents", "Source\Modules\Subscriptions\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
