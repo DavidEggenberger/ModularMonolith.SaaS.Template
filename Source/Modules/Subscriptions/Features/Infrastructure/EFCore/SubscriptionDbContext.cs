@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
 
 namespace Modules.Subscription.Features.Infrastructure.EFCore
 {

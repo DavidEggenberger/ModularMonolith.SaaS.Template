@@ -41,6 +41,7 @@ namespace Web.Server
 
             services.AddControllers();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             services.AddAuth();
 
@@ -83,7 +84,8 @@ namespace Web.Server
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
-                
+                endpoints.MapBlazorHub();
+
                 endpoints.MapFallbackToPage("/_Host");
             });
         }

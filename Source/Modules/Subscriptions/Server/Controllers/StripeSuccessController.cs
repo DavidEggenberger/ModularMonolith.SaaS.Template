@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Features;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate.Application.Queries;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate.Application.Queries;
 
 namespace Modules.Subscription.Server.Controllers
 {

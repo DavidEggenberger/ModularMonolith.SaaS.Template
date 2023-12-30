@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Web.Server.Pages
 {
-    public class _ClientHostModel : PageModel
+    public class _HostModel : PageModel
     {
         public void OnGet()
         {

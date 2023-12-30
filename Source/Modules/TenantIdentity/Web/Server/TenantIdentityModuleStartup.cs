@@ -14,10 +14,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using System.Reflection;
 using Modules.TenantIdentity.Features;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 
 namespace Modules.TenantIdentity.Server
 {

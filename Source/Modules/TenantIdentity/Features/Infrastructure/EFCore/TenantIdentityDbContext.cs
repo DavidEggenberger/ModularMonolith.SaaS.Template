@@ -6,8 +6,8 @@ using Shared.Features.DomainKernel.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {

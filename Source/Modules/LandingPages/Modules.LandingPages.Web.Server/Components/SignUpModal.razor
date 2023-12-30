@@ -1,0 +1,33 @@
+﻿@*@if (switchToSignIn)
+{
+    <SignInModal CancelRequestedCallback="CancelRequestedCallback"/>
+}
+else
+{
+    <div class="flex flex-col gap-y-[15px] pt-[25px] pl-1 w-[350px]">
+        <div class="flex flex-row justify-center">
+            <img class="h-[70px]" src="/img/ice-cream-cone.png" />
+        </div>
+        <div class="flex flex-col items-center">
+            <h3 class="text-[24px]">Create a new account</h3>
+            <h5>Or sign in to an <span @onclick="() => switchToSignIn = true" class="text-strawberry cursor-pointer">existing account</span></h5>
+        </div>
+        <div class="flex flex-col gap-y-[10px] items-center mt-[15px]">
+            <a href="/api/login/Google" class="h-[41px] w-[215px] flex flex-column items-center bg-[#F2F2F2] gap-x-[10px]">
+                <img src="/icons/signinproviders/google.png" class="h-[41px]" />
+                <span>Sign in with Google</span>
+            </a>
+            <a href="/api/login/Microsoft">
+                <img src="/icons/signinproviders/microsoft.png" />
+            </a>
+            <a href="/api/login/linkedin">
+                <img src="/icons/signinproviders/linkedin.png" />
+            </a>
+        </div>
+        <div class="flex flex-row justify-end mt-[15px]">
+            <button @onclick="async () => await CancelRequestedAsync()" class="font-semibold rounded-[3px] p-[5px] text-[15px] bg-grey-300 hover:bg-grey-500">Cancel</button>
+        </div>
+    </div>
+}
+
+*@

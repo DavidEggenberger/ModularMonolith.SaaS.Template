@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using Modules.Subscription.Features.Infrastructure;
 using Shared.Features;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate.Application.Commands.Subscription;
 
 namespace Modules.Subscription.Server.WebHooks
 {
@@ -34,17 +33,17 @@ namespace Modules.Subscription.Server.WebHooks
                 if (stripeEvent.Type == Events.CustomerSubscriptionCreated)
                 {
                     var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new CreateSubscriptionForTenant { Subscription = subscription });
+                    //await commandDispatcher.DispatchAsync(new CreateSubscriptionForTenant { Subscription = subscription });
                 }
                 else if (stripeEvent.Type == Events.CustomerSubscriptionUpdated)
                 {
                     var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new UpdateSubscription { Subscription = subscription });
+                    //await commandDispatcher.DispatchAsync(new UpdateSubscription { Subscription = subscription });
                 }
                 else if (stripeEvent.Type == Events.CustomerSubscriptionDeleted)
                 {
                     var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new DeleteSubscription { Subscription = subscription });
+                    //await commandDispatcher.DispatchAsync(new DeleteSubscription { Subscription = subscription });
                 }
                 return Ok();
             }

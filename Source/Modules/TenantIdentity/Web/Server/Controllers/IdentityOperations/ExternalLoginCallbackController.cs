@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Commands;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 using Shared.Features;
 using System;
 using System.Threading.Tasks;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {

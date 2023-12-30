@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 using Shared.Features.CQRS.Command;
 using System.Threading;
 

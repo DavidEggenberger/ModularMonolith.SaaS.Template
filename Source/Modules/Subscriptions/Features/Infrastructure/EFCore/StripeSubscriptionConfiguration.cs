@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
 
 namespace Modules.Subscription.Features.Infrastructure.EFCore
 {

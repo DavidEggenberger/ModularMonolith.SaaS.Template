@@ -9,10 +9,10 @@ using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;
 using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Domain;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Commands;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {

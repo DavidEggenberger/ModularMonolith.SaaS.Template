@@ -2,7 +2,7 @@
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using Shared.Features;
-using Modules.Subscriptions.Features.StripeSubscriptionAggregate.Application.Commands;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate.Application.Commands;
 
 namespace Modules.Subscription.Server.Controllers
 {
