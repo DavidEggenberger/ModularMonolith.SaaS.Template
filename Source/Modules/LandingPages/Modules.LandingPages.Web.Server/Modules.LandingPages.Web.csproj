@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\DomainFeatures\Shared.Features.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Features\Shared.Features.csproj" />
   </ItemGroup>
   
 

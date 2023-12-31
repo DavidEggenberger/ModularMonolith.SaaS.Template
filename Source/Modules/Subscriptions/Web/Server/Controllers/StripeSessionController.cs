@@ -3,6 +3,7 @@ using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Attributes;
 using Shared.Features;
 using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate.Application.Commands;
+using Modules.Subscriptions.Features.Infrastructure.StripePayments;
 
 namespace Modules.Subscription.Server.Controllers
 {
@@ -22,6 +23,7 @@ namespace Modules.Subscription.Server.Controllers
             var createStripeCheckoutSession = new CreateStripeCheckoutSession 
             { 
                 SubscriptionPlanType = subscriptionPlanType,
+                UserId = executionContextAccessor.UserId,
                 TenantId = executionContextAccessor.TenantId,
                 RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri
             };
@@ -37,7 +39,8 @@ namespace Modules.Subscription.Server.Controllers
         {
             var createBillingPortalSession = new CreateStripeBillingPortalSession
             {
-                RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri
+                UserId = executionContextAccessor.UserId,
+                RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri,
             };
             var billingPortalSession = await commandDispatcher.DispatchAsync<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>(createBillingPortalSession);
 

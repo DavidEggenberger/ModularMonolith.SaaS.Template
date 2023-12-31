@@ -9,10 +9,18 @@ namespace Shared.Features.EFCore
 {
     public class BaseDbContext<T> : MultiTenantDbContext<T> where T : DbContext
     {
+        private readonly string schemaName;
         private readonly IDomainEventDispatcher domainEventDispatcher;
-        public BaseDbContext(IServiceProvider serviceProvider, DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
+
+        public BaseDbContext(IServiceProvider serviceProvider, string schemaName, DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
+            this.schemaName = schemaName;
             domainEventDispatcher = serviceProvider.GetService<IDomainEventDispatcher>();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema(schemaName);
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

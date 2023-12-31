@@ -6,12 +6,7 @@ namespace Modules.Subscription.Features.Infrastructure.Configuration
     {
         public ValidateOptionsResult Validate(string name, SubscriptionConfiguration options)
         {
-            if (string.IsNullOrEmpty(options.StripeProfessionalPlanId))
-            {
-                throw new ArgumentNullException();
-            }
-
-            if (string.IsNullOrEmpty(options.StripeProfessionalPlanId))
+            if (string.IsNullOrEmpty(options.StripeProfessionalPlanPriceId))
             {
                 throw new ArgumentNullException();
             }

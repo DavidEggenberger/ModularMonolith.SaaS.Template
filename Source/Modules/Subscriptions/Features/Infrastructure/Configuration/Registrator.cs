@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Stripe;
 
 namespace Modules.Subscription.Features.Infrastructure.Configuration
 {
@@ -8,7 +9,7 @@ namespace Modules.Subscription.Features.Infrastructure.Configuration
     {
         public static IServiceCollection RegisterConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            Stripe.StripeConfiguration.ApiKey = configuration[SubscriptionConfiguration.StripeAPIKeyConstant];
+            StripeConfiguration.ApiKey = configuration["SubscriptionConfiguration:StripeAPIKey"];
 
             services.Configure<SubscriptionConfiguration>(configuration.GetSection(nameof(SubscriptionConfiguration)));
             services.AddScoped<SubscriptionConfiguration>(sp =>

@@ -2,8 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Features;
-using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
 using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate.Application.Queries;
+using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate.Aplication.Queries;
 
 namespace Modules.Subscription.Server.Controllers
 {

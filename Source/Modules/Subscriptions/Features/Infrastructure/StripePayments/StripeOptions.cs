@@ -1,6 +1,7 @@
-﻿using Shared.Kernel.BuildingBlocks.Authorization;
+﻿using Modules.Subscriptions.Features.Agregates.SubscriptionAggregate;
+using Shared.Kernel.BuildingBlocks.Authorization;
 
-namespace Modules.Subscription.Features.Infrastructure
+namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
     public class StripeOptions
     {
