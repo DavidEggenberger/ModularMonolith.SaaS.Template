@@ -4,10 +4,9 @@ using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.DomainKernel
 {
-    public abstract class Entity : IAuditable, IIdentifiable, ITenantIdentifiable, IConcurrent
+    public abstract class Entity : IAuditable, IIdentifiable, IConcurrent
     {
         public Guid Id { get; set; }
-        public virtual Guid TenantId { get; set; }
         public Guid CreatedByUserId { get; set; }
         public bool IsSoftDeleted { get; set; }
         public byte[] RowVersion { get; set; }

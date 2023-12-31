@@ -8,7 +8,7 @@ namespace Shared.Features.EFCore.MultiTenancy
     public static class MultiTenancyEntityConfiguration
     {
         static void ConfigureAggregateRoot<TAggregateRoot>(ModelBuilder modelBuilder, Guid teamId)
-           where TAggregateRoot : Entity
+           where TAggregateRoot : AggregateRoot
         {
             modelBuilder.Entity<TAggregateRoot>(builder =>
             {
@@ -34,7 +34,7 @@ namespace Shared.Features.EFCore.MultiTenancy
                 .Single(m => m.Name == nameof(ConfigureEntity));
 
 
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(x => x.GetType().GetCustomAttribute(typeof(AggregateRootAttribute)) != null))
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(x => x is AggregateRoot))
             {
                 configureAggregateRootMethod.MakeGenericMethod(entityType.ClrType, entityType.GetType()).Invoke(null, new object[] { modelBuilder, teamId });
             }

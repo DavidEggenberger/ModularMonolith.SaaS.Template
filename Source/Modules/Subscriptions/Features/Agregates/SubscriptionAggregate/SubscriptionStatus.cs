@@ -1,6 +1,6 @@
 ﻿namespace Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate
 {
-    public enum StripeSubscriptionStatus
+    public enum SubscriptionStatus
     {
         Active,
         Canceled,

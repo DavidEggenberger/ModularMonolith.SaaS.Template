@@ -7,11 +7,11 @@ using Shared.Features.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Shared.Kernel.BuildingBlocks.Authorization.Roles;
 using Shared.Kernel.BuildingBlocks.Authorization.Service;
+using System;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
-    [AggregateRoot]
-    public class Tenant : Entity
+    public class Tenant : AggregateRoot
     {
         private readonly IAuthorizationService _authorizationService;
 

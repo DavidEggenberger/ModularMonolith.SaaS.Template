@@ -16,14 +16,14 @@ using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using System.Reflection;
-using Modules.TenantIdentity.Features;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
+using Shared.Features.EFCore;
 
 namespace Modules.TenantIdentity.Server
 {
     public class TenantIdentityModuleStartup : IModuleStartup
     {
-        public Assembly FeaturesAssembly => typeof(IAssemblyMarker).Assembly;
+        public Assembly FeaturesAssembly => typeof(TenantIdentityModuleStartup).Assembly;
 
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration = null)
         {
@@ -37,12 +37,7 @@ namespace Modules.TenantIdentity.Server
                 options.ValidationInterval = TimeSpan.FromSeconds(0);
             });
 
-            services.AddDbContext<TenantIdentityDbContext>();
-
-            //if (webHostEnvironment.IsProduction())
-            //{
-            //    services.MigrateContext<TenantIdentityDbContext>();
-            //}
+            services.RegisterDbContext<TenantIdentityDbContext>(schemaName: "TenantIdentity");
 
             var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 

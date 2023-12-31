@@ -21,6 +21,7 @@ namespace Shared.Features.EFCore
             await DispatchEventsAsync(cancellationToken);
             return changedRowCount;
         }
+
         private async Task DispatchEventsAsync(CancellationToken cancellationToken)
         {
             var domainEntities = ChangeTracker

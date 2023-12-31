@@ -2,6 +2,8 @@
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Authorization;
+using System;
+using System.Collections.Generic;
 
 namespace Modules.TenantIdentity.Features.Aggregates.UserAggregate
 {

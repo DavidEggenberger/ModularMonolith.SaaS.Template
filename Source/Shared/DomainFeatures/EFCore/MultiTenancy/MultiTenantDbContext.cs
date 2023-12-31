@@ -9,6 +9,7 @@ using Shared.Features.DomainKernel.Attributes;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using Shared.Features.DomainKernel;
 
 namespace Shared.Features.EFCore.MultiTenancy
 {
@@ -32,20 +33,10 @@ namespace Shared.Features.EFCore.MultiTenancy
         {
             var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
 
-            if (hostEnvironment.IsDevelopment())
+            optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
             {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                });
-            }
-            if (hostEnvironment.IsProduction())
-            {
-                if (!optionsBuilder.IsConfigured)
-                {
-                    optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
-                }
-            }
+                sqlServerOptions.EnableRetryOnFailure(5);
+            });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -124,7 +115,7 @@ namespace Shared.Features.EFCore.MultiTenancy
 
         private void ThrowIfDbSetEntityNotTenantIdentifiable(ModelBuilder modelBuilder)
         {
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(t => t.ClrType.GetCustomAttribute<AggregateRootAttribute>() is not null))
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(t => t is AggregateRoot))
             {
                 if (typeof(ITenantIdentifiable).IsAssignableFrom(entityType.ClrType) is false)
                 {

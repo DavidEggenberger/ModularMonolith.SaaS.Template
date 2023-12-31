@@ -8,10 +8,10 @@ using Web.Server.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Modules.Subscription.Server;
 using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
+using Modules.Subscription.Server;
 
 namespace Web.Server
 {
@@ -49,7 +49,7 @@ namespace Web.Server
             services.AddSharedInfrastructure();
 
             services.AddModule<TenantIdentityModuleStartup>(Configuration);
-            services.AddModule<SubscriptionModuleStartup>();
+            services.AddModule<SubscriptionsModuleStartup>();
             services.AddModule<LandingPagesModuleStartup>();
         }
 

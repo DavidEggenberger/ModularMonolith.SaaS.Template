@@ -39,9 +39,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscriptions", "Subscripti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Features", "Source\Modules\Subscriptions\Features\Modules.Subscriptions.Features.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Server", "Source\Modules\Subscriptions\Server\Modules.Subscriptions.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Web.Server", "Source\Modules\Subscriptions\Web\Server\Modules.Subscriptions.Web.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.IntegrationEvents", "Source\Modules\Subscriptions\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,8 +123,9 @@ Global
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0} = {5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}
 		{78544110-543F-4351-8096-077CC56B4E1E} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
 		{3E8654C7-7D3C-4750-AD7B-1AE34D79493E} = {78544110-543F-4351-8096-077CC56B4E1E}
-		{7DECAA22-D38F-486F-BE0C-1F4551825E1D} = {78544110-543F-4351-8096-077CC56B4E1E}
+		{7DECAA22-D38F-486F-BE0C-1F4551825E1D} = {079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5}
 		{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA} = {78544110-543F-4351-8096-077CC56B4E1E}
+		{079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5} = {78544110-543F-4351-8096-077CC56B4E1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}

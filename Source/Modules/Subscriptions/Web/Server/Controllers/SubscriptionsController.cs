@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modules.Subscriptions.Server.Controllers
 {
-    internal class SubscriptionsController
+    public class SubscriptionsController
     {
     }
 }
