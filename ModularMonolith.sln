@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Server", "Source\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Features", "Source\Shared\DomainFeatures\Shared.Features.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Features", "Source\Shared\Features\Shared.Features.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPages", "{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}"
 EndProject
