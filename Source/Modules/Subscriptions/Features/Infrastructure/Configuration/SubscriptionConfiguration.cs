@@ -1,5 +1,5 @@
 ﻿using Modules.Subscriptions.Features.Infrastructure.StripePayments;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscription.Features.Infrastructure.Configuration
 {

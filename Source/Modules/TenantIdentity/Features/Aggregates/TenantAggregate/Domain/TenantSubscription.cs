@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Enums;
 using Shared.Features.DomainKernel;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {

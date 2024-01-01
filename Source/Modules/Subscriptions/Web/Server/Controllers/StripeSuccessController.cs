@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Features;
 using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate.Application.Queries;
 using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;

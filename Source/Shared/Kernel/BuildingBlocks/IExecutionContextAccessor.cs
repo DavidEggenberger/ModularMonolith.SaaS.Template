@@ -1,5 +1,5 @@
-﻿using Shared.Kernel.BuildingBlocks.Authorization;
-using Shared.Kernel.BuildingBlocks.Authorization.Roles;
+﻿using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.BuildingBlocks.Auth.Roles;
 
 namespace Shared.Kernel.BuildingBlocks
 {

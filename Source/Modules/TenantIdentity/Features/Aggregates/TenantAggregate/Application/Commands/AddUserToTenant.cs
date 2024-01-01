@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
-using Shared.Kernel.BuildingBlocks.Authorization.Roles;
+using Shared.Kernel.BuildingBlocks.Auth.Roles;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Authorization.Constants
+﻿namespace Shared.Kernel.BuildingBlocks.Auth.Constants
 {
     public class SubscriptionPlanConstants
     {

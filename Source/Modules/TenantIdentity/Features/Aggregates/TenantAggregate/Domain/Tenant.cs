@@ -4,9 +4,9 @@ using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.DomainKernel;
 using Shared.Features.DomainKernel.Attributes;
 using Shared.Features.DomainKernel.Exceptions;
-using Shared.Kernel.BuildingBlocks.Authorization;
-using Shared.Kernel.BuildingBlocks.Authorization.Roles;
-using Shared.Kernel.BuildingBlocks.Authorization.Service;
+using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.BuildingBlocks.Auth.Roles;
+using Shared.Kernel.BuildingBlocks.Auth.Service;
 using System;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain

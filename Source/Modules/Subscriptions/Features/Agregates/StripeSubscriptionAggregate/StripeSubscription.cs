@@ -1,6 +1,6 @@
 ﻿using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
 using Shared.Features.DomainKernel;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate
 {

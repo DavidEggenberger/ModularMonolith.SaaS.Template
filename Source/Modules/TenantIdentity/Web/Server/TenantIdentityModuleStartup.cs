@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
 using Modules.TenantIdentity.Features.Infrastructure;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;

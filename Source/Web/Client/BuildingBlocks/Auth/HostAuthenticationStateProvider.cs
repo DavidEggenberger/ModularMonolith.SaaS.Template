@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
-using Shared.Kernel.BuildingBlocks.Authorization.Constants;
+using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Net.Http;
 using System.Net;
 using System.Security.Claims;

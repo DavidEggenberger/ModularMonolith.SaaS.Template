@@ -3,7 +3,7 @@ using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
 using System;
 using System.Collections.Generic;

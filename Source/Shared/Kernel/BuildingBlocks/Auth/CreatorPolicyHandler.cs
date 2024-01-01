@@ -2,7 +2,7 @@
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 using Shared.Kernel.Interfaces;
 
-namespace Shared.Kernel.BuildingBlocks.Authorization
+namespace Shared.Kernel.BuildingBlocks.Auth
 {
     public class CreatorPolicyHandler : AuthorizationHandler<CreatorPolicyRequirement, IAuditable>
     {

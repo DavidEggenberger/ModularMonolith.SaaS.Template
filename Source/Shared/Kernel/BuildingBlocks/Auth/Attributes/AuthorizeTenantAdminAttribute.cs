@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Shared.Kernel.BuildingBlocks.Authorization.Attributes
+namespace Shared.Kernel.BuildingBlocks.Auth.Attributes
 {
 
     [Authorize(Policy = "TenantAdmin")]
