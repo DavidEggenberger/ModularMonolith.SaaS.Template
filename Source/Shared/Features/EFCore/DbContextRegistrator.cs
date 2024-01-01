@@ -7,7 +7,7 @@ namespace Shared.Features.EFCore
 {
     public static class DbContextRegistrator
     {
-        public static void RegisterDbContext<T>(this IServiceCollection services, string schemaName) where T : BaseDbContext<T>
+        public static void RegisterDbContext<T>(this IServiceCollection services, string schemaName) where T : DbContext
         {
             var serviceProvider = services.BuildServiceProvider();
 

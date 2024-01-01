@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Shared.Features.MultiTenancy.Exceptions
+namespace Shared.Features.EFCore.MultiTenancy.Exceptions
 {
     [Serializable]
     internal class CrossTenantUpdateException : Exception

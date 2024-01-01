@@ -4,7 +4,6 @@ using Shared.Features.CQRS;
 using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
-using Shared.Features.MultiTenancy;
 
 namespace Shared.Features
 {
@@ -19,7 +18,6 @@ namespace Shared.Features
             services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(x => x.Startup.FeaturesAssembly).ToArray());
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);
-            services.RegisterMultiTenancy();
 
             return services;
         }

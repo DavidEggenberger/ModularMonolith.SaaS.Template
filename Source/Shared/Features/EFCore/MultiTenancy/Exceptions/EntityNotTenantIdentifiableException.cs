@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.MultiTenancy.Exceptions
+﻿namespace Shared.Features.EFCore.MultiTenancy.Exceptions
 {
     public class EntityNotTenantIdentifiableException : Exception
     {
