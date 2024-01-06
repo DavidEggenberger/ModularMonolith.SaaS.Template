@@ -5,13 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
 using Web.Server.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using Modules.Subscription.Server;
 using Modules.TenantIdentity.Server;
-using Shared.DomainFeatures.Modules;
-using Shared.DomainFeatures;
+using Shared.Features.Modules;
+using Shared.Features;
+using Modules.Subscription.Server;
 
 namespace Web.Server
 {
@@ -41,6 +41,7 @@ namespace Web.Server
 
             services.AddControllers();
             services.AddRazorPages();
+            services.AddServerSideBlazor();
 
             services.AddAuth();
 
@@ -48,7 +49,7 @@ namespace Web.Server
             services.AddSharedInfrastructure();
 
             services.AddModule<TenantIdentityModuleStartup>(Configuration);
-            services.AddModule<SubscriptionModuleStartup>();
+            services.AddModule<SubscriptionsModuleStartup>();
             services.AddModule<LandingPagesModuleStartup>();
         }
 
@@ -83,7 +84,8 @@ namespace Web.Server
             {
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
-                
+                endpoints.MapBlazorHub();
+
                 endpoints.MapFallbackToPage("/_Host");
             });
         }

@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Routing;
+@using Modules.LandingPages.Web.Server;
+@using Modules.LandingPages.Web.Server.Pages;
+@using Blazored.Modal;
+
+<CascadingBlazoredModal>
+    <Router AppAssembly="@typeof(LandingPagesApp).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(LandingPagesLayout)" />
+        </Found>
+        <NotFound>
+            <PageTitle>Not found</PageTitle>
+            <LayoutView Layout="@typeof(LandingPagesLayout)">
+                <p role="alert">Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingBlazoredModal>

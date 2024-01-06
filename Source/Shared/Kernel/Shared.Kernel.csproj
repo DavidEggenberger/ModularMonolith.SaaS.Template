@@ -5,13 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.5.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.16" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <Compile Remove="BuildingBlocks\Auth\Requirements\**" />
+    <EmbeddedResource Remove="BuildingBlocks\Auth\Requirements\**" />
+    <None Remove="BuildingBlocks\Auth\Requirements\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BuildingBlocks\Auth\Requirements\" />
+    <PackageReference Include="FluentValidation" Version="11.5.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="6.0.16" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

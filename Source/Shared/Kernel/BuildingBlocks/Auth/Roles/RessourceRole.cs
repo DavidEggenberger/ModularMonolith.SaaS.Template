@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Authorization.Roles
+﻿namespace Shared.Kernel.BuildingBlocks.Auth.Roles
 {
     internal class RessourceRole
     {

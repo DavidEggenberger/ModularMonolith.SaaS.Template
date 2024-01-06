@@ -12,14 +12,15 @@
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
 <body class="h-screen grid width-xxsm:grid-rows-40px-12rows width-xsm:grid-rows-40px-12rows width-md:grid-rows-80px-12rows">
-    @if (!User.Identity.IsAuthenticated)
+    @if (User.Identity.IsAuthenticated)
     {
         <component type="typeof(App)" render-mode="WebAssembly" />
         <script src="_framework/blazor.webassembly.js"></script>
     }
     else
     {
-        <partial name="@(LandingPageModel.Page)" model="new LandingPageModel()" />
+        <component type="typeof(LandingPagesApp)" render-mode="Server" />
+        <script src="_framework/blazor.server.js"></script>
     }
 </body>
 </html>

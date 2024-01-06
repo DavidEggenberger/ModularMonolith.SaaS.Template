@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Shared.DomainFeatures;
+using Shared.Features;
 using System;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates

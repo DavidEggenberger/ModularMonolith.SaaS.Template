@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TenantIdentity", "TenantIde
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{F813B837-ABC4-4014-8EFE-E41B0115E215}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.DomainFeatures", "Source\Modules\TenantIdentity\DomainFeatures\Modules.TenantIdentity.DomainFeatures.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Features", "Source\Modules\TenantIdentity\Features\Modules.TenantIdentity.Features.csproj", "{7CDD9EF6-4BBC-47F8-A1E6-DB8C6829D3AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Client", "Source\Modules\TenantIdentity\Web\Client\Modules.TenantIdentity.Web.Client.csproj", "{D5015915-70A7-43CE-8E29-34F6C71F960E}"
 EndProject
@@ -29,19 +29,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.TenantIdentity.Web.Server", "Source\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj", "{D5B57887-1F64-4F6F-8793-0530DB9942DB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.DomainFeatures", "Source\Shared\DomainFeatures\Shared.DomainFeatures.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Features", "Source\Shared\Features\Shared.Features.csproj", "{F467D121-BDE5-451B-B175-B01F3E7E634F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LandingPages", "LandingPages", "{5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.LandingPages.Web", "Source\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.csproj", "{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscription", "Subscription", "{78544110-543F-4351-8096-077CC56B4E1E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Subscriptions", "Subscriptions", "{78544110-543F-4351-8096-077CC56B4E1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.DomainFeatures", "Source\Modules\Subscription\DomainFeatures\Modules.Subscription.DomainFeatures.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Features", "Source\Modules\Subscriptions\Features\Modules.Subscriptions.Features.csproj", "{3E8654C7-7D3C-4750-AD7B-1AE34D79493E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.Server", "Source\Modules\Subscription\Server\Modules.Subscription.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.Web.Server", "Source\Modules\Subscriptions\Web\Server\Modules.Subscriptions.Web.Server.csproj", "{7DECAA22-D38F-486F-BE0C-1F4551825E1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscription.IntegrationEvents", "Source\Modules\Subscription\IntegrationEvents\Modules.Subscription.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Subscriptions.IntegrationEvents", "Source\Modules\Subscriptions\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj", "{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,8 +123,9 @@ Global
 		{64CFB1A8-0F27-4990-97E8-2023BF6D5DF0} = {5A77BA95-9C7B-41BE-A4F4-CF2FE18CFA03}
 		{78544110-543F-4351-8096-077CC56B4E1E} = {5EFD35D5-4900-4756-9C87-9BB98381C3E8}
 		{3E8654C7-7D3C-4750-AD7B-1AE34D79493E} = {78544110-543F-4351-8096-077CC56B4E1E}
-		{7DECAA22-D38F-486F-BE0C-1F4551825E1D} = {78544110-543F-4351-8096-077CC56B4E1E}
+		{7DECAA22-D38F-486F-BE0C-1F4551825E1D} = {079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5}
 		{BCFEB21B-42F2-46FD-AC75-ACEA1F9095EA} = {78544110-543F-4351-8096-077CC56B4E1E}
+		{079BF8CF-63EB-4836-ABB1-FD49B5EE5AD5} = {78544110-543F-4351-8096-077CC56B4E1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D92CEBB5-9641-478B-8F3B-FC3251AB75EE}

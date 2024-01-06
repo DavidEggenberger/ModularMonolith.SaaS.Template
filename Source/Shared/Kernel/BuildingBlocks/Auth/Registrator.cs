@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.Authorization.Constants;
-using Shared.Kernel.BuildingBlocks.Authorization.Service;
+using Shared.Kernel.BuildingBlocks.Auth.Constants;
+using Shared.Kernel.BuildingBlocks.Auth.Service;
 
-namespace Shared.Kernel.BuildingBlocks.Authorization
+namespace Shared.Kernel.BuildingBlocks.Auth
 {
     public static class Registrator
     {
         public static IServiceCollection AddAuth(this IServiceCollection services)
         {
-            services.AddScoped<Shared.Kernel.BuildingBlocks.Authorization.Service.IAuthorizationService, AuthorizationService>();
+            services.AddScoped<Shared.Kernel.BuildingBlocks.Auth.Service.IAuthorizationService, AuthorizationService>();
 
             services.AddAuthorizationCore(options =>
             {
