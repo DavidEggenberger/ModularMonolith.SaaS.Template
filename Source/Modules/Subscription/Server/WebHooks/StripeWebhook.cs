@@ -5,6 +5,8 @@ using Stripe;
 using Modules.Subscription.DomainFeatures.Infrastructure;
 using Shared.DomainFeatures;
 using Modules.Subscription.DomainFeatures.Aggregates.StripeSubscriptionAggregate.Application.Commands.Subscription;
+using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
+using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands;
 
 namespace Modules.Subscription.Server.WebHooks
 {
@@ -26,26 +28,46 @@ namespace Modules.Subscription.Server.WebHooks
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             try
             {
-                var stripeEvent = EventUtility.ParseEvent(json);
+                var stripeEvent = EventUtility.ParseEvent(json, false);
                 var signatureHeader = Request.Headers["Stripe-Signature"];
                 stripeEvent = EventUtility.ConstructEvent(json,
-                        signatureHeader, stripeOptions.EndpointSecret);
+                        signatureHeader, subscriptionConfiguration.StripeEndpointSecret, throwOnApiVersionMismatch: false);
 
-                if (stripeEvent.Type == Events.CustomerSubscriptionCreated)
+                // Minimum Events copied from https://stripe.com/docs/billing/subscriptions/build-subscriptions
+                // Sent when a customer clicks the Pay or Subscribe button in Checkout, informing you of a new purchase. (Stripe)
+                if (stripeEvent.Type == Events.CheckoutSessionCompleted)
                 {
-                    var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new CreateSubscriptionForTenant { Subscription = subscription });
+                    var session = stripeEvent.Data.Object as Stripe.Checkout.Session;
+
+                    var subscription = await new SubscriptionService().GetAsync(session.SubscriptionId);
+                    var userId = subscription.Metadata["UserId"];
+
+                    var createTrialingSubscription = new CreateTrialingSubscription
+                    {
+                        UserId = Guid.Parse(userId),
+                        StripeCustomerId = subscription.CustomerId,
+                        Subscription = subscription
+                    };
+
+                    await commandDispatcher.DispatchAsync(createTrialingSubscription);
                 }
-                else if (stripeEvent.Type == Events.CustomerSubscriptionUpdated)
+                // Sent each billing interval when a payment succeeds. (Stripe)
+                else if (stripeEvent.Type == Events.InvoicePaid)
                 {
-                    var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new UpdateSubscription { Subscription = subscription });
+                    var invoice = stripeEvent.Data.Object as Invoice;
+
+                    var subscription = await new SubscriptionService().GetAsync(invoice.SubscriptionId);
+
                 }
-                else if (stripeEvent.Type == Events.CustomerSubscriptionDeleted)
+                // Sent each billing interval if there is an issue with your customer’s payment method. (Stripe)
+                else if (stripeEvent.Type == Events.InvoicePaymentFailed)
                 {
-                    var subscription = stripeEvent.Data.Object as Stripe.Subscription;
-                    await commandDispatcher.DispatchAsync(new DeleteSubscription { Subscription = subscription });
+                    var invoice = stripeEvent.Data.Object as Invoice;
+
+                    var subscription = await new SubscriptionService().GetAsync(invoice.SubscriptionId);
+
                 }
+
                 return Ok();
             }
             catch (StripeException e)
