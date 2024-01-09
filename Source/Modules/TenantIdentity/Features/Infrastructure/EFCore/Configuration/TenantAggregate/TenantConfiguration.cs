@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.Domain.TenantAggregate;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.TenantAggregate
 {

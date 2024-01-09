@@ -24,8 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\LandingPages\Modules.LandingPages.Web.Server\Modules.LandingPages.Web.csproj" />
+    <ProjectReference Include="..\..\Modules\Subscriptions\Web\Server\Modules.Subscriptions.Web.Server.csproj" />
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Server\Modules.TenantIdentity.Web.Server.csproj" />
-    <ProjectReference Include="..\..\Shared\DomainFeatures\Shared.DomainFeatures.csproj" />
     <ProjectReference Include="..\Client\Web.Client.csproj" />
   </ItemGroup>
 
