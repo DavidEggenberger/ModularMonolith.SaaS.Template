@@ -4,6 +4,8 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using Shared.Features;
 using Modules.Subscriptions.Features.Infrastructure.StripePayments;
+using Modules.Subscriptions.Features.Application.Commands.StripeSubscriptionAggregate;
+using Modules.Subscription.Features.Infrastructure.Configuration;
 
 namespace Modules.Subscription.Server.WebHooks
 {
@@ -11,10 +13,10 @@ namespace Modules.Subscription.Server.WebHooks
     [ApiController]
     public class StripeWebhook : BaseController
     {
-        private readonly StripeOptions stripeOptions;
-        public StripeWebhook(IOptions<StripeOptions> stripeOptions, IServiceProvider serviceProvider) : base(serviceProvider)
+        private readonly SubscriptionConfiguration subscriptionConfiguration;
+        public StripeWebhook(SubscriptionConfiguration subscriptionConfiguration, IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            this.stripeOptions = stripeOptions.Value;
+            this.subscriptionConfiguration = subscriptionConfiguration;
         }
 
         [HttpPost]

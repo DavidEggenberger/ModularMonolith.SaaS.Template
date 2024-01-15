@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain.Exceptions;
-using Modules.TenantIdentity.Features.Domain.TenantAggregate.Enums;
+﻿using Modules.TenantIdentity.Features.Domain.TenantAggregate.Enums;
+using Modules.TenantIdentity.Features.Domain.TenantAggregate.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.DomainKernel;
 using Shared.Features.DomainKernel.Attributes;

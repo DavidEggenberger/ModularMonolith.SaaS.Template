@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Features;
 using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
-using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate.Aplication.Queries;
 using Modules.Subscriptions.Features.Application.Queries.StripeSubscriptionAggregate;
 
 namespace Modules.Subscription.Server.Controllers
@@ -27,12 +26,12 @@ namespace Modules.Subscription.Server.Controllers
             var getStripeCheckoutSession = new GetStripeCheckoutSession() { SessionId = session_id };
             var stripeCheckoutSession = await queryDispatcher.DispatchAsync<GetStripeCheckoutSession, Stripe.Checkout.Session>(getStripeCheckoutSession);
 
-            var getStripeCustomer = new GetStripeCustomer() { StripeCustomerId = stripeCheckoutSession.CustomerId };
-            var stripeCustomer = await queryDispatcher.DispatchAsync<GetStripeCustomer, StripeCustomer>(getStripeCustomer);
+            //var getStripeCustomer = new GetStripeCustomer() { StripeCustomerId = stripeCheckoutSession.CustomerId };
+            //var stripeCustomer = await queryDispatcher.DispatchAsync<GetStripeCustomer, StripeCustomer>(getStripeCustomer);
 
-            var user = await userManager.FindByIdAsync(stripeCustomer.UserId.ToString());
+            //var user = await userManager.FindByIdAsync(stripeCustomer.UserId.ToString());
 
-            await signInManager.SignInAsync(user, true);
+            //await signInManager.SignInAsync(user, true);
 
             return LocalRedirect("/");
         }
