@@ -1,7 +1,6 @@
 ﻿using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
-using Modules.LandingPages.Web.Server.Components;
 
 namespace Modules.LandingPages.Web.Server
 {

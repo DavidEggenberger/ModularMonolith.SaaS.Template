@@ -16,7 +16,7 @@ namespace Modules.Subscription.Server
 
         public void ConfigureServices(IServiceCollection services, IConfiguration config = null)
         {
-            services.RegisterDbContext<SubscriptionDbContext>(schemaName: "Subscriptions");
+            services.RegisterDbContext<SubscriptionsDbContext>(schemaName: "Subscriptions");
             services.RegisterConfiguration(services.BuildServiceProvider().GetRequiredService<IConfiguration>());
         }
 

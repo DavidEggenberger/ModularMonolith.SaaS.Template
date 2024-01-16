@@ -3,7 +3,7 @@ using System.Security.Claims;
 using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
-using Modules.TenantIdentity.Features.Application.Queries.UserAggregate;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Queries;
 
 namespace Modules.TenantIdentity.Features.Infrastructure
 {

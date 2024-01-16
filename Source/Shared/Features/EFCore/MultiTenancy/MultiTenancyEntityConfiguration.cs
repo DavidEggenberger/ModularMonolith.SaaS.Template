@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shared.Features.DomainKernel;
-using Shared.Features.DomainKernel.Attributes;
 using System.Reflection;
 
 namespace Shared.Features.EFCore.MultiTenancy

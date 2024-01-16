@@ -3,12 +3,7 @@ using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
@@ -22,10 +17,10 @@ namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 
     public class CreateStripeCheckoutSessionCommandHandler : ICommandHandler<CreateStripeCheckoutSession, Stripe.Checkout.Session>
     {
-        private readonly SubscriptionDbContext subscriptionDbContext;
-        private readonly SubscriptionConfiguration subscriptionConfiguration;
+        private readonly SubscriptionsDbContext subscriptionDbContext;
+        private readonly SubscriptionsConfiguration subscriptionConfiguration;
 
-        public CreateStripeCheckoutSessionCommandHandler(SubscriptionDbContext subscriptionDbContext, SubscriptionConfiguration subscriptionConfiguration)
+        public CreateStripeCheckoutSessionCommandHandler(SubscriptionsDbContext subscriptionDbContext, SubscriptionsConfiguration subscriptionConfiguration)
         {
             this.subscriptionDbContext = subscriptionDbContext;
             this.subscriptionConfiguration = subscriptionConfiguration;
@@ -44,7 +39,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
                 {
                   "card",
                 },
-                Customer = subscriptionOwner.StripeCustomerId,
+                Customer = subscriptionOwner.StripePortalCustomerId,
                 ClientReferenceId = subscriptionOwner.UserId.ToString(),
                 LineItems = new List<SessionLineItemOptions>
                 {

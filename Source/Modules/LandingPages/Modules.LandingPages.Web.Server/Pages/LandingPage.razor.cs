@@ -1,7 +1,6 @@
 ﻿using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
-using Modules.LandingPages.Web.Server.Components;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

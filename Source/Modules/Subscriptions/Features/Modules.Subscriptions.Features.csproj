@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Features\Shared.Features.csproj" />
     <ProjectReference Include="..\..\TenantIdentity\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj" />
+    <ProjectReference Include="..\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj" />
   </ItemGroup>
 
 </Project>

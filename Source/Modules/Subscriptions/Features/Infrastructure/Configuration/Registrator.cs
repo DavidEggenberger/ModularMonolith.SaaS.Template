@@ -11,14 +11,14 @@ namespace Modules.Subscription.Features.Infrastructure.Configuration
         {
             StripeConfiguration.ApiKey = configuration["SubscriptionConfiguration:StripeAPIKey"];
 
-            services.Configure<SubscriptionConfiguration>(configuration.GetSection(nameof(SubscriptionConfiguration)));
-            services.AddScoped<SubscriptionConfiguration>(sp =>
+            services.Configure<SubscriptionsConfiguration>(configuration.GetSection(nameof(SubscriptionsConfiguration)));
+            services.AddScoped<SubscriptionsConfiguration>(sp =>
             {
-                SubscriptionConfiguration sc = new SubscriptionConfiguration();
+                SubscriptionsConfiguration sc = new SubscriptionsConfiguration();
                 sp.GetRequiredService<IConfiguration>().GetSection("SubscriptionConfiguration").Bind(sc);
                 return sc;
             });
-            services.AddSingleton<IValidateOptions<SubscriptionConfiguration>, SubscriptionConfigurationValidator>();
+            services.AddSingleton<IValidateOptions<SubscriptionsConfiguration>, SubscriptionsConfigurationValidator>();
 
             return services;
         }

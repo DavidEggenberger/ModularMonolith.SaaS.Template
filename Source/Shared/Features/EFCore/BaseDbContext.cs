@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Shared.Features.CQRS.DomainEvent;
 using Shared.Features.DomainKernel;
 using Shared.Features.EFCore.Configuration;
@@ -64,11 +63,11 @@ namespace Shared.Features.EFCore
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.CreatedAt = DateTime.Now;
                         break;
 
                     case EntityState.Modified:
-                        entry.Entity.LastUpdated = DateTime.Now;
+                        entry.Entity.LastUpdatedAt = DateTime.Now;
                         break;
                 }
             }

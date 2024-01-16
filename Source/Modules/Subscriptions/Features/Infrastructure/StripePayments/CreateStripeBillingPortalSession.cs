@@ -2,9 +2,6 @@
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Stripe.BillingPortal;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
@@ -16,9 +13,9 @@ namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 
     public class CreateStripeBillingPortalSessionCommandHandler : ICommandHandler<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>
     {
-        private readonly SubscriptionDbContext subscriptionDbContext;
+        private readonly SubscriptionsDbContext subscriptionDbContext;
 
-        public CreateStripeBillingPortalSessionCommandHandler(SubscriptionDbContext subscriptionDbContext)
+        public CreateStripeBillingPortalSessionCommandHandler(SubscriptionsDbContext subscriptionDbContext)
         {
             this.subscriptionDbContext = subscriptionDbContext;
         }
@@ -30,7 +27,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 
             var options = new SessionCreateOptions
             {
-                Customer = stripeCustomer.StripeCustomerId,
+                Customer = stripeCustomer.StripePortalCustomerId,
                 ReturnUrl = command.RedirectBaseUrl
             };
             

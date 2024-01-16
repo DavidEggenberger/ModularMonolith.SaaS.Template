@@ -3,8 +3,4 @@
     public interface IIntegrationEvent
     {
     }
-
-    public interface IIntegrationEvent<TResult>
-    {
-    }
 }

@@ -1,5 +1,4 @@
 ﻿using Shared.Features.DomainKernel.Exceptions;
-using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.DomainKernel
@@ -10,8 +9,8 @@ namespace Shared.Features.DomainKernel
         public Guid CreatedByUserId { get; set; }
         public bool IsSoftDeleted { get; set; }
         public byte[] RowVersion { get; set; }
-        public DateTimeOffset Created { get; set; }
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset LastUpdatedAt { get; set; }
         private readonly List<IDomainEvent> _domainEvents = new List<IDomainEvent>();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
