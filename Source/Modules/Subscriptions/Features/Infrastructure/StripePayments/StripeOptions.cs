@@ -1,5 +1,4 @@
-﻿using Modules.Subscriptions.Features.Agregates.SubscriptionAggregate;
-using Shared.Kernel.BuildingBlocks.Auth;
+﻿using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {

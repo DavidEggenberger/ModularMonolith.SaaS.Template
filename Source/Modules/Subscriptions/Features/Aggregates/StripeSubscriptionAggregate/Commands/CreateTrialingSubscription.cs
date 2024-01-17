@@ -45,7 +45,7 @@ namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.
 
             await subscriptionDbContext.SaveChangesAsync();
 
-            var userSubscriptionUpdatedEvent = new TenantSubscriptionUpdatedIntegrationEvent
+            var userSubscriptionUpdatedEvent = new TenantSubscriptionPlanUpdatedIntegrationEvent
             {
                 TenantId = new Guid(command.Subscription.Metadata["TenantId"]),
                 SubscriptionPlanType = subscriptionType

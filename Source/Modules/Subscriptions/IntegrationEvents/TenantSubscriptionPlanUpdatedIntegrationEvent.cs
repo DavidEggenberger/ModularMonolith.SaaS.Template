@@ -3,7 +3,7 @@ using Shared.Kernel.BuildingBlocks.Events;
 
 namespace Modules.Subscription.IntegrationEvents
 {
-    public class TenantSubscriptionUpdatedIntegrationEvent : IIntegrationEvent
+    public class TenantSubscriptionPlanUpdatedIntegrationEvent : IIntegrationEvent
     {
         public Guid TenantId { get; set; }
         public SubscriptionPlanType SubscriptionPlanType { get; set; }

@@ -18,7 +18,7 @@ namespace Shared.Features.EFCore
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                     sqlServerOptions.CommandTimeout(15);
-                    sqlServerOptions.MigrationsHistoryTable($"{schemaName}_MigrationHistory");
+                    sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
                 });
             });
 

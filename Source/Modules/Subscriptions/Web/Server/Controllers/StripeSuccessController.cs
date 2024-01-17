@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Features;
-using Modules.Subscriptions.Features.Domain.StripeSubscriptionAggregate.Queries;
+using Stripe.Checkout;
+using Modules.Subscriptions.Features.Aggregates.StripeCustomerAggregate.Queries;
+using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
 
 namespace Modules.Subscription.Server.Controllers
 {
@@ -22,15 +24,14 @@ namespace Modules.Subscription.Server.Controllers
         [HttpGet("/order/success")]
         public async Task<ActionResult> OrderSuccess([FromQuery] string session_id)
         {
-            var getStripeCheckoutSession = new GetStripeCheckoutSession() { SessionId = session_id };
-            var stripeCheckoutSession = await queryDispatcher.DispatchAsync<GetStripeCheckoutSession, Stripe.Checkout.Session>(getStripeCheckoutSession);
+            var stripeCheckoutSession = await new SessionService().GetAsync(session_id);
+            
+            var getStripeCustomer = new GetStripeCustomerByStripePortalId() { StripeCustomerStripePortalId = stripeCheckoutSession.CustomerId };
+            var stripeCustomer = await queryDispatcher.DispatchAsync<GetStripeCustomerByStripePortalId, StripeCustomer>(getStripeCustomer);
 
-            //var getStripeCustomer = new GetStripeCustomer() { StripeCustomerId = stripeCheckoutSession.CustomerId };
-            //var stripeCustomer = await queryDispatcher.DispatchAsync<GetStripeCustomer, StripeCustomer>(getStripeCustomer);
+            var user = await userManager.FindByIdAsync(stripeCustomer.UserId.ToString());
 
-            //var user = await userManager.FindByIdAsync(stripeCustomer.UserId.ToString());
-
-            //await signInManager.SignInAsync(user, true);
+            await signInManager.SignInAsync(user, true);
 
             return LocalRedirect("/");
         }
