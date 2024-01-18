@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Modules.Subscription.IntegrationEvents;
 using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;
 using Stripe;

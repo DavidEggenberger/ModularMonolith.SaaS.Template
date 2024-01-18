@@ -18,13 +18,11 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
         public string Name { get; set; }
         public TenantStyling Styling { get; set; }
         public TenantSettings Settings { get; set; }
-        public SubscriptionPlanType CurrentSubscriptionPlanType => tenantSubscriptions.MaxBy(s => s.PeriodEnd).SubscriptionPlanType;
+        public SubscriptionPlanType SubscriptionPlanType {  get; set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
         public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
         private List<TenantInvitation> invitations = new List<TenantInvitation>();
-        public IReadOnlyCollection<TenantSubscription> TenantSubscriptions => tenantSubscriptions.AsReadOnly();
-        private List<TenantSubscription> tenantSubscriptions = new List<TenantSubscription>();
 
         public static async Task<Tenant> CreateTenantWithAdminAsync(string name, Guid adminUserId)
         {
@@ -86,17 +84,6 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
             }
 
             invitations.Add(new TenantInvitation { UserId = userId, Role = role });
-        }
-
-        public void AddSubscription(string stripeSubscriptionId, SubscriptionPlanType type, DateTime startDate, DateTime endDate, bool isTrial)
-        {
-            tenantSubscriptions.Add(new TenantSubscription
-            {
-                StripeSubscriptionId = stripeSubscriptionId,
-                SubscriptionPlanType = type,
-                PeriodStart = startDate,
-                PeriodEnd = endDate,
-            });
         }
 
         public async void DeleteTenantMembership(Guid membershipId)

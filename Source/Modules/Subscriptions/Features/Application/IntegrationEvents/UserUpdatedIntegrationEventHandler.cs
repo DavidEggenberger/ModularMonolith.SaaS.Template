@@ -3,9 +3,9 @@ using Shared.Features.CQRS.IntegrationEvent;
 
 namespace Modules.Subscriptions.Features.Application.IntegrationEventHandlers
 {
-    public class UserUpdatedIntegrationEventHandler : IIntegrationEventHandler<UserEmailUpdatedIntegrationEvent>
+    public class UserUpdatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminEmailUpdatedIntegrationEvent>
     {
-        public async Task HandleAsync(UserEmailUpdatedIntegrationEvent userEmailUpdatedIntegrationEvent, CancellationToken cancellationToken)
+        public async Task HandleAsync(TenantAdminEmailUpdatedIntegrationEvent userEmailUpdatedIntegrationEvent, CancellationToken cancellationToken)
         {
 
         }

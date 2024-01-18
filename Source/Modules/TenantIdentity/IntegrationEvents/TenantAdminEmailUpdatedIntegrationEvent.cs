@@ -3,7 +3,7 @@ using System;
 
 namespace Modules.TenantIdentity.IntegrationEvents
 {
-    public class UserCreatedIntegrationEvent : IIntegrationEvent
+    public class TenantAdminEmailUpdatedIntegrationEvent : IIntegrationEvent
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }

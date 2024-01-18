@@ -1,7 +1,7 @@
 ﻿using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.BuildingBlocks.Events;
 
-namespace Modules.Subscription.IntegrationEvents
+namespace Modules.Subscriptions.IntegrationEvents
 {
     public class TenantSubscriptionPlanUpdatedIntegrationEvent : IIntegrationEvent
     {

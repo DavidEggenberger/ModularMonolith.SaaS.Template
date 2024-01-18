@@ -7,13 +7,12 @@ namespace Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate
         public Guid UserId { get; set; }
         public string StripePortalCustomerId { get; set; }
 
-        public static StripeCustomer Create(Guid tenantId, string stripePortalCustomerId)
+        public static StripeCustomer Create(Guid userId, string stripePortalCustomerId)
         {
             return new StripeCustomer
             {
-                CreatedAt = DateTime.UtcNow,
                 StripePortalCustomerId = stripePortalCustomerId,
-                TenantId = tenantId,
+                UserId = userId,
             };
         }
     }

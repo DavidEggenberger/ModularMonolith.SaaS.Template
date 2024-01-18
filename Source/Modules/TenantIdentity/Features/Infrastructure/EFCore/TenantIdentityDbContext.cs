@@ -32,7 +32,6 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         public DbSet<TenantMembership> TenantMeberships { get; set; }
         public DbSet<TenantSettings> TenantSettings { get; set; }
         public DbSet<TenantStyling> TenantStylings { get; set; }
-        public DbSet<TenantSubscription> TenantSubscriptions { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -98,7 +97,6 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             var tenant = await Tenants
                 .Include(t => t.Memberships)
                 .Include(t => t.Invitations)
-                .Include(t => t.TenantSubscriptions)
                 .FirstOrDefaultAsync(t => t.TenantId == tenantId);
             if (tenant == null)
             {
