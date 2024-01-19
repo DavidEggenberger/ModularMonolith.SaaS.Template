@@ -3,6 +3,7 @@ using Modules.Subscription.Features.Infrastructure.EFCore;
 using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
 using Modules.TenantIdentity.IntegrationEvents;
 using Shared.Features.CQRS.IntegrationEvent;
+using Stripe;
 
 namespace Modules.Subscriptions.Features.Application.IntegrationEventHandlers
 {
@@ -20,7 +21,18 @@ namespace Modules.Subscriptions.Features.Application.IntegrationEventHandlers
             var stripeCustomer = await subscriptionsDbContext.StripeCustomers.FirstOrDefaultAsync(stripeCustomer => stripeCustomer.UserId == tenantAdminCreatedIntegrationEvent.UserId);
             if (stripeCustomer == null)
             {
-                
+                var stripeCustomerService = new CustomerService();
+
+                var options = new CustomerCreateOptions
+                {
+                    Email = tenantAdminCreatedIntegrationEvent.Email,
+                    Metadata = new Dictionary<string, string>
+                    {
+                        ["UserId"] = tenantAdminCreatedIntegrationEvent.UserId.ToString()
+                    }
+                };
+
+                var customer = await stripeCustomerService.CreateAsync(options);
 
             }
         }
