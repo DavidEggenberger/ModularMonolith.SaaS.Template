@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Commands;
 using Shared.Features;
+using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
 namespace Modules.Subscriptions.Web.Server.Controllers
 {
@@ -13,6 +14,7 @@ namespace Modules.Subscriptions.Web.Server.Controllers
         }
 
         [HttpGet]
+        [AuthorizeTenantAdmin]
         public async Task GetSubscription()
         {
             var getSubscriptionForTenant = new GetSubscriptionForTenant

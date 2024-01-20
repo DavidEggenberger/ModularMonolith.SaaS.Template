@@ -9,7 +9,7 @@ namespace Shared.Kernel.BuildingBlocks.Auth
     {
         public static IServiceCollection AddAuth(this IServiceCollection services)
         {
-            services.AddScoped<Shared.Kernel.BuildingBlocks.Auth.Service.IAuthorizationService, AuthorizationService>();
+            services.AddScoped<Service.IAuthorizationService, AuthorizationService>();
 
             services.AddAuthorizationCore(options =>
             {
