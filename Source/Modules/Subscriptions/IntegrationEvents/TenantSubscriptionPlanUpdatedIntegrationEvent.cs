@@ -1,5 +1,5 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Events;
+﻿using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscriptions.IntegrationEvents
 {

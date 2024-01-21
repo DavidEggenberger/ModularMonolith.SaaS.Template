@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.Events;
+﻿using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Features.CQRS.IntegrationEvent
 {

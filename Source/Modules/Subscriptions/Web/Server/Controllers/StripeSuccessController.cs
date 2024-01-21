@@ -12,10 +12,10 @@ namespace Modules.Subscription.Server.Controllers
     [ApiController]
     public class StripeSuccessController : BaseController
     {
-        private readonly SignInManager<IUser> signInManager;
-        private readonly UserManager<IUser> userManager;
+        private readonly SignInManager<IApplicationUser> signInManager;
+        private readonly UserManager<IApplicationUser> userManager;
 
-        public StripeSuccessController(SignInManager<IUser> signInManager, UserManager<IUser> userManager, IServiceProvider serviceProvider) : base(serviceProvider) 
+        public StripeSuccessController(SignInManager<IApplicationUser> signInManager, UserManager<IApplicationUser> userManager, IServiceProvider serviceProvider) : base(serviceProvider) 
         {
             this.signInManager = signInManager;
             this.userManager = userManager;

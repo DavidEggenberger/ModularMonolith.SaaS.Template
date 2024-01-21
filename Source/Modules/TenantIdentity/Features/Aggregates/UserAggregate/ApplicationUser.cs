@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.Aggregates.UserAggregate
 {
-    public class ApplicationUser : IdentityUser<Guid>, IUser
+    public class ApplicationUser : IdentityUser<Guid>, IApplicationUser
     {
         public string PictureUri { get; set; }
         public bool IsOnline => CountOfOpenTabs > 0;

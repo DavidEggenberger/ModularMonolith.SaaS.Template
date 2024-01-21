@@ -1,7 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Roles;
 
-namespace Shared.Kernel.BuildingBlocks
+namespace Shared.Kernel.BuildingBlocks.ContextAccessors
 {
     public interface IExecutionContextAccessor
     {

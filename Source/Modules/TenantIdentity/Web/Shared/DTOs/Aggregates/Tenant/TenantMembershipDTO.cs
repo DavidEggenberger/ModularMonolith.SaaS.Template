@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth.Roles;
+﻿using Shared.Kernel.BuildingBlocks.Auth;
 using System;
 
 namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant

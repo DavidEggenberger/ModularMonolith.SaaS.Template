@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks
+﻿namespace Shared.Kernel.BuildingBlocks.ContextAccessors
 {
     public interface IWebContextAccessor
     {

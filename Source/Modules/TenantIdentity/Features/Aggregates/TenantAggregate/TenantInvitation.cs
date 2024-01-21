@@ -1,5 +1,5 @@
 ﻿using Shared.Features.DomainKernel;
-using Shared.Kernel.BuildingBlocks.Auth.Roles;
+using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 {

@@ -3,7 +3,6 @@ using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.DomainKernel;
 using Shared.Features.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Roles;
 using Shared.Kernel.BuildingBlocks.Auth.Service;
 
 namespace Modules.TenantIdentity.Features.Domain.TenantAggregate

@@ -1,6 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth.Roles;
-
-namespace Shared.Kernel.BuildingBlocks.Auth.Service
+﻿namespace Shared.Kernel.BuildingBlocks.Auth.Service
 {
     public interface IAuthorizationService
     {

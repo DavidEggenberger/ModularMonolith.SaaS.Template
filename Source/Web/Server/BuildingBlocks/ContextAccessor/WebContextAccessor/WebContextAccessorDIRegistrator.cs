@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.ContextAccessors;
 
 namespace Web.Server.BuildingBlocks.ContextAccessor.WebContextAccessor
 {

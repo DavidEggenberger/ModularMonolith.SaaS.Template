@@ -1,6 +1,8 @@
 ﻿namespace Shared.Kernel.BuildingBlocks.Auth
 {
-    public interface IUser
+    public enum TenantRole
     {
+        Admin,
+        User
     }
 }

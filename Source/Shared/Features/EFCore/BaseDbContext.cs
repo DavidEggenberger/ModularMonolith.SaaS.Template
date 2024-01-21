@@ -6,7 +6,7 @@ using Shared.Features.DomainKernel;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
 using Shared.Features.EFCore.MultiTenancy.Exceptions;
-using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.ContextAccessors;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.EFCore

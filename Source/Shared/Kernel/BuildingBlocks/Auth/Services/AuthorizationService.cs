@@ -1,5 +1,5 @@
 ﻿using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
-using Shared.Kernel.BuildingBlocks.Auth.Roles;
+using Shared.Kernel.BuildingBlocks.ContextAccessors;
 
 namespace Shared.Kernel.BuildingBlocks.Auth.Service
 {

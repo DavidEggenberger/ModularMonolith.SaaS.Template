@@ -7,7 +7,7 @@ using Shared.Features.Modules;
 
 namespace Shared.Features
 {
-    public static class Registrator
+    public static class DIRegistrator
     {
         public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services)
         {

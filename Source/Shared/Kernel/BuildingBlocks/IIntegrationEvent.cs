@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Events
+﻿namespace Shared.Kernel.BuildingBlocks
 {
     public interface IIntegrationEvent
     {

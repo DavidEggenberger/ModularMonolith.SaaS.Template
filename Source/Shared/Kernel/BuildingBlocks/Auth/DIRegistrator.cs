@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks.Auth.Service;
 
 namespace Shared.Kernel.BuildingBlocks.Auth
 {
-    public static class Registrator
+    public static class DIRegistrator
     {
         public static IServiceCollection AddAuth(this IServiceCollection services)
         {

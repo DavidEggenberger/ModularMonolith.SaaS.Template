@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Roles;
+using Shared.Kernel.BuildingBlocks.ContextAccessors;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 using System;
 
