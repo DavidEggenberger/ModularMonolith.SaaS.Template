@@ -32,10 +32,6 @@ namespace Shared.Kernel.BuildingBlocks.Auth
                 {
                     options.RequireClaim(ClaimConstants.TenantPlanClaimType, SubscriptionPlanConstants.EnterprisePlan);
                 });
-                options.AddPolicy(PolicyConstants.CreatorPolicy, options =>
-                {
-                    options.AddRequirements(new CreatorPolicyRequirement());
-                });
             });
 
             return services;

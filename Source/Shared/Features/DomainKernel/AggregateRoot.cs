@@ -1,4 +1,5 @@
-﻿using Shared.Kernel.Interfaces;
+﻿using Shared.Kernel.BuildingBlocks.Auth.Service;
+using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.DomainKernel
 {

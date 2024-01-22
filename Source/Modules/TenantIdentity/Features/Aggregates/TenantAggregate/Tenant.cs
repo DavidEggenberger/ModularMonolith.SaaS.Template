@@ -1,17 +1,18 @@
 ﻿using Modules.TenantIdentity.Features.Domain.TenantAggregate.Exceptions;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.DomainKernel;
 using Shared.Features.DomainKernel.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Service;
 
 namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 {
     public class Tenant : AggregateRoot
     {
-        private readonly IAuthorizationService _authorizationService;
-
-        public Tenant() { }
+        public Tenant()
+        {
+            
+        }
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
@@ -53,7 +54,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
-            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -63,7 +64,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void RemoveUser(Guid userId)
         {
-            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -75,7 +76,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void InviteUserToRole(Guid userId, TenantRole role)
         {
-            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId))
             {
@@ -101,7 +102,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void ThrowIfUserCantDeleteTenant()
         {
-            _authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
         }
 
         public TenantDTO ToDTO() => new TenantDTO();
