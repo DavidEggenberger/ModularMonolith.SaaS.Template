@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
-using Shared.Kernel.BuildingBlocks.Auth.Service;
 
 namespace Shared.Kernel.BuildingBlocks.Auth
 {
@@ -9,8 +8,6 @@ namespace Shared.Kernel.BuildingBlocks.Auth
     {
         public static IServiceCollection AddAuth(this IServiceCollection services)
         {
-            services.AddScoped<Service.IAuthorizationService, AuthorizationService>();
-
             services.AddAuthorizationCore(options =>
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

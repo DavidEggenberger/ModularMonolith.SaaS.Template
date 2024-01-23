@@ -29,7 +29,7 @@ namespace Shared.Kernel.Extensions.ClaimsPrincipal
             return (T)converter.ConvertFrom(claimsPrincipal?.FindFirst(ClaimConstants.TenantPlanClaimType).Value);
         }
 
-        public static TenantRole GetRoleInTenant(this System.Security.Claims.ClaimsPrincipal claimsPrincipal)
+        public static TenantRole GetTenantRole(this System.Security.Claims.ClaimsPrincipal claimsPrincipal)
         {
             return (TenantRole)Enum.Parse(typeof(TenantRole), claimsPrincipal?.FindFirst(ClaimConstants.UserRoleInTenantClaimType).Value);
         }

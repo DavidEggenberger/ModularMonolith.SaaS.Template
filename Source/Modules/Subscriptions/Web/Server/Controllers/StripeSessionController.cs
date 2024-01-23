@@ -22,8 +22,8 @@ namespace Modules.Subscription.Server.Controllers
             var createStripeCheckoutSession = new CreateStripeCheckoutSession 
             { 
                 SubscriptionPlanType = subscriptionPlanType,
-                UserId = executionContextAccessor.UserId,
-                TenantId = executionContextAccessor.TenantId,
+                UserId = executionContextAccessor.ExecutionContext.UserId,
+                TenantId = executionContextAccessor.ExecutionContext.TenantId,
                 RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri
             };
             var checkoutSession = await commandDispatcher.DispatchAsync<CreateStripeCheckoutSession, Stripe.Checkout.Session>(createStripeCheckoutSession);
@@ -38,7 +38,7 @@ namespace Modules.Subscription.Server.Controllers
         {
             var createBillingPortalSession = new CreateStripeBillingPortalSession
             {
-                UserId = executionContextAccessor.UserId,
+                UserId = executionContextAccessor.ExecutionContext.UserId,
                 RedirectBaseUrl = webContextAccessor.BaseURI.AbsoluteUri,
             };
             var billingPortalSession = await commandDispatcher.DispatchAsync<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>(createBillingPortalSession);
