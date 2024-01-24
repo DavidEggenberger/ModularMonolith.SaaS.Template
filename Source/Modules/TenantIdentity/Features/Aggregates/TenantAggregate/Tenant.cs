@@ -54,7 +54,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
-            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -64,7 +64,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void RemoveUser(Guid userId)
         {
-            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId) is false)
             {
@@ -76,7 +76,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void InviteUserToRole(Guid userId, TenantRole role)
         {
-            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             if (CheckIfMember(userId))
             {
@@ -102,7 +102,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
 
         public void ThrowIfUserCantDeleteTenant()
         {
-            //authorizationService.ThrowIfUserIsNotInRole(TenantRole.Admin);
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
         }
 
         public TenantDTO ToDTO() => new TenantDTO();
