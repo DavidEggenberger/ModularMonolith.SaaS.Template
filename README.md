@@ -19,19 +19,19 @@ The solution follows a "modular" architectural approach. The idea is, that every
 
 ### Module Overview
 
-The **Web.Server** references the **{ModuleName.Modules.Server}** project of each Module. The there defined controllers/pages are then served by the **Web.Server**. Each Module (with the exception of **Modules.LandingPages**) follows the same setup. **Modules.LandingPages** is an exception because it only needs to serve the Razor Components for the LandingPage. The **Identity/Subscription** Modules consist of five projects.
+The **Web.Server** references the **{ModuleName.Modules.Server}** project of each Module. The there defined controllers/pages are then served by the **Web.Server**. Each Module (with the exception of **Modules.LandingPages**) follows the same setup. **Modules.LandingPages** is an exception because it only needs to serve the Razor Components for the LandingPage. Both the **Identity** and **Subscription** Modules consist of five projects.
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
 
-**Client**: Razor Components that are served by **Web.Client**. <br/>
-**Shared**: DTOs shared between **Client** and **Server**. <br/> 
+**Client**: The Module's Razor Components that are served by **Web.Client**. <br/>
+**Shared**: DTOs shared between **Server** and **Client**. <br/> 
 **Server**: Controllers that dispatch the respective Command/Query. <br/>
-**DomainFeatures**: Defines the Commands/Queries and the respective Command/QueryHandlers <br/>
-**IntegrationEvents**: Project that can be referenced by other Modules. When the **DomainFeatures** publish an IntegrationEvent it can then be handled. This allows for cross Module communication.
+**Features**: "Vertical Slice" containing the Domain, Application and Infrastructure logic. <br/>
+**IntegrationEvents**: Defines the IntegrationEvents and is intended to be referenced by other Modules which enables cross Module communication.
 
-Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure the template organizes its code in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **DomainFeatures** project. 
+Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure the template organizes its code in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **Features** project of a Module.  
 
-<img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/DomainFeaturesOverview.png" />
+<img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/FeaturesOverview.png" />
 
 **Aggregates**: Domain Driven Design Pattern to organize entities: "cluster of domain objects that can be treated as a single unit (Martin Fowler)"<br/>
  **TenantAggregate**: <br/>
@@ -41,5 +41,6 @@ Besides modularity the template also follows a very pragmatic approach. Instead 
    **Queries**: The Queries with their respective QueryHandlers <br/>
   **Domain**: The aggregate's entities moduled following the principles of Domain Driven Design <br/> 
  **Infrastructure**: EF Core DbContext and Configuration for the whole Module
+
 
 
