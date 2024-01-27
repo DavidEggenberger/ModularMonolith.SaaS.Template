@@ -23,11 +23,20 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
 
-**Client**: The Module's Razor Components that are served by **Web.Client**. <br/>
-**Shared**: DTOs shared between **Server** and **Client**. <br/> 
-**Server**: Controllers that dispatch the respective Command/Query. <br/>
-**Features**: "Vertical Slice" containing the Domain, Application and Infrastructure logic. <br/>
-**IntegrationEvents**: Defines the IntegrationEvents and is intended to be referenced by other Modules which enables cross Module communication.
+**Client**:
+<br/>Contains the Client logic and the Razor Components. The Razor Components are referenced and rendered by the **Web.Client** project. <br/>
+
+**Shared**: 
+<br/> DTOs that are shared between the **Server** and **Client** Modules. <br/> 
+
+**Server**: 
+<br/>The API Controllers that dispatch the respective Command/Query. In the Server project also all the services for the Module are registered. <br/>
+
+**Features**: 
+<br/>The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from **IntegrationEvents**.<br/>
+
+**IntegrationEvents**: 
+<br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
 
 Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure the template organizes its code in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **Features** project of a Module.  
 
