@@ -24,23 +24,16 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
 
 **Client**:
-<br/>The project type of the **Client** project is a Razor Class library. It contains the Razor Components of the Module with the Client Logic. The Razor Components are referenced and rendered by the **Web.Client** project. **Web.Client** defines the Razor pages (e.g. Tenant page) that then consist of the Components in the **Client** project of the respective Module. To me, having all the pages in the **Web.Client** project gives me a better overview over the application and its structure. Important: The **Client** project of a Module can also reference the **Shared** project of another Module. This allows the **Client** project to call the API endpoints of another Module.  
-
-<br/>
+<br/>The project type of the **Client** project is a Razor Class library. It contains the Razor Components of the Module with the Client Logic. The Razor Components are referenced and rendered by the **Web.Client** project. **Web.Client** defines the Razor pages (e.g. Tenant page) that then consist of the Components in the **Client** project of the respective Module. To me, having all the pages in the **Web.Client** project gives me a better overview over the application and its structure. Important: The **Client** project of a Module can also reference the **Shared** project of another Module. This allows the **Client** project to call the API endpoints of the other Modules. This form of coupling is definitely a trade-off, but in my experience the Client Components of a Module are very likely to depend on the API's of other Modules anyways. For example, the Components to manage a Tenant (defined in the Tenant Module) also show an overview over Subscription history (retrievable through the API/Server from the Subscriptions Module). Because for an intuitive UI the boundaries between the Modules Components are vague, I like the more pragmatic approach with the **Client** project of a Module being able to directly consume the API's of other Modules insted of dogmatically isolating the Client project to only call API's from the same Module. The routes of all API controllers are defined in the EndpointConstants file of the **Shared.Kernel** project. <br/>
 
 **Shared**: 
-<br/>DTOs that are shared between the **Server** and **Client** Modules. <br/> 
+<br/>DTOs that are shared between the **Server** and **Client** Modules. As explained in the previous section the **Shared** project can also be referenced by the **Client** project of other Modules which enables for the Client logic of a Module to call API's of another Module. <br/> 
 
 **Server**: 
-<br/>The API Controllers that dispatch the respective Command/Query. In the Server project also all the services for the Module are registered. <br/>
+<br/>Contains the API Controllers of the Module. The Controllers handle the incoming Web Requests by transforming the received DTO into the respective Query/Command that is then dispatched. In the Server project also all the services for the Module are registered to the DI container. <br/>
 
 **Features**: 
-<br/>The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from the **IntegrationEvents** project.<br/>
-
-**IntegrationEvents**: 
-<br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
-
-Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure the template organizes its code in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **Features** project of a Module.  
+<br/>Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure, the template organizes its business logic in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **Features** project of a Module. The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from the **IntegrationEvents** project. 
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/FeaturesOverview.png" />
 
@@ -51,7 +44,10 @@ Besides modularity the template also follows a very pragmatic approach. Instead 
    **IntegrationEventHandlers**: IntegrationEventHandlers handling IntegationEvents published from other Modules<br/>
    **Queries**: The Queries with their respective QueryHandlers <br/>
   **Domain**: The aggregate's entities moduled following the principles of Domain Driven Design <br/> 
- **Infrastructure**: EF Core DbContext and Configuration for the whole Module
+ **Infrastructure**: EF Core DbContext and Configuration for the whole Module<br/>
+
+**IntegrationEvents**: 
+<br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
 
 
 
