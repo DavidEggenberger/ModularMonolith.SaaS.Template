@@ -24,16 +24,18 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
 
 **Client**:
-<br/>Contains the Client logic and the Razor Components. The Razor Components are referenced and rendered by the **Web.Client** project. <br/>
+<br/>The project type of the **Client** project is a Razor Class library. It contains the Razor Components of the Module with the Client Logic. The Razor Components are referenced and rendered by the **Web.Client** project. **Web.Client** defines the Razor pages (e.g. Tenant page) that then consist of the Components in the **Client** project of the respective Module. To me, having all the pages in the **Web.Client** project gives me a better overview over the application and its structure. Important: The **Client** project of a Module can also reference the **Shared** project of another Module. This allows the **Client** project to call the API endpoints of another Module.  
+
+<br/>
 
 **Shared**: 
-<br/> DTOs that are shared between the **Server** and **Client** Modules. <br/> 
+<br/>DTOs that are shared between the **Server** and **Client** Modules. <br/> 
 
 **Server**: 
 <br/>The API Controllers that dispatch the respective Command/Query. In the Server project also all the services for the Module are registered. <br/>
 
 **Features**: 
-<br/>The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from **IntegrationEvents**.<br/>
+<br/>The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from the **IntegrationEvents** project.<br/>
 
 **IntegrationEvents**: 
 <br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
