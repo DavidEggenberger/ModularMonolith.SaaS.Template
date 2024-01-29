@@ -19,6 +19,7 @@ The solution follows a "modular" architectural approach. The idea is, that every
 
 ### Module Overview
 
+A Module is a logical boundery that defines a subdomain (e.g. TenantIdentity or Subscription) of the application. The goal is to isolate the respective models and logic from other subdomains to avoid confusion and coupling. A Module therefore represents a Bounded Context from Eric Evans book Domain Driven Design. 
 The **Web.Server** references the **{ModuleName.Modules.Server}** project of each Module. The there defined controllers/pages are then served by the **Web.Server**. Each Module (with the exception of **Modules.LandingPages**) follows the same setup. **Modules.LandingPages** is an exception because it only needs to serve the Razor Components for the LandingPage. Both the **Identity** and **Subscription** Modules consist of five projects.
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
@@ -30,12 +31,11 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 <br/>DTOs that are shared between the **Server** and **Client** Modules. As explained in the previous section the **Shared** project can also be referenced by the **Client** project of other Modules which enables for the Client logic of a Module to call API's of another Module. <br/> 
 
 **Server**: 
-<br/>Contains the API Controllers of the Module. The Controllers handle the incoming Web Requests by transforming the received DTO into the respective Query/Command that is then dispatched. In the Server project also all the services for the Module are registered to the DI container. <br/>
+<br/>Contains the API Controllers of the Module. The Controllers handle the incoming Web Requests by transforming the received DTO into the respective Query/Command that is then dispatched. In the Server project also all the services needed for the Module are registered to the DI container.<br/>
 
 **Features**: 
-<br/>Besides modularity the template also follows a very pragmatic approach. Instead of relying on layering with a "Clean Architecture" structure, the template organizes its business logic in vertical slices. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) all reside in the same **Features** project of a Module. The "Vertical Slice" containing the Domain, Application and Infrastructure logic. The application logic can publish IntegrationEvents from the **IntegrationEvents** project. 
+<br/>Besides modularity the template also follows a very pragmatic approach. Instead of layering with a "Clean Architecture" structure, the template organizes its code in vertical slices. While the goal of the Clean Architecture is to organize code through layering by technicality (e.g. one Project for all Domain entities, one Project for all Services and one for all Repositories) the goal of a "Vertical Slice" architecture is to group the code by its business domain. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) of a respective feature (e.g. Tenant Management) all reside in the same **Features** project of a Module. Therefore the **Features** project itself is the "Vertical Slice". Having all the files in the same project makes it easier to add changes as we no longer must switch between different projects and need to adhere to layering abstraction in between them. 
 
-<img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/FeaturesOverview.png" />
 
 **Aggregates**: Domain Driven Design Pattern to organize entities: "cluster of domain objects that can be treated as a single unit (Martin Fowler)"<br/>
  **TenantAggregate**: <br/>
