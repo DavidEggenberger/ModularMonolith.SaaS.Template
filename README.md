@@ -19,8 +19,7 @@ The solution follows a "modular" architectural approach. The idea is, that every
 
 ### Module Overview
 
-A Module is a logical boundery that defines a subdomain (e.g. TenantIdentity or Subscription) of the application. The goal is to isolate the respective models and logic from other subdomains to avoid confusion and coupling. A Module therefore represents a Bounded Context from Eric Evans book Domain Driven Design. 
-The **Web.Server** references the **{ModuleName.Modules.Server}** project of each Module. The there defined controllers/pages are then served by the **Web.Server**. Each Module (with the exception of **Modules.LandingPages**) follows the same setup. **Modules.LandingPages** is an exception because it only needs to serve the Razor Components for the LandingPage. Both the **Identity** and **Subscription** Modules consist of five projects.
+A Module is a logical boundery that defines a subdomain (e.g. TenantIdentity or Subscription) of the application. The goal is to isolate the respective models and logic from other subdomains to avoid confusion and coupling. A Module therefore represents a Bounded Context from Eric Evans book Domain Driven Design. The **Web.Server** references the **{ModuleName.Modules.Server}** project of each Module. The there defined controllers/pages are then served by the **Web.Server**. Each Module (with the exception of **Modules.LandingPages**) follows the same setup. **Modules.LandingPages** is an exception because it only needs to serve the Razor Components for the LandingPage. Both the **Identity** and **Subscription** Modules consist of five projects.
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ModuleOverview.png" />
 
@@ -34,17 +33,10 @@ The **Web.Server** references the **{ModuleName.Modules.Server}** project of eac
 <br/>Contains the API Controllers of the Module. The Controllers handle the incoming Web Requests by transforming the received DTO into the respective Query/Command that is then dispatched. In the Server project also all the services needed for the Module are registered to the DI container.<br/>
 
 **Features**: 
-<br/>Besides modularity the template also follows a very pragmatic approach. Instead of layering with a "Clean Architecture" structure, the template organizes its code in vertical slices. While the goal of the Clean Architecture is to organize code through layering by technicality (e.g. one Project for all Domain entities, one Project for all Services and one for all Repositories) the goal of a "Vertical Slice" architecture is to group the code by its business domain. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) of a respective feature (e.g. Tenant Management) all reside in the same **Features** project of a Module. Therefore the **Features** project itself is the "Vertical Slice". Having all the files in the same project makes it easier to add changes as we no longer must switch between different projects and need to adhere to layering abstraction in between them. 
-
-
-**Aggregates**: Domain Driven Design Pattern to organize entities: "cluster of domain objects that can be treated as a single unit (Martin Fowler)"<br/>
- **TenantAggregate**: <br/>
-  **Application**: Contains the application logic split into Commands, Queries and IntegrationEventHandlers<br/> 
-   **Commands**: The Commands with their respective CommandHandlers <br/>
-   **IntegrationEventHandlers**: IntegrationEventHandlers handling IntegationEvents published from other Modules<br/>
-   **Queries**: The Queries with their respective QueryHandlers <br/>
-  **Domain**: The aggregate's entities moduled following the principles of Domain Driven Design <br/> 
- **Infrastructure**: EF Core DbContext and Configuration for the whole Module<br/>
+<br/>Besides modularity the template also follows a very pragmatic approach. Instead of layering with a "Clean Architecture" structure, the template organizes its code in vertical slices. While the goal of the Clean Architecture is to organize code through layering by technicality (e.g. one Project for all Domain entities, one Project for all Services and one for all Repositories) the goal of a "Vertical Slice" architecture is to group the code by its business domain. This means that the entities (Domain layer), Command/QueryHandlers (Application layer) and Infrastructure Configuration (Infrastructure Layer) of a respective feature (e.g. Tenant Management) all reside in the same **Features** project of a Module. Therefore the **Features** project itself is the "Vertical Slice". Having all the files in the same project makes it easier to add changes as we no longer must switch between different projects and need to adhere to layering abstraction in between them. The **Features** Modules of the TenantIdentity and Subscription Modules have both 3 top level folders, Aggregates, Application and Infrastructure.
+The Aggregates folder holds all of the Module's Aggregates. An Aggregate is a Domain Driven Design Pattern to organize entities, Martin Fowler defines it as follows: "cluster of domain objects that can be treated as a single unit". Every Aggregate revolves around an AggregateRoot. Its used to logically structure the Aggregate through encapsulating child entities that can only be retrieved and updated through calling the AggregateRoot's methods. Both the AggregateRoot and its Child Entities are modelled following the principles of Domain Driven Design meaning that the entity both contains data and behaviour. Besides the entities each AggregateRoot also has a Commands and a Queries subfolder. They hold the Commands/Queries with their respective Command/QueryHandlers. The Commands are used to update the AggregateRoot with its Child Entities and the Queries to retrieve them.     
+The application folder contains the Commands, Queries and IntegrationEventHandlers that involve more than one Aggregate. 
+The infrastructure folder contains the EF Core DbContext and Configuration objects.
 
 **IntegrationEvents**: 
 <br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
