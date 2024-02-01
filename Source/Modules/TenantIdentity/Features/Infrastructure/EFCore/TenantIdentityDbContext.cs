@@ -40,17 +40,17 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 
             if (hostEnvironment.IsDevelopment())
             {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Dev, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);
                 });
             }
             if (hostEnvironment.IsProduction())
             {
-                if (!optionsBuilder.IsConfigured)
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Prod, sqlServerOptions =>
                 {
-                    optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Chinook");
-                }
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });
             }
 
             base.OnConfiguring(optionsBuilder);

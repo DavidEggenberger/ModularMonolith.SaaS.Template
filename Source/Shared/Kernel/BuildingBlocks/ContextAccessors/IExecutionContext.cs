@@ -1,4 +1,6 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth;
+﻿using Microsoft.Extensions.Hosting;
+using Shared.Kernel.BuildingBlocks.Auth;
+
 
 namespace Shared.Kernel.BuildingBlocks.ContextAccessors
 {
@@ -11,5 +13,7 @@ namespace Shared.Kernel.BuildingBlocks.ContextAccessors
         SubscriptionPlanType TenantPlan { get; }
 
         TenantRole TenantRole { get; }
+
+        IHostEnvironment HostingEnvironment { get; }
     }
 }

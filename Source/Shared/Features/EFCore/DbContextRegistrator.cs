@@ -13,7 +13,7 @@ namespace Shared.Features.EFCore
 
             services.AddDbContext<T>(options =>
             {
-                var connectionString = serviceProvider.GetRequiredService<EFCoreConfiguration>().SQLServerConnectionString;
+                var connectionString = serviceProvider.GetRequiredService<EFCoreConfiguration>().SQLServerConnectionString_Dev;
                 options.UseSqlServer(connectionString, sqlServerOptions =>
                 {
                     sqlServerOptions.EnableRetryOnFailure(5);

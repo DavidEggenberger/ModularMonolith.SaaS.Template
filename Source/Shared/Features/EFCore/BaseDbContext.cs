@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Shared.Features.DomainKernel;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
@@ -36,10 +37,23 @@ namespace Shared.Features.EFCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(new ExecutionContextInterceptor());
-            optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString, sqlServerOptions =>
+        
+            if (executionContext.HostingEnvironment.IsDevelopment())
             {
-                sqlServerOptions.EnableRetryOnFailure(5);
-            });
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Dev, sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });
+            }
+            if (executionContext.HostingEnvironment.IsProduction())
+            {
+                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Prod, sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                });
+            }
+
+            base.OnConfiguring(optionsBuilder);     
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
