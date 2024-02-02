@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Modules.TenantIdentity.Features.Domain.TenantAggregate;
+using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.BuildingBlocks.ContextAccessors;
+using System;
 
 namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor
 {
@@ -9,8 +13,13 @@ namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor
         public static IServiceCollection RegisterExecutionContextAccessor(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<ExecutionContextAccessor>();
-            services.AddScoped<IExecutionContextAccessor, ExecutionContextAccessor>();
+            services.AddScoped<IExecutionContext, ExecutionContext>(serviceProvider =>
+            {
+                var executionContext = new ExecutionContext();
+                executionContext.HostingEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
+
+                return executionContext;
+            });
             return services;
         }
 
@@ -18,8 +27,12 @@ namespace Web.Server.BuildingBlocks.ContextAccessor.ExecutionContextAccessor
         {
             applicationBuilder.Use(async (context, next) =>
             {
-                var executionContextAccessor = context.RequestServices.GetService<ExecutionContextAccessor>();
-                executionContextAccessor.CaptureHttpContext(context);
+                var hostEnvironment = context.RequestServices.GetService<IHostEnvironment>();
+                executionContext.UserId = capturedHttpContext.User.GetUserId<Guid>(),
+                TenantId = capturedHttpContext.User.GetTenantId<Guid>(),
+                TenantPlan = capturedHttpContext.User.GetTenantSubscriptionPlanType(),
+                TenantRole = capturedHttpContext.User.GetTenantRole()
+
                 await next(context);
             });
 
