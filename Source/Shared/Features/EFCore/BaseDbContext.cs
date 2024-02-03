@@ -6,7 +6,7 @@ using Shared.Features.DomainKernel;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
 using Shared.Features.EFCore.MultiTenancy.Exceptions;
-using Shared.Kernel.BuildingBlocks.ContextAccessors;
+using Shared.Kernel.BuildingBlocks.ExecutionContext;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.EFCore
@@ -20,7 +20,7 @@ namespace Shared.Features.EFCore
         public BaseDbContext(IServiceProvider serviceProvider, string schemaName, DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
             this.schemaName = schemaName;
-            executionContext = serviceProvider.GetService<IExecutionContextAccessor>().ExecutionContext;
+            executionContext = serviceProvider.GetService<IExecutionContext>();
             configuration = serviceProvider.GetService<EFCoreConfiguration>();
         }
 

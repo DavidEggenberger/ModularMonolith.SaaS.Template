@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
-using Shared.Kernel.BuildingBlocks.ContextAccessors;
+using Shared.Kernel.BuildingBlocks.ExecutionContext;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Commands
@@ -14,7 +14,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Commands
     public class RemoveUserFromTenantommandHandler : ICommandHandler<RemoveUserFromTenant>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        private readonly IExecutionContextAccessor executionContextAccessor;
+        private readonly IExecutionContext executionContext;
 
         public RemoveUserFromTenantommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
         {

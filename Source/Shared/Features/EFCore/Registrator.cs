@@ -13,8 +13,6 @@ namespace Shared.Features.EFCore
             services.AddScoped<EFCoreConfiguration>(sp => sp.GetRequiredService<IOptions<EFCoreConfiguration>>().Value);
             services.AddSingleton<IValidateOptions<EFCoreConfiguration>, EFCoreConfigurationValidator>();
 
-            services.AddScoped<DBTrans>
-
             return services;
         }
     }

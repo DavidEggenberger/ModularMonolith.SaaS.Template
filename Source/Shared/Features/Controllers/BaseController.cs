@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.Query;
-using Shared.Kernel.BuildingBlocks.ContextAccessors;
+using Shared.Kernel.BuildingBlocks.ExecutionContext;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Shared.Features
@@ -11,16 +11,14 @@ namespace Shared.Features
     {
         protected readonly ICommandDispatcher commandDispatcher;
         protected readonly IQueryDispatcher queryDispatcher;
-        protected readonly IExecutionContextAccessor executionContextAccessor;
-        protected readonly IWebContextAccessor webContextAccessor;
+        protected readonly IExecutionContext executionContext;
         protected readonly IValidationService validationService;
 
         public BaseController(IServiceProvider serviceProvider)
         {
             commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-            executionContextAccessor = serviceProvider.GetRequiredService<IExecutionContextAccessor>();
-            webContextAccessor = serviceProvider.GetService<IWebContextAccessor>();
+            executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Shared.Features.DomainKernel;
-using Shared.Kernel.BuildingBlocks.ContextAccessors;
+using Shared.Kernel.BuildingBlocks.ExecutionContext;
 
 namespace Shared.Features.EFCore
 {
@@ -15,7 +15,7 @@ namespace Shared.Features.EFCore
             {
                 aggregateRoot.ExecutionContext = materializationData
                     .Context
-                    .GetService<IExecutionContextAccessor>().ExecutionContext;
+                    .GetService<IExecutionContext>();
             }
 
             return instance;

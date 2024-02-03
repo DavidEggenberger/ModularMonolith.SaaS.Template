@@ -2,10 +2,12 @@
 using Shared.Kernel.BuildingBlocks.Auth;
 
 
-namespace Shared.Kernel.BuildingBlocks.ContextAccessors
+namespace Shared.Kernel.BuildingBlocks.ExecutionContext
 {
     public interface IExecutionContext
     {
+        bool AuthenticatedRequest {  get; }
+
         Guid UserId { get; }
 
         Guid TenantId { get; }
@@ -15,5 +17,7 @@ namespace Shared.Kernel.BuildingBlocks.ContextAccessors
         TenantRole TenantRole { get; }
 
         IHostEnvironment HostingEnvironment { get; }
+
+        public Uri BaseURI { get; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Modules.TenantIdentity.Features.Domain.TenantAggregate.Exceptions;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.DomainKernel;
 using Shared.Features.DomainKernel.Exceptions;
