@@ -9,7 +9,7 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
         public static IServiceCollection RegisterExecutionContext(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<IExecutionContext, ExecutionContext>(ExecutionContext.GetInstance);
+            services.AddScoped<IExecutionContext, ExecutionContext>(sp => ExecutionContext.CreateInstance());
             return services;
         }
 
@@ -18,7 +18,7 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
             applicationBuilder.Use(async (context, next) =>
             {
                 var executionContext = (ExecutionContext)context.RequestServices.GetService<IExecutionContext>();
-                executionContext.CaptureHttpContext(context);
+                executionContext.InitializeInstance(context);
 
                 await next(context);
             });

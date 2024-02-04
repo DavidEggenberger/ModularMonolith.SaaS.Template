@@ -12,25 +12,24 @@ namespace Shared.Kernel.BuildingBlocks.ExecutionContext
     {
         private static ExecutionContext executionContext;
         private ExecutionContext() { }
-
-        public static ExecutionContext GetInstance(IServiceProvider serviceProvider)
+        
+        public static ExecutionContext CreateInstance()
         {
-            if (executionContext != null)
+            if (executionContext is not null)
             {
                 return executionContext;
             }
 
-            var server = serviceProvider.GetService<IServer>();
-            var addresses = server?.Features.Get<IServerAddressesFeature>();
-
-            return new ExecutionContext
-            {
-                BaseURI = new Uri(addresses?.Addresses.FirstOrDefault(a => a.Contains("https")) ?? string.Empty)
-            };
+            return new ExecutionContext();
         }
 
-        public void CaptureHttpContext(HttpContext httpContext)
+        public void InitializeInstance(HttpContext httpContext)
         {
+            var server = httpContext.RequestServices.GetRequiredService<IServer>();
+            var addresses = server?.Features.Get<IServerAddressesFeature>();
+
+            BaseURI = new Uri(addresses?.Addresses.FirstOrDefault(a => a.Contains("https")) ?? string.Empty);
+
             if (httpContext.User.Identity.IsAuthenticated is false)
             {
                 AuthenticatedRequest = false;
