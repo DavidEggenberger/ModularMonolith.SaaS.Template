@@ -46,7 +46,7 @@ namespace Web.Server
             services.AddAuth();
 
             services.AddBuildingBlocks();
-            services.AddSharedInfrastructure();
+            services.AddSharedFeatures();
 
             services.AddModule<TenantIdentityModuleStartup>(Configuration);
             services.AddModule<SubscriptionsModuleStartup>();

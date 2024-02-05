@@ -9,7 +9,7 @@ namespace Shared.Features
 {
     public static class DIRegistrator
     {
-        public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services)
+        public static IServiceCollection AddSharedFeatures(this IServiceCollection services)
         {
             var serviceProvider = services.BuildServiceProvider();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();

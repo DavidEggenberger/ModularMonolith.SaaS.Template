@@ -1,4 +1,4 @@
-﻿using Shared.Features.DomainKernel;
+﻿using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.Domain.TenantAggregate

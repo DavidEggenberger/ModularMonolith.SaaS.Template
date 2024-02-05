@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
-using Shared.Features.DomainKernel.Exceptions;
+using Shared.Features.Domain.Exceptions;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Commands

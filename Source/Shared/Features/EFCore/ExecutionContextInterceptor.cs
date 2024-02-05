@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Shared.Features.DomainKernel;
+using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.ExecutionContext;
 
 namespace Shared.Features.EFCore

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Features.DomainKernel;
+using Shared.Features.Domain;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
 using Shared.Features.EFCore.MultiTenancy.Exceptions;

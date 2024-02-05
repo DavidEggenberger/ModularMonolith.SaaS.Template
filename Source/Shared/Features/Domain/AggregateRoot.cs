@@ -3,7 +3,7 @@ using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using Shared.Kernel.BuildingBlocks.ExecutionContext;
 using Shared.Kernel.Interfaces;
 
-namespace Shared.Features.DomainKernel
+namespace Shared.Features.Domain
 {
     public class AggregateRoot : Entity, ITenantIdentifiable
     {

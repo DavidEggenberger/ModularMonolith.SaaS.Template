@@ -1,4 +1,4 @@
-﻿using Shared.Features.DomainKernel.Exceptions;
+﻿using Shared.Features.Domain.Exceptions;
 
 namespace Modules.TenantIdentity.Features.Domain.TenantAggregate.Exceptions
 {

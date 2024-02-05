@@ -1,7 +1,7 @@
-﻿using Shared.Features.DomainKernel.Exceptions;
+﻿using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.Interfaces;
 
-namespace Shared.Features.DomainKernel
+namespace Shared.Features.Domain
 {
     public abstract class Entity : IAuditable, IIdentifiable, IConcurrent
     {
