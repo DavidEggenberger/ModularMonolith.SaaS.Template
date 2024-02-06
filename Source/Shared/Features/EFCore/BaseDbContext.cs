@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Shared.Features.Domain;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
 using Shared.Features.EFCore.MultiTenancy.Exceptions;
-using Shared.Kernel.BuildingBlocks.ExecutionContext;
+using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.EFCore
@@ -37,21 +36,6 @@ namespace Shared.Features.EFCore
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(new ExecutionContextInterceptor());
-        
-            if (executionContext.HostingEnvironment.IsDevelopment())
-            {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Dev, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                });
-            }
-            if (executionContext.HostingEnvironment.IsProduction())
-            {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Prod, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                });
-            }
 
             base.OnConfiguring(optionsBuilder);     
         }

@@ -2,11 +2,11 @@
 using Shared.Kernel.BuildingBlocks.Auth;
 
 
-namespace Shared.Kernel.BuildingBlocks.ExecutionContext
+namespace Shared.Kernel.BuildingBlocks
 {
     public interface IExecutionContext
     {
-        bool AuthenticatedRequest {  get; }
+        bool AuthenticatedRequest { get; }
 
         Guid UserId { get; }
 

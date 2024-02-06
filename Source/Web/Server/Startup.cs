@@ -49,8 +49,8 @@ namespace Web.Server
             services.AddSharedFeatures();
 
             services.AddModule<TenantIdentityModuleStartup>(Configuration);
-            services.AddModule<SubscriptionsModuleStartup>();
-            services.AddModule<LandingPagesModuleStartup>();
+            services.AddModule<SubscriptionsModuleStartup>(Configuration);
+            services.AddModule<LandingPagesModuleStartup>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

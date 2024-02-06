@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Features.EFCore
 {
@@ -13,13 +14,18 @@ namespace Shared.Features.EFCore
 
             services.AddDbContext<T>(options =>
             {
-                var connectionString = serviceProvider.GetRequiredService<EFCoreConfiguration>().SQLServerConnectionString_Dev;
-                options.UseSqlServer(connectionString, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                    sqlServerOptions.CommandTimeout(15);
-                    sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
-                });
+                var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
+                var efCoreConfiguration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
+
+                options.UseSqlServer(
+                    executionContext.HostingEnvironment.IsProduction() ? efCoreConfiguration.SQLServerConnectionString_Prod : efCoreConfiguration.SQLServerConnectionString_Dev,
+                    sqlServerOptions =>
+                    {
+                        sqlServerOptions.EnableRetryOnFailure(5);
+                        sqlServerOptions.CommandTimeout(15);
+                        sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
+                    }
+                );
             });
 
             if (serviceProvider.GetRequiredService<IHostEnvironment>().IsProduction())

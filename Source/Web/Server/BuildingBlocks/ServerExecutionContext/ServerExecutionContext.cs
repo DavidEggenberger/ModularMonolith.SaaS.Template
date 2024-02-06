@@ -3,24 +3,30 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
+using System;
+using System.Linq;
 
-namespace Shared.Kernel.BuildingBlocks.ExecutionContext
+namespace Web.Server.BuildingBlocks.ServerExecutionContext
 {
-    public class ExecutionContext : IExecutionContext
+    public class ServerExecutionContext : IExecutionContext
     {
-        private static ExecutionContext executionContext;
-        private ExecutionContext() { }
+        private static ServerExecutionContext executionContext;
+        private ServerExecutionContext() { }
         
-        public static ExecutionContext CreateInstance()
+        public static ServerExecutionContext CreateInstance(IServiceProvider serviceProvider)
         {
             if (executionContext is not null)
             {
                 return executionContext;
             }
 
-            return new ExecutionContext();
+            return new ServerExecutionContext()
+            {
+                HostingEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>()
+            };
         }
 
         public void InitializeInstance(HttpContext httpContext)
@@ -52,7 +58,7 @@ namespace Shared.Kernel.BuildingBlocks.ExecutionContext
 
         public TenantRole TenantRole { get; private set; }
 
-        public IHostEnvironment HostingEnvironment { get; private set; }
+        public IHostEnvironment HostingEnvironment { get; set; }
 
         public Uri BaseURI { get; private set; }
     }

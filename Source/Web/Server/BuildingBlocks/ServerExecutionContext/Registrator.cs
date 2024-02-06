@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.ExecutionContext;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Web.Server.BuildingBlocks.ServerExecutionContext
 {
@@ -9,7 +9,7 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
         public static IServiceCollection RegisterExecutionContext(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<IExecutionContext, ExecutionContext>(sp => ExecutionContext.CreateInstance());
+            services.AddScoped<IExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
             return services;
         }
 
@@ -17,7 +17,7 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
         {
             applicationBuilder.Use(async (context, next) =>
             {
-                var executionContext = (ExecutionContext)context.RequestServices.GetService<IExecutionContext>();
+                var executionContext = (ServerExecutionContext)context.RequestServices.GetService<IExecutionContext>();
                 executionContext.InitializeInstance(context);
 
                 await next(context);

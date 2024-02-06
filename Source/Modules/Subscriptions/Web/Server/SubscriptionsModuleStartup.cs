@@ -14,10 +14,10 @@ namespace Modules.Subscription.Server
     {
         public Assembly? FeaturesAssembly => typeof(SubscriptionsModuleStartup).Assembly;
 
-        public void ConfigureServices(IServiceCollection services, IConfiguration config = null)
+        public void ConfigureServices(IServiceCollection services, IConfiguration config)
         {
             services.RegisterDbContext<SubscriptionsDbContext>(schemaName: "Subscriptions");
-            services.RegisterConfiguration(services.BuildServiceProvider().GetRequiredService<IConfiguration>());
+            services.RegisterConfiguration(config);
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env)

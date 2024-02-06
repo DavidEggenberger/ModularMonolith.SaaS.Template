@@ -1,6 +1,6 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth;
+﻿using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
-using Shared.Kernel.BuildingBlocks.ExecutionContext;
 using Shared.Kernel.Interfaces;
 
 namespace Shared.Features.Domain
