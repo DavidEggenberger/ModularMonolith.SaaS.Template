@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Shared.Features.Domain;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
@@ -14,28 +16,37 @@ namespace Shared.Features.EFCore
     {
         private readonly string schemaName;
         private readonly IExecutionContext executionContext;
-        private readonly EFCoreConfiguration configuration;
+        private readonly EFCoreConfiguration efCoreConfiguration;
 
         public BaseDbContext(IServiceProvider serviceProvider, string schemaName, DbContextOptions<T> dbContextOptions) : base(dbContextOptions)
         {
             this.schemaName = schemaName;
             executionContext = serviceProvider.GetService<IExecutionContext>();
-            configuration = serviceProvider.GetService<EFCoreConfiguration>();
+            efCoreConfiguration = serviceProvider.GetService<EFCoreConfiguration>();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema(schemaName);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(T).Assembly);
+            modelBuilder.ApplyBaseEntityConfiguration(executionContext.TenantId);
 
             ThrowIfDbSetEntityNotTenantIdentifiable(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(null,
-                x => x.Namespace.Contains(typeof(T).Namespace));
-            modelBuilder.ApplyBaseEntityConfiguration(executionContext.TenantId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(new ExecutionContextInterceptor());
+
+            optionsBuilder.UseSqlServer(
+                executionContext.HostingEnvironment.IsProduction() ? efCoreConfiguration.SQLServerConnectionString_Prod : efCoreConfiguration.SQLServerConnectionString_Dev,
+                sqlServerOptions =>
+                {
+                    sqlServerOptions.EnableRetryOnFailure(5);
+                    sqlServerOptions.CommandTimeout(15);
+                    sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
+                }
+            );
 
             base.OnConfiguring(optionsBuilder);     
         }

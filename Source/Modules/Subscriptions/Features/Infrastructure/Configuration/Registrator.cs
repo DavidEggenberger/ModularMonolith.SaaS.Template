@@ -15,7 +15,7 @@ namespace Modules.Subscription.Features.Infrastructure.Configuration
             services.AddScoped<SubscriptionsConfiguration>(sp =>
             {
                 SubscriptionsConfiguration sc = new SubscriptionsConfiguration();
-                sp.GetRequiredService<IConfiguration>().GetSection("SubscriptionConfiguration").Bind(sc);
+                sp.GetRequiredService<IConfiguration>().GetSection("SubscriptionsConfiguration").Bind(sc);
                 return sc;
             });
             services.AddSingleton<IValidateOptions<SubscriptionsConfiguration>, SubscriptionsConfigurationValidator>();
