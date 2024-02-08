@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Web.Server.BuildingBlocks.ModelValidation
 {
-    public static class ModelValidationDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterModelValidation(this IServiceCollection services)
         {

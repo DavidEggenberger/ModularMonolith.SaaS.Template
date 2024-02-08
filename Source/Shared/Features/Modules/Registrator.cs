@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Shared.Features.Modules
 {
-    public static class ModuleRegistrator
+    public static class Registrator
     {
         public static IServiceCollection AddModule<TStartup>(this IServiceCollection services, IConfiguration config = null)
             where TStartup : IModuleStartup, new()

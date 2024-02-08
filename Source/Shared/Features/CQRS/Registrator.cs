@@ -7,7 +7,7 @@ using Shared.Features.CQRS.IntegrationEvent;
 
 namespace Shared.Features.CQRS
 {
-    public static class CQRSDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterCQRS(this IServiceCollection services, Assembly[] assemblies)
         {

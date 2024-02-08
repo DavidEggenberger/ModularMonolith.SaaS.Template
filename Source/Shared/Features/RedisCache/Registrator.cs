@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Shared.Features.Domain.Infrastructure.RedisCache
 {
-    public static class RedisCacheDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterRedisCache(this IServiceCollection serviceCollection, IConfiguration configuration)
         {

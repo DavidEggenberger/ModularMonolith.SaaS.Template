@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Web.Server.BuildingBlocks.HostingInformation
+namespace Web.Server.BuildingBlocks.ExceptionHandling
 {
-    public static class ExceptionHandlingMdwRegistrator
+    public static class Registrator
     {
         public static IApplicationBuilder RegisterExceptionHandling(this IApplicationBuilder applicationBuilder)
         {

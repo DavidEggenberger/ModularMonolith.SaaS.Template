@@ -4,7 +4,7 @@ using Shared.Features.EmailSender.Services;
 
 namespace Shared.Features.EmailSender
 {
-    public static class EmailSenderDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterEmailSender(this IServiceCollection services, IConfiguration configuration)
         {

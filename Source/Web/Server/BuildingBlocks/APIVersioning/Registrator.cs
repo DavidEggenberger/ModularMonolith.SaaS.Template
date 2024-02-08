@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Web.Server.BuildingBlocks.Swagger
 {
-    public static class APIVersioningDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterApiVersioning(this IServiceCollection serviceCollection)
         {
@@ -16,6 +17,13 @@ namespace Web.Server.BuildingBlocks.Swagger
             });
 
             return serviceCollection;
+        }
+
+        public static IApplicationBuilder RegisterApiVersioning(this IApplicationBuilder applicationBuilder)
+        {
+            applicationBuilder.UseApiVersioning();
+
+            return applicationBuilder;
         }
     }
 }

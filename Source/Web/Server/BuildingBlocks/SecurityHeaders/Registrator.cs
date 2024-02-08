@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace Web.Server.BuildingBlocks.ModelValidation
+namespace Web.Server.BuildingBlocks.SecurityHeaders
 {
-    public static class SecurityHeadersMdwRegistrator
+    public static class Registrator
     {
         public static IApplicationBuilder RegisterSecurityHeaders(this IApplicationBuilder applicationBuilder)
         {

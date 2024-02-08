@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace WebServer.Modules.ModelValidation
 {
-    public static class AntiforgeryTokenDIRegistrator
+    public static class Registrator
     {
         public static IServiceCollection RegisterAntiforgeryToken(this IServiceCollection services)
         {
