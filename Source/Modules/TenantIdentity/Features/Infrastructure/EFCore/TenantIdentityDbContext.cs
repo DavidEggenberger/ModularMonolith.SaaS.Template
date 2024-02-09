@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.UserAggregate;
 using Shared.Features.Domain.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 using Modules.TenantIdentity.Features.Domain.TenantAggregate;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {

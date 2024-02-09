@@ -1,0 +1,16 @@
+version: '3.4'
+name: Infrastructure
+
+services:
+  sqlserver:
+    container_name: SQLServer
+    image: mcr.microsoft.com/azure-sql-edge
+    ports:
+      - "1433:1433"
+    environment:
+      - SA_PASSWORD=YourSTRONG!Passw0rd
+      - ACCEPT_EULA=Y
+    volumes:
+      - sqlserver:/sqlserver
+volumes: 
+  sqlserver:

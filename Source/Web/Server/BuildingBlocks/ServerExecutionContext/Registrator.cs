@@ -21,6 +21,8 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
                 executionContext.InitializeInstance(context);
 
                 await next(context);
+
+                await executionContext.CommitChangesAsync();
             });
 
             return applicationBuilder;

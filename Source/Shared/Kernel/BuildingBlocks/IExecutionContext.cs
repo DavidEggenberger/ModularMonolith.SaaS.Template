@@ -6,8 +6,6 @@ namespace Shared.Kernel.BuildingBlocks
 {
     public interface IExecutionContext
     {
-        bool AuthenticatedRequest { get; }
-
         Guid UserId { get; }
 
         Guid TenantId { get; }
@@ -16,8 +14,10 @@ namespace Shared.Kernel.BuildingBlocks
 
         TenantRole TenantRole { get; }
 
-        IHostEnvironment HostingEnvironment { get; }
-
         public Uri BaseURI { get; }
+
+        bool AuthenticatedRequest { get; }
+
+        IHostEnvironment HostingEnvironment { get; }
     }
 }

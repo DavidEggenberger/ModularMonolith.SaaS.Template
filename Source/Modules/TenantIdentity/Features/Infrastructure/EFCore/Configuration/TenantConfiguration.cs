@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Modules.TenantIdentity.Features.Domain.TenantAggregate;
 
-namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.TenantAggregate
+namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration
 {
     public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
     {
@@ -15,6 +15,8 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration.Te
             builder.Navigation(b => b.Invitations)
                 .HasField("invitations")
                 .UsePropertyAccessMode(PropertyAccessMode.Field);
+
+            builder.OwnsMany(t => t.Invitations);
         }
     }
 }
