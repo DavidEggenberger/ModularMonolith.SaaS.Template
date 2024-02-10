@@ -20,8 +20,8 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
         public SubscriptionPlanType SubscriptionPlanType {  get; set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
-        public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
-        private List<TenantInvitation> invitations = new List<TenantInvitation>();
+        //public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
+        //private List<TenantInvitation> invitations = new List<TenantInvitation>();
 
         public static async Task<Tenant> CreateTenantWithAdminAsync(string name, Guid adminUserId)
         {
@@ -82,7 +82,7 @@ namespace Modules.TenantIdentity.Features.Domain.TenantAggregate
                 throw new UserIsAlreadyMemberException();
             }
 
-            invitations.Add(new TenantInvitation { UserId = userId, Role = role });
+            //invitations.Add(new TenantInvitation { UserId = userId, Role = role });
         }
 
         public async void DeleteTenantMembership(Guid membershipId)

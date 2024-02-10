@@ -1,5 +1,8 @@
-﻿namespace Shared.Features.Domain
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Shared.Features.Domain
 {
+    [Keyless]
     public abstract class ValueObject
     {
         protected static bool EqualOperator(ValueObject left, ValueObject right)

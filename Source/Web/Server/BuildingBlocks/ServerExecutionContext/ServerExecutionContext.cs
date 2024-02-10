@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Transactions;
 
 namespace Web.Server.BuildingBlocks.ServerExecutionContext
 {
@@ -52,6 +53,7 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
 
             BaseURI = new Uri(addresses?.Addresses.FirstOrDefault(a => a.Contains("https")) ?? string.Empty);
             TenantIdentityDbContext = httpContext.RequestServices.GetRequiredService<TenantIdentityDbContext>();
+            SubscriptionsDbContext = httpContext.RequestServices.GetRequiredService<SubscriptionsDbContext>();
 
             if (httpContext.User.Identity.IsAuthenticated is false)
             {
@@ -67,13 +69,16 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
 
         public async Task CommitChangesAsync()
         {
-            using var trans = TenantIdentityDbContext.Database.BeginTransaction();
-            await SubscriptionsDbContext.Database.UseTransactionAsync(trans.GetDbTransaction());
+            var strategy = TenantIdentityDbContext.Database.CreateExecutionStrategy();
+            await strategy.ExecuteAsync(async () =>
+            {
+                using var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
 
-            await TenantIdentityDbContext.SaveChangesAsync();
-            await SubscriptionsDbContext.SaveChangesAsync();
+                await TenantIdentityDbContext.SaveChangesAsync();
+                await SubscriptionsDbContext.SaveChangesAsync();
 
-            await trans.CommitAsync();
+                scope.Complete();
+            });
         }
     }
 }

@@ -9,17 +9,17 @@ namespace Shared.Features.EFCore
     {
         public static void RegisterDbContext<T>(this IServiceCollection services, string schemaName) where T : DbContext
         {
-            var serviceProvider = services.BuildServiceProvider();
-            var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
-
             services.AddDbContext<T>();
 
-            if (executionContext.HostingEnvironment.IsProduction())
+            using (var serviceProvider = services.BuildServiceProvider())
             {
-                using (var scope = services.BuildServiceProvider().CreateScope())
+                if (serviceProvider.GetRequiredService<IExecutionContext>().HostingEnvironment.IsProduction())
                 {
-                    var db = scope.ServiceProvider.GetService<T>();
-                    db.Database.Migrate();
+                    using (var scope = serviceProvider.CreateScope())
+                    {
+                        var db = scope.ServiceProvider.GetService<T>();
+                        db.Database.Migrate();
+                    }
                 }
             }
         }

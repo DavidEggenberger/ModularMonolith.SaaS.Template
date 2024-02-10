@@ -5,7 +5,7 @@ using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Features.EFCore
 {
-    public class ExecutionContextInterceptor : IMaterializationInterceptor
+    public class ExecutionContextInterceptor : SaveChangesInterceptor
     {
         public object InitializedInstance(
             MaterializationInterceptionData materializationData,

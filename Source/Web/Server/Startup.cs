@@ -12,6 +12,11 @@ using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
 using Modules.Subscription.Server;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore;
+using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web.Server
 {

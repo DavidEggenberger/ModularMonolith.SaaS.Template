@@ -11,8 +11,7 @@ namespace Shared.Features.Domain
         public byte[] RowVersion { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset LastUpdatedAt { get; set; }
-
-        public bool IsDeleted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsDeleted { get; set; }
 
         public void SoftDelete()
         {
