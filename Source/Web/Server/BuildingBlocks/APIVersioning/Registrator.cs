@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Web.Server.BuildingBlocks.Swagger
+namespace Web.Server.BuildingBlocks.APIVersioning
 {
     public static class Registrator
     {

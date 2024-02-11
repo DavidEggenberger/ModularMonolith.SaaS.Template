@@ -9,7 +9,7 @@ using Modules.Subscription.Features.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace Modules.Subscriptions.Features.Migrations
+namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(SubscriptionsDbContext))]
     [Migration("20240210092437_initial")]

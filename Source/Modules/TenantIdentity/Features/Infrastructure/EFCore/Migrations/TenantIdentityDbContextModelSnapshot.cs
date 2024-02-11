@@ -8,7 +8,7 @@ using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace Modules.TenantIdentity.Features.Migrations
+namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(TenantIdentityDbContext))]
     partial class TenantIdentityDbContextModelSnapshot : ModelSnapshot

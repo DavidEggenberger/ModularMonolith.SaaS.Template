@@ -12,22 +12,17 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration
                 .HasField("memberships")
                 .UsePropertyAccessMode(PropertyAccessMode.Field);
 
-            //builder.Navigation(b => b.Invitations)
-            //    .HasField("invitations")
-            //    .UsePropertyAccessMode(PropertyAccessMode.Field);
-
-            builder.OwnsMany(typeof(TenantInvitation), "invitations", o =>
-            {
-                o.WithOwner("Tenant").HasForeignKey("TenantId");
-            });
+            builder.Navigation(b => b.Invitations)
+                .HasField("invitations")
+                .UsePropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 
-    //public class TenantInvitationConfiguration : IEntityTypeConfiguration<TenantInvitation>
-    //{
-    //    //public void Configure(EntityTypeBuilder<TenantInvitation> builder)
-    //    //{
-    //    //    builder.HasKey(tenantInvation => new { tenantInvation.UserId });
-    //    //}
-    //}
+    public class TenantInvitationConfiguration : IEntityTypeConfiguration<TenantInvitation>
+    {
+        public void Configure(EntityTypeBuilder<TenantInvitation> builder)
+        {
+            builder.HasKey(tenantInvation => new { tenantInvation.UserId });
+        }
+    }
 }

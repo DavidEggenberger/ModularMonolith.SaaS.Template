@@ -12,7 +12,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 using System.Transactions;
 
 namespace Web.Server.BuildingBlocks.ServerExecutionContext
@@ -30,8 +29,8 @@ namespace Web.Server.BuildingBlocks.ServerExecutionContext
         public IHostEnvironment HostingEnvironment { get; set; }
         public Uri BaseURI { get; private set; }
 
-        public TenantIdentityDbContext TenantIdentityDbContext { get; set; }
-        public SubscriptionsDbContext SubscriptionsDbContext { get; set; }
+        private TenantIdentityDbContext TenantIdentityDbContext { get; set; }
+        private SubscriptionsDbContext SubscriptionsDbContext { get; set; }
 
         public static ServerExecutionContext CreateInstance(IServiceProvider serviceProvider)
         {

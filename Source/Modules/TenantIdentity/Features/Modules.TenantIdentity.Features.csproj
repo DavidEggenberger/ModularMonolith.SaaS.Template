@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Web\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Infrastructure\EFCore\Migrations\" />
-  </ItemGroup>
-
 </Project>

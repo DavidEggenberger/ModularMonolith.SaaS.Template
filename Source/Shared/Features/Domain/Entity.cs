@@ -24,6 +24,7 @@ namespace Shared.Features.Domain
                 IsSoftDeleted = true;
             }
         }
+
         public void UndoSoftDelete()
         {
             IsSoftDeleted = false;
