@@ -17,12 +17,4 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration
                 .UsePropertyAccessMode(PropertyAccessMode.Field);
         }
     }
-
-    public class TenantInvitationConfiguration : IEntityTypeConfiguration<TenantInvitation>
-    {
-        public void Configure(EntityTypeBuilder<TenantInvitation> builder)
-        {
-            builder.HasKey(tenantInvation => new { tenantInvation.UserId });
-        }
-    }
 }
