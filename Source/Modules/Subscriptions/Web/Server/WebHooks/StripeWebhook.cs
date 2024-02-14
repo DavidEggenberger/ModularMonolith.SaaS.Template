@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
-using Shared.Features;
+using Shared.Features.Server;
 using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Commands;
 

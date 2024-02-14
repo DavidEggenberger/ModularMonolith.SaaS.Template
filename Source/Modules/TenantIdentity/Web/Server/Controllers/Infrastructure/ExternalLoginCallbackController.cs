@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
-using Shared.Features;
+using Shared.Features.Server;
 using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;

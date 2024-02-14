@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace Shared.Features.Domain
+﻿namespace Shared.Features.Domain
 {
     public abstract class ValueObject
     {

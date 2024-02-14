@@ -42,7 +42,8 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             {
                 optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Dev, sqlServerOptions =>
                 {
-                    sqlServerOptions.EnableRetryOnFailure(5);
+                    sqlServerOptions.CommandTimeout(15);
+                    sqlServerOptions.MigrationsHistoryTable("dbo.TenantIdentity_MigrationHistory");
                 });
             }
             if (hostEnvironment.IsProduction())

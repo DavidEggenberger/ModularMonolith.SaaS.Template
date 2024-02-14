@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Shared.Features;
 using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;
@@ -13,6 +12,7 @@ using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Queries;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Queries;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Commands;
+using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
 {

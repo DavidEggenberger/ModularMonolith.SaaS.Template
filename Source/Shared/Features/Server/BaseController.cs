@@ -5,7 +5,7 @@ using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
 
-namespace Shared.Features
+namespace Shared.Features.Server
 {
     public class BaseController : ControllerBase
     {

@@ -5,7 +5,6 @@ using Web.Server.BuildingBlocks.ExceptionHandling;
 using Web.Server.BuildingBlocks.Logging;
 using Web.Server.BuildingBlocks.ModelValidation;
 using Web.Server.BuildingBlocks.SecurityHeaders;
-using Web.Server.BuildingBlocks.ServerExecutionContext;
 using Web.Server.BuildingBlocks.Swagger;
 using WebServer.Modules.AntiforgeryToken;
 
@@ -20,7 +19,6 @@ namespace Web.Server.BuildingBlocks
             services.RegisterLogging();
             services.RegisterModelValidation();
             services.RegisterSwagger();
-            services.RegisterExecutionContext();
             services.RegisterModelValidation();
 
             return services;
@@ -33,7 +31,6 @@ namespace Web.Server.BuildingBlocks
             applicationBuilder.RegisterLogging();
             applicationBuilder.RegisterSecurityHeaders();
             applicationBuilder.RegisterSwagger();
-            applicationBuilder.RegisterExecutionContextMiddleware();
 
             return applicationBuilder;
         }

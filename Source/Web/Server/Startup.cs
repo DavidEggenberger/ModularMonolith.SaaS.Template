@@ -12,11 +12,7 @@ using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
 using Modules.Subscription.Server;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Modules.Subscription.Features.Infrastructure.EFCore;
-using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
-using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
-using Microsoft.EntityFrameworkCore;
+using Shared.Features.Server.ExecutionContext;
 
 namespace Web.Server
 {
@@ -50,6 +46,7 @@ namespace Web.Server
 
             services.AddAuth();
 
+            services.AddServerExecutionContext();
             services.AddBuildingBlocks();
             services.AddSharedFeatures();
 
@@ -81,6 +78,7 @@ namespace Web.Server
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseServerExecutionContextMiddleware();
             app.UseBuildingBlocks();
 
             app.UseModules(env);

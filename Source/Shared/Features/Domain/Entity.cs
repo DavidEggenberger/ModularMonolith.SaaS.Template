@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Shared.Features.Domain.Exceptions;
-using Shared.Kernel.Interfaces;
+﻿using Shared.Kernel.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
 namespace Shared.Features.Domain

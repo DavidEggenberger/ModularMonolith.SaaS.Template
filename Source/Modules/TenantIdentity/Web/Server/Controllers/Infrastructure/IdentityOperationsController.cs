@@ -7,7 +7,7 @@ using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Commands;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Queries;
 using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
-using Shared.Features;
+using Shared.Features.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;

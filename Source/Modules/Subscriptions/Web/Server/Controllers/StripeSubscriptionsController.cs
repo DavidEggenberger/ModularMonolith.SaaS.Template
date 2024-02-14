@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Commands;
-using Shared.Features;
+using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
 namespace Modules.Subscriptions.Web.Server.Controllers

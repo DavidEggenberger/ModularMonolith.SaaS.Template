@@ -41,7 +41,6 @@ namespace Shared.Features.EFCore
                 executionContext.HostingEnvironment.IsProduction() ? efCoreConfiguration.SQLServerConnectionString_Prod : efCoreConfiguration.SQLServerConnectionString_Dev,
                 sqlServerOptions =>
                 {
-                    sqlServerOptions.EnableRetryOnFailure(5);
                     sqlServerOptions.CommandTimeout(15);
                     sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
                 }
