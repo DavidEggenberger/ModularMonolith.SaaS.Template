@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shared.Features.CQRS;
 
 namespace Shared.Features.Modules
 {
@@ -21,6 +22,15 @@ namespace Shared.Features.Modules
             services.AddSingleton(new Module(startup));
 
             return services;
+        }
+
+        public static void AddModules(this IServiceCollection services)
+        {
+            var serviceProvider = services.BuildServiceProvider();
+
+            var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
+
+            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(sm => sm.Startup.FeaturesAssembly).ToArray());
         }
 
         public static IApplicationBuilder UseModules(this IApplicationBuilder app, IHostEnvironment env)

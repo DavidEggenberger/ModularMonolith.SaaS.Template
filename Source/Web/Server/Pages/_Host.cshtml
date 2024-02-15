@@ -11,7 +11,7 @@
     <title>@ViewData["Title"] ModularMonolith</title>
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
-<body class="h-screen grid width-xxsm:grid-rows-40px-12rows width-xsm:grid-rows-40px-12rows width-md:grid-rows-80px-12rows">
+<body class="h-screen bg-gradient-to-b from-blue-50 to-blue-200">
     @if (User.Identity.IsAuthenticated)
     {
         <component type="typeof(App)" render-mode="WebAssembly" />

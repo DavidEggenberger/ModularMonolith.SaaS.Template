@@ -8,13 +8,15 @@ using Shared.Features.EFCore.Configuration;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 using Modules.TenantIdentity.Features.Domain.TenantAggregate;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration;
+using Shared.Features.EFCore;
+using System.Threading;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
     public class TenantIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {
         private readonly IServiceProvider serviceProvider;
-        private readonly EFCoreConfiguration configuration;
 
         public TenantIdentityDbContext()
         {
@@ -23,7 +25,6 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         public TenantIdentityDbContext(IServiceProvider serviceProvider, DbContextOptions<TenantIdentityDbContext> dbContextOptions) : base(dbContextOptions)
         {
             this.serviceProvider = serviceProvider;
-            configuration = serviceProvider.GetService<EFCoreConfiguration>();
         }
 
         public override DbSet<ApplicationUser> Users { get; set; }
@@ -36,30 +37,25 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var hostEnvironment = serviceProvider.GetRequiredService<IHostEnvironment>();
+            var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
+            var efCoreConfiguration = serviceProvider.GetRequiredService<EFCoreConfiguration>();
 
-            if (hostEnvironment.IsDevelopment())
-            {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Dev, sqlServerOptions =>
+            optionsBuilder.AddInterceptors(new ExecutionContextInterceptor());
+            optionsBuilder.UseSqlServer(
+                executionContext.HostingEnvironment.IsProduction() ? efCoreConfiguration.SQLServerConnectionString_Prod : efCoreConfiguration.SQLServerConnectionString_Dev,
+                sqlServerOptions =>
                 {
                     sqlServerOptions.CommandTimeout(15);
-                    sqlServerOptions.MigrationsHistoryTable("dbo.TenantIdentity_MigrationHistory");
-                });
-            }
-            if (hostEnvironment.IsProduction())
-            {
-                optionsBuilder.UseSqlServer(configuration.SQLServerConnectionString_Prod, sqlServerOptions =>
-                {
-                    sqlServerOptions.EnableRetryOnFailure(5);
-                });
-            }
+                    sqlServerOptions.MigrationsHistoryTable($"MigrationHistory_TenantIdentity");
+                }
+            );
 
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<ApplicationUser>(new UserConfiguration());
+            modelBuilder.ApplyConfiguration<ApplicationUser>(new ApplicationUserConfiguration());
             modelBuilder.HasDefaultSchema("Identity");
             base.OnModelCreating(modelBuilder);
         }

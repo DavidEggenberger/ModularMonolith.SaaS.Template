@@ -30,16 +30,6 @@ namespace Web.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            Action<MvcOptions> configureControllerOptions = options =>
-            {
-                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            };
-
-            Action<JsonOptions> configureJsonOptions = options =>
-            {
-                options.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
-            };
-
             services.AddControllers();
             services.AddRazorPages();
             services.AddServerSideBlazor();
@@ -53,6 +43,7 @@ namespace Web.Server
             services.AddModule<TenantIdentityModuleStartup>(Configuration);
             services.AddModule<SubscriptionsModuleStartup>(Configuration);
             services.AddModule<LandingPagesModuleStartup>(Configuration);
+            services.AddModules();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

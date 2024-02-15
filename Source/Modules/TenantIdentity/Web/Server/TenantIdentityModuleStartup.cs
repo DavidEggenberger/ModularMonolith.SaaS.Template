@@ -37,7 +37,7 @@ namespace Modules.TenantIdentity.Server
                 options.ValidationInterval = TimeSpan.FromSeconds(0);
             });
 
-            services.RegisterDbContext<TenantIdentityDbContext>(schemaName: "TenantIdentity");
+            services.RegisterDbContext<TenantIdentityDbContext>();
 
             var tenantIdentityConfiguration = services.BuildServiceProvider().GetRequiredService<TenantIdentityConfiguration>();
 

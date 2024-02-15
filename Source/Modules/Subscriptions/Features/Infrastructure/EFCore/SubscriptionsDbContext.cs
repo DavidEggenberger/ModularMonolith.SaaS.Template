@@ -14,12 +14,5 @@ namespace Modules.Subscription.Features.Infrastructure.EFCore
 
         public DbSet<StripeCustomer> StripeCustomers { get; set; }
         public DbSet<StripeSubscription> StripeSubscriptions { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.HasDefaultSchema("Subscription");
-
-            base.OnModelCreating(modelBuilder);
-        }
     }
 }

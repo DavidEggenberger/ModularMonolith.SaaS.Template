@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.CQRS;
-using Shared.Features.EFCore;
+using Shared.Features.EFCore.Configuration;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
 

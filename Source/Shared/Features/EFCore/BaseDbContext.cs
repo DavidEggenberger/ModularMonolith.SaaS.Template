@@ -42,7 +42,7 @@ namespace Shared.Features.EFCore
                 sqlServerOptions =>
                 {
                     sqlServerOptions.CommandTimeout(15);
-                    sqlServerOptions.MigrationsHistoryTable($"dbo.{schemaName}_MigrationHistory");
+                    sqlServerOptions.MigrationsHistoryTable($"MigrationHistory_{schemaName}");
                 }
             );
 
