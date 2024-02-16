@@ -4,8 +4,11 @@ namespace Shared.Kernel.BuildingBlocks.Auth.Attributes
 {
 
     [Authorize(Policy = "TenantAdmin")]
-    public class AuthorizeTenantAdminAttribute : Attribute
+    public class AuthorizeTenantAdminAttribute : AuthorizationAttribute
     {
-
+        public AuthorizeTenantAdminAttribute()
+        {
+            Role = TenantRole.Admin;
+        }
     }
 }

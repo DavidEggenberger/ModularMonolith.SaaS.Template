@@ -7,7 +7,7 @@ using Shared.Features.Server;
 using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Commands;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Commands;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {

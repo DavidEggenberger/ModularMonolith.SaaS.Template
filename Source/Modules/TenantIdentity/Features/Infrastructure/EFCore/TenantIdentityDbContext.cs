@@ -6,11 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
-using Modules.TenantIdentity.Features.Domain.TenantAggregate;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore.Configuration;
 using Shared.Features.EFCore;
 using System.Threading;
 using Shared.Kernel.BuildingBlocks;
+using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Infrastructure;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
@@ -55,7 +55,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<ApplicationUser>(new ApplicationUserConfiguration());
+            modelBuilder.ApplyConfiguration<ApplicationUser>(new ApplicationUserEFConfiguration());
             modelBuilder.HasDefaultSchema("Identity");
             base.OnModelCreating(modelBuilder);
         }
