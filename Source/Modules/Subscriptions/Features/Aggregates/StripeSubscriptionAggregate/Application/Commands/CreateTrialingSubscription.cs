@@ -7,7 +7,7 @@ using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;
 using Stripe;
 
-namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Commands
+namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands
 {
     public class CreateTrialingSubscription : ICommand
     {

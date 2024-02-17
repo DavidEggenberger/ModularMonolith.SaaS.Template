@@ -9,6 +9,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] ModularMonolith</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
 <body class="h-screen bg-gradient-to-b from-blue-50 to-blue-200">
@@ -19,6 +21,7 @@
     }
     else
     {
+        <link rel="stylesheet" href="Web.Server.styles.css" />
         <component type="typeof(LandingPagesApp)" render-mode="Server" />
         <script src="_framework/blazor.server.js"></script>
     }

@@ -3,7 +3,7 @@ using Modules.Subscription.Features.Infrastructure.EFCore;
 using Modules.Subscriptions.Features.Agregates.StripeCustomerAggregate;
 using Shared.Features.CQRS.Query;
 
-namespace Modules.Subscriptions.Features.Aggregates.StripeCustomerAggregate.Queries
+namespace Modules.Subscriptions.Features.Aggregates.StripeCustomerAggregate.Application.Queries
 {
     public class GetStripeCustomerByStripePortalId : IQuery<StripeCustomer>
     {

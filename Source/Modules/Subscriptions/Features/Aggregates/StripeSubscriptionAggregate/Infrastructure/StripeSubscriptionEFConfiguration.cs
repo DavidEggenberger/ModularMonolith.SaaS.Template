@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate;
 
-namespace Modules.Subscription.Features.Infrastructure.EFCore
+namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Infrastructure
 {
-    public class StripeSubscriptionConfiguration : IEntityTypeConfiguration<StripeSubscription>
+    public class StripeSubscriptionEFConfiguration : IEntityTypeConfiguration<StripeSubscription>
     {
         public void Configure(EntityTypeBuilder<StripeSubscription> builder)
         {
-            
+
         }
     }
 }

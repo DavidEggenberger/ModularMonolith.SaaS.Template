@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Shared.Features.Server;
 using Modules.Subscription.Features.Infrastructure.Configuration;
-using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Commands;
+using Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands;
 
 namespace Modules.Subscription.Server.WebHooks
 {
