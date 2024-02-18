@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -22,11 +23,9 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StripePortalCustomerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IsSoftDeleted = table.Column<bool>(type: "bit", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    LastUpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    LastUpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,11 +43,9 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     PlanType = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedByUserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IsSoftDeleted = table.Column<bool>(type: "bit", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     LastUpdatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     TenantId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>

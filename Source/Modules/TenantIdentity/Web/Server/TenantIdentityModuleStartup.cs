@@ -72,7 +72,6 @@ namespace Modules.TenantIdentity.Server
             {
                 options.ApplicationCookie.Configure(options =>
                 {
-                    
                     options.ExpireTimeSpan = new TimeSpan(6, 0, 0);
                     options.Cookie.SameSite = SameSiteMode.Strict;
                     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;

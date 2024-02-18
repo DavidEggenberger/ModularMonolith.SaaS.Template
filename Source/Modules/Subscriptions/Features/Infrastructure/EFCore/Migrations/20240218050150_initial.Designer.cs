@@ -12,8 +12,8 @@ using Modules.Subscription.Features.Infrastructure.EFCore;
 namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(SubscriptionsDbContext))]
-    [Migration("20240213200459_sub")]
-    partial class sub
+    [Migration("20240218050150_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
