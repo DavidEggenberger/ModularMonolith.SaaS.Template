@@ -2,7 +2,8 @@
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
-    public class TenantStyling : Entity
+    public class TenantConfiguration : Entity
     {
+        public string IconURI { get; set; }
     }
 }

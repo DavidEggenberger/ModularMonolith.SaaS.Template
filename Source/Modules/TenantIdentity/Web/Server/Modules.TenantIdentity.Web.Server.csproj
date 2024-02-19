@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Features\Modules.TenantIdentity.Features.csproj" />
-    <ProjectReference Include="..\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
+    <ProjectReference Include="..\Shared\Modules.TenantIdentity.Shared.csproj" />
   </ItemGroup>
 
 </Project>

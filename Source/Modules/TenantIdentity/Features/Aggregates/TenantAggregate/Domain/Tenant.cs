@@ -15,8 +15,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
-        public TenantStyling Styling { get; set; }
-        public TenantSettings Settings { get; set; }
+        public TenantConfiguration Configuration { get; set; }
         public SubscriptionPlanType SubscriptionPlanType { get; set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();

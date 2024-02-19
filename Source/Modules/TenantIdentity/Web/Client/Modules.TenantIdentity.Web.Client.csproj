@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Shared\Kernel\Shared.Kernel.csproj" />
-    <ProjectReference Include="..\Shared\Modules.TenantIdentity.Web.Shared.csproj" />
+    <ProjectReference Include="..\Shared\Modules.TenantIdentity.Shared.csproj" />
   </ItemGroup>
 
 </Project>

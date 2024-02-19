@@ -7,7 +7,6 @@ using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
 using Shared.Features.EFCore;
-using System.Threading;
 using Shared.Kernel.BuildingBlocks;
 using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
 using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Infrastructure;
@@ -31,9 +30,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantInvitation> TenantInvitations { get; set; }
         public DbSet<TenantMembership> TenantMeberships { get; set; }
-        public DbSet<TenantSettings> TenantSettings { get; set; }
-        public DbSet<TenantStyling> TenantStylings { get; set; }
-
+        public DbSet<TenantConfiguration> TenantConfiguration { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
