@@ -1,9 +1,9 @@
 version: '3.4'
-name: Infrastructure
+name: ModularMonolith_Infrastructure
 
 services:
   sqlserver:
-    container_name: SQLServer
+    container_name: modularmonolith_sqlserver
     image: mcr.microsoft.com/azure-sql-edge
     ports:
       - "1433:1433"
@@ -13,7 +13,7 @@ services:
     volumes:
       - sqlserver:/sqlserver
   redis:
-    container_name: RedisCache
+    container_name: modularmonolith_redis
     image: redis
     ports:
       - 6379:6379
