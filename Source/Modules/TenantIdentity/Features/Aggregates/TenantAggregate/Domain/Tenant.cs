@@ -3,6 +3,7 @@ using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
+using StackExchange.Redis;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
@@ -22,32 +23,31 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
         public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
         private List<TenantInvitation> invitations = new List<TenantInvitation>();
 
-        public static async Task<Tenant> CreateTenantWithAdminAsync(string name, Guid adminUserId)
+        public static Tenant CreateTenantWithAdmin(string tenantName, Guid adminUserId)
         {
             return new Tenant
             {
-
-
+                Name = tenantName,
+                memberships = new List<TenantMembership>
+                {
+                    new TenantMembership(adminUserId, TenantRole.Admin)
+                }
             };
         }
 
         public void AddUser(Guid userId, TenantRole role)
         {
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             TenantMembership tenantMembership;
             if ((tenantMembership = memberships.SingleOrDefault(m => m.UserId == userId)) is not null)
             {
-                tenantMembership.Role = role;
+                throw new DomainException("");
             }
             else
             {
                 memberships.Add(new TenantMembership(userId, role));
             }
-        }
-
-        public void ChangeRoleOfUser(Guid userId, TenantRole role)
-        {
-
         }
 
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
@@ -58,6 +58,9 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
             {
                 throw new MemberNotFoundException();
             }
+
+            TenantMembership tenantMembership = memberships.Single(m => m.UserId == userId);
+            tenantMembership.Role = newRole;
         }
 
         public void RemoveUser(Guid userId)
@@ -72,25 +75,29 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
             memberships.Remove(memberships.Single(m => m.UserId == userId));
         }
 
-        public void InviteUserToRole(Guid userId, TenantRole role)
+        public void InviteUserToRole(string email, TenantRole role)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
-            if (CheckIfMember(userId))
+            if (invitations.Any(invitation => invitation.Email == email))
             {
-                throw new UserIsAlreadyMemberException();
+                throw new DomainException("");
             }
 
-            //invitations.Add(new TenantInvitation { UserId = userId, Role = role });
+            invitations.Add(new TenantInvitation { Email = email, Role = role });
         }
 
-        public async void DeleteTenantMembership(Guid membershipId)
+        public void DeleteTenantMembership(Guid membershipId)
         {
+            ThrowIfCallerIsNotInRole(TenantRole.Admin);
+
             var tenantMembership = Memberships.SingleOrDefault(t => t.Id == membershipId);
             if (tenantMembership == null)
             {
                 throw new NotFoundException();
             }
+
+            memberships.Remove(tenantMembership);
         }
 
         public bool CheckIfMember(Guid userId)

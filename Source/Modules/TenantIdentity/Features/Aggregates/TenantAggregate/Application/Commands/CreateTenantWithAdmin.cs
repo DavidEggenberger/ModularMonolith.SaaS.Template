@@ -22,7 +22,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application
 
         public async Task<TenantDTO> HandleAsync(CreateTenantWithAdmin createTenant, CancellationToken cancellationToken)
         {
-            var tenant = await Tenant.CreateTenantWithAdminAsync(createTenant.Name, Guid.Empty);
+            var tenant = Tenant.CreateTenantWithAdmin(createTenant.Name, Guid.Empty);
 
             tenantIdentityDbContext.Tenants.Add(tenant);
             await tenantIdentityDbContext.SaveChangesAsync(cancellationToken);

@@ -8,8 +8,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
     {
         public Guid TenantId { get; set; }
         public Tenant Tenant { get; set; }
-        public Guid UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        public string Email { get; set; }
         public TenantRole Role { get; set; }
     }
 }
