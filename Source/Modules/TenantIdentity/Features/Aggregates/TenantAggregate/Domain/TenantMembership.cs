@@ -12,13 +12,20 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
             UserId = userId;
             Role = role;
         }
+
         public Guid UserId { get; set; }
+        public Guid TenantId { get; set; }
         public Tenant Tenant { get; set; }
         public TenantRole Role { get; set; }
 
         public TenantMembershipDTO ToDTO()
         {
-            return new TenantMembershipDTO();
+            return new TenantMembershipDTO()
+            {
+                UserId = UserId,
+                TenantId = Tenant.Id,
+                Role = Role
+            };
         }
     }
 }

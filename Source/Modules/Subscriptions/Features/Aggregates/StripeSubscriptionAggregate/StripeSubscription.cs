@@ -11,6 +11,7 @@ namespace Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate
             DateTime? expirationDate,
             SubscriptionPlanType subscriptionPlanType,
             StripeSubscriptionStatus stripeSubscriptionStatus,
+            Guid tenantId,
             StripeCustomer stripeCustomer)
         {
             return new StripeSubscription()
@@ -18,6 +19,7 @@ namespace Modules.Subscriptions.Features.Agregates.StripeSubscriptionAggregate
                 ExpirationDate = expirationDate,
                 PlanType = subscriptionPlanType,
                 Status = stripeSubscriptionStatus,
+                TenantId = tenantId,
                 StripeCustomer = stripeCustomer
             };
         }

@@ -39,11 +39,11 @@ namespace Modules.Subscription.Server.WebHooks
                     var subscription = await new SubscriptionService().GetAsync(session.SubscriptionId);
                     var userId = subscription.Metadata["UserId"];
 
-                    var createTrialingSubscription = new CreateTrialingSubscription
+                    var createTrialingSubscription = new CreateTrialingSubscriptionForTenant
                     {
                         UserId = Guid.Parse(userId),
                         StripeCustomerId = subscription.CustomerId,
-                        Subscription = subscription
+                        CreatedStripeSubscription = subscription
                     };
 
                     await commandDispatcher.DispatchAsync(createTrialingSubscription);
@@ -55,7 +55,7 @@ namespace Modules.Subscription.Server.WebHooks
 
                     var subscription = await new SubscriptionService().GetAsync(invoice.SubscriptionId);
 
-
+                    
                 }
                 // Sent each billing interval if there is an issue with your customer’s payment method. (Stripe)
                 else if (stripeEvent.Type == Events.InvoicePaymentFailed)

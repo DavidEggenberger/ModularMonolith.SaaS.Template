@@ -6,8 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
 using Web.Server.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth;
-using Microsoft.AspNetCore.Mvc;
-using System;
 using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;

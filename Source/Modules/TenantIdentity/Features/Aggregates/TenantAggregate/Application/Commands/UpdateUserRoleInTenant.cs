@@ -22,7 +22,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application
         {
             var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
 
-            tenant.ChangeRoleOfUser(command.UserId, command.Role);
+            tenant.ChangeRoleOfTenantMember(command.UserId, command.Role);
 
             await tenantIdentityDbContext.SaveChangesAsync();
         }

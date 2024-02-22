@@ -9,14 +9,15 @@ using Stripe;
 
 namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.Application.Commands
 {
-    public class CreateTrialingSubscription : ICommand
+    public class CreateTrialingSubscriptionForTenant : ICommand
     {
         public Guid UserId { get; set; }
+        public Guid TenantId { get; set; }
         public string StripeCustomerId { get; set; }
-        public Stripe.Subscription Subscription { get; set; }
+        public Stripe.Subscription CreatedStripeSubscription { get; set; }
     }
 
-    public class CreateTrialingSubscriptionCommandHandler : ICommandHandler<CreateTrialingSubscription>
+    public class CreateTrialingSubscriptionCommandHandler : ICommandHandler<CreateTrialingSubscriptionForTenant>
     {
         private readonly SubscriptionsDbContext subscriptionDbContext;
         private readonly SubscriptionsConfiguration subscriptionConfiguration;
@@ -32,14 +33,16 @@ namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.
             this.integrationEventDispatcher = integrationEventDispatcher;
         }
 
-        public async Task HandleAsync(CreateTrialingSubscription command, CancellationToken cancellationToken)
+        public async Task HandleAsync(CreateTrialingSubscriptionForTenant command, CancellationToken cancellationToken)
         {
-            var subscriptionType = subscriptionConfiguration.Subscriptions.First(s => s.StripePriceId == command.Subscription.Items.First().Price.Id).Type;
+            var subscriptionType = subscriptionConfiguration.Subscriptions.First(s => s.StripePriceId == command.CreatedStripeSubscription.Items.First().Price.Id).Type;
 
-            var customer = await new CustomerService().GetAsync(command.Subscription.CustomerId);
+            var customer = await new CustomerService().GetAsync(command.CreatedStripeSubscription.CustomerId);
             var stripeCustomer = await subscriptionDbContext.StripeCustomers.FirstAsync(sc => sc.StripePortalCustomerId == customer.Id);
 
-            var stripeSubscription = StripeSubscription.Create(command.Subscription.TrialEnd, subscriptionType, StripeSubscriptionStatus.Trialing, stripeCustomer);
+            var tenantId = new Guid(command.CreatedStripeSubscription.Metadata["TenantId"]);
+
+            var stripeSubscription = StripeSubscription.Create(command.CreatedStripeSubscription.TrialEnd, subscriptionType, StripeSubscriptionStatus.Trialing, tenantId, stripeCustomer);
 
             subscriptionDbContext.StripeSubscriptions.Add(stripeSubscription);
 
@@ -47,7 +50,7 @@ namespace Modules.Subscriptions.Features.Aggregates.StripeSubscriptionAggregate.
 
             var userSubscriptionUpdatedEvent = new TenantSubscriptionPlanUpdatedIntegrationEvent
             {
-                TenantId = new Guid(command.Subscription.Metadata["TenantId"]),
+                TenantId = tenantId,
                 SubscriptionPlanType = subscriptionType
             };
 

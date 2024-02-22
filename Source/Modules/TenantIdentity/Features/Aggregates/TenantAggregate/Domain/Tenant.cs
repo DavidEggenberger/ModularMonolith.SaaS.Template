@@ -3,7 +3,6 @@ using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
-using StackExchange.Redis;
 
 namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
 {
@@ -50,7 +49,7 @@ namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain
             }
         }
 
-        public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
+        public void ChangeRoleOfTenantMember(Guid userId, TenantRole newRole)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
