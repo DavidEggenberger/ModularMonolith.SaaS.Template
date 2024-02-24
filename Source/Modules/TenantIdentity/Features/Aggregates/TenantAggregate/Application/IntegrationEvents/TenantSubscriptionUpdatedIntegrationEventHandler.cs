@@ -4,7 +4,7 @@ using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.IntegrationEvent;
 using System.Threading;
 
-namespace Modules.TenantIdentity.Features.Aggregates.IntegrationEvents
+namespace Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.IntegrationEvents
 {
     public class TenantSubscriptionUpdatedIntegrationEventHandler : IIntegrationEventHandler<TenantSubscriptionPlanUpdatedIntegrationEvent>
     {

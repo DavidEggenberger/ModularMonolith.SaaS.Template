@@ -4,7 +4,7 @@ using Modules.TenantIdentity.IntegrationEvents;
 using Shared.Features.CQRS.IntegrationEvent;
 using Stripe;
 
-namespace Modules.Subscriptions.Features.Application.IntegrationEventHandlers
+namespace Modules.Subscriptions.Features.Aggregates.StripeCustomerAggregate.Application.IntegrationEvents
 {
     public class TenantAdminCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminCreatedIntegrationEvent>
     {
@@ -32,6 +32,7 @@ namespace Modules.Subscriptions.Features.Application.IntegrationEventHandlers
                 };
 
                 var customer = await stripeCustomerService.CreateAsync(options);
+
 
             }
         }

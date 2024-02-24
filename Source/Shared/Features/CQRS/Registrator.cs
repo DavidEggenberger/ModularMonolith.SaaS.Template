@@ -4,6 +4,7 @@ using System.Reflection;
 using Shared.Features.CQRS.Query;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.CQRS.DomainEvent;
 
 namespace Shared.Features.CQRS
 {
@@ -32,6 +33,16 @@ namespace Shared.Features.CQRS
                         .AddClasses(filter =>
                         {
                             filter.AssignableTo(typeof(ICommandHandler<>));
+                        })
+                        .AsImplementedInterfaces()
+                        .WithScopedLifetime();
+            });
+            services.Scan(selector =>
+            {
+                selector.FromAssemblies(assemblies)
+                        .AddClasses(filter =>
+                        {
+                            filter.AssignableTo(typeof(IDomainEventHandler<>));
                         })
                         .AsImplementedInterfaces()
                         .WithScopedLifetime();
