@@ -5,13 +5,13 @@ using Shared.Features.Domain.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate;
 using Shared.Features.EFCore;
 using Shared.Kernel.BuildingBlocks;
-using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Domain;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Infrastructure;
+using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Infrastructure;
 
-namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
+namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore
 {
     public class TenantIdentityDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
     {

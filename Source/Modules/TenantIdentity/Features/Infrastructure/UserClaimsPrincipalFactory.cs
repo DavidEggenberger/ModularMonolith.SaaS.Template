@@ -2,10 +2,10 @@
 using System.Security.Claims;
 using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
 
-namespace Modules.TenantIdentity.Features.Infrastructure
+namespace Modules.TenantIdentity.DomainFeatures.Infrastructure
 {
     public class ContextUserClaimsPrincipalFactory<TUser> : IUserClaimsPrincipalFactory<TUser> where TUser : ApplicationUser
     {

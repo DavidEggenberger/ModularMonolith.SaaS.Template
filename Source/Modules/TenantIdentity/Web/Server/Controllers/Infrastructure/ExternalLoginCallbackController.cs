@@ -6,8 +6,8 @@ using Shared.Kernel.Extensions.ClaimsPrincipal;
 using Shared.Features.Server;
 using System;
 using System.Threading.Tasks;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Commands;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 {

@@ -1,7 +1,7 @@
 ﻿using Shared.Kernel.BuildingBlocks.Auth;
 using System;
 
-namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant
+namespace Modules.TenantIdentity.Web.Shared.DTOs.Tenant
 {
     public class TenantMembershipDTO
     {

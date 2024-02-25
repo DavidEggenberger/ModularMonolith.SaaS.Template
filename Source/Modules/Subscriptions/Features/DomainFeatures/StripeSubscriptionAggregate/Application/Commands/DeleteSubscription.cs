@@ -1,0 +1,9 @@
+﻿using Shared.Features.CQRS.Command;
+
+namespace Modules.Subscriptions.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
+{
+    public class DeleteSubscription : ICommand
+    {
+        public Stripe.Subscription Subscription { get; set; }
+    }
+}

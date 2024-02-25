@@ -7,16 +7,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
-using Modules.TenantIdentity.Features.Infrastructure;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 using Shared.Features.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
-using Modules.TenantIdentity.Features.Infrastructure.Configuration;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration;
 using System.Reflection;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate;
 using Shared.Features.EFCore;
 
 namespace Modules.TenantIdentity.Server

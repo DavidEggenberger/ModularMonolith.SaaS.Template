@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace Modules.TenantIdentity.Features.Infrastructure.Configuration
+namespace Modules.TenantIdentity.DomainFeatures.Infrastructure.Configuration
 {
     public class TenantIdentityConfigurationValidator : IValidateOptions<TenantIdentityConfiguration>
     {

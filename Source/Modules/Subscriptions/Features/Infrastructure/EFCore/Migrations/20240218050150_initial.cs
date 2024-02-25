@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
+namespace Modules.Subscriptions.DomainFeatures.Infrastructure.EFCore.Migrations
 {
     /// <inheritdoc />
     public partial class initial : Migration

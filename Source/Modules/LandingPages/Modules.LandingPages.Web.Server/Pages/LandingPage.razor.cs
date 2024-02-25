@@ -21,13 +21,13 @@ namespace Modules.LandingPages.Web.Server.Pages
         public bool ShowSignIn { get; set; }
 
 
-        protected FeatureSection SelectedFeature;
+        protected DomainFeaturesection SelectedFeature;
         private bool clicked;
         private List<FAQ> faqs;
 
         protected override async Task OnInitializedAsync()
         {
-            SelectedFeature = FeatureSection.ExcelTable;
+            SelectedFeature = DomainFeaturesection.ExcelTable;
             faqs = new List<FAQ>()
             {
                 new FAQ() { Answer = "I already use LinkedIn, what does ContactCone bring me?" }
@@ -59,7 +59,7 @@ namespace Modules.LandingPages.Web.Server.Pages
                     return;
                 }
                 var currentIndex = (int)SelectedFeature;
-                SelectedFeature = (FeatureSection)((currentIndex % 4) + 1);
+                SelectedFeature = (DomainFeaturesection)((currentIndex % 4) + 1);
                 StateHasChanged();
             }
         }
@@ -76,7 +76,7 @@ namespace Modules.LandingPages.Web.Server.Pages
             //modalReference = ModalService.Show<SignUpModal>(string.Empty, modelParameters, DefaultModalOptions.Options);
         }
     }
-    public enum FeatureSection
+    public enum DomainFeaturesection
     {
         ExcelTable = 1,
         Touchpoints = 2,

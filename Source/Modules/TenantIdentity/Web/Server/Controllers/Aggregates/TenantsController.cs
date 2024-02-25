@@ -5,16 +5,16 @@ using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
-using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant;
-using Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations;
+using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
+using Modules.TenantIdentity.Web.Shared.DTOs.Tenant.Operations;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate;
 using Shared.Features.Server;
-using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Queries;
-using Modules.TenantIdentity.Features.Aggregates.TenantAggregate.Application.Commands;
-using Modules.TenantIdentity.Features.Aggregates.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Queries;
+using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands;
+using Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries;
 
-namespace Modules.TenantIdentity.Web.Server.Controllers.Aggregates
+namespace Modules.TenantIdentity.Web.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

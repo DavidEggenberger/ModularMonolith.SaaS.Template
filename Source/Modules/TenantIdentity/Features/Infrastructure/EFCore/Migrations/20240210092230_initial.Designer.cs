@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
+using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
 
 #nullable disable
 
-namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
+namespace Modules.Subscriptions.DomainFeatures.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(TenantIdentityDbContext))]
     [Migration("20240210092230_initial")]
@@ -176,7 +176,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("AspNetUserTokens", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -251,7 +251,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("AspNetUsers", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.Tenant", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.Tenant", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -299,7 +299,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("Tenants", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantInvitation", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantInvitation", b =>
                 {
                     b.Property<int>("Role")
                         .HasColumnType("int");
@@ -317,7 +317,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("TenantInvitations", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantMembership", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantMembership", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -362,7 +362,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("TenantMeberships", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantSettings", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantSettings", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -394,7 +394,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("TenantSettings", "Identity");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantStyling", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantStyling", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -434,11 +434,11 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany("Claims")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -447,11 +447,11 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany("Logins")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -466,7 +466,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -475,24 +475,24 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany("Tokens")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.Tenant", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.Tenant", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantSettings", "Settings")
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantSettings", "Settings")
                         .WithMany()
                         .HasForeignKey("SettingsId");
 
-                    b.HasOne("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantStyling", "Styling")
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantStyling", "Styling")
                         .WithMany()
                         .HasForeignKey("StylingId");
 
@@ -501,15 +501,15 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.Navigation("Styling");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantInvitation", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantInvitation", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Domain.TenantAggregate.Tenant", "Tenant")
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.Tenant", "Tenant")
                         .WithMany()
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", "User")
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -520,20 +520,20 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.TenantMembership", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.TenantMembership", b =>
                 {
-                    b.HasOne("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", null)
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", null)
                         .WithMany("TenantMemberships")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Modules.TenantIdentity.Features.Domain.TenantAggregate.Tenant", "Tenant")
+                    b.HasOne("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.Tenant", "Tenant")
                         .WithMany("Memberships")
                         .HasForeignKey("TenantId");
 
                     b.Navigation("Tenant");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Aggregates.UserAggregate.ApplicationUser", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.UserAggregate.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
 
@@ -544,7 +544,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.Navigation("Tokens");
                 });
 
-            modelBuilder.Entity("Modules.TenantIdentity.Features.Domain.TenantAggregate.Tenant", b =>
+            modelBuilder.Entity("Modules.TenantIdentity.DomainFeatures.Domain.TenantAggregate.Tenant", b =>
                 {
                     b.Navigation("Memberships");
                 });

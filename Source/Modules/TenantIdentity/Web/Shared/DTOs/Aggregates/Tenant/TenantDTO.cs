@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant
+﻿namespace Modules.TenantIdentity.Web.Shared.DTOs.Tenant
 {
     public class TenantDTO
     {

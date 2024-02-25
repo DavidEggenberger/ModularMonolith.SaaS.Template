@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Stripe.BillingPortal;
 
-namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
+namespace Modules.Subscriptions.DomainFeatures.Infrastructure.StripePayments
 {
     public class CreateStripeBillingPortalSession : ICommand<Stripe.BillingPortal.Session>
     {

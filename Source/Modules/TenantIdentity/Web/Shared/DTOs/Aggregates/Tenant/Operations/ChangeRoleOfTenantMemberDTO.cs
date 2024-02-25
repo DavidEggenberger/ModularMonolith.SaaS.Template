@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.Web.Shared.DTOs.Aggregates.Tenant.Operations
+﻿namespace Modules.TenantIdentity.Web.Shared.DTOs.Tenant.Operations
 {
     public class ChangeRoleOfTenantMemberDTO
     {

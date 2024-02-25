@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Stripe;
 
-namespace Modules.Subscription.Features.Infrastructure.Configuration
+namespace Modules.Subscription.DomainFeatures.Infrastructure.Configuration
 {
     public static class Registrator
     {
