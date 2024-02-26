@@ -1,10 +1,10 @@
-﻿using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.CQRS.Command;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands
 {
     public class CreateTenantWithAdmin : ICommand<TenantDTO>
     {

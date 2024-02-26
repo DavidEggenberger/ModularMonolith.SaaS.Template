@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate;
 
-namespace Modules.Subscriptions.DomainFeatures.StripeSubscriptionAggregate.Infrastructure
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Infrastructure
 {
     public class StripeSubscriptionEFConfiguration : IEntityTypeConfiguration<StripeSubscription>
     {

@@ -1,9 +1,9 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Auth;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands
 {
     public class AddUserToTenant : ICommand
     {

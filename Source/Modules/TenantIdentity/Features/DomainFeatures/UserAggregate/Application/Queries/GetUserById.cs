@@ -1,8 +1,8 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Query;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Queries
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Queries
 {
     public class GetUserById : IQuery<ApplicationUser>
     {

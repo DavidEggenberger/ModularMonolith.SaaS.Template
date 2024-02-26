@@ -1,8 +1,8 @@
-﻿using Modules.Subscriptions.DomainFeatures.Agregates.StripeCustomerAggregate;
+﻿using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
 using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.Subscriptions.DomainFeatures.Agregates.StripeSubscriptionAggregate
+namespace Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate
 {
     public class StripeSubscription : AggregateRoot
     {

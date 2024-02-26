@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain.Exceptions;
+using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate
 {
     public class ApplicationUser : IdentityUser<Guid>, IApplicationUser
     {

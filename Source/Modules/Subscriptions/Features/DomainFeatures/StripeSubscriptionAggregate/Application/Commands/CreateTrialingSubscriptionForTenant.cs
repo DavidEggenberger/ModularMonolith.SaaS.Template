@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscription.Features.Infrastructure.Configuration;
+using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate;
 using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;
 using Stripe;
 
-namespace Modules.Subscriptions.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
 {
     public class CreateTrialingSubscriptionForTenant : ICommand
     {

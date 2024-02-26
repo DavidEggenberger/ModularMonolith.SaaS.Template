@@ -1,6 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.Subscriptions.DomainFeatures.Infrastructure.StripePayments
+namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
     public class StripeOptions
     {

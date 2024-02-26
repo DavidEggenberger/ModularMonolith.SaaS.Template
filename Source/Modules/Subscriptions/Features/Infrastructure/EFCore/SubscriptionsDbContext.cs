@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeCustomerAggregate;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate;
 using Shared.Features.EFCore;
 
-namespace Modules.Subscription.DomainFeatures.Infrastructure.EFCore
+namespace Modules.Subscription.Features.Infrastructure.EFCore
 {
     public class SubscriptionsDbContext : BaseDbContext<SubscriptionsDbContext>
     {

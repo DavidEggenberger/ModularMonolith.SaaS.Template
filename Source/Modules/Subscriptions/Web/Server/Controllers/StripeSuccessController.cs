@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeCustomerAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
 using Shared.Features.Server;
-using Modules.Subscriptions.DomainFeatures.StripeCustomerAggregate.Application.Queries;
+using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.Queries;
 
 namespace Modules.Subscription.Server.Controllers
 {

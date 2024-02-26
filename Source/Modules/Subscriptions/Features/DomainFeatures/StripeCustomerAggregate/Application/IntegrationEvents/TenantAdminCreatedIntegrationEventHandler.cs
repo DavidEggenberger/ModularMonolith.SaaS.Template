@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
+using Modules.Subscription.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.IntegrationEvents;
 using Shared.Features.CQRS.IntegrationEvent;
 using Stripe;
 
-namespace Modules.Subscriptions.DomainFeatures.StripeCustomerAggregate.Application.IntegrationEvents
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.IntegrationEvents
 {
     public class TenantAdminCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminCreatedIntegrationEvent>
     {

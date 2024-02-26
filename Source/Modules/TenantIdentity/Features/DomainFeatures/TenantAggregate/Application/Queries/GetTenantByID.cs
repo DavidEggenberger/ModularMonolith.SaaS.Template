@@ -1,9 +1,9 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.CQRS.Query;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.Queries
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries
 {
     public class GetTenantByID : IQuery<TenantDTO>
     {

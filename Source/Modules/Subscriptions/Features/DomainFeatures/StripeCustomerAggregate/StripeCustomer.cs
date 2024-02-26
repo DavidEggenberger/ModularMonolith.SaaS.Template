@@ -1,6 +1,6 @@
 ﻿using Shared.Features.Domain;
 
-namespace Modules.Subscriptions.DomainFeatures.Agregates.StripeCustomerAggregate
+namespace Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate
 {
     public class StripeCustomer : Entity
     {

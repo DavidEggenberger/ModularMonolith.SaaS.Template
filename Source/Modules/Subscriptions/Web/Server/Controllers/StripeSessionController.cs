@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
-using Modules.Subscriptions.DomainFeatures.Infrastructure.StripePayments;
+using Modules.Subscriptions.Features.Infrastructure.StripePayments;
 using Shared.Features.Server;
 
 namespace Modules.Subscription.Server.Controllers

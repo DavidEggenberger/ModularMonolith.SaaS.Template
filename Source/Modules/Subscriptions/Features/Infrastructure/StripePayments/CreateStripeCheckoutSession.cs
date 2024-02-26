@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
+using Modules.Subscription.Features.Infrastructure.Configuration;
+using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
 
-namespace Modules.Subscriptions.DomainFeatures.Infrastructure.StripePayments
+namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
     public class CreateStripeCheckoutSession : ICommand<Stripe.Checkout.Session>
     {

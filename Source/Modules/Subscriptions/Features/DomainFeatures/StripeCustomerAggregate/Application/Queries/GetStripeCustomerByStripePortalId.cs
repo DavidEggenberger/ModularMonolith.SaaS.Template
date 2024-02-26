@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
-using Modules.Subscriptions.DomainFeatures.Agregates.StripeCustomerAggregate;
+using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
 using Shared.Features.CQRS.Query;
 
-namespace Modules.Subscriptions.DomainFeatures.StripeCustomerAggregate.Application.Queries
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.Queries
 {
     public class GetStripeCustomerByStripePortalId : IQuery<StripeCustomer>
     {

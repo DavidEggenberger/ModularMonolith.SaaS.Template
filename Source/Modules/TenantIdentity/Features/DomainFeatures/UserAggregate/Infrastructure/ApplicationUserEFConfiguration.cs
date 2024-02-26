@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Infrastructure
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Infrastructure
 {
     public class ApplicationUserEFConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

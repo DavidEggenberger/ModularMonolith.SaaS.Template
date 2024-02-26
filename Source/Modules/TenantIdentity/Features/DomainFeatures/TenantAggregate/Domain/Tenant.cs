@@ -1,10 +1,10 @@
-﻿using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain.Exceptions;
+﻿using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
 {
     public class Tenant : AggregateRoot
     {

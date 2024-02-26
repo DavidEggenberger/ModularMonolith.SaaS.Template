@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.IntegrationEvents;
-using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.IntegrationEvent;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Application.IntegrationEvents
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.IntegrationEvents
 {
     public class TenantSubscriptionUpdatedIntegrationEventHandler : IIntegrationEventHandler<TenantSubscriptionPlanUpdatedIntegrationEvent>
     {

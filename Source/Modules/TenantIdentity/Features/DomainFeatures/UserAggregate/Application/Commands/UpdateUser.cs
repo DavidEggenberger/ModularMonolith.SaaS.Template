@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Shared.Features.CQRS.Command;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands
 {
     public class UpdateUser : ICommand
     {

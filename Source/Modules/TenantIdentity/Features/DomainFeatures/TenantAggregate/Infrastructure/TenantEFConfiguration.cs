@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain;
+using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Infrastructure
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Infrastructure
 {
     public class TenantConfiguration : IEntityTypeConfiguration<Tenant>
     {

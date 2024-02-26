@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Modules.Subscription.DomainFeatures.Infrastructure.Configuration;
-using Modules.Subscription.DomainFeatures.Infrastructure.EFCore;
+using Modules.Subscription.Features.Infrastructure.Configuration;
+using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.EFCore;
 using Shared.Features.Modules;
 using System.Reflection;

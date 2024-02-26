@@ -1,8 +1,8 @@
-﻿using Modules.TenantIdentity.DomainFeatures.Infrastructure.EFCore;
+﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands
 {
     public class SetSelectedTenantForUser : ICommand
     {

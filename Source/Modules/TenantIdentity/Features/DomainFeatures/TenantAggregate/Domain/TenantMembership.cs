@@ -2,7 +2,7 @@
 using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.TenantIdentity.DomainFeatures.TenantAggregate.Domain
+namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
 {
     public class TenantMembership : Entity
     {

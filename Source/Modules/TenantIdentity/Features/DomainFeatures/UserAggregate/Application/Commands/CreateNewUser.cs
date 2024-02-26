@@ -2,7 +2,7 @@
 using Shared.Features.CQRS.Command;
 using System.Threading;
 
-namespace Modules.TenantIdentity.DomainFeatures.UserAggregate.Application.Commands
+namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands
 {
     public class CreateNewUser : ICommand
     {
