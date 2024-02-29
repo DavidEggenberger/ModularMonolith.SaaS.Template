@@ -1,24 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.CQRS.Command;
-using Shared.Features.CQRS.Query;
+using Shared.Features.Server.ExecutionContext;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Shared.Features.Server
 {
-    public class BaseController : ControllerBase
+    public class BaseController : ControllerBase, IInServerExecutionContextScope
     {
-        protected readonly ICommandDispatcher commandDispatcher;
-        protected readonly IQueryDispatcher queryDispatcher;
-        protected readonly IExecutionContext executionContext;
+        public IExecutionContext ExecutionContext { get; init; }
+
         protected readonly IValidationService validationService;
 
         public BaseController(IServiceProvider serviceProvider)
         {
-            commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
-            queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-            executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
+            ExecutionContext = serviceProvider.GetRequiredService<IExecutionContext>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
     }

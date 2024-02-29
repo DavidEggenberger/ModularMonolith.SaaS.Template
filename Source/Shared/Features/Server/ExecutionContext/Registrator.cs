@@ -12,7 +12,7 @@ namespace Shared.Features.Server.ExecutionContext
         {
             services.AddHttpContextAccessor();
             services.AddScoped<ServiceExecutionContextMiddleware>();
-            services.AddScoped<IExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
+            services.AddScoped<IServerExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
             return services;
         }
 

@@ -2,7 +2,7 @@
 
 namespace Shared.Features.Server.ExecutionContext
 {
-    public interface IInServerExecutionScope
+    public interface IInServerExecutionContextScope
     {
         public IExecutionContext ExecutionContext { get; init; }
     }

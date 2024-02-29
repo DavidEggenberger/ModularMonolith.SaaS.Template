@@ -31,7 +31,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [AuthorizeTenantAdmin]
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
-            var tenantId = executionContext.TenantId;
+            var tenantId = ExecutionContext.TenantId;
             TenantDTO tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
 
             return Ok(tenant);
@@ -40,7 +40,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpGet("{tenantId}/details")]
         public async Task<ActionResult<TenantDetailDTO>> GetTenantDetail()
         {
-            var tenantId = executionContext.TenantId;
+            var tenantId = ExecutionContext.TenantId;
             TenantDetailDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantDetailDTO>(new GetTenantDetailsByID { TenantId = tenantId });
 
             return Ok(tenantDetail);
@@ -50,7 +50,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [Authorize(AuthenticationSchemes = AuthConstant.ApplicationAuthenticationScheme)]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
-            var userId = executionContext.UserId;
+            var userId = ExecutionContext.UserId;
             List<TenantMembershipDTO> teamMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(null);
             
             return Ok(teamMemberships);
@@ -63,7 +63,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
 
             var createTenant = new CreateTenantWithAdmin
             {
-                AdminId = executionContext.UserId,
+                AdminId = ExecutionContext.UserId,
                 Name = createTenantDTO.Name
             };
             var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(null);
@@ -79,7 +79,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { });
 
-            var userId = executionContext.UserId;
+            var userId = ExecutionContext.UserId;
             var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
 
             await signInManager.RefreshSignInAsync(user);
@@ -88,7 +88,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpPost("memberships")]
         public async Task<ActionResult> CreateTenantMembership(InviteUserToTenantDTO inviteUserToGroupDTO)
         {
-            var userId = executionContext.UserId;
+            var userId = ExecutionContext.UserId;
 
             await commandDispatcher.DispatchAsync<AddUserToTenant>(null);
             
