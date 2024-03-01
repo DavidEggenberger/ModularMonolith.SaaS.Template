@@ -32,7 +32,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
             var tenantId = ExecutionContext.TenantId;
-            TenantDTO tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
+            TenantDTO tenant = await ExecutionContext.QueryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
 
             return Ok(tenant);
         }

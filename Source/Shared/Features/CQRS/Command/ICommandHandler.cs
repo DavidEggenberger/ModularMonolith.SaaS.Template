@@ -1,12 +1,12 @@
-﻿using Shared.Features.Server.ExecutionContext;
+﻿using Shared.Features.Server;
 
 namespace Shared.Features.CQRS.Command
 {
-    public interface ICommandHandler<in TCommand> : IInServerExecutionContextScope where TCommand : ICommand
+    public interface ICommandHandler<in TCommand> : IInServerExecutionScope where TCommand : ICommand
     {
         Task HandleAsync(TCommand command, CancellationToken cancellationToken);
     }
-    public interface ICommandHandler<in TCommand, TResult> : IInServerExecutionContextScope where TCommand : ICommand<TResult>
+    public interface ICommandHandler<in TCommand, TResult> : IInServerExecutionScope where TCommand : ICommand<TResult>
     {
         Task<TResult> HandleAsync(TCommand command, CancellationToken cancellationToken);
     }

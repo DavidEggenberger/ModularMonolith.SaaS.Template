@@ -7,12 +7,13 @@ using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.DomainEvent;
 using Shared.Features.CQRS.IntegrationEvent;
 using Shared.Features.CQRS.Query;
+using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 
 namespace Shared.Features.Server.ExecutionContext
 {
-    public class ServerExecutionContext : IServerExecutionContext
+    public class ServerExecutionContext : IExecutionContext
     {
         private static ServerExecutionContext executionContext;
         private ServerExecutionContext() { }
@@ -24,10 +25,6 @@ namespace Shared.Features.Server.ExecutionContext
         public TenantRole TenantRole { get; private set; }
         public IHostEnvironment HostingEnvironment { get; set; }
         public Uri BaseURI { get; private set; }
-        public ICommandDispatcher CommandDispatcher { get; private set; }
-        public IQueryDispatcher QueryDispatcher { get; private set; }
-        public IIntegrationEventDispatcher IntegrationEventDispatcher { get; private set; }
-        public IDomainEventDispatcher DomainEventDispatcher { get; private set; }
 
         public static ServerExecutionContext CreateInstance(IServiceProvider serviceProvider)
         {
