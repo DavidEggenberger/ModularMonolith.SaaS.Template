@@ -11,21 +11,21 @@ namespace Shared.Features.Server.ExecutionContext
         public static IServiceCollection AddServerExecutionContext(this IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<ServiceExecutionContextMiddleware>();
-            services.AddScoped<IServerExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
+            services.AddScoped<ServerExecutionContextMiddleware>();
+            services.AddScoped<IExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
             return services;
         }
 
         public static IApplicationBuilder UseServerExecutionContextMiddleware(this IApplicationBuilder app)
         {
-            app.UseMiddleware<ServiceExecutionContextMiddleware>();
+            app.UseMiddleware<ServerExecutionContextMiddleware>();
 
             return app;
         }
     }
     
 
-    public class ServiceExecutionContextMiddleware : IMiddleware
+    public class ServerExecutionContextMiddleware : IMiddleware
     {
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {

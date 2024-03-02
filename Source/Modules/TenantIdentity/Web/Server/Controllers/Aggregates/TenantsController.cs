@@ -32,7 +32,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
             var tenantId = ExecutionContext.TenantId;
-            TenantDTO tenant = await ExecutionContext.QueryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
+            TenantDTO tenant = await QueryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
 
             return Ok(tenant);
         }
@@ -41,7 +41,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         public async Task<ActionResult<TenantDetailDTO>> GetTenantDetail()
         {
             var tenantId = ExecutionContext.TenantId;
-            TenantDetailDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantDetailDTO>(new GetTenantDetailsByID { TenantId = tenantId });
+            TenantDetailDTO tenantDetail = await QueryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantDetailDTO>(new GetTenantDetailsByID { TenantId = tenantId });
 
             return Ok(tenantDetail);
         }
@@ -51,7 +51,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
             var userId = ExecutionContext.UserId;
-            List<TenantMembershipDTO> teamMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(null);
+            List<TenantMembershipDTO> teamMemberships = await QueryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(null);
             
             return Ok(teamMemberships);
         }
@@ -59,16 +59,16 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<TenantDTO>> CreateTenant(CreateTenantDTO createTenantDTO)
         {
-            validationService.ThrowIfInvalidModel(createTenantDTO);
+            ValidationService.ThrowIfInvalidModel(createTenantDTO);
 
             var createTenant = new CreateTenantWithAdmin
             {
                 AdminId = ExecutionContext.UserId,
                 Name = createTenantDTO.Name
             };
-            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(null);
+            var createdTenant = await CommandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(null);
 
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
+            var user = await QueryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
             await signInManager.RefreshSignInAsync(user);
             
             return CreatedAtAction(nameof(CreateTenant), createdTenant);
@@ -77,10 +77,10 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpDelete("{id}")]
         public async Task DeleteTenant(Guid id)
         {
-            await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { });
+            await CommandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { });
 
             var userId = ExecutionContext.UserId;
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
+            var user = await QueryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
 
             await signInManager.RefreshSignInAsync(user);
         }
@@ -90,7 +90,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             var userId = ExecutionContext.UserId;
 
-            await commandDispatcher.DispatchAsync<AddUserToTenant>(null);
+            await CommandDispatcher.DispatchAsync<AddUserToTenant>(null);
             
             return Ok();
         }
@@ -98,7 +98,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpPut("memberships")]
         public async Task<ActionResult> UpdateTenantMembership(ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
         {
-            await commandDispatcher.DispatchAsync<UpdateTenantMembership>(new UpdateTenantMembership { });
+            await CommandDispatcher.DispatchAsync<UpdateTenantMembership>(new UpdateTenantMembership { });
 
             return Ok();
         }
@@ -106,7 +106,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpDelete("memberships/{userId}")]
         public async Task<ActionResult> DeleteTenantMembership(Guid id)
         {
-            await commandDispatcher.DispatchAsync<RemoveUserFromTenant>(new RemoveUserFromTenant { });
+            await CommandDispatcher.DispatchAsync<RemoveUserFromTenant>(new RemoveUserFromTenant { });
 
             return Ok();
         }

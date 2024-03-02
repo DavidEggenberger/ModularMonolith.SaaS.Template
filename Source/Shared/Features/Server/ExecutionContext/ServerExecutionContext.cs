@@ -56,10 +56,6 @@ namespace Shared.Features.Server.ExecutionContext
             TenantId = httpContext.User.GetTenantId<Guid>();
             TenantPlan = httpContext.User.GetTenantSubscriptionPlanType();
             TenantRole = httpContext.User.GetTenantRole();
-            CommandDispatcher = httpContext.RequestServices.GetRequiredService<ICommandDispatcher>();
-            QueryDispatcher = httpContext.RequestServices.GetRequiredService<IQueryDispatcher>();
-            IntegrationEventDispatcher = httpContext.RequestServices.GetRequiredService<IIntegrationEventDispatcher>();
-            DomainEventDispatcher = httpContext.RequestServices.GetRequiredService<IDomainEventDispatcher>();
         }
     }
 }

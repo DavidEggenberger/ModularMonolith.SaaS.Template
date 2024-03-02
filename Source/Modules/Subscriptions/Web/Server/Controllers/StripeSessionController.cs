@@ -26,7 +26,7 @@ namespace Modules.Subscription.Server.Controllers
                 TenantId = ExecutionContext.TenantId,
                 RedirectBaseUrl = ExecutionContext.BaseURI.AbsoluteUri
             };
-            var checkoutSession = await commandDispatcher.DispatchAsync<CreateStripeCheckoutSession, Stripe.Checkout.Session>(createStripeCheckoutSession);
+            var checkoutSession = await CommandDispatcher.DispatchAsync<CreateStripeCheckoutSession, Stripe.Checkout.Session>(createStripeCheckoutSession);
 
             Response.Headers.Add("Location", checkoutSession.Url);
             return new StatusCodeResult(303);
@@ -41,7 +41,7 @@ namespace Modules.Subscription.Server.Controllers
                 UserId = ExecutionContext.UserId,
                 RedirectBaseUrl = ExecutionContext.BaseURI.AbsoluteUri,
             };
-            var billingPortalSession = await commandDispatcher.DispatchAsync<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>(createBillingPortalSession);
+            var billingPortalSession = await CommandDispatcher.DispatchAsync<CreateStripeBillingPortalSession, Stripe.BillingPortal.Session>(createBillingPortalSession);
 
             Response.Headers.Add("Location", billingPortalSession.Url);
             return new StatusCodeResult(303);

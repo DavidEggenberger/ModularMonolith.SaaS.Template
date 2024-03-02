@@ -1,9 +1,17 @@
-﻿using Shared.Features.Server;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Shared.Features.CQRS.Command;
+using Shared.Features.CQRS.DomainEvent;
+using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.Server;
+using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Shared.Features.CQRS.Query
 {
-    public class BaseQueryHandler : IInServerExecutionScope
+    public class BaseQueryHandler : ServerExecutionBase
     {
-        public IServerExecutionContext ExecutionContext { get; private set; }
+        public BaseQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+        }
     }
 }
