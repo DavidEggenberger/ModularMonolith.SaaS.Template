@@ -5,6 +5,7 @@ using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscription
 using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.Server;
 using Stripe;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
@@ -17,7 +18,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public Stripe.Subscription CreatedStripeSubscription { get; set; }
     }
 
-    public class CreateTrialingSubscriptionCommandHandler : ICommandHandler<CreateTrialingSubscriptionForTenant>
+    public class CreateTrialingSubscriptionCommandHandler : ServerExecutionBase, ICommandHandler<CreateTrialingSubscriptionForTenant>
     {
         private readonly SubscriptionsDbContext subscriptionDbContext;
         private readonly SubscriptionsConfiguration subscriptionConfiguration;
@@ -26,11 +27,10 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public CreateTrialingSubscriptionCommandHandler(
             SubscriptionsDbContext subscriptionDbContext,
             SubscriptionsConfiguration subscriptionConfiguration,
-            IIntegrationEventDispatcher integrationEventDispatcher)
+            IServiceProvider serviceProvider): base(serviceProvider)
         {
             this.subscriptionDbContext = subscriptionDbContext;
             this.subscriptionConfiguration = subscriptionConfiguration;
-            this.integrationEventDispatcher = integrationEventDispatcher;
         }
 
         public async Task HandleAsync(CreateTrialingSubscriptionForTenant command, CancellationToken cancellationToken)

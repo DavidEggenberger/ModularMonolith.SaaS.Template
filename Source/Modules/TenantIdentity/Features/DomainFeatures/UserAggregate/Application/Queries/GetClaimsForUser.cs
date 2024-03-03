@@ -1,5 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Query;
+using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
 using System.Threading;
@@ -11,14 +12,12 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Applicati
         public Guid UserId { get; set; }
     }
 
-    public class ClaimsForUserQueryHandler : IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
+    public class ClaimsForUserQueryHandler : ServerExecutionBase, IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
     {
-        private readonly IQueryDispatcher queryDispatcher;
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
 
-        public ClaimsForUserQueryHandler(IQueryDispatcher queryDispatcher, TenantIdentityDbContext tenantIdentityDbContext)
+        public ClaimsForUserQueryHandler(TenantIdentityDbContext tenantIdentityDbContext, IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            this.queryDispatcher = queryDispatcher;
             this.tenantIdentityDbContext = tenantIdentityDbContext;
         }
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)

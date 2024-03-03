@@ -10,6 +10,13 @@ namespace Shared.Features.Server
 {
     public class ServerExecutionBase
     {
+        protected readonly IExecutionContext executionContext;
+        protected readonly ICommandDispatcher commandDispatcher;
+        protected readonly IQueryDispatcher queryDispatcher;
+        protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
+        protected readonly IDomainEventDispatcher domainEventDispatcher;
+        protected readonly IValidationService validationService;
+
         public ServerExecutionBase(IServiceProvider serviceProvider)
         {
             executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
@@ -19,12 +26,5 @@ namespace Shared.Features.Server
             domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
-
-        protected readonly IExecutionContext executionContext;
-        protected readonly ICommandDispatcher commandDispatcher;
-        protected readonly IQueryDispatcher queryDispatcher;
-        protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
-        protected readonly IDomainEventDispatcher domainEventDispatcher;
-        protected readonly IValidationService validationService;
     }
 }

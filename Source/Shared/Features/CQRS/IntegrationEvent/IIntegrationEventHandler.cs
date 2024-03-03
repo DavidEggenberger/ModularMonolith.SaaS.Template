@@ -1,9 +1,8 @@
-﻿using Shared.Features.Server;
-using Shared.Kernel.BuildingBlocks;
+﻿using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Features.CQRS.IntegrationEvent
 {
-    public interface IIntegrationEventHandler<in TIntegrationEvent> : ServerExecutionBase where TIntegrationEvent : IIntegrationEvent
+    public interface IIntegrationEventHandler<in TIntegrationEvent> where TIntegrationEvent : IIntegrationEvent
     {
         Task HandleAsync(TIntegrationEvent integrationEvent, CancellationToken cancellation);
     }

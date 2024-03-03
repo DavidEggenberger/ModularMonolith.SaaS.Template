@@ -14,7 +14,6 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
     public class RemoveUserFromTenantommandHandler : ICommandHandler<RemoveUserFromTenant>
     {
         private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        private readonly IExecutionContext executionContext;
 
         public RemoveUserFromTenantommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
         {

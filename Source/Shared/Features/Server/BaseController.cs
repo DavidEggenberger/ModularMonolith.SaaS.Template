@@ -9,23 +9,23 @@ using Shared.Kernel.BuildingBlocks.ModelValidation;
 
 namespace Shared.Features.Server
 {
-    public class BaseController : ControllerBase, ServerExecutionBase
+    public class BaseController : ControllerBase
     {
-        public IExecutionContext ExecutionContext { get; }
-        public ICommandDispatcher CommandDispatcher { get; }
-        public IQueryDispatcher QueryDispatcher { get; }
-        public IIntegrationEventDispatcher IntegrationEventDispatcher { get; }
-        public IDomainEventDispatcher DomainEventDispatcher { get; }
-        public IValidationService ValidationService { get; }
+        protected readonly IExecutionContext executionContext;
+        protected readonly ICommandDispatcher commandDispatcher;
+        protected readonly IQueryDispatcher queryDispatcher;
+        protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
+        protected readonly IDomainEventDispatcher domainEventDispatcher;
+        protected readonly IValidationService validationService;
 
         public BaseController(IServiceProvider serviceProvider)
         {
-            ExecutionContext = serviceProvider.GetRequiredService<IExecutionContext>();
-            CommandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
-            QueryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-            IntegrationEventDispatcher = serviceProvider.GetRequiredService<IIntegrationEventDispatcher>();
-            DomainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
-            ValidationService = serviceProvider.GetRequiredService<IValidationService>();
+            executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
+            commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
+            queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
+            integrationEventDispatcher = serviceProvider.GetRequiredService<IIntegrationEventDispatcher>();
+            domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
+            validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
     }
 }
