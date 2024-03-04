@@ -24,7 +24,7 @@ namespace Web.Server.BuildingBlocks
             return services;
         }
 
-        public static IApplicationBuilder UseBuildingBlocks(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseBuildingBlocksMiddleware(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.RegisterApiVersioning();
             applicationBuilder.RegisterExceptionHandling();

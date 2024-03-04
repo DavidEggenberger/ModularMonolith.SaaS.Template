@@ -67,8 +67,8 @@ namespace Web.Server
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseServerExecutionContextMiddleware();
-            app.UseBuildingBlocks();
+            app.UseSharedFeaturesMiddleware();
+            app.UseBuildingBlocksMiddleware();
 
             app.UseModules(env);
 

@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks;
-using System.Transactions;
 
 namespace Shared.Features.Server.ExecutionContext
 {
@@ -14,30 +11,6 @@ namespace Shared.Features.Server.ExecutionContext
             services.AddScoped<ServerExecutionContextMiddleware>();
             services.AddScoped<IExecutionContext, ServerExecutionContext>(ServerExecutionContext.CreateInstance);
             return services;
-        }
-
-        public static IApplicationBuilder UseServerExecutionContextMiddleware(this IApplicationBuilder app)
-        {
-            app.UseMiddleware<ServerExecutionContextMiddleware>();
-
-            return app;
-        }
-    }
-    
-
-    public class ServerExecutionContextMiddleware : IMiddleware
-    {
-        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
-        {
-            var executionContext = (ServerExecutionContext)context.RequestServices.GetService<IExecutionContext>();
-            executionContext.InitializeInstance(context);
-
-            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                await next(context);
-
-                scope.Complete();
-            }
         }
     }
 }

@@ -1,7 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.CQRS;
-using Shared.Features.EFCore.Configuration;
+using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
 
@@ -20,6 +21,13 @@ namespace Shared.Features
             services.RegisterEmailSender(configuration);
 
             return services;
+        }
+
+        public static IApplicationBuilder UseSharedFeaturesMiddleware(this IApplicationBuilder app)
+        {
+            app.UseEFCoreMiddleware();
+
+            return app;
         }
     }
 }
