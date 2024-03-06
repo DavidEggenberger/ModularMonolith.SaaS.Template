@@ -18,6 +18,7 @@ using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using System.Reflection;
 using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate;
 using Shared.Features.EFCore;
+using Shared.Features.Modules.Configuration;
 
 namespace Modules.TenantIdentity.Server
 {
@@ -30,7 +31,7 @@ namespace Modules.TenantIdentity.Server
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();
             services.AddScoped<ContextUserClaimsPrincipalFactory<ApplicationUser>>();
 
-            services.RegisterConfiguration(configuration);
+            services.RegisterModuleConfiguration<TenantIdentityConfiguration, TenantIdentityConfigurationValidator>(configuration);
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {

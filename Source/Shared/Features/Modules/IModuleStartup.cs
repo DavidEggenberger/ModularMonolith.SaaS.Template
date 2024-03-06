@@ -9,7 +9,6 @@ namespace Shared.Features.Modules
     public interface IModuleStartup
     {
         public Assembly? FeaturesAssembly { get; }
-        public static IModuleConfiguration Configuration { get; }
         void ConfigureServices(IServiceCollection services, IConfiguration configuration = null);
         void Configure(IApplicationBuilder app, IHostEnvironment env);
     }

@@ -6,6 +6,7 @@ using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.EFCore;
 using Shared.Features.Modules;
+using Shared.Features.Modules.Configuration;
 using System.Reflection;
 
 namespace Modules.Subscription.Server
@@ -17,7 +18,7 @@ namespace Modules.Subscription.Server
         public void ConfigureServices(IServiceCollection services, IConfiguration config)
         {
             services.RegisterDbContext<SubscriptionsDbContext>();
-            services.RegisterConfiguration(config);
+            services.RegisterModuleConfiguration<SubscriptionsConfiguration, SubscriptionsConfigurationValidator>(config);
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
