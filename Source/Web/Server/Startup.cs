@@ -34,7 +34,6 @@ namespace Web.Server
 
             services.AddAuth();
 
-            services.AddServerExecutionContext();
             services.AddBuildingBlocks();
             services.AddSharedFeatures();
 
@@ -67,8 +66,8 @@ namespace Web.Server
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseSharedFeaturesMiddleware();
             app.UseBuildingBlocksMiddleware();
+            app.UseSharedFeaturesMiddleware();
 
             app.UseModules(env);
 

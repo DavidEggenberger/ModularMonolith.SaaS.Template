@@ -3,7 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Shared.Features.EFCore.Configuration;
-using Shared.Features.Server.ExecutionContext;
 
 namespace Shared.Features.EFCore
 {
@@ -20,7 +19,7 @@ namespace Shared.Features.EFCore
 
         public static IApplicationBuilder UseEFCoreMiddleware(this IApplicationBuilder app)
         {
-            app.UseMiddleware<ServerExecutionContextMiddleware>();
+            app.UseMiddleware<TransactionScopeMiddleware>();
 
             return app;
         }

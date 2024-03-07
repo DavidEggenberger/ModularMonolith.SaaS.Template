@@ -5,6 +5,7 @@ using Shared.Features.CQRS;
 using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
+using Shared.Features.Server.ExecutionContext;
 
 namespace Shared.Features
 {
@@ -20,12 +21,15 @@ namespace Shared.Features
             services.RegisterEFCore(configuration);
             services.RegisterEmailSender(configuration);
 
+            services.AddServerExecutionContext();
+
             return services;
         }
 
         public static IApplicationBuilder UseSharedFeaturesMiddleware(this IApplicationBuilder app)
         {
             app.UseEFCoreMiddleware();
+            app.UseServerExecutionContextMiddleware();
 
             return app;
         }
