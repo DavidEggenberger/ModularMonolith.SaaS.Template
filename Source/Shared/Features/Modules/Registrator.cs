@@ -33,7 +33,7 @@ namespace Shared.Features.Modules
             services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(sm => sm.Startup.FeaturesAssembly).ToArray());
         }
 
-        public static IApplicationBuilder UseModules(this IApplicationBuilder app, IHostEnvironment env)
+        public static IApplicationBuilder UseModulesMiddleware(this IApplicationBuilder app, IHostEnvironment env)
         {
             // Adds endpoints defined in modules
             var modules = app

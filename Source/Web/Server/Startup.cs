@@ -10,7 +10,6 @@ using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
 using Modules.Subscription.Server;
-using Shared.Features.Server.ExecutionContext;
 
 namespace Web.Server
 {
@@ -67,9 +66,7 @@ namespace Web.Server
             app.UseAuthorization();
 
             app.UseBuildingBlocksMiddleware();
-            app.UseSharedFeaturesMiddleware();
-
-            app.UseModules(env);
+            app.UseSharedFeaturesMiddleware(env);
 
             app.UseEndpoints(endpoints =>
             {

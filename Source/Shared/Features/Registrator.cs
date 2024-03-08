@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.CQRS;
@@ -26,10 +27,11 @@ namespace Shared.Features
             return services;
         }
 
-        public static IApplicationBuilder UseSharedFeaturesMiddleware(this IApplicationBuilder app)
+        public static IApplicationBuilder UseSharedFeaturesMiddleware(this IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseEFCoreMiddleware();
             app.UseServerExecutionContextMiddleware();
+            app.UseModulesMiddleware(env);
 
             return app;
         }
