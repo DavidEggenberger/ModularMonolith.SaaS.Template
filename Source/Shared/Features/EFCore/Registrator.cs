@@ -8,7 +8,7 @@ namespace Shared.Features.EFCore
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterEFCore(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddEFCore(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<EFCoreConfiguration>(configuration.GetSection(nameof(EFCoreConfiguration)));
             services.AddScoped(sp => sp.GetRequiredService<IOptions<EFCoreConfiguration>>().Value);

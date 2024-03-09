@@ -7,7 +7,7 @@ namespace Web.Server.BuildingBlocks.ModelValidation
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterModelValidation(this IServiceCollection services)
+        public static IServiceCollection AddModelValidation(this IServiceCollection services)
         {
             services.RegisterModelValidationService();
 

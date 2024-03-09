@@ -14,23 +14,22 @@ namespace Web.Server.BuildingBlocks
     {
         public static IServiceCollection AddBuildingBlocks(this IServiceCollection services)
         {
-            services.RegisterAntiforgeryToken();
-            services.RegisterApiVersioning();
-            services.RegisterLogging();
-            services.RegisterModelValidation();
-            services.RegisterSwagger();
-            services.RegisterModelValidation();
+            services.AddAntiforgeryToken();
+            services.Add_ApiVersioning();
+            services.Add_Logging();
+            services.AddModelValidation();
+            services.AddSwagger();
 
             return services;
         }
 
         public static IApplicationBuilder UseBuildingBlocksMiddleware(this IApplicationBuilder applicationBuilder)
         {
-            applicationBuilder.RegisterApiVersioning();
-            applicationBuilder.RegisterExceptionHandling();
-            applicationBuilder.RegisterLogging();
-            applicationBuilder.RegisterSecurityHeaders();
-            applicationBuilder.RegisterSwagger();
+            applicationBuilder.UseApiVersioningMiddleware();
+            applicationBuilder.UseExceptionHandlingMiddleware();
+            applicationBuilder.UseLoggingMiddleware();
+            applicationBuilder.UseSecurityHeadersMiddleware();
+            applicationBuilder.UseSwaggerMiddleware();
 
             return applicationBuilder;
         }

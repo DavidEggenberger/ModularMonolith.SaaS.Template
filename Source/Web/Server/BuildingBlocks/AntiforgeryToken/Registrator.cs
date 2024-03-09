@@ -5,7 +5,7 @@ namespace WebServer.Modules.AntiforgeryToken
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterAntiforgeryToken(this IServiceCollection services)
+        public static IServiceCollection AddAntiforgeryToken(this IServiceCollection services)
         {
             return services.AddAntiforgery(options =>
             {

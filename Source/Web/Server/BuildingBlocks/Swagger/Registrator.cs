@@ -7,7 +7,7 @@ namespace Web.Server.BuildingBlocks.Swagger
 {
     public static class SwaggerDIDIRegistrator
     {
-        public static IServiceCollection RegisterSwagger(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddSwagger(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddSwaggerGen(options =>
             {
@@ -33,7 +33,7 @@ namespace Web.Server.BuildingBlocks.Swagger
             return serviceCollection;
         }
 
-        public static IApplicationBuilder RegisterSwagger(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseSwaggerMiddleware(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.UseSwagger();
             applicationBuilder.UseSwaggerUI(options =>

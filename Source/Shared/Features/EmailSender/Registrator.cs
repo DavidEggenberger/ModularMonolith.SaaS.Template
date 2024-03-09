@@ -6,7 +6,7 @@ namespace Shared.Features.EmailSender
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterEmailSender(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddEmailSender(this IServiceCollection services, IConfiguration configuration)
         {
             //services.Configure<SendGridEmailOptions>(configuration);
             services.AddTransient<IEmailSender, SendGridEmailSender>();

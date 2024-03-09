@@ -10,7 +10,7 @@ namespace Shared.Features.CQRS
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterCQRS(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddCQRS(this IServiceCollection services, Assembly[] assemblies)
         {
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();

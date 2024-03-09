@@ -18,9 +18,9 @@ namespace Shared.Features
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
 
-            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(x => x.Startup.FeaturesAssembly).ToArray());
-            services.RegisterEFCore(configuration);
-            services.RegisterEmailSender(configuration);
+            services.AddCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(x => x.Startup.FeaturesAssembly).ToArray());
+            services.AddEFCore(configuration);
+            services.AddEmailSender(configuration);
 
             services.AddServerExecutionContext();
 

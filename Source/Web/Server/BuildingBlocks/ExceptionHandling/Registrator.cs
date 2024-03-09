@@ -4,7 +4,7 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
 {
     public static class Registrator
     {
-        public static IApplicationBuilder RegisterExceptionHandling(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseExceptionHandlingMiddleware(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder.UseExceptionHandler("/exceptionHandler");
         }

@@ -30,7 +30,7 @@ namespace Shared.Features.Modules
 
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
 
-            services.RegisterCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(sm => sm.Startup.FeaturesAssembly).ToArray());
+            services.AddCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(sm => sm.Startup.FeaturesAssembly).ToArray());
         }
 
         public static IApplicationBuilder UseModulesMiddleware(this IApplicationBuilder app, IHostEnvironment env)

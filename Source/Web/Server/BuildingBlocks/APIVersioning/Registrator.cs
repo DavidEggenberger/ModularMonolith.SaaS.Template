@@ -7,7 +7,7 @@ namespace Web.Server.BuildingBlocks.APIVersioning
 {
     public static class Registrator
     {
-        public static IServiceCollection RegisterApiVersioning(this IServiceCollection serviceCollection)
+        public static IServiceCollection Add_ApiVersioning(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddApiVersioning(options =>
             {
@@ -19,7 +19,7 @@ namespace Web.Server.BuildingBlocks.APIVersioning
             return serviceCollection;
         }
 
-        public static IApplicationBuilder RegisterApiVersioning(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseApiVersioningMiddleware(this IApplicationBuilder applicationBuilder)
         {
             applicationBuilder.UseApiVersioning();
 

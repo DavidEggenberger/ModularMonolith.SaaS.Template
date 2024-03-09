@@ -4,7 +4,7 @@ namespace Web.Server.BuildingBlocks.SecurityHeaders
 {
     public static class Registrator
     {
-        public static IApplicationBuilder RegisterSecurityHeaders(this IApplicationBuilder applicationBuilder)
+        public static IApplicationBuilder UseSecurityHeadersMiddleware(this IApplicationBuilder applicationBuilder)
         {
             return applicationBuilder.Use((context, next) =>
             {
