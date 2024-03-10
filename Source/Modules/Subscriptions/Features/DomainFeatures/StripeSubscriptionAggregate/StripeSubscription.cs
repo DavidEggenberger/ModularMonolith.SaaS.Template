@@ -1,12 +1,19 @@
-﻿using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
-using Shared.Features.Domain;
+﻿using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate;
+using Shared.Features.Domain.AggregateRoot;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate
 {
     public class StripeSubscription : AggregateRoot
     {
         private StripeSubscription() { }
+
+        public Guid StripeCustomerId { get; set; }
+        public StripeCustomer StripeCustomer { get; set; }
+        public DateTime? ExpirationDate { get; set; }
+        public SubscriptionPlanType PlanType { get; set; }
+        public StripeSubscriptionStatus Status { get; set; }
+
         public static StripeSubscription Create(
             DateTime? expirationDate,
             SubscriptionPlanType subscriptionPlanType,
@@ -23,11 +30,5 @@ namespace Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscrip
                 StripeCustomer = stripeCustomer
             };
         }
-
-        public Guid StripeCustomerId { get; set; }
-        public StripeCustomer StripeCustomer { get; set; }
-        public DateTime? ExpirationDate { get; set; }
-        public SubscriptionPlanType PlanType { get; set; }
-        public StripeSubscriptionStatus Status { get; set; }
     }
 }

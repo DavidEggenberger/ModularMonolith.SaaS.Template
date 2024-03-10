@@ -1,4 +1,4 @@
-﻿namespace Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate
+﻿namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate
 {
     public enum StripeSubscriptionStatus
     {

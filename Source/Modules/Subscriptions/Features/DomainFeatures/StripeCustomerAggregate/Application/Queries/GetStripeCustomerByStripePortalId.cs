@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeCustomerAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate;
 using Shared.Features.CQRS.Query;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.Queries

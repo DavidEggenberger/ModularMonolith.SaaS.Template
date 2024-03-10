@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.Subscriptions.Features.DomainFeatures.Agregates.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Infrastructure
 {

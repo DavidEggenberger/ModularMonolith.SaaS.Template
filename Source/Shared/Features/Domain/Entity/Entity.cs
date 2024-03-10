@@ -1,7 +1,7 @@
 ﻿using Shared.Kernel.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
-namespace Shared.Features.Domain
+namespace Shared.Features.Domain.Entity
 {
     public abstract class Entity : IAuditable, IIdentifiable, IConcurrent
     {

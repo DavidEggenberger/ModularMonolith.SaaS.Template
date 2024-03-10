@@ -1,4 +1,4 @@
-﻿using Shared.Features.Domain;
+﻿using Shared.Features.Domain.Entity;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
 {

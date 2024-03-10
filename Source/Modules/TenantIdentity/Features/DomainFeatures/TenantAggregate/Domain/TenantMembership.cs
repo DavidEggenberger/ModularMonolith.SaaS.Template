@@ -1,5 +1,5 @@
 ﻿using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
-using Shared.Features.Domain;
+using Shared.Features.Domain.Entity;
 using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
