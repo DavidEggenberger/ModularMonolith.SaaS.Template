@@ -12,7 +12,7 @@ namespace Shared.Features.Modules.Configuration
             services.AddScoped<TModuleConfiguration>(sp =>
             {
                 TModuleConfiguration sc = new TModuleConfiguration();
-                sp.GetRequiredService<IConfiguration>().GetSection(nameof(TModuleConfiguration)).Bind(sc);
+                sp.GetRequiredService<IConfiguration>().GetSection(typeof(TModuleConfiguration).Name).Bind(sc);
                 return sc;
             });
 
@@ -25,7 +25,7 @@ namespace Shared.Features.Modules.Configuration
             services.AddScoped<TModuleConfiguration>(sp =>
             {
                 TModuleConfiguration sc = new TModuleConfiguration();
-                sp.GetRequiredService<IConfiguration>().GetSection(nameof(TModuleConfiguration)).Bind(sc);
+                sp.GetRequiredService<IConfiguration>().GetSection(typeof(TModuleConfiguration).Name).Bind(sc);
                 return sc;
             });
 
