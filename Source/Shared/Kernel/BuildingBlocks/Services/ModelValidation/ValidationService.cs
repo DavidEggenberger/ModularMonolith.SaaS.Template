@@ -3,7 +3,7 @@ using FluentValidation.Results;
 using Microsoft.Extensions.DependencyInjection;
 using static FluentValidation.AssemblyScanner;
 
-namespace Shared.Kernel.BuildingBlocks.ModelValidation
+namespace Shared.Kernel.BuildingBlocks.Services.ModelValidation
 {
     public class ValidationService : IValidationService
     {

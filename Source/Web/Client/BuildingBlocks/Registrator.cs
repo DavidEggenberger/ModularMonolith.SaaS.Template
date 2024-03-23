@@ -7,7 +7,7 @@ using System;
 using System.Net.Http.Headers;
 using Web.Client.BuildingBlocks.Auth;
 using Web.Client.BuildingBlocks.Auth.Antiforgery;
-using Web.Client.BuildingBlocks.Services.Http;
+using Web.Client.BuildingBlocks.Http;
 
 namespace Web.Client.BuildingBlocks
 {

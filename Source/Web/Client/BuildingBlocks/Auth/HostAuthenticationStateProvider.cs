@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
-using Shared.Kernel.Constants;
+using Shared.Kernel.Constants.Modules;
 
 namespace Web.Client.BuildingBlocks.Auth
 {
@@ -50,7 +50,7 @@ namespace Web.Client.BuildingBlocks.Auth
         {
             try
             {
-                var response = await httpClient.GetAsync(EndpointConstants.UserClaimsPath);
+                var response = await httpClient.GetAsync(EndpointConstants.TenantIdentity.UserClaimsPath);
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
@@ -80,24 +80,24 @@ namespace Web.Client.BuildingBlocks.Auth
         public void SignIn(string customReturnUrl = null)
         {
             var encodedReturnUrl = Uri.EscapeDataString(customReturnUrl ?? navigationManager.Uri);
-            var logInUrl = navigationManager.ToAbsoluteUri($"{EndpointConstants.LoginPath}?returnUrl={encodedReturnUrl}");
+            var logInUrl = navigationManager.ToAbsoluteUri($"{EndpointConstants.TenantIdentity.LoginPath}?returnUrl={encodedReturnUrl}");
             navigationManager.NavigateTo(logInUrl.ToString(), true);
         }
 
         public void SignUp(string customReturnUrl = null)
         {
             var encodedReturnUrl = Uri.EscapeDataString(customReturnUrl ?? navigationManager.Uri);
-            var logInUrl = navigationManager.ToAbsoluteUri($"{EndpointConstants.SignUpPath}?returnUrl={encodedReturnUrl}");
+            var logInUrl = navigationManager.ToAbsoluteUri($"{EndpointConstants.TenantIdentity.SignUpPath}?returnUrl={encodedReturnUrl}");
             navigationManager.NavigateTo(logInUrl.ToString(), true);
         }
 
         public void GoToManageAccount()
         {
-            navigationManager.NavigateTo(EndpointConstants.IdentityAccountPath, true);
+            navigationManager.NavigateTo(EndpointConstants.TenantIdentity.IdentityAccountPath, true);
         }
         public void SignOut()
         {
-            navigationManager.NavigateTo(EndpointConstants.LogoutPath, true);
+            navigationManager.NavigateTo(EndpointConstants.TenantIdentity.LogoutPath, true);
         }
     }
 }

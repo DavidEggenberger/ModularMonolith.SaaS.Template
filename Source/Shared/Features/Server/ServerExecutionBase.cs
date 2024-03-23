@@ -4,7 +4,7 @@ using Shared.Features.CQRS.DomainEvent;
 using Shared.Features.CQRS.IntegrationEvent;
 using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.ModelValidation;
+using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 
 namespace Shared.Features.Server
 {
