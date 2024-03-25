@@ -4,9 +4,9 @@ using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using Shared.Kernel.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Shared.Features.Domain.AggregateRoot
+namespace Shared.Features.Domain
 {
-    public class AggregateRoot : Shared.Features.Domain.Entity.Entity, ITenantIdentifiable
+    public class AggregateRoot : Entity, ITenantIdentifiable
     {
         [NotMapped]
         public IExecutionContext ExecutionContext { get; set; }

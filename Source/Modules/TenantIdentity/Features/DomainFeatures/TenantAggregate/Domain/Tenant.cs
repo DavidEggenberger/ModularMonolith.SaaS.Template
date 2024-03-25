@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
-using Shared.Features.Domain.AggregateRoot;
+using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
 

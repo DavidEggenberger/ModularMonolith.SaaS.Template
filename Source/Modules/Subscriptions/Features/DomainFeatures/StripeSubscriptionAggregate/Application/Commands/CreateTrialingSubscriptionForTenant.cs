@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate;
 using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.CQRS.Command;
 using Shared.Features.CQRS.IntegrationEvent;

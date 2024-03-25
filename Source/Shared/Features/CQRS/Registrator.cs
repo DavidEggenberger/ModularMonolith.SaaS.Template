@@ -15,6 +15,7 @@ namespace Shared.Features.CQRS
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
             services.TryAddScoped<IIntegrationEventDispatcher, IntegrationEventDispatcher>();
+            services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
             // INFO: Using https://www.nuget.org/packages/Scrutor for registering all Query and Command handlers by convention
             services.Scan(selector =>

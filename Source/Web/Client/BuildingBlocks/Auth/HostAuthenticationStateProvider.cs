@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
-using Shared.Kernel.Constants.Modules;
+using Shared.Kernel.Constants.Endpoints;
 
 namespace Web.Client.BuildingBlocks.Auth
 {

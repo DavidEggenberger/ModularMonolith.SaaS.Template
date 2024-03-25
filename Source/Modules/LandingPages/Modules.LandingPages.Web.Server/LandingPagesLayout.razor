@@ -1,13 +1,39 @@
-﻿@inherits LayoutComponentBase
+﻿@using Shared.Client.Components.Modals
+@inherits LayoutComponentBase
+@inject IModalService modalService
 
-<div class="h-screen">
-    <nav class="h-[70px] w-full flex">
-        <h1>ModularMonolith Template</h1>
+<div class="h-screen w-screen">
+    <nav class="p-[20px] h-[65px] max-w-[1400px] ml-auto mr-auto w-full pb-0 flex flex-row content-start justify-between items-end">
         <div>
-
+            <a id="start" href="/">
+                <h1 class="text-4xl text-orange">Modular Monolith<span class="text-[46px]"></span></h1>
+            </a>
+        </div>
+        <div class="flex flex-row gap-x-3">
+            <a target="_blank" href="/swagger/index.html">
+                <span class="text-xl cursor-pointer p-1 hover:text-orange">About</span>
+            </a>
+            <button @onclick="() => OpenSignUpModal()" target="_blank" href="/swagger/index.html">
+                <span class="text-xl hover:bg-white border border-1 border-orange cursor-pointer p-1 rounded bg-orange text-white hover:text-orange">Sign in</span>
+            </button>
         </div>
     </nav>
-    <main>
+
+    <main class="p-[20px] overflow-y-auto h-[calc(100%-65px)] max-w-[1400px] max-h-[900px] ml-auto mr-auto w-full">
         @Body
     </main>
 </div>
+
+@code {
+    private IModalReference modalReference;
+
+    public void OpenSignUpModal()
+    {
+        var modelParameters = new ModalParameters
+        {
+            { nameof(SignInModal.CancelRequestedCallback), new EventCallback(this, () => modalReference.Close()) },
+        };
+
+        modalReference = modalService.Show<SignInModal>(string.Empty, modelParameters, DefaultModalOptions.Modal);
+    }
+}

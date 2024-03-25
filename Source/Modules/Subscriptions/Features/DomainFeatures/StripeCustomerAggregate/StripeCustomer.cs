@@ -1,4 +1,4 @@
-﻿using Shared.Features.Domain.Entity;
+﻿using Shared.Features.Domain;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate
 {
