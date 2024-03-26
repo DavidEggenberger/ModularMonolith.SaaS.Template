@@ -1,7 +1,7 @@
 ﻿using Shared.Features.CQRS.Query;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
-namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Queries
 {
     [AuthorizeTenantAdmin]
     public class GetSubscriptionForTenant : IQuery<object>

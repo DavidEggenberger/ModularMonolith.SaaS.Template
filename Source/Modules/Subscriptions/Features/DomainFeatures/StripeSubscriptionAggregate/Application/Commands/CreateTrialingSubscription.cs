@@ -9,7 +9,7 @@ using Stripe;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
 {
-    public class CreateTrialingSubscriptionForTenant : ICommand
+    public class CreateTrialingSubscription : ICommand
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }
@@ -17,11 +17,10 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public Stripe.Subscription CreatedStripeSubscription { get; set; }
     }
 
-    public class CreateTrialingSubscriptionCommandHandler : ServerExecutionBase, ICommandHandler<CreateTrialingSubscriptionForTenant>
+    public class CreateTrialingSubscriptionCommandHandler : ServerExecutionBase, ICommandHandler<CreateTrialingSubscription>
     {
         private readonly SubscriptionsDbContext subscriptionDbContext;
         private readonly SubscriptionsConfiguration subscriptionConfiguration;
-        private readonly IIntegrationEventDispatcher integrationEventDispatcher;
 
         public CreateTrialingSubscriptionCommandHandler(
             SubscriptionsDbContext subscriptionDbContext,
@@ -32,7 +31,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
             this.subscriptionConfiguration = subscriptionConfiguration;
         }
 
-        public async Task HandleAsync(CreateTrialingSubscriptionForTenant command, CancellationToken cancellationToken)
+        public async Task HandleAsync(CreateTrialingSubscription command, CancellationToken cancellationToken)
         {
             var subscriptionType = subscriptionConfiguration.Subscriptions.First(s => s.StripePriceId == command.CreatedStripeSubscription.Items.First().Price.Id).Type;
 
