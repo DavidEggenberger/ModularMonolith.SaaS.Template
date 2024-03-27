@@ -2,14 +2,14 @@
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
 {
-    public class UpdateSubscriptionPeriod : ICommand
+    public class PauseActiveSubscription : ICommand
     {
         public Stripe.Subscription Subscription { get; set; }
     }
 
-    public class UpdateSubscriptionPerioEndCommandHandler : ICommandHandler<UpdateSubscriptionPeriod>
+    public class PauseActiveSubscriptionCommandHandler : ICommandHandler<PauseActiveSubscription>
     {
-        public Task HandleAsync(UpdateSubscriptionPeriod command, CancellationToken cancellationToken)
+        public Task HandleAsync(PauseActiveSubscription command, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

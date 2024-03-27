@@ -8,6 +8,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
     {
         private StripeSubscription() { }
 
+        public string StripePortalSubscriptionId { get; set; }
         public Guid StripeCustomerId { get; set; }
         public StripeCustomer StripeCustomer { get; set; }
         public DateTime? ExpirationDate { get; set; }
@@ -16,6 +17,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
 
         public static StripeSubscription Create(
             DateTime? expirationDate,
+            string stripePortalSubscriptionId,
             SubscriptionPlanType subscriptionPlanType,
             StripeSubscriptionStatus stripeSubscriptionStatus,
             Guid tenantId,
@@ -24,6 +26,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
             return new StripeSubscription()
             {
                 ExpirationDate = expirationDate,
+                StripePortalSubscriptionId = stripePortalSubscriptionId,
                 PlanType = subscriptionPlanType,
                 Status = stripeSubscriptionStatus,
                 TenantId = tenantId,

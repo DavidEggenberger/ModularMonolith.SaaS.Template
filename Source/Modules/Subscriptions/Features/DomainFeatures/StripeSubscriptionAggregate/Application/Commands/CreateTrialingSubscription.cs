@@ -40,7 +40,13 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
 
             var tenantId = new Guid(command.CreatedStripeSubscription.Metadata["TenantId"]);
 
-            var stripeSubscription = StripeSubscription.Create(command.CreatedStripeSubscription.TrialEnd, subscriptionType, StripeSubscriptionStatus.Trialing, tenantId, stripeCustomer);
+            var stripeSubscription = StripeSubscription.Create(
+                command.CreatedStripeSubscription.TrialEnd, 
+                command.CreatedStripeSubscription.Id, 
+                subscriptionType,
+                StripeSubscriptionStatus.Trialing, 
+                tenantId, 
+                stripeCustomer);
 
             subscriptionDbContext.StripeSubscriptions.Add(stripeSubscription);
 
