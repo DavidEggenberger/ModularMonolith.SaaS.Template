@@ -7,6 +7,7 @@ using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.EFCore;
 using Shared.Features.Modules;
 using Shared.Features.Modules.Configuration;
+using Stripe;
 using System.Reflection;
 
 namespace Modules.Subscription.Server
@@ -19,6 +20,8 @@ namespace Modules.Subscription.Server
         {
             services.RegisterDbContext<SubscriptionsDbContext>();
             services.RegisterModuleConfiguration<SubscriptionsConfiguration, SubscriptionsConfigurationValidator>(config);
+
+            StripeConfiguration.ApiKey = services.BuildServiceProvider().GetRequiredService<SubscriptionsConfiguration>().StripeAPIKey;
         }
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env)

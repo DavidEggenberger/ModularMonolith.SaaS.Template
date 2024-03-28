@@ -9,19 +9,26 @@ namespace Modules.Subscription.Features.Infrastructure.Configuration
         public string StripeAPIKey { get; set; }
         public string StripeEndpointSecret { get; set; }
         public string StripeProfessionalPlanPriceId { get; set; }
+        public string StripeEnterprisePlanPriceId { get; set; }
 
-        public StripeSubscriptionType GetSubscriptionType(SubscriptionPlanType subscriptionPlanType)
+        public StripeSubscriptionPlan GetSubscriptionType(SubscriptionPlanType subscriptionPlanType)
         {
             return Subscriptions.Single(s => s.Type == subscriptionPlanType);
         }
 
-        public List<StripeSubscriptionType> Subscriptions => new List<StripeSubscriptionType>()
+        public List<StripeSubscriptionPlan> Subscriptions => new List<StripeSubscriptionPlan>()
         {
-            new StripeSubscriptionType
+            new StripeSubscriptionPlan
             {
                 Type = SubscriptionPlanType.Professional,
                 TrialPeriodDays = 14,
                 StripePriceId = StripeProfessionalPlanPriceId
+            },
+            new StripeSubscriptionPlan
+            {
+                Type = SubscriptionPlanType.Enterprise,
+                TrialPeriodDays = 14,
+                StripePriceId = StripeEnterprisePlanPriceId
             }
         };
     }

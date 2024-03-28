@@ -1,4 +1,7 @@
-﻿using Shared.Features.CQRS.Command;
+﻿using Microsoft.EntityFrameworkCore;
+using Modules.Subscription.Features.Infrastructure.EFCore;
+using Shared.Features.CQRS.Command;
+using Shared.Features.Server;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands
 {
@@ -7,11 +10,24 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public Stripe.Subscription Subscription { get; set; }
     }
 
-    public class PauseActiveSubscriptionCommandHandler : ICommandHandler<PauseActiveSubscription>
+    public class PauseActiveSubscriptionCommandHandler : ServerExecutionBase, ICommandHandler<PauseActiveSubscription>
     {
-        public Task HandleAsync(PauseActiveSubscription command, CancellationToken cancellationToken)
+        private readonly SubscriptionsDbContext subscriptionDbContext;
+
+        public PauseActiveSubscriptionCommandHandler(
+            SubscriptionsDbContext subscriptionDbContext,
+            IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            throw new NotImplementedException();
+            this.subscriptionDbContext = subscriptionDbContext;
+        }
+
+        public async Task HandleAsync(PauseActiveSubscription command, CancellationToken cancellationToken)
+        {
+            var stripeSubscription = await subscriptionDbContext.StripeSubscriptions.FirstAsync(stripeSubscription => stripeSubscription.StripePortalSubscriptionId == command.Subscription.Id);
+
+            stripeSubscription.Status = StripeSubscriptionStatus.Paused;
+
+            await subscriptionDbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

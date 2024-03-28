@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.CQRS.Command;
 using Shared.Features.Server;
@@ -14,15 +13,12 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
     public class UpdateSubscriptionPerioEndCommandHandler : ServerExecutionBase, ICommandHandler<UpdateSubscriptionPeriod>
     {
         private readonly SubscriptionsDbContext subscriptionDbContext;
-        private readonly SubscriptionsConfiguration subscriptionConfiguration;
 
         public UpdateSubscriptionPerioEndCommandHandler(
             SubscriptionsDbContext subscriptionDbContext,
-            SubscriptionsConfiguration subscriptionConfiguration,
             IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.subscriptionDbContext = subscriptionDbContext;
-            this.subscriptionConfiguration = subscriptionConfiguration;
         }
 
         public async Task HandleAsync(UpdateSubscriptionPeriod command, CancellationToken cancellationToken)
