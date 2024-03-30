@@ -22,7 +22,7 @@ using Shared.Features.Modules.Configuration;
 
 namespace Modules.TenantIdentity.Server
 {
-    public class TenantIdentityModuleStartup : IModuleStartup
+    public class TenantIdentityModuleStartup : IModule
     {
         public Assembly FeaturesAssembly => typeof(TenantIdentityModuleStartup).Assembly;
 

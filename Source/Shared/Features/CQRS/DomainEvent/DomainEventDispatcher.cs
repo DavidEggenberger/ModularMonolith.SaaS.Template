@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.Domain;
 
 namespace Shared.Features.CQRS.DomainEvent
 {
@@ -10,12 +9,12 @@ namespace Shared.Features.CQRS.DomainEvent
         {
             this.serviceProvider = serviceProvider;
         }
-        public async Task RaiseAsync<TDomainEvent>(TDomainEvent command, CancellationToken cancellation = default) where TDomainEvent : IDomainEvent
+        public async Task PublishAsync<TDomainEvent>(TDomainEvent domainEvent, CancellationToken cancellation = default) where TDomainEvent : IDomainEvent
         {
             var eventHandlers = serviceProvider.GetServices<IDomainEventHandler<TDomainEvent>>();
             foreach (var eventHandler in eventHandlers)
             {
-                await eventHandler.HandleAsync(command, cancellation);
+                await eventHandler.HandleAsync(domainEvent, cancellation);
             }
         }
     }

@@ -8,7 +8,7 @@ using System.Reflection;
 
 namespace Modules.LandingPages.Web.Server
 {
-    public class LandingPagesModuleStartup : IModuleStartup
+    public class LandingPagesModuleStartup : IModule
     {
         public Assembly FeaturesAssembly => null;
 

@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.Domain
+﻿namespace Shared.Features.CQRS.DomainEvent
 {
     public interface IDomainEvent
     {

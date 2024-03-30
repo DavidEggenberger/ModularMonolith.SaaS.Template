@@ -10,7 +10,7 @@ namespace Shared.Features.Modules
     public static class Registrator
     {
         public static IServiceCollection AddModule<TStartup>(this IServiceCollection services, IConfiguration config = null)
-            where TStartup : IModuleStartup, new()
+            where TStartup : class, IModule, new()
         {
             // Register assembly in MVC so it can find controllers of the module
             services.AddControllers().ConfigureApplicationPartManager(manager =>
@@ -19,7 +19,7 @@ namespace Shared.Features.Modules
             var startup = new TStartup();
             startup.ConfigureServices(services, config);
 
-            services.AddSingleton(new Module(startup));
+            services.AddSingleton<IModule>(sp => new TStartup());
 
             return services;
         }
@@ -28,9 +28,9 @@ namespace Shared.Features.Modules
         {
             var serviceProvider = services.BuildServiceProvider();
 
-            var startupModules = serviceProvider.GetRequiredService<IEnumerable<Module>>();
+            var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModule>>();
 
-            services.AddCQRS(startupModules.Where(sm => sm.Startup.FeaturesAssembly is not null).Select(sm => sm.Startup.FeaturesAssembly).ToArray());
+            services.AddCQRS(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(sm => sm.FeaturesAssembly).ToArray());
         }
 
         public static IApplicationBuilder UseModulesMiddleware(this IApplicationBuilder app, IHostEnvironment env)
@@ -38,13 +38,13 @@ namespace Shared.Features.Modules
             // Adds endpoints defined in modules
             var modules = app
                 .ApplicationServices
-                .GetRequiredService<IEnumerable<Module>>();
+                .GetRequiredService<IEnumerable<IModule>>();
             foreach (var module in modules)
             {
-                module.Startup.Configure(app, env);
+                module.Configure(app, env);
             }
 
             return app;
-        }      
+        }    
     }
 }
