@@ -1,6 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks;
 
-namespace Shared.Features.CQRS.IntegrationEvent
+namespace Shared.Features.Messaging.IntegrationEvent
 {
     public interface IIntegrationEventDispatcher
     {

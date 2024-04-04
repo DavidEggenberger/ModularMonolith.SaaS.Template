@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 using Shared.Features.Domain.Exceptions;
 using System.Threading;
 

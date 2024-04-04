@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
 

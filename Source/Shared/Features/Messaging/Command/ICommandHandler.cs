@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.CQRS.Command
+﻿namespace Shared.Features.Messaging.Command
 {
     public interface ICommandHandler<in TCommand> where TCommand : ICommand
     {

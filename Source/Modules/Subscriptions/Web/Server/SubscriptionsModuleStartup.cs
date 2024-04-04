@@ -8,14 +8,11 @@ using Shared.Features.EFCore;
 using Shared.Features.Modules;
 using Shared.Features.Modules.Configuration;
 using Stripe;
-using System.Reflection;
 
 namespace Modules.Subscription.Server
 {
-    public class SubscriptionsModuleStartup : IModule
+    public class SubscriptionsModuleStartup : IModuleStartup
     {
-        public Assembly? FeaturesAssembly => typeof(SubscriptionsModuleStartup).Assembly;
-
         public void ConfigureServices(IServiceCollection services, IConfiguration config)
         {
             services.RegisterDbContext<SubscriptionsDbContext>();

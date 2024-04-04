@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 using Shared.Features.Server;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.CQRS;
+using Shared.Features.Messaging;
 using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
@@ -18,7 +18,7 @@ namespace Shared.Features
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModule>>();
 
-            services.AddCQRS(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(x => x.FeaturesAssembly).ToArray());
+            services.AddMessaging(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(x => x.FeaturesAssembly).ToArray());
             services.AddEFCore(configuration);
             services.AddEmailSender(configuration);
 

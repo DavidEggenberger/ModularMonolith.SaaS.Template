@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Features.CQRS.DomainEvent
+namespace Shared.Features.Messaging.DomainEvent
 {
     public class DomainEventDispatcher : IDomainEventDispatcher
     {

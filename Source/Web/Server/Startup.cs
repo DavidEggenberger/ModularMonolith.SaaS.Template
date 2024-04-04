@@ -10,6 +10,8 @@ using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
 using Modules.Subscription.Server;
+using Modules.TenantIdentity.Features;
+using Modules.Subscriptions.Features;
 
 namespace Web.Server
 {
@@ -36,8 +38,8 @@ namespace Web.Server
             services.AddBuildingBlocks();
             services.AddSharedFeatures();
 
-            services.AddModule<TenantIdentityModuleStartup>(Configuration);
-            services.AddModule<SubscriptionsModuleStartup>(Configuration);
+            services.AddModule<TenantIdentityModule, TenantIdentityModuleStartup>(Configuration);
+            services.AddModule<SubscriptionsModule, SubscriptionsModuleStartup>(Configuration);
             services.AddModule<LandingPagesModuleStartup>(Configuration);
             services.AddModules();
         }

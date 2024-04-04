@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.IntegrationEvents;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.Messaging.IntegrationEvent;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.IntegrationEvents

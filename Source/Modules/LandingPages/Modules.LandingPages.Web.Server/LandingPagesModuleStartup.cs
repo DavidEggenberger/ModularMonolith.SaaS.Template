@@ -8,12 +8,12 @@ using System.Reflection;
 
 namespace Modules.LandingPages.Web.Server
 {
-    public class LandingPagesModuleStartup : IModule
+    public class LandingPagesModuleStartup : IModuleStartup
     {
         public Assembly FeaturesAssembly => null;
 
         public void ConfigureServices(IServiceCollection services, IConfiguration config = null)
-        { 
+        {
             services.AddBlazoredModal();
         }
 

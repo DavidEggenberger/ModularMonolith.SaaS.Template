@@ -1,13 +1,25 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.CQRS.Command;
-using Shared.Features.CQRS.DomainEvent;
-using Shared.Features.CQRS.IntegrationEvent;
-using Shared.Features.CQRS.Query;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.DomainEvent;
+using Shared.Features.Messaging.IntegrationEvent;
+using Shared.Features.Messaging.Query;
+using Shared.Features.Modules;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 
 namespace Shared.Features.Server
 {
+    public class ServerExecutionBase<TModule> : ServerExecutionBase where TModule : IModule
+    {
+        protected readonly TModule module;
+
+        public ServerExecutionBase(IServiceProvider serviceProvider) : base(serviceProvider)
+        {
+            module = serviceProvider.GetRequiredService<TModule>();
+        }
+    }
+
     public class ServerExecutionBase
     {
         protected readonly IExecutionContext executionContext;

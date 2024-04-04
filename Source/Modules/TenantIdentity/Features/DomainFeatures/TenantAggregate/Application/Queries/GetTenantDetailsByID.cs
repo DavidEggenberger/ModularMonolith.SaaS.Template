@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
-using Shared.Features.CQRS.Query;
+using Shared.Features.Messaging.Query;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries

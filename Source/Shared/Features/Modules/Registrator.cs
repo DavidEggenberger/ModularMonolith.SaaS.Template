@@ -3,23 +3,38 @@ using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Features.CQRS;
+using Shared.Features.Messaging;
 
 namespace Shared.Features.Modules
 {
     public static class Registrator
     {
-        public static IServiceCollection AddModule<TStartup>(this IServiceCollection services, IConfiguration config = null)
-            where TStartup : class, IModule, new()
+        public static IServiceCollection AddModule<TModuleStartup>(this IServiceCollection services, IConfiguration config = null)
+            where TModuleStartup : IModuleStartup
         {
             // Register assembly in MVC so it can find controllers of the module
             services.AddControllers().ConfigureApplicationPartManager(manager =>
-                manager.ApplicationParts.Add(new AssemblyPart(typeof(TStartup).Assembly)));
+                manager.ApplicationParts.Add(new AssemblyPart(typeof(TModuleStartup).Assembly)));
 
-            var startup = new TStartup();
-            startup.ConfigureServices(services, config);
+            var moduleStartup = (IModuleStartup)Activator.CreateInstance(typeof(TModuleStartup));
+            moduleStartup.ConfigureServices(services, config);
 
-            services.AddSingleton<IModule>(sp => new TStartup());
+            return services;
+        }
+
+        public static IServiceCollection AddModule<TModule, TModuleStartup>(this IServiceCollection services, IConfiguration config = null)
+            where TModule : IModule 
+            where TModuleStartup : IModuleStartup
+        {
+            // Register assembly in MVC so it can find controllers of the module
+            services.AddControllers().ConfigureApplicationPartManager(manager =>
+                manager.ApplicationParts.Add(new AssemblyPart(typeof(TModuleStartup).Assembly)));
+
+            var moduleStartup = (IModuleStartup)Activator.CreateInstance(typeof(TModuleStartup));
+            moduleStartup.ConfigureServices(services, config);
+
+            var module = (IModule)ActivatorUtilities.CreateInstance<TModule>(services.BuildServiceProvider());
+            services.AddScoped<IModule>(sp => module);
 
             return services;
         }
@@ -30,19 +45,20 @@ namespace Shared.Features.Modules
 
             var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModule>>();
 
-            services.AddCQRS(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(sm => sm.FeaturesAssembly).ToArray());
+            services.AddMessaging(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(sm => sm.FeaturesAssembly).ToArray());
         }
 
         public static IApplicationBuilder UseModulesMiddleware(this IApplicationBuilder app, IHostEnvironment env)
         {
-            // Adds endpoints defined in modules
-            var modules = app
-                .ApplicationServices
-                .GetRequiredService<IEnumerable<IModule>>();
-            foreach (var module in modules)
+            app.Use(async (context, next) =>
             {
-                module.Configure(app, env);
-            }
+                foreach (var module in context.RequestServices.GetRequiredService<IEnumerable<IModuleStartup>>())
+                {
+                    module.Configure(app, env);
+                }
+
+                await next();
+            });
 
             return app;
         }    

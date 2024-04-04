@@ -1,4 +1,4 @@
-﻿using Shared.Features.CQRS.Query;
+﻿using Shared.Features.Messaging.Query;
 using System.Threading;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;

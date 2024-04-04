@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands
 {

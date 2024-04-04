@@ -2,7 +2,7 @@
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
-namespace Shared.Features.CQRS.Query
+namespace Shared.Features.Messaging.Query
 {
     public class QueryDispatcher : IQueryDispatcher
     {

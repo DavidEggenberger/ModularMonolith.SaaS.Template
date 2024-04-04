@@ -2,8 +2,8 @@
 using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Modules.Subscriptions.IntegrationEvents;
-using Shared.Features.CQRS.Command;
-using Shared.Features.CQRS.IntegrationEvent;
+using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.IntegrationEvent;
 using Shared.Features.Server;
 using Stripe;
 

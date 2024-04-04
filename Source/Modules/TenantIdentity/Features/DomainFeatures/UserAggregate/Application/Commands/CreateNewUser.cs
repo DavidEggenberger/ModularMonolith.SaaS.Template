@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands

@@ -1,16 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using Shared.Features.CQRS.Query;
-using Shared.Features.CQRS.Command;
-using Shared.Features.CQRS.IntegrationEvent;
-using Shared.Features.CQRS.DomainEvent;
+using Shared.Features.Messaging.Query;
+using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.IntegrationEvent;
+using Shared.Features.Messaging.DomainEvent;
 
-namespace Shared.Features.CQRS
+namespace Shared.Features.Messaging
 {
     public static class Registrator
     {
-        public static IServiceCollection AddCQRS(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddMessaging(this IServiceCollection services, Assembly[] assemblies)
         {
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();

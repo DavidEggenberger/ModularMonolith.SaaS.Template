@@ -1,5 +1,5 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.Query;
+using Shared.Features.Messaging.Query;
 using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
@@ -12,17 +12,17 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Applicati
         public Guid UserId { get; set; }
     }
 
-    public class ClaimsForUserQueryHandler : ServerExecutionBase, IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
+    public class ClaimsForUserQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
 
-        public ClaimsForUserQueryHandler(TenantIdentityDbContext tenantIdentityDbContext, IServiceProvider serviceProvider) : base(serviceProvider)
+        public ClaimsForUserQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider)
         {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
+            
         }
+
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
         {
-            var user = await tenantIdentityDbContext.GetUserByIdAsync(query.UserId);
+            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(query.UserId);
 
             List<Claim> claims = new List<Claim>
             {
@@ -32,7 +32,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Applicati
                 new Claim(ClaimConstants.PictureClaimType, user.PictureUri)
             };
 
-            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(user.SelectedTenantId);
+            var tenant = await module.TenantIdentityDbContext.GetTenantExtendedByIdAsync(user.SelectedTenantId);
             var tenantMembership = tenant.Memberships.Single(m => m.UserId == user.Id);
 
             claims.AddRange(new List<Claim>

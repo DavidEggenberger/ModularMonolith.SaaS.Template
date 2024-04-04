@@ -1,7 +1,7 @@
 ﻿using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
-using Shared.Features.CQRS.Command;
+using Shared.Features.Messaging.Command;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands

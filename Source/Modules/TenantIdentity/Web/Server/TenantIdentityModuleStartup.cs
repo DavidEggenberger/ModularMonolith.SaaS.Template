@@ -22,10 +22,8 @@ using Shared.Features.Modules.Configuration;
 
 namespace Modules.TenantIdentity.Server
 {
-    public class TenantIdentityModuleStartup : IModule
+    public class TenantIdentityModuleStartup : IModuleStartup
     {
-        public Assembly FeaturesAssembly => typeof(TenantIdentityModuleStartup).Assembly;
-
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration = null)
         {
             services.AddSingleton<OpenIdConnectPostConfigureOptions>();

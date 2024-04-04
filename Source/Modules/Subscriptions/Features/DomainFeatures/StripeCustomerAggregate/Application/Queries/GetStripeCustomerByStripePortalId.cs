@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscription.Features.Infrastructure.EFCore;
-using Shared.Features.CQRS.Query;
+using Shared.Features.Messaging.Query;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.Queries
 {
