@@ -3,7 +3,6 @@ using Modules.Subscription.Features.Infrastructure.Configuration;
 using Modules.Subscription.Features.Infrastructure.EFCore;
 using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.Messaging.Command;
-using Shared.Features.Messaging.IntegrationEvent;
 using Shared.Features.Server;
 using Stripe;
 
@@ -17,26 +16,16 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public Stripe.Subscription CreatedStripeSubscription { get; set; }
     }
 
-    public class CreateTrialingSubscriptionCommandHandler : ServerExecutionBase, ICommandHandler<CreateTrialingSubscription>
+    public class CreateTrialingSubscriptionCommandHandler : ServerExecutionBase<SubscriptionsModule>, ICommandHandler<CreateTrialingSubscription>
     {
-        private readonly SubscriptionsDbContext subscriptionDbContext;
-        private readonly SubscriptionsConfiguration subscriptionConfiguration;
-
-        public CreateTrialingSubscriptionCommandHandler(
-            SubscriptionsDbContext subscriptionDbContext,
-            SubscriptionsConfiguration subscriptionConfiguration,
-            IServiceProvider serviceProvider): base(serviceProvider)
-        {
-            this.subscriptionDbContext = subscriptionDbContext;
-            this.subscriptionConfiguration = subscriptionConfiguration;
-        }
+        public CreateTrialingSubscriptionCommandHandler(IServiceProvider serviceProvider): base(serviceProvider) { }
 
         public async Task HandleAsync(CreateTrialingSubscription command, CancellationToken cancellationToken)
         {
-            var subscriptionType = subscriptionConfiguration.Subscriptions.First(s => s.StripePriceId == command.CreatedStripeSubscription.Items.First().Price.Id).Type;
+            var subscriptionType = module.SubscriptionsConfiguration.Subscriptions.First(s => s.StripePriceId == command.CreatedStripeSubscription.Items.First().Price.Id).Type;
 
             var customer = await new CustomerService().GetAsync(command.CreatedStripeSubscription.CustomerId);
-            var stripeCustomer = await subscriptionDbContext.StripeCustomers.FirstAsync(sc => sc.StripePortalCustomerId == customer.Id);
+            var stripeCustomer = await module.SubscriptionsDbContext.StripeCustomers.FirstAsync(sc => sc.StripePortalCustomerId == customer.Id);
 
             var tenantId = new Guid(command.CreatedStripeSubscription.Metadata["TenantId"]);
 
@@ -48,9 +37,9 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
                 tenantId, 
                 stripeCustomer);
 
-            subscriptionDbContext.StripeSubscriptions.Add(stripeSubscription);
+            module.SubscriptionsDbContext.StripeSubscriptions.Add(stripeSubscription);
 
-            await subscriptionDbContext.SaveChangesAsync();
+            await module.SubscriptionsDbContext.SaveChangesAsync();
 
             var userSubscriptionUpdatedEvent = new TenantSubscriptionPlanUpdatedIntegrationEvent
             {

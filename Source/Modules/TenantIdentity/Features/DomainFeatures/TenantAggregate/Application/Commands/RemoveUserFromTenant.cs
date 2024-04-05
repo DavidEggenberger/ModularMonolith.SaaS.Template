@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Command;
+﻿using Shared.Features.Messaging.Command;
+using Shared.Features.Server;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands
@@ -10,23 +10,18 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
         public Guid TenantId { get; set; }
     }
 
-    public class RemoveUserFromTenantommandHandler : ICommandHandler<RemoveUserFromTenant>
+    public class RemoveUserFromTenantommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<RemoveUserFromTenant>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-
-        public RemoveUserFromTenantommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public RemoveUserFromTenantommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) {}
 
         public async Task HandleAsync(RemoveUserFromTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
 
             tenant.DeleteTenantMembership(command.UserId);
 
-            tenantIdentityDbContext.Remove(tenant);
-            await tenantIdentityDbContext.SaveChangesAsync();
+            module.TenantIdentityDbContext.Remove(tenant);
+            await module.TenantIdentityDbContext.SaveChangesAsync();
         }
     }
 }

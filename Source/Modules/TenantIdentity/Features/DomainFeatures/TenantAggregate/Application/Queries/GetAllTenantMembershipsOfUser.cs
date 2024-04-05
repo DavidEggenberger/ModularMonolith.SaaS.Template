@@ -2,6 +2,7 @@
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Messaging.Query;
+using Shared.Features.Server;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries
@@ -10,17 +11,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
     {
         public Guid UserId { get; set; }
     }
-    public class GetAllTenantMembershipsOfUserQueryHandler : IQueryHandler<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>
+    public class GetAllTenantMembershipsOfUserQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public GetAllTenantMembershipsOfUserQueryHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public GetAllTenantMembershipsOfUserQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { } 
 
         public async Task<List<TenantMembershipDTO>> HandleAsync(GetAllTenantMembershipsOfUser query, CancellationToken cancellation)
         {
-            var tenantMemberships = await tenantIdentityDbContext.TenantMeberships.Where(tm => tm.UserId == query.UserId).ToListAsync();
+            var tenantMemberships = await module.TenantIdentityDbContext.TenantMeberships.Where(tm => tm.UserId == query.UserId).ToListAsync();
             return tenantMemberships.Select(tm => tm.ToDTO()).ToList();
         }
     }

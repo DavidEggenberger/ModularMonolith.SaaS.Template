@@ -2,6 +2,7 @@
 using System.Threading;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
+using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries
 {
@@ -10,17 +11,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }
     }
-    public class GetTenantMembershipQueryHandler : IQueryHandler<GetTenantMembershipQuery, TenantMembershipDTO>
+    public class GetTenantMembershipQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetTenantMembershipQuery, TenantMembershipDTO>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public GetTenantMembershipQueryHandler(TenantIdentityDbContext tenantDbContext)
-        {
-            tenantIdentityDbContext = tenantDbContext;
-        }
+        public GetTenantMembershipQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task<TenantMembershipDTO> HandleAsync(GetTenantMembershipQuery query, CancellationToken cancellation)
         {
-            var tenantMembership = tenantIdentityDbContext.TenantMeberships.Single(m => m.UserId == query.UserId);
+            var tenantMembership = module.TenantIdentityDbContext.TenantMeberships.Single(m => m.UserId == query.UserId);
             return tenantMembership.ToDTO();
         }
     }

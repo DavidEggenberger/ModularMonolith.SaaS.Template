@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.Features.Infrastructure.EFCore;
 using Shared.Features.Messaging.Command;
 using Shared.Features.Server;
 
@@ -10,20 +9,13 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
         public Stripe.Subscription Subscription { get; set; }
     }
 
-    public class UpdateSubscriptionPerioEndCommandHandler : ServerExecutionBase, ICommandHandler<UpdateSubscriptionPeriod>
+    public class UpdateSubscriptionPerioEndCommandHandler : ServerExecutionBase<SubscriptionsModule>, ICommandHandler<UpdateSubscriptionPeriod>
     {
-        private readonly SubscriptionsDbContext subscriptionDbContext;
-
-        public UpdateSubscriptionPerioEndCommandHandler(
-            SubscriptionsDbContext subscriptionDbContext,
-            IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            this.subscriptionDbContext = subscriptionDbContext;
-        }
+        public UpdateSubscriptionPerioEndCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task HandleAsync(UpdateSubscriptionPeriod command, CancellationToken cancellationToken)
         {
-            var stripeSubscription = await subscriptionDbContext.StripeSubscriptions.FirstAsync(stripeSubscription => stripeSubscription.StripePortalSubscriptionId == command.Subscription.Id);
+            var stripeSubscription = await module.SubscriptionsDbContext.StripeSubscriptions.FirstAsync(stripeSubscription => stripeSubscription.StripePortalSubscriptionId == command.Subscription.Id);
 
             if (stripeSubscription.Status != StripeSubscriptionStatus.Active)
             {
@@ -31,7 +23,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggreg
             }
             stripeSubscription.ExpirationDate = command.Subscription.CurrentPeriodEnd;
 
-            await subscriptionDbContext.SaveChangesAsync(cancellationToken);
+            await module.SubscriptionsDbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

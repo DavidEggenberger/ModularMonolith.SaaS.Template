@@ -2,6 +2,7 @@
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Messaging.Query;
+using Shared.Features.Server;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries
@@ -10,17 +11,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
     {
         public Guid TenantId { get; set; }
     }
-    public class GetTenantDetailsByIDQueryHandler : IQueryHandler<GetTenantDetailsByID, TenantDetailDTO>
+    public class GetTenantDetailsByIDQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetTenantDetailsByID, TenantDetailDTO>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public GetTenantDetailsByIDQueryHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public GetTenantDetailsByIDQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task<TenantDetailDTO> HandleAsync(GetTenantDetailsByID query, CancellationToken cancellation)
         {
-            var tenantDetail = await tenantIdentityDbContext.Tenants.Where(t => t.TenantId == query.TenantId).SingleAsync();
+            var tenantDetail = await module.TenantIdentityDbContext.Tenants.Where(t => t.TenantId == query.TenantId).SingleAsync();
             return tenantDetail.ToDetailDTO();
         }
     }

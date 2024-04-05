@@ -15,7 +15,6 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.Infrastructure.Configuration;
-using System.Reflection;
 using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate;
 using Shared.Features.EFCore;
 using Shared.Features.Modules.Configuration;

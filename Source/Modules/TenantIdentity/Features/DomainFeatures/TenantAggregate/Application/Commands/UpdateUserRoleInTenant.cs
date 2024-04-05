@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Command;
+﻿using Shared.Features.Messaging.Command;
+using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth;
 using System.Threading;
 
@@ -11,20 +11,16 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
         public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
-    public class UpdateTenantMembershipCommandHandler : ICommandHandler<UpdateTenantMembership>
+    public class UpdateTenantMembershipCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<UpdateTenantMembership>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public UpdateTenantMembershipCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public UpdateTenantMembershipCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
         public async Task HandleAsync(UpdateTenantMembership command, CancellationToken cancellationToken)
         {
-            var tenant = await tenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
 
             tenant.ChangeRoleOfTenantMember(command.UserId, command.Role);
 
-            await tenantIdentityDbContext.SaveChangesAsync();
+            await module.TenantIdentityDbContext.SaveChangesAsync();
         }
     }
 }

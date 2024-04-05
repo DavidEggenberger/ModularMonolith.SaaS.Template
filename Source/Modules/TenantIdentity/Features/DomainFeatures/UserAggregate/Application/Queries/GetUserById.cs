@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Query;
+﻿using Shared.Features.Messaging.Query;
+using Shared.Features.Server;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Queries
@@ -8,17 +8,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Applicati
     {
         public Guid UserId { get; set; }
     }
-    public class GetUserByIdHandler : IQueryHandler<GetUserById, ApplicationUser>
+    public class GetUserByIdHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetUserById, ApplicationUser>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public GetUserByIdHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public GetUserByIdHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task<ApplicationUser> HandleAsync(GetUserById query, CancellationToken cancellation)
         {
-            return await tenantIdentityDbContext.GetUserByIdAsync(query.UserId);
+            return await module.TenantIdentityDbContext.GetUserByIdAsync(query.UserId);
         }
     }
 }

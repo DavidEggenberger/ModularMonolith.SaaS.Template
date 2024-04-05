@@ -1,5 +1,4 @@
-﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Query;
+﻿using Shared.Features.Messaging.Query;
 using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
@@ -14,11 +13,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Applicati
 
     public class ClaimsForUserQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
     {
-
-        public ClaimsForUserQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            
-        }
+        public ClaimsForUserQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
         {

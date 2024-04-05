@@ -1,6 +1,7 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Messaging.Query;
+using Shared.Features.Server;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries
@@ -9,17 +10,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
     {
         public Guid TenantId { get; set; }
     }
-    public class GetTenantByIdQueryHandler : IQueryHandler<GetTenantByID, TenantDTO>
+    public class GetTenantByIdQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetTenantByID, TenantDTO>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public GetTenantByIdQueryHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public GetTenantByIdQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task<TenantDTO> HandleAsync(GetTenantByID query, CancellationToken cancellation)
         {
-            var tenant = await tenantIdentityDbContext.GetTenantByIdAsync(query.TenantId);
+            var tenant = await module.TenantIdentityDbContext.GetTenantByIdAsync(query.TenantId);
             return tenant.ToDTO();
         }
     }

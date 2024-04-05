@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Shared.Features.Messaging.Command;
 using Shared.Features.Domain.Exceptions;
 using System.Threading;
+using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands
 {
@@ -11,18 +11,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
         public Guid TenantId { get; set; }
     }
 
-    public class DeleteTenantCommandHandler : ICommandHandler<DeleteTenant>
+    public class DeleteTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<DeleteTenant>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-
-        public DeleteTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public DeleteTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task HandleAsync(DeleteTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await tenantIdentityDbContext.Tenants.SingleAsync(t => t.TenantId == command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.Tenants.SingleAsync(t => t.TenantId == command.TenantId);
             if (tenant == null)
             {
                 throw new NotFoundException();
@@ -30,8 +25,8 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
 
             tenant.ThrowIfUserCantDeleteTenant();
 
-            tenantIdentityDbContext.Entry(tenant.Id).State = EntityState.Deleted;
-            await tenantIdentityDbContext.SaveChangesAsync();
+            module.TenantIdentityDbContext.Entry(tenant.Id).State = EntityState.Deleted;
+            await module.TenantIdentityDbContext.SaveChangesAsync();
         }
     }
 }

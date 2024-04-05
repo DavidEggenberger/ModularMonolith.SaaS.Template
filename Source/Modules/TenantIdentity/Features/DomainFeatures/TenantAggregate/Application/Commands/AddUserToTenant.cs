@@ -1,5 +1,5 @@
-﻿using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Command;
+﻿using Shared.Features.Messaging.Command;
+using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth;
 using System.Threading;
 
@@ -11,21 +11,17 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
         public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
-    public class AddUserToTenantCommandHandler : ICommandHandler<AddUserToTenant>
+    public class AddUserToTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<AddUserToTenant>
     {
-        private readonly TenantIdentityDbContext tenantIdentityDbContext;
-        public AddUserToTenantCommandHandler(TenantIdentityDbContext tenantIdentityDbContext)
-        {
-            this.tenantIdentityDbContext = tenantIdentityDbContext;
-        }
+        public AddUserToTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task HandleAsync(AddUserToTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await tenantIdentityDbContext.GetTenantByIdAsync(command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.GetTenantByIdAsync(command.TenantId);
 
             tenant.AddUser(command.UserId, command.Role);
 
-            await tenantIdentityDbContext.SaveChangesAsync(cancellationToken);
+            await module.TenantIdentityDbContext.SaveChangesAsync(cancellationToken);
         }
     }
 }
