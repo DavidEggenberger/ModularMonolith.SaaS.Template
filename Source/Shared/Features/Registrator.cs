@@ -16,9 +16,8 @@ namespace Shared.Features
         {
             var serviceProvider = services.BuildServiceProvider();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
-            var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModule>>();
 
-            services.AddMessaging(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(x => x.FeaturesAssembly).ToArray());
+            services.AddMessaging();
             services.AddEFCore(configuration);
             services.AddEmailSender(configuration);
 

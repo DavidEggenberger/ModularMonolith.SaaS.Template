@@ -41,7 +41,6 @@ namespace Web.Server
             services.AddModule<TenantIdentityModule, TenantIdentityModuleStartup>(Configuration);
             services.AddModule<SubscriptionsModule, SubscriptionsModuleStartup>(Configuration);
             services.AddModule<LandingPagesModuleStartup>(Configuration);
-            services.AddModules();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

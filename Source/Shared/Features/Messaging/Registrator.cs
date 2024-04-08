@@ -10,12 +10,19 @@ namespace Shared.Features.Messaging
 {
     public static class Registrator
     {
-        public static IServiceCollection AddMessaging(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddMessaging(this IServiceCollection services)
         {
             services.TryAddScoped<ICommandDispatcher, CommandDispatcher>();
             services.TryAddScoped<IQueryDispatcher, QueryDispatcher>();
             services.TryAddScoped<IIntegrationEventDispatcher, IntegrationEventDispatcher>();
             services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddMessagingForModule(this IServiceCollection services, Type moduleType)
+        {
+            var assemblies = new Assembly[] { moduleType.Assembly };
 
             // INFO: Using https://www.nuget.org/packages/Scrutor for registering all Query and Command handlers by convention
             services.Scan(selector =>
@@ -34,6 +41,14 @@ namespace Shared.Features.Messaging
                         .AddClasses(filter =>
                         {
                             filter.AssignableTo(typeof(ICommandHandler<>));
+                        })
+                        .AsImplementedInterfaces()
+                        .WithScopedLifetime();
+
+                selector.FromAssemblies(assemblies)
+                        .AddClasses(filter =>
+                        {
+                            filter.AssignableTo(typeof(ICommandHandler<,>));
                         })
                         .AsImplementedInterfaces()
                         .WithScopedLifetime();
@@ -58,6 +73,7 @@ namespace Shared.Features.Messaging
                         .AsImplementedInterfaces()
                         .WithScopedLifetime();
             });
+
             return services;
         }
     }

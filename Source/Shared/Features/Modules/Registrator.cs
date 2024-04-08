@@ -23,7 +23,7 @@ namespace Shared.Features.Modules
         }
 
         public static IServiceCollection AddModule<TModule, TModuleStartup>(this IServiceCollection services, IConfiguration config = null)
-            where TModule : IModule 
+            where TModule : class, IModule 
             where TModuleStartup : IModuleStartup
         {
             // Register assembly in MVC so it can find controllers of the module
@@ -33,34 +33,23 @@ namespace Shared.Features.Modules
             var moduleStartup = (IModuleStartup)Activator.CreateInstance(typeof(TModuleStartup));
             moduleStartup.ConfigureServices(services, config);
 
-            var module = (IModule)ActivatorUtilities.CreateInstance<TModule>(services.BuildServiceProvider());
+            var module = ActivatorUtilities.CreateInstance<TModule>(services.BuildServiceProvider());
             services.AddScoped<IModule>(sp => module);
+            services.AddMessagingForModule(module.GetType());
 
             return services;
         }
 
-        public static void AddModules(this IServiceCollection services)
-        {
-            var serviceProvider = services.BuildServiceProvider();
-
-            var startupModules = serviceProvider.GetRequiredService<IEnumerable<IModule>>();
-
-            services.AddMessaging(startupModules.Where(sm => sm.FeaturesAssembly is not null).Select(sm => sm.FeaturesAssembly).ToArray());
-        }
-
         public static IApplicationBuilder UseModulesMiddleware(this IApplicationBuilder app, IHostEnvironment env)
         {
-            app.Use(async (context, next) =>
-            {
-                foreach (var module in context.RequestServices.GetRequiredService<IEnumerable<IModuleStartup>>())
-                {
-                    module.Configure(app, env);
-                }
+            using var scope = app.ApplicationServices.CreateAsyncScope();
 
-                await next();
-            });
+            foreach (var moduleStartup in scope.ServiceProvider.GetRequiredService<IEnumerable<IModuleStartup>>())
+            {
+                moduleStartup.Configure(app, env);
+            }
 
             return app;
-        }    
+        }
     }
 }
