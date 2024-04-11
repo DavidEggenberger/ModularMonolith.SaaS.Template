@@ -1,4 +1,5 @@
-﻿using Shared.Features.Messaging.Command;
+﻿using Shared.Features.EFCore;
+using Shared.Features.Messaging.Command;
 using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth;
 using System.Threading;
@@ -17,7 +18,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
 
         public async Task HandleAsync(AddUserToTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await module.TenantIdentityDbContext.GetTenantByIdAsync(command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.Tenants.GetAggregateRootAsync(command.TenantId, command.TenantId);
 
             tenant.AddUser(command.UserId, command.Role);
 
