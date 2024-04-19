@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.Constants.Endpoints;
+using Shared.Kernel.Constants;
 
 namespace Shared.Features.SignalR
 {
