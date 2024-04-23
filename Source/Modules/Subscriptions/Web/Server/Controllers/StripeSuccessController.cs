@@ -6,7 +6,7 @@ using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate;
 using Shared.Features.Server;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.Application.Queries;
 
-namespace Modules.Subscription.Server.Controllers
+namespace Modules.Subscriptions.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

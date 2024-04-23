@@ -3,7 +3,7 @@ using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate;
 using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate;
 using Shared.Features.EFCore;
 
-namespace Modules.Subscription.Features.Infrastructure.EFCore
+namespace Modules.Subscriptions.Features.Infrastructure.EFCore
 {
     public class SubscriptionsDbContext : BaseDbContext<SubscriptionsDbContext>
     {

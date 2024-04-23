@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace Modules.Subscription.Features.Infrastructure.Configuration
+namespace Modules.Subscriptions.Features.Infrastructure.Configuration
 {
     public class SubscriptionsConfigurationValidator : IValidateOptions<SubscriptionsConfiguration>
     {

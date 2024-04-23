@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscriptions.Features.Infrastructure.EFCore;
 
 #nullable disable
 

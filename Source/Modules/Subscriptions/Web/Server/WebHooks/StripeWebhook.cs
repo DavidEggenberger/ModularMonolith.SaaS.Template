@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Shared.Features.Server;
-using Modules.Subscription.Features.Infrastructure.Configuration;
+using Modules.Subscriptions.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Commands;
 
-namespace Modules.Subscription.Server.WebHooks
+namespace Modules.Subscriptions.Server.WebHooks
 {
     [Route("api/[controller]")]
     [ApiController]

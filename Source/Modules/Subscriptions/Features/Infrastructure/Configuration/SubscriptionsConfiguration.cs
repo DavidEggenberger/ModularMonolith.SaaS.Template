@@ -2,7 +2,7 @@
 using Shared.Features.Modules.Configuration;
 using Shared.Kernel.BuildingBlocks.Auth;
 
-namespace Modules.Subscription.Features.Infrastructure.Configuration
+namespace Modules.Subscriptions.Features.Infrastructure.Configuration
 {
     public class SubscriptionsConfiguration : IModuleConfiguration
     {

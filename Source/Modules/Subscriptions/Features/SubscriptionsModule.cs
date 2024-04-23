@@ -1,5 +1,5 @@
-﻿using Modules.Subscription.Features.Infrastructure.Configuration;
-using Modules.Subscription.Features.Infrastructure.EFCore;
+﻿using Modules.Subscriptions.Features.Infrastructure.Configuration;
+using Modules.Subscriptions.Features.Infrastructure.EFCore;
 using Shared.Features.Modules;
 using System.Reflection;
 

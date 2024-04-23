@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscription.Features.Infrastructure.Configuration;
-using Modules.Subscription.Features.Infrastructure.EFCore;
+using Modules.Subscriptions.Features.Infrastructure.Configuration;
+using Modules.Subscriptions.Features.Infrastructure.EFCore;
 using Modules.Subscriptions.IntegrationEvents;
 using Shared.Features.Messaging.Command;
 using Shared.Features.Server;
