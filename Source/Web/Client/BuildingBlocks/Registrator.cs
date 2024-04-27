@@ -13,14 +13,12 @@ namespace Web.Client.BuildingBlocks
 {
     public static class Registrator
     {
-        public static void RegisterBuildingBlocks(this WebAssemblyHostBuilder builder)
+        public static void AddBuildingBlocks(this WebAssemblyHostBuilder builder)
         {
             builder.Services.AddScoped<AntiforgeryTokenService>();
 
             builder.Services.AddTransient<AuthorizedHandler>();
             builder.Services.TryAddSingleton<AuthenticationStateProvider, HostAuthenticationStateProvider>();
-
-            builder.Services.AddAuth();
 
             builder.Services.AddHttpClient(HttpClientConstants.DefaultHttpClient, client =>
             {

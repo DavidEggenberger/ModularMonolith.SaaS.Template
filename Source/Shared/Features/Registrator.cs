@@ -7,6 +7,7 @@ using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
 using Shared.Features.Modules;
 using Shared.Features.Server.ExecutionContext;
+using Shared.Features.SignalR;
 
 namespace Shared.Features
 {
@@ -20,7 +21,7 @@ namespace Shared.Features
             services.AddMessaging();
             services.AddEFCore(configuration);
             services.AddEmailSender(configuration);
-
+            services.Add_SignalR();
             services.AddServerExecutionContext();
 
             return services;
@@ -31,6 +32,7 @@ namespace Shared.Features
             app.UseEFCoreMiddleware();
             app.UseServerExecutionContextMiddleware();
             app.UseModulesMiddleware(env);
+            app.UseSignalRMiddleware();
 
             return app;
         }

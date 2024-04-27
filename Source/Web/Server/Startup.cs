@@ -5,13 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.LandingPages.Web.Server;
 using Web.Server.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Auth;
 using Modules.TenantIdentity.Server;
 using Shared.Features.Modules;
 using Shared.Features;
 using Modules.Subscriptions.Server;
 using Modules.TenantIdentity.Features;
 using Modules.Subscriptions.Features;
+using Shared.Kernel.BuildingBlocks;
 
 namespace Web.Server
 {
@@ -33,10 +33,9 @@ namespace Web.Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
-            services.AddAuth();
-
-            services.AddBuildingBlocks();
+            services.AddSharedKernel();
             services.AddSharedFeatures();
+            services.AddBuildingBlocks();
 
             services.AddModule<TenantIdentityModule, TenantIdentityModuleStartup>(Configuration);
             services.AddModule<SubscriptionsModule, SubscriptionsModuleStartup>(Configuration);
@@ -60,14 +59,13 @@ namespace Web.Server
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseBuildingBlocksMiddleware();
             app.UseSharedFeaturesMiddleware(env);
+            app.UseBuildingBlocksMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
