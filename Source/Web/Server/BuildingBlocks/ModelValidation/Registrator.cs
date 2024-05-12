@@ -9,7 +9,7 @@ namespace Web.Server.BuildingBlocks.ModelValidation
     {
         public static IServiceCollection AddModelValidation(this IServiceCollection services)
         {
-            Shared.Kernel.BuildingBlocks.Services.ModelValidation.Registrator.AddModelValidation(services);
+            services.AddScoped<IValidationService, ValidationService>();
 
             return services.Configure<ApiBehaviorOptions>(options =>
             {

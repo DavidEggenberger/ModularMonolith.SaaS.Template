@@ -14,7 +14,6 @@ namespace Shared.Kernel.BuildingBlocks
         public static IServiceCollection AddSharedKernel(this IServiceCollection services)
         {
             services.AddAuth();
-            services.AddModelValidation();
 
 
             return services;
