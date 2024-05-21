@@ -1,15 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using Shared.Kernel.Constants.Endpoints;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Shared.Features.SignalR
 {
-    public class NotificationHubService
+    public class NotificationHubService : INotificationHubService
     {
         private readonly IHubContext<NotificationHub> notificationHubContext;
 

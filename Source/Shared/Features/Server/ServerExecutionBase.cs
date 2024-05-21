@@ -4,6 +4,7 @@ using Shared.Features.Messaging.DomainEvent;
 using Shared.Features.Messaging.IntegrationEvent;
 using Shared.Features.Messaging.Query;
 using Shared.Features.Modules;
+using Shared.Features.SignalR;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 
@@ -27,6 +28,7 @@ namespace Shared.Features.Server
         protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
         protected readonly IDomainEventDispatcher domainEventDispatcher;
         protected readonly IValidationService validationService;
+        protected readonly INotificationHubService notificationHubService;
 
         public ServerExecutionBase(IServiceProvider serviceProvider)
         {
@@ -36,6 +38,7 @@ namespace Shared.Features.Server
             integrationEventDispatcher = serviceProvider.GetRequiredService<IIntegrationEventDispatcher>();
             domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
+            notificationHubService = serviceProvider.GetRequiredService<INotificationHubService>();
         }
     }
 }

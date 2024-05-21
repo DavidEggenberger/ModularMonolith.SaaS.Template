@@ -10,7 +10,7 @@ namespace Shared.Features.SignalR
         public static IServiceCollection Add_SignalR(this IServiceCollection services)
         {
             services.AddSingleton<IUserIdProvider, UserIdProvider>();
-            services.AddScoped<NotificationHubService>();
+            services.AddScoped<INotificationHubService, NotificationHubService>();
             return services;
         }
 

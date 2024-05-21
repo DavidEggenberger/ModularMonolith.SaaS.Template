@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
-<body class="h-screen bg-gradient-to-b from-blue-50 to-blue-200">
+<body class="h-screen bg-gradient-to-b from-sky-50 to-sky-200 grid place-content-center">
     @if (User.Identity.IsAuthenticated)
     {
         <component type="typeof(App)" render-mode="WebAssembly" />
@@ -25,6 +25,7 @@
         <component type="typeof(LandingPagesApp)" render-mode="Server" />
         <script src="_framework/blazor.server.js"></script>
     }
+
 </body>
 </html>
 
