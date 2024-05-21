@@ -2,11 +2,11 @@
 
 # Modular Monolith Template
 
-Starter Template for building modular monolithic SaaS applications with ASP.NET Core, Blazor and EF Core.
+Starter Template for building modular monolithic SaaS applications with ASP.NET Core, Blazor and EF Core (SQL Server).
 
 ## Architecture
 
-The solution follows a "modular" architectural approach. The idea is, that every "Subdomain" is organised in an own module. 
+The solution follows a "modular" architectural approach. The idea is, that every "Subdomain" is organised in an own module. A module itself consists of multiple related projects. Note: The arrows show the dependencies between the projects and the modules.  
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ArchitectureOverview.png" />
 
