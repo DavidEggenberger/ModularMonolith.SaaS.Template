@@ -10,10 +10,11 @@ The solution follows a "modular" architectural approach. The idea is, that every
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ArchitectureOverview.png" />
 
-### Projects Overview
+### Shared/Web Projects Overview
 
 **Shared.Kernel**: Extension methods, interfaces, endpoint constants and BuildingBlocks that can be used by any other project. <br/>
-**Shared.DomainFeatures**: Infrastructure components (e.g. EF Core) that are used by the DomainFeatures of the Modules.<br/> 
+**Shared.Features**: Infrastructure components (e.g. EF Core) that are used by the DomainFeatures of the Modules.<br/> 
+**Shared.Client**: Shared razor components (e.g. Modals) used by the Client projects of the Modules.<br/>
 **Web.Server**: Serves the WebAssembly client and the controllers that are defined in the Modules.<br/>
 **Web.Client**: The WebAssembly client application. Its pages render the components defined in the Modules.<br/>
 
