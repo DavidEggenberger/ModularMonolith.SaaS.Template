@@ -1,6 +1,6 @@
 [![Build and Test](https://github.com/DavidEggenberger/ASPNETCore.Blazor.ModularMonolith.Template/actions/workflows/Build_Test.yml/badge.svg)](https://github.com/DavidEggenberger/ASPNETCore.Blazor.ModularMonolith.Template/actions/workflows/Build_Test.yml)
 
-# Modular Monolith Template
+# Modular Monolith SaaS Template
 
 Starter Template for building modular monolithic SaaS applications with ASP.NET Core, Blazor and EF Core (SQL Server).
 
@@ -10,10 +10,11 @@ The solution follows a "modular" architectural approach. The idea is, that every
 
 <img src="https://raw.githubusercontent.com/DavidEggenberger/ModularMonolith.SaaS.Template/main/Assets/ArchitectureOverview.png" />
 
-### Projects Overview
+### Shared/Web Projects Overview
 
 **Shared.Kernel**: Extension methods, interfaces, endpoint constants and BuildingBlocks that can be used by any other project. <br/>
-**Shared.DomainFeatures**: Infrastructure components (e.g. EF Core) that are used by the DomainFeatures of the Modules.<br/> 
+**Shared.Features**: Infrastructure components (e.g. EF Core) that are used by the DomainFeatures of the Modules.<br/> 
+**Shared.Client**: Shared razor components (e.g. Modals) used by the Client projects of the Modules.<br/>
 **Web.Server**: Serves the WebAssembly client and the controllers that are defined in the Modules.<br/>
 **Web.Client**: The WebAssembly client application. Its pages render the components defined in the Modules.<br/>
 
@@ -41,5 +42,43 @@ The infrastructure folder contains all the needed Infrastructure components. Typ
 **IntegrationEvents**: 
 <br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
 
+## Running the template
+The template's only infrastructure dependency is the SQL Server.
 
+### Infrastructure
+The most convient way to run a SQL Server instance is through Docker. To do so run this command from the root folder 
+(where the ModularMonolith.sln file is located):
+```
+docker-compose -f docker-compose.infrastructure.yml up
+```
 
+The SQL Server must be setup before the template can be successfully run. Because the EF Core migrations were already created they only must be applied to the database. Open the Package Manager Console inside Visual Studio and execute the following two commands:
+```
+update-database -context TenantIdentityDbContext
+update-database -context SubscriptionsDbContext
+```
+These commands will create two seperate shemes with their respective tables on the same database (the configuration string is read from Web/Server/appsettings.Development.json).
+
+### Web
+Before running the WebServer (it serves also the Blazor WebAssembly client) configuration values must be set. They are then accessible through the IConfiguration interface for which ASP.NET Core automatically registers an implementation in the inversion-of-control (DI) container (assuming the configuration resides in appsettings.json or secrets.json). Especially the Infrastructure layer relies on the configuration values (e.g. database connection strings, Stripe API Key). It is highly recommended to keep the following secrets out of source control. For local development right click on the WebServer project and then click on manage user secrets. The opened secrets.json file should then updated to hold the following configuration (the values can be retrieved by following the respective links):
+
+```json
+{
+ "EFCoreConfiguration": {
+  "SQLServerConnectionString_Dev": "Server=127.0.0.1,1433;Database=ModularMonolith;User Id=SA;Password=YourSTRONG!Passw0rd;Encrypt=False;"
+  },
+ "SubscriptionsConfiguration": {
+  "StripeProfessionalPlanId": "_"
+ },
+ "TenantIdentityConfiguration": {
+  "GoogleClientId": "_",
+  "GoogleClientSecret": "_",
+  "MicrosoftClientId": "_",
+  "MicrosoftClientSecret": "_",
+  "LinkedinClientId": "_",
+  "LinkedinClientSecret": "_"
+ }
+}
+```
+
+With the configuration set, the WebServer can either be started through Visual Studio.
