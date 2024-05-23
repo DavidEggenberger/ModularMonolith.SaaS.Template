@@ -6,15 +6,15 @@
     <nav class="p-[20px] h-[65px] max-w-[1400px] ml-auto mr-auto w-full pb-0 flex flex-row content-start justify-between items-end">
         <div>
             <a id="start" href="/">
-                <h1 class="text-4xl text-orange">Modular Monolith<span class="text-[46px]"></span></h1>
+                <h1 class="text-4xl text-sky-700">SaaS template<span class="text-[46px]"></span></h1>
             </a>
         </div>
         <div class="flex flex-row gap-x-3">
-            <a target="_blank" href="/swagger/index.html">
-                <span class="text-xl cursor-pointer p-1 hover:text-orange">About</span>
+            <a href="/About">
+                <span class="text-xl cursor-pointer p-1 hover:bg-white">About</span>
             </a>
-            <button @onclick="() => OpenSignUpModal()" target="_blank" href="/swagger/index.html">
-                <span class="text-xl hover:bg-white border border-1 border-orange cursor-pointer p-1 rounded bg-orange text-white hover:text-orange">Sign in</span>
+            <button @onclick="() => OpenSignUpModal()">
+                <span class="text-xl hover:bg-white border border-1 border-white cursor-pointer p-1 rounded">Sign in</span>
             </button>
         </div>
     </nav>

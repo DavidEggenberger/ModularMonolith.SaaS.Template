@@ -12,15 +12,5 @@ services:
       - ACCEPT_EULA=Y
     volumes:
       - sqlserver:/sqlserver
-  redis:
-    container_name: modularmonolith_redis
-    image: redis
-    ports:
-      - 6379:6379
-    environment:
-      - REDIS_PASSWORD=@someThingComplicated1234
-    volumes:
-      - redis:/redis
 volumes: 
   sqlserver:
-  redis:
