@@ -1,6 +1,5 @@
 ﻿using Shared.Features.Messaging.Query;
 using System.Threading;
-using Modules.TenantIdentity.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Server;
 

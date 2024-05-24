@@ -12,7 +12,6 @@ using Shared.Features;
 using Shared.Features.Modules;
 using Shared.Kernel.BuildingBlocks;
 using Web.Server.BuildingBlocks;
-using Web.Server.BuildingBlocks.ExceptionHandling;
 
 namespace Web.Server
 {
