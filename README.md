@@ -42,11 +42,17 @@ The infrastructure folder contains all the needed Infrastructure components. Typ
 **IntegrationEvents**: 
 <br/>Defines the IntegrationEvents and is intended to be referenced by other Modules so that the published IntegrationEvents can be handled which enables cross Module communication.
 
-## Running the template
-The template's only infrastructure dependency is the SQL Server.
+## Using and running the template
+### TailwindCSS
+If you want to start building with the template and adding your own tailwind classes you must run the following commands from the Source directory:
+```
+npm install -D tailwindcss
+npx tailwindcss init
+npx tailwindcss -i ./TailwindSource.css -o ./Web/Server/wwwroot/dist/output.css --watch
+```
 
 ### Infrastructure
-The most convient way to run a SQL Server instance is through Docker. To do so run this command from the root folder 
+The template's only infrastructure dependency is the SQL Server. The most convient way to run a SQL Server instance is through Docker. To do so run this command from the root folder 
 (where the ModularMonolith.sln file is located):
 ```
 docker-compose -f docker-compose.infrastructure.yml up
