@@ -1,0 +1,85 @@
+﻿input{
+    outline: none;
+    background: transparent;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+::-webkit-scrollbar {
+    padding-top: 5px;
+    width: 7px !important;
+    height: 7px !important;
+    scrollbar-width: thin; /* Adjust the width as needed */
+    scrollbar-color: #666 #ccc; /* Customize thumb and track colors */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    margin-left: 3px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(251, 42, 68, 0.7) !important;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(251, 42, 68, 0.7) !important;
+    }
+
+#table ::-webkit-scrollbar {
+    width: 7px !important;
+}
+
+#Sidebar a.active {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+input:focus{
+    outline: none !important
+}
+
+input:active {
+    outline: none !important;
+}
+
+.bm-container{
+    background: rgba(248, 223, 181, 0.85) !important;
+    display: grid !important;
+    place-content: center;
+    box-shadow: none !important;
+    animation-duration: 200ms !important;
+    z-index: 900 !important;
+}
+
+.blazored-modal {
+    box-shadow: none !important;
+    padding: 10px !important;
+    padding-top: 0 !important;
+    border-radius: 8px !important;
+}
+
+.bm-header{
+    padding-bottom: 0px !important;
+}
+
+.size-medium{
+    max-width: unset !important;
+}
+
+.wideScreenContainer{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+

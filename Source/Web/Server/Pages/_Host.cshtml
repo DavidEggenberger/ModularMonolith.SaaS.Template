@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
-<body class="h-screen bg-gradient-to-b from-sky-50 to-sky-200 grid place-content-center">
+<body class="h-screen bg-gradient-to-b from-white to-blue-100 grid place-content-center">
     @if (User.Identity.IsAuthenticated)
     {
-        <component type="typeof(App)" render-mode="WebAssembly" />
+        <component type="typeof(ClientApp)" render-mode="WebAssembly" />
+        <link rel="stylesheet" href="Web.Client.styles.css" />
         <script src="_framework/blazor.webassembly.js"></script>
     }
     else
     {
-        <link rel="stylesheet" href="Web.Server.styles.css" />
         <component type="typeof(LandingPagesApp)" render-mode="Server" />
+        <link rel="stylesheet" href="Web.Server.styles.css" />
         <script src="_framework/blazor.server.js"></script>
     }
-
 </body>
 </html>
 
