@@ -18,11 +18,11 @@ namespace Shared.Features
             var serviceProvider = services.BuildServiceProvider();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
 
+            services.AddServerExecutionContext();
             services.AddMessaging();
             services.AddEFCore(configuration);
             services.AddEmailSender(configuration);
             services.Add_SignalR();
-            services.AddServerExecutionContext();
 
             return services;
         }
