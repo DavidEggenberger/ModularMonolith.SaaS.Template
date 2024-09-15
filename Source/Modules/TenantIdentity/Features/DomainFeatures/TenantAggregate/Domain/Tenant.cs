@@ -8,10 +8,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
 {
     public class Tenant : AggregateRoot
     {
-        public Tenant()
-        {
-
-        }
+        public Tenant() { }
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }

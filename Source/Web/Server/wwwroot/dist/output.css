@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.3 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -791,11 +791,6 @@ video {
 
 .font-semibold {
   font-weight: 600;
-}
-
-.text-primary-800 {
-  --tw-text-opacity: 1;
-  color: rgb(134 25 143 / var(--tw-text-opacity));
 }
 
 .text-primary-900 {

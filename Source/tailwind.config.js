@@ -20,11 +20,11 @@ module.exports = {
             'primary-900': '#4c1d95'
         },
      screens: {
-          'width-xs': { 'raw': '(mim-width: 480px)' },
-          'width-s': { 'raw': '(min-width: 560px)' },
-          'width-m': { 'raw': '(min-width: 768px)' },
-          'width-l': { 'raw': '(min-width: 1024px)' },
-          'width-xl': { 'raw': '(min-width: 1280px)' },
+         'xs': { 'raw': '(min-width: 0px)' },
+         'sm': { 'raw': '(min-width: 480px)' },
+         'md': { 'raw': '(min-width: 768px)' },
+         'lg': { 'raw': '(min-width: 1024px)' },
+         'xl': { 'raw': '(min-width: 1280px)' }
      }
   },
   plugins: [],

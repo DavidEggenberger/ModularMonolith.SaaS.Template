@@ -19,9 +19,15 @@ namespace Shared.Features.EFCore.DbUp
             var upgrader = DeployChanges.To
                                .SqlDatabase(isProduction ? efCoreConfiguration.SQLServerConnectionString_Prod : efCoreConfiguration.SQLServerConnectionString_Dev)
                                .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly())
-                               .JournalToSqlTable("dbo", "MigrationHistory")
+                               .JournalToSqlTable("dbo", "DbUP_MigrationHistory")
                                .LogToConsole()
                                .Build();
+
+            var scripts = upgrader.GetScriptsToExecute();
+            foreach (var script in scripts)
+            {
+                Console.WriteLine(script.Name);
+            }
 
             upgrader.PerformUpgrade();
 

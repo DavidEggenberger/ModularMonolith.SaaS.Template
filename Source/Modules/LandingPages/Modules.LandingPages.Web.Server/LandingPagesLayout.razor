@@ -3,25 +3,25 @@
 @inject IModalService modalService
 
 <div class="h-screen w-screen">
-    <nav class="p-5 pb-0 h-[65px] max-w-[1400px] ml-auto mr-auto flex w-full flex-row content-start items-end justify-between">
+    <nav class="ml-auto mr-auto flex h-[65px] w-full max-w-[1400px] flex-row content-start items-end justify-between p-5 pb-0">
         <div>
             <a id="start" href="/">
                 <h1 class="text-primary-900 text-4xl">SaaS template<span class="text-[46px]"></span></h1>
             </a>
         </div>
-        <div class="gap-x-3 flex flex-row">
+        <div class="flex flex-row gap-x-3">
             <NavLink href="about" ActiveClass="text-primary-900">
                 <a href="/About">
-                    <span class="p-1 cursor-pointer rounded text-xl hover:bg-primary-100">About</span>
+                    <span class="cursor-pointer rounded p-1 text-xl hover:bg-primary-100">About</span>
                 </a>
             </NavLink>
             <button @onclick="() => OpenSignUpModal()">
-                <span class="border-1 border-white p-1 cursor-pointer rounded border text-xl hover:bg-primary-100">Sign in</span>
+                <span class="border-1 cursor-pointer rounded border border-white p-1 text-xl hover:bg-primary-100">Sign in</span>
             </button>
         </div>
     </nav>
 
-    <main class="p-5 h-[calc(100%-65px)] max-w-[1400px] max-h-[900px] ml-auto mr-auto w-full overflow-y-auto">
+    <main class="h-[calc(100%-65px)] ml-auto mr-auto w-full max-w-[1400px] overflow-y-auto p-5">
         @Body
     </main>
 </div>
