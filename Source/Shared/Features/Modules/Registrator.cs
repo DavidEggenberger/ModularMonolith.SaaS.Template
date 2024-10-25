@@ -34,7 +34,7 @@ namespace Shared.Features.Modules
             moduleStartup.ConfigureServices(services, config);
 
             var module = ActivatorUtilities.CreateInstance<TModule>(services.BuildServiceProvider());
-            services.AddScoped<IModule>(sp => module);
+            services.AddScoped<TModule>(sp => module);
             services.AddMessagingForModule(module.GetType());
 
             return services;
