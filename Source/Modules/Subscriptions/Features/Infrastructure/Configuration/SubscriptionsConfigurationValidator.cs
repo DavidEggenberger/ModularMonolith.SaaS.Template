@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
+using Shared.Features.Configuration;
 
 namespace Modules.Subscriptions.Features.Infrastructure.Configuration
 {
-    public class SubscriptionsConfigurationValidator : IValidateOptions<SubscriptionsConfiguration>
+    public class SubscriptionsConfigurationValidator : ConfigurationObjectValidator<SubscriptionsConfiguration>
     {
-        public ValidateOptionsResult Validate(string name, SubscriptionsConfiguration options)
+        public override ValidateOptionsResult Validate(string name, SubscriptionsConfiguration options)
         {
             if (string.IsNullOrEmpty(options.StripeProfessionalPlanPriceId))
             {

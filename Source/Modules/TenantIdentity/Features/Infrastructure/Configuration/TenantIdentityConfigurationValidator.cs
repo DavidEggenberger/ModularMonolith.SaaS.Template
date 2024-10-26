@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
+using Shared.Features.Configuration;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.Configuration
 {
-    public class TenantIdentityConfigurationValidator : IValidateOptions<TenantIdentityConfiguration>
+    public class TenantIdentityConfigurationValidator : ConfigurationObjectValidator<TenantIdentityConfiguration>
     {
-        public ValidateOptionsResult Validate(string name, TenantIdentityConfiguration tenantIdentityConfiguration)
+        public override ValidateOptionsResult Validate(string name, TenantIdentityConfiguration tenantIdentityConfiguration)
         {
             if (string.IsNullOrEmpty(tenantIdentityConfiguration.GoogleClientId))
             {

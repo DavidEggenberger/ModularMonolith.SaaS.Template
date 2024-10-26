@@ -1,10 +1,10 @@
 ﻿using Modules.Subscriptions.Features.Infrastructure.StripePayments;
-using Shared.Features.Modules.Configuration;
+using Shared.Features.Configuration;
 using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscriptions.Features.Infrastructure.Configuration
 {
-    public class SubscriptionsConfiguration : IModuleConfiguration
+    public class SubscriptionsConfiguration : ConfigurationObject
     {
         public string StripeAPIKey { get; set; }
         public string StripeEndpointSecret { get; set; }

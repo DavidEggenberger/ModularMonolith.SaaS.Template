@@ -1,8 +1,8 @@
-﻿using Shared.Features.Modules.Configuration;
+﻿using Shared.Features.Configuration;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.Configuration
 {
-    public class TenantIdentityConfiguration : IModuleConfiguration
+    public class TenantIdentityConfiguration : ConfigurationObject
     {
         public string GoogleClientId { get; set; }
         public string GoogleClientSecret { get; set; }

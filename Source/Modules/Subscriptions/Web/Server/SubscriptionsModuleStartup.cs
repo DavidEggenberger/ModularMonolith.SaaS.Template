@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.Subscriptions.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
+using Shared.Features.Configuration;
 using Shared.Features.EFCore;
 using Shared.Features.Modules;
-using Shared.Features.Modules.Configuration;
 using Stripe;
 
 namespace Modules.Subscriptions.Server
@@ -16,7 +16,7 @@ namespace Modules.Subscriptions.Server
         public void ConfigureServices(IServiceCollection services, IConfiguration config)
         {
             services.RegisterDbContext<SubscriptionsDbContext>();
-            services.RegisterModuleConfiguration<SubscriptionsConfiguration, SubscriptionsConfigurationValidator>(config);
+            services.RegisterConfiguration<SubscriptionsConfiguration, SubscriptionsConfigurationValidator>(config);
 
             StripeConfiguration.ApiKey = services.BuildServiceProvider().GetRequiredService<SubscriptionsConfiguration>().StripeAPIKey;
         }
