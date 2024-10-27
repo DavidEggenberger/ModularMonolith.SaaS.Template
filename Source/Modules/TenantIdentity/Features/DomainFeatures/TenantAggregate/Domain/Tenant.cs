@@ -6,7 +6,7 @@ using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Domain
 {
-    public class Tenant : AggregateRoot
+    public class Tenant : Entity
     {
         public Tenant() { }
 

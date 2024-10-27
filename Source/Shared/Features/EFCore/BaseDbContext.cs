@@ -54,7 +54,6 @@ namespace Shared.Features.EFCore
             ThrowIfMultipleTenants();
             UpdateAutitableEntities();
             SetTenantId();
-            UpdateCreatedByUserEntities(executionContext.UserId);
             return await base.SaveChangesAsync(cancellationToken);
         }
 
@@ -72,14 +71,6 @@ namespace Shared.Features.EFCore
                         entry.Entity.LastUpdatedAt = DateTime.Now;
                         break;
                 }
-            }
-        }
-
-        private void UpdateCreatedByUserEntities(Guid userId)
-        {
-            foreach (var entry in ChangeTracker.Entries<IAuditable>().Where(x => x.State == EntityState.Added))
-            {
-                entry.Entity.CreatedByUserId = userId;
             }
         }
 
@@ -117,7 +108,7 @@ namespace Shared.Features.EFCore
 
         private void ThrowIfDbSetEntityNotTenantIdentifiable(ModelBuilder modelBuilder)
         {
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(t => t is AggregateRoot))
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes().Where(t => t is Entity))
             {
                 if (typeof(ITenantIdentifiable).IsAssignableFrom(entityType.ClrType) is false)
                 {

@@ -18,7 +18,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Applica
 
         public async Task HandleAsync(AddUserToTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await module.TenantIdentityDbContext.Tenants.GetAggregateRootAsync(command.TenantId, command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.Tenants.GetEntityAsync(command.TenantId, command.TenantId);
 
             tenant.AddUser(command.UserId, command.Role);
 

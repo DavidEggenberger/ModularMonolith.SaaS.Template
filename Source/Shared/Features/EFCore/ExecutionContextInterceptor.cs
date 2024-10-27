@@ -11,9 +11,9 @@ namespace Shared.Features.EFCore
             MaterializationInterceptionData materializationData,
             object instance)
         {
-            if (instance is AggregateRoot aggregateRoot)
+            if (instance is Entity entity)
             {
-                aggregateRoot.ExecutionContext = materializationData
+                entity.ExecutionContext = materializationData
                     .Context
                     .GetService<IExecutionContext>();
             }

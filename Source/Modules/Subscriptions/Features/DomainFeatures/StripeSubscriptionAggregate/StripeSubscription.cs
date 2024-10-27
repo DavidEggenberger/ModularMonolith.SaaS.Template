@@ -4,7 +4,7 @@ using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate
 {
-    public class StripeSubscription : AggregateRoot
+    public class StripeSubscription : Entity
     {
         private StripeSubscription() { }
 

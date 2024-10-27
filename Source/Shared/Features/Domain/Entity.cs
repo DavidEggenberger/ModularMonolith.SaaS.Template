@@ -1,5 +1,9 @@
-﻿using Shared.Kernel.Interfaces;
+﻿using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.BuildingBlocks;
+using Shared.Kernel.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 
 namespace Shared.Features.Domain
 {
@@ -8,7 +12,7 @@ namespace Shared.Features.Domain
         [Key]
         public Guid Id { get; set; }
 
-        public Guid CreatedByUserId { get; set; }
+        public virtual Guid TenantId { get; set; }
 
         [ConcurrencyCheck]
         public byte[] RowVersion { get; set; }
@@ -16,5 +20,16 @@ namespace Shared.Features.Domain
         public DateTimeOffset CreatedAt { get; set; }
 
         public DateTimeOffset LastUpdatedAt { get; set; }
+
+        [NotMapped]
+        public IExecutionContext ExecutionContext { get; set; }
+
+        public void ThrowIfCallerIsNotInRole(TenantRole role)
+        {
+            if (ExecutionContext.TenantRole != role)
+            {
+                throw new UnauthorizedException();
+            }
+        }
     }
 }
