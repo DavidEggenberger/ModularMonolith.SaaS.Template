@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate;
-using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate;
+using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
+using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions;
 using Shared.Features.EFCore;
 
 namespace Modules.Subscriptions.Features.Infrastructure.EFCore

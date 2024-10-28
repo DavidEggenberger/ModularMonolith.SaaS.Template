@@ -8,11 +8,11 @@ using System;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant.Operations;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
-using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate;
+using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.Server;
-using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries;
-using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Commands;
-using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;
+using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands;
+using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {

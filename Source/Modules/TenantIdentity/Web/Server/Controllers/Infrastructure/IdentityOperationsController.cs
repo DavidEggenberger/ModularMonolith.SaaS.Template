@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Modules.TenantIdentity.Features.DomainFeatures.TenantAggregate.Application.Queries;
-using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate;
-using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Commands;
-using Modules.TenantIdentity.Features.DomainFeatures.UserAggregate.Application.Queries;
+using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;
+using Modules.TenantIdentity.Features.DomainFeatures.Users;
+using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
+using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
 using Shared.Features.Server;

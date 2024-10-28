@@ -23,7 +23,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.StripeCustomer", b =>
+            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.StripeCustomer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,7 +53,7 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("StripeCustomers", "Subscriptions");
                 });
 
-            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.StripeSubscription", b =>
+            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.StripeSubscription", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,9 +97,9 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore.Migrations
                     b.ToTable("StripeSubscriptions", "Subscriptions");
                 });
 
-            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.StripeSubscription", b =>
+            modelBuilder.Entity("Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.StripeSubscription", b =>
                 {
-                    b.HasOne("Modules.Subscriptions.Features.DomainFeatures.StripeCustomerAggregate.StripeCustomer", "StripeCustomer")
+                    b.HasOne("Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.StripeCustomer", "StripeCustomer")
                         .WithMany()
                         .HasForeignKey("StripeCustomerId")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptionAggregate.Application.Queries;
+using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Queries;
 using Shared.Features.Server;
 using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
