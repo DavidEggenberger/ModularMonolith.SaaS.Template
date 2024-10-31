@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.Messaging.Command;
-using Shared.Features.Messaging.DomainEvent;
 using Shared.Features.Messaging.IntegrationEvent;
 using Shared.Features.Messaging.Query;
 using Shared.Kernel.BuildingBlocks;
@@ -15,7 +14,6 @@ namespace Shared.Features.Server
         protected readonly ICommandDispatcher commandDispatcher;
         protected readonly IQueryDispatcher queryDispatcher;
         protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
-        protected readonly IDomainEventDispatcher domainEventDispatcher;
         protected readonly IValidationService validationService;
 
         public BaseController(IServiceProvider serviceProvider)
@@ -24,7 +22,6 @@ namespace Shared.Features.Server
             commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
             integrationEventDispatcher = serviceProvider.GetRequiredService<IIntegrationEventDispatcher>();
-            domainEventDispatcher = serviceProvider.GetRequiredService<IDomainEventDispatcher>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
         }
     }
