@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 {
-    public class GetTenantByID : IQuery<TenantDTO>
+    public class GetTenantByID : Query<TenantDTO>
     {
         public Guid TenantId { get; set; }
     }

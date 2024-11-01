@@ -4,7 +4,7 @@ using Shared.Features.Server;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands
 {
-    public class PauseActiveSubscription : ICommand
+    public class PauseActiveSubscription : Command
     {
         public Stripe.Subscription Subscription { get; set; }
     }

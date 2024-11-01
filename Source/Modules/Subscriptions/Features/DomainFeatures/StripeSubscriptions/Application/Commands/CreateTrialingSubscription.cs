@@ -6,7 +6,7 @@ using Stripe;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands
 {
-    public class CreateTrialingSubscription : ICommand
+    public class CreateTrialingSubscription : Command
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }

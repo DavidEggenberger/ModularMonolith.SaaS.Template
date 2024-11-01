@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries
 {
-    public class GetUserById : IQuery<ApplicationUser>
+    public class GetUserById : Query<ApplicationUser>
     {
         public Guid UserId { get; set; }
     }

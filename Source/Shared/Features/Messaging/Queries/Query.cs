@@ -1,6 +1,6 @@
 ﻿namespace Shared.Features.Messaging.Query
 {
-    public interface IQuery<IResponse>
+    public class Query<IResponse>
     {
     }
 }

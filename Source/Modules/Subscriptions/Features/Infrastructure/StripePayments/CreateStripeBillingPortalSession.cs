@@ -5,7 +5,7 @@ using Stripe.BillingPortal;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
-    public class CreateStripeBillingPortalSession : ICommand<Stripe.BillingPortal.Session>
+    public class CreateStripeBillingPortalSession : Command<Stripe.BillingPortal.Session>
     {
         public Guid UserId { get; set; }
         public string RedirectBaseUrl { get; set; }

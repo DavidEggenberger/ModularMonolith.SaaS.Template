@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries
 {
-    public class GetClaimsForUser : IQuery<IEnumerable<Claim>>
+    public class GetClaimsForUser : Query<IEnumerable<Claim>>
     {
         public Guid UserId { get; set; }
     }

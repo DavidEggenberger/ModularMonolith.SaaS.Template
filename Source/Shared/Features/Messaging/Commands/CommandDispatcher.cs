@@ -9,12 +9,12 @@ namespace Shared.Features.Messaging.Command
         {
             this.serviceProvider = serviceProvider;
         }
-        public Task DispatchAsync<TCommand>(TCommand command, CancellationToken cancellation = default) where TCommand : ICommand
+        public Task DispatchAsync<TCommand>(TCommand command, CancellationToken cancellation = default) where TCommand : Command
         {
             var handler = serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
             return handler.HandleAsync(command, cancellation);
         }
-        public Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command, CancellationToken cancellation = default) where TCommand : ICommand<TResult>
+        public Task<TResult> DispatchAsync<TCommand, TResult>(TCommand command, CancellationToken cancellation = default) where TCommand : Command<TResult>
         {
             var handler = serviceProvider.GetRequiredService<ICommandHandler<TCommand, TResult>>();
             return handler.HandleAsync(command, cancellation);

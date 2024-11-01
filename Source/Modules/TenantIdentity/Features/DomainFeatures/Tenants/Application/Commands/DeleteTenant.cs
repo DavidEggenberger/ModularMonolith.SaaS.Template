@@ -6,7 +6,7 @@ using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class DeleteTenant : ICommand
+    public class DeleteTenant : Command
     {
         public Guid TenantId { get; set; }
     }

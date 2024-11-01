@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands
 {
-    public class CreateNewUser : ICommand
+    public class CreateNewUser : Command
     {
         public ApplicationUser User { get; set; }
         public ExternalLoginInfo LoginInfo { get; set; }

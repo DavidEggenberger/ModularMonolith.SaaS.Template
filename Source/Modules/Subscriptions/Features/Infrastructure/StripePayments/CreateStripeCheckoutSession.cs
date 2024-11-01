@@ -7,7 +7,7 @@ using Stripe.Checkout;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments
 {
-    public class CreateStripeCheckoutSession : ICommand<Session>
+    public class CreateStripeCheckoutSession : Command<Session>
     {
         public SubscriptionPlanType SubscriptionPlanType { get; set; }
         public Guid UserId { get; set; }

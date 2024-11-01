@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class UpdateTenantMembership : ICommand
+    public class UpdateTenantMembership : Command
     {
         public Guid TenantId { get; set; }
         public Guid UserId { get; set; }

@@ -13,7 +13,7 @@ namespace Shared.Features.Messaging.Query
             this.serviceProvider = serviceProvider;
         }
 
-        public Task<TQueryResult> DispatchAsync<TQuery, TQueryResult>(TQuery query, CancellationToken cancellation = default) where TQuery : IQuery<TQueryResult>
+        public Task<TQueryResult> DispatchAsync<TQuery, TQueryResult>(TQuery query, CancellationToken cancellation = default) where TQuery : Query<TQueryResult>
         {
             var handler = serviceProvider.GetRequiredService<IQueryHandler<TQuery, TQueryResult>>();
             var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();

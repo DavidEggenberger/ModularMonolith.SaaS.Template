@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class RemoveUserFromTenant : ICommand
+    public class RemoveUserFromTenant : Command
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }

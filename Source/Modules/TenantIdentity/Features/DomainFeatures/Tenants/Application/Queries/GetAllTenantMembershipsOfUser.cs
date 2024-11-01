@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 {
-    public class GetAllTenantMembershipsOfUser : IQuery<List<TenantMembershipDTO>>
+    public class GetAllTenantMembershipsOfUser : Query<List<TenantMembershipDTO>>
     {
         public Guid UserId { get; set; }
     }

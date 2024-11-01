@@ -4,7 +4,7 @@ using Shared.Features.Server;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands
 {
-    public class UpdateSubscriptionPeriod : ICommand
+    public class UpdateSubscriptionPeriod : Command
     {
         public Stripe.Subscription Subscription { get; set; }
     }

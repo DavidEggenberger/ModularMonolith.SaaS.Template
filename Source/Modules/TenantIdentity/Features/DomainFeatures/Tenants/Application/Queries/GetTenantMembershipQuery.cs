@@ -5,7 +5,7 @@ using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 {
-    public class GetTenantMembershipQuery : IQuery<TenantMembershipDTO>
+    public class GetTenantMembershipQuery : Query<TenantMembershipDTO>
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }

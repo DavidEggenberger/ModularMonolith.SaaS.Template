@@ -1,6 +1,6 @@
 ﻿namespace Shared.Features.Messaging.Query
 {
-    public interface IQueryHandler<in TQuery, TQueryResult> where TQuery : IQuery<TQueryResult>
+    public interface IQueryHandler<in TQuery, TQueryResult> where TQuery : Query<TQueryResult>
     {
         Task<TQueryResult> HandleAsync(TQuery query, CancellationToken cancellation);
     }

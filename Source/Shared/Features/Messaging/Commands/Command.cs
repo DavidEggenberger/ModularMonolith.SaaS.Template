@@ -1,10 +1,10 @@
 ﻿namespace Shared.Features.Messaging.Command
 {
-    public interface ICommand
+    public class Command
     {
     }
 
-    public interface ICommand<IResponse>
+    public class Command<IResponse>
     {
     }
 }

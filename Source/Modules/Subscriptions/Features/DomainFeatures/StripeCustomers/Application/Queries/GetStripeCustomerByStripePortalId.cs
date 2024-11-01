@@ -4,7 +4,7 @@ using Shared.Features.Messaging.Query;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.Queries
 {
-    public class GetStripeCustomerByStripePortalId : IQuery<StripeCustomer>
+    public class GetStripeCustomerByStripePortalId : Query<StripeCustomer>
     {
         public string StripeCustomerStripePortalId { get; set; }
     }
