@@ -1,6 +1,6 @@
 ﻿using Shared.Kernel.BuildingBlocks;
 
-namespace Shared.Features.Messaging.IntegrationEvent
+namespace Shared.Features.Messaging.IntegrationEvents
 {
     public interface IIntegrationEventDispatcher
     {

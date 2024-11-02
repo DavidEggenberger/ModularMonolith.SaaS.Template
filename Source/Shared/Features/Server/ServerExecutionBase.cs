@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.Messaging.Command;
-using Shared.Features.Messaging.IntegrationEvent;
+using Shared.Features.Messaging.IntegrationEvents;
 using Shared.Features.Messaging.Query;
 using Shared.Features.Modules;
 using Shared.Features.SignalR;

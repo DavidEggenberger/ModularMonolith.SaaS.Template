@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
 using Modules.TenantIdentity.IntegrationEvents;
-using Shared.Features.Messaging.IntegrationEvent;
+using Shared.Features.Messaging.IntegrationEvents;
 using Stripe;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.IntegrationEvents

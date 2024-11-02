@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
 using Shared.Features.Messaging.Query;
 using Shared.Features.Messaging.Command;
-using Shared.Features.Messaging.IntegrationEvent;
+using Shared.Features.Messaging.IntegrationEvents;
 
 namespace Shared.Features.Messaging
 {
