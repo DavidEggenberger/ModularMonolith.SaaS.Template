@@ -7,7 +7,9 @@ namespace Modules.Subscriptions.Features.Infrastructure.EFCore
 {
     public class SubscriptionsDbContext : BaseDbContext<SubscriptionsDbContext>
     {
-        public SubscriptionsDbContext(DbContextOptions<SubscriptionsDbContext> dbContextOptions, IServiceProvider serviceProvider = null) : base(serviceProvider, "Subscriptions", dbContextOptions)
+        public SubscriptionsDbContext(
+            DbContextOptions<SubscriptionsDbContext> dbContextOptions, 
+            IServiceProvider serviceProvider = null) : base(serviceProvider, "Subscriptions", dbContextOptions)
         {
             
         }

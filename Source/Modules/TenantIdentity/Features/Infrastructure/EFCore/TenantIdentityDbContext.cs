@@ -9,7 +9,6 @@ using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Shared.Kernel.BuildingBlocks;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
-using Modules.TenantIdentity.Features.DomainFeatures.Users.Infrastructure;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
@@ -30,7 +29,6 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantInvitation> TenantInvitations { get; set; }
         public DbSet<TenantMembership> TenantMeberships { get; set; }
-        public DbSet<TenantConfiguration> TenantConfiguration { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -52,9 +50,18 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration<ApplicationUser>(new ApplicationUserEFConfiguration());
-            modelBuilder.HasDefaultSchema("Identity");
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TenantIdentityDbContext).Assembly);
+
+            modelBuilder.HasDefaultSchema("Identity");
+            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUser");
+            modelBuilder.Entity<IdentityRole<Guid>>().ToTable("Role");
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim");
+            modelBuilder.Entity<IdentityUserClaim<Guid>>().ToTable("ApplicationUserClaim");
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("ApplicationUserLogin");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("ApplicationUserRole");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("ApplicationUserToken");
         }
 
         public async Task<IEnumerable<Tenant>> GetAllTenantsForUser(Guid userId)

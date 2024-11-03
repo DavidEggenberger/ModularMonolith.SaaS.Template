@@ -1,4 +1,6 @@
-﻿using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain.Exceptions;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain.Exceptions;
 using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
@@ -12,7 +14,6 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 
         public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
-        public TenantConfiguration Configuration { get; set; }
         public SubscriptionPlanType SubscriptionPlanType { get; set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
@@ -109,5 +110,13 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
         public TenantDTO ToDTO() => new TenantDTO();
         public TenantDetailDTO ToDetailDTO() => new TenantDetailDTO();
 
+    }
+
+    public class TenantEFConfiguration : IEntityTypeConfiguration<Tenant>
+    {
+        public void Configure(EntityTypeBuilder<Tenant> builder)
+        {
+            builder.ToTable("Tenant");
+        }
     }
 }

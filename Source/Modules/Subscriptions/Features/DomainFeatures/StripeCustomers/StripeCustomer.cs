@@ -1,4 +1,7 @@
-﻿using Shared.Features.Domain;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions;
+using Shared.Features.Domain;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers
 {
@@ -14,6 +17,14 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers
                 StripePortalCustomerId = stripePortalCustomerId,
                 UserId = userId,
             };
+        }
+    }
+
+    public class StripeCustomerEFConfiguration : IEntityTypeConfiguration<StripeCustomer>
+    {
+        public void Configure(EntityTypeBuilder<StripeCustomer> builder)
+        {
+            builder.ToTable(nameof(StripeCustomer));
         }
     }
 }

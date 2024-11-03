@@ -1,4 +1,6 @@
-﻿using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.Auth;
 
@@ -26,6 +28,14 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
                 TenantId = Tenant.Id,
                 Role = Role
             };
+        }
+    }
+
+    public class TenantMembershipEFConfiguration : IEntityTypeConfiguration<TenantMembership>
+    {
+        public void Configure(EntityTypeBuilder<TenantMembership> builder)
+        {
+            builder.ToTable("TenantMembership");
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore;
+using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
 using Shared.Features.Domain;
 using Shared.Kernel.BuildingBlocks.Auth;
 
@@ -32,6 +34,14 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions
                 TenantId = tenantId,
                 StripeCustomer = stripeCustomer
             };
+        }
+    }
+
+    public class StripeSubscriptionEFConfiguration : IEntityTypeConfiguration<StripeSubscription>
+    {
+        public void Configure(EntityTypeBuilder<StripeSubscription> builder)
+        {
+            builder.ToTable("StripeSubscription");
         }
     }
 }
