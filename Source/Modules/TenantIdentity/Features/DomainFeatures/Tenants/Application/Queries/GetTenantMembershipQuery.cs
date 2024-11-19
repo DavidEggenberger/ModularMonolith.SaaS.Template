@@ -1,7 +1,7 @@
 ﻿using Shared.Features.Messaging.Query;
 using System.Threading;
-using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
 using Shared.Features.Server;
+using Modules.TenantIdentity.Shared.DTOs.Tenant;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 {

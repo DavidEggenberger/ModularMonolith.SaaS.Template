@@ -5,14 +5,14 @@ using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
-using Modules.TenantIdentity.Web.Shared.DTOs.Tenant;
-using Modules.TenantIdentity.Web.Shared.DTOs.Tenant.Operations;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.Server;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
+using Modules.TenantIdentity.Shared.DTOs.Tenant;
+using Modules.TenantIdentity.Shared.DTOs.Tenant.Operations;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {

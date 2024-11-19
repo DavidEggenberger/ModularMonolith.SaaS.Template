@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Modules.TenantIdentity.Web.Shared.DTOs.Tenant.Operations
+namespace Modules.TenantIdentity.Shared.DTOs.Tenant.Operations
 {
     public class CreateTenantDTO
     {
