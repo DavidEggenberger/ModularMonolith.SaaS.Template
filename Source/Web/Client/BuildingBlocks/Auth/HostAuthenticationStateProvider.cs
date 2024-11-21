@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components;
-using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Net.Http;
 using System.Net;
@@ -9,6 +8,7 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
 using Shared.Kernel.Constants.Endpoints;
+using Modules.TenantIdentity.Shared.DTOs.IdentityOperations;
 
 namespace Web.Client.BuildingBlocks.Auth
 {

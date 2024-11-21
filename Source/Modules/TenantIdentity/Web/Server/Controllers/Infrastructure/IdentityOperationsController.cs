@@ -5,7 +5,7 @@ using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations;
+using Modules.TenantIdentity.Shared.DTOs.IdentityOperations;
 using Shared.Features.Server;
 using System;
 using System.Collections.Generic;
