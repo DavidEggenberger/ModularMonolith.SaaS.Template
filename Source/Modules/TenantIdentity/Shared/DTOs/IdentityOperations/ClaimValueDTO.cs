@@ -1,4 +1,4 @@
-﻿namespace Modules.TenantIdentity.Web.Shared.DTOs.IdentityOperations
+﻿namespace Modules.TenantIdentity.Shared.DTOs.IdentityOperations
 {
     public class ClaimValueDTO
     {
