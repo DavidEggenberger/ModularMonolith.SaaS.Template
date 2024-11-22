@@ -2,5 +2,6 @@
 {
     public class Query<IResponse>
     {
+        public Guid ExecutingUserId { get; set; }
     }
 }

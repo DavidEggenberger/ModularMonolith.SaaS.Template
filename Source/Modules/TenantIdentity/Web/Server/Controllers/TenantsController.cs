@@ -17,6 +17,7 @@ using Modules.TenantIdentity.Shared.DTOs.Tenant.Operations;
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = AuthConstant.ApplicationAuthenticationScheme)]
     [ApiController]
     public class TenantsController : BaseController
     {
@@ -32,7 +33,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         public async Task<ActionResult<TenantDTO>> GetTenant()
         {
             var tenantId = executionContext.TenantId;
-            TenantDTO tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
+            var tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
 
             return Ok(tenant);
         }
@@ -47,7 +48,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         }
 
         [HttpGet]
-        [Authorize(AuthenticationSchemes = AuthConstant.ApplicationAuthenticationScheme)]
         public async Task<ActionResult<IEnumerable<TenantDTO>>> GetAllTenantsWhereUserIsMember()
         {
             var userId = executionContext.UserId;
@@ -75,20 +75,17 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteTenant(Guid id)
+        public async Task<ActionResult> DeleteTenant([FromRoute] Guid id)
         {
-            await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { });
+            await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { ExecutingUserId = executionContext.UserId, TenantId = id });
 
-            var userId = executionContext.UserId;
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
-
-            await signInManager.RefreshSignInAsync(user);
+            return Ok();
         }
 
         [HttpPost("memberships")]
         public async Task<ActionResult> CreateTenantMembership(InviteUserToTenantDTO inviteUserToGroupDTO)
         {
-            var userId = executionContext.UserId;
+            
 
             await commandDispatcher.DispatchAsync<AddUserToTenant>(null);
             

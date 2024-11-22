@@ -1,4 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using Blazored.Modal
+@using Blazored.Modal.Services
+@inherits LayoutComponentBase
+@inject IModalService modalService
 
 <div class="page">
     <div class="sidebar">
@@ -15,3 +18,13 @@
         </div>
     </div>
 </div>
+
+@code {
+    public static IModalService ModalService;
+    public static IModalReference ModalReference;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ModalService = modalService;
+    }
+}
