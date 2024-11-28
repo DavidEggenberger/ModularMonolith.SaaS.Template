@@ -42,7 +42,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
         }
 
         [HttpGet("selectTenant/{TenantId}")]
-        public async Task<ActionResult> SetTenantForCurrentUser(Guid tenantId, [FromQuery] string redirectUri)
+        public async Task<ActionResult> SetTenantForCurrentUser([FromRoute] Guid tenantId, [FromQuery] string redirectUri)
         {
             var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
 

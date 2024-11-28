@@ -12,7 +12,7 @@ namespace Shared.Features.EFCore
             var entity = await dbSet.FirstOrDefaultAsync(t => t.Id == entityId);
             if (entity == null)
             {
-                throw Errors.NotFound; 
+                throw Errors.NotFound(typeof(TEntity).Name, entityId); 
             }
             if (entity.TenantId != owningTenantId)
             {
@@ -27,7 +27,7 @@ namespace Shared.Features.EFCore
             var entity = await dbSet.FirstOrDefaultAsync(t => t.Id == entityId);
             if (entity == null)
             {
-                throw Errors.NotFound;
+                throw Errors.NotFound(typeof(TEntity).Name, entityId);
             }
             if (entity.TenantId != tenantId)
             {

@@ -18,7 +18,6 @@
     <ProjectReference Include="..\..\Subscriptions\IntegrationEvents\Modules.Subscriptions.IntegrationEvents.csproj" />
     <ProjectReference Include="..\IntegrationEvents\Modules.TenantIdentity.IntegrationEvents.csproj" />
     <ProjectReference Include="..\Shared\Modules.TenantIdentity.Shared.csproj" />
-    <ProjectReference Include="..\Web\Shared\Modules.TenantIdentity.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,6 +5,7 @@ using Modules.TenantIdentity.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.Errors;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 {
@@ -12,7 +13,6 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
     {
         public Tenant() { }
 
-        public override Guid TenantId { get => base.TenantId; }
         public string Name { get; set; }
         public SubscriptionPlanType SubscriptionPlanType { get; set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
@@ -91,7 +91,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             var tenantMembership = Memberships.SingleOrDefault(t => t.Id == membershipId);
             if (tenantMembership == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(TenantMembership), membershipId);
             }
 
             memberships.Remove(tenantMembership);
