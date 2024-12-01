@@ -2,7 +2,7 @@
 using Modules.Subscriptions.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
 using Shared.Features.Messaging.Command;
-using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel;
 using Stripe.Checkout;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments

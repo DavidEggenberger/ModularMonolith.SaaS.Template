@@ -5,6 +5,7 @@ using Modules.TenantIdentity.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel;
 using Shared.Kernel.Errors;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
