@@ -6,9 +6,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : BaseController
+    public class UsersController : BaseController
     {
-        public UserController(IServiceProvider serviceProvider) : base(serviceProvider) 
+        public UsersController(IServiceProvider serviceProvider) : base(serviceProvider) 
         {
         }
     }

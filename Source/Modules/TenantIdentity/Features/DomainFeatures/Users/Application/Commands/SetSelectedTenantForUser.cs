@@ -7,15 +7,15 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Comma
     public class SetSelectedTenantForUser : Command
     {
         public Guid SelectedTenantId { get; set; }
-        public Guid UserId { get; set; }
     }
+
     public class SetSelectedTenantForUserHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<SetSelectedTenantForUser>
     {
         public SetSelectedTenantForUserHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public async Task HandleAsync(SetSelectedTenantForUser command, CancellationToken cancellationToken)
         {
-            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(command.UserId);
+            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(command.ExecutingUserId);
 
             if (user.SelectedTenantId == command.SelectedTenantId)
             {

@@ -35,6 +35,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
             {
                 return BFFUserInfoDTO.Anonymous;
             }
+
             return new BFFUserInfoDTO()
             {
                 Claims = User.Claims.Select(claim => new ClaimValueDTO { Type = claim.Type, Value = claim.Value }).ToList()
@@ -42,17 +43,16 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
         }
 
         [HttpGet("selectTenant/{TenantId}")]
-        public async Task<ActionResult> SetTenantForCurrentUser([FromRoute] Guid tenantId, [FromQuery] string redirectUri)
+        public async Task<ActionResult> SelectTenant([FromRoute] Guid tenantId, [FromQuery] string redirectUri)
         {
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { });
+            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { ExecutingUserId = executionContext.UserId });
 
-            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { UserId = user.Id };
+            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { ExecutingUserId = user.Id };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(tenantMembershipsOfUserQuery);
 
             if (tenantMemberships.Select(t => t.TenantId).Contains(tenantId))
             {
-                var setSelectedTenantForUser = new SetSelectedTenantForUser { };
-                await commandDispatcher.DispatchAsync(setSelectedTenantForUser);
+                await commandDispatcher.DispatchAsync(new SetSelectedTenantForUser { ExecutingUserId = user.Id, SelectedTenantId = tenantId });
                 await signInManager.RefreshSignInAsync(user);
             }
             else

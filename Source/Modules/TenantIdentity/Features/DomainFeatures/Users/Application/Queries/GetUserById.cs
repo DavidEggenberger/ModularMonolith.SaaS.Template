@@ -6,7 +6,6 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queri
 {
     public class GetUserById : Query<ApplicationUser>
     {
-        public Guid UserId { get; set; }
     }
     public class GetUserByIdHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetUserById, ApplicationUser>
     {
@@ -14,7 +13,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queri
 
         public async Task<ApplicationUser> HandleAsync(GetUserById query, CancellationToken cancellation)
         {
-            return await module.TenantIdentityDbContext.GetUserByIdAsync(query.UserId);
+            return await module.TenantIdentityDbContext.GetUserByIdAsync(query.ExecutingUserId);
         }
     }
 }
