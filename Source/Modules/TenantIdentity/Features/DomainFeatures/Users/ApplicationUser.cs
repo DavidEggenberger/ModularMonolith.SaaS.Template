@@ -9,11 +9,33 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users
 {
     public class ApplicationUser : IdentityUser<Guid>, IApplicationUser
     {
-        public string PictureUri { get; set; }
+        private ApplicationUser() { }
+
+        public string PictureUri { get; private set; }
         public bool IsOnline => CountOfOpenTabs > 0;
-        public int CountOfOpenTabs { get; set; }
-        public Guid SelectedTenantId { get; set; }
+        public int CountOfOpenTabs { get; private set; }
+        public Guid SelectedTenantId { get; private set; }
         public IList<TenantMembership> TenantMemberships { get; set; }
+
+        public static ApplicationUser Create(string userName, string mail, string pictureUri)
+        {
+            return new ApplicationUser()
+            {
+                UserName = userName,
+                Email = mail,
+                PictureUri = pictureUri
+            };
+        }
+
+        public void SetPictureUri(string pictureUri)
+        {
+            PictureUri = pictureUri;
+        }
+
+        public void SelectTenant(Guid tenantId)
+        {
+            SelectedTenantId = tenantId;
+        }
 
         public void IncrementOpenTabCount()
         {
@@ -29,9 +51,9 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users
             CountOfOpenTabs--;
         }
 
-        public virtual ICollection<IdentityUserLogin<Guid>> Logins { get; set; }
-        public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; set; }
-        public virtual ICollection<IdentityUserToken<Guid>> Tokens { get; set; }
+        public virtual ICollection<IdentityUserLogin<Guid>> Logins { get; private set; }
+        public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; private set; }
+        public virtual ICollection<IdentityUserToken<Guid>> Tokens { get; private set; }
     }
 
     public class ApplicationUserEFConfiguration : IEntityTypeConfiguration<ApplicationUser>

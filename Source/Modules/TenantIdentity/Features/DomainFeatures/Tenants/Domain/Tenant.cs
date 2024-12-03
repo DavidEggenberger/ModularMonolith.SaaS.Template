@@ -12,10 +12,10 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 {
     public class Tenant : Entity
     {
-        public Tenant() { }
+        private Tenant() { }
 
-        public string Name { get; set; }
-        public SubscriptionPlanType SubscriptionPlanType { get; set; }
+        public string Name { get; private set; }
+        public SubscriptionPlanType SubscriptionPlanType { get; private set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
         public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
@@ -101,6 +101,11 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
         public bool CheckIfMember(Guid userId)
         {
             return memberships.Any(membership => membership.UserId == userId);
+        }
+
+        public void UpdateSubscriptionPlan(SubscriptionPlanType subscriptionPlanType)
+        {
+            SubscriptionPlanType = subscriptionPlanType;
         }
 
         public void ThrowIfUserCantDeleteTenant()

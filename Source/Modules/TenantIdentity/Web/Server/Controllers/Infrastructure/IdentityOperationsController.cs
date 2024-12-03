@@ -52,7 +52,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 
             if (tenantMemberships.Select(t => t.TenantId).Contains(tenantId))
             {
-                await commandDispatcher.DispatchAsync(new SetSelectedTenantForUser { ExecutingUserId = user.Id, SelectedTenantId = tenantId });
+                await commandDispatcher.DispatchAsync(new SelectTenant { ExecutingUserId = user.Id, SelectedTenantId = tenantId });
                 await signInManager.RefreshSignInAsync(user);
             }
             else

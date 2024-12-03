@@ -33,12 +33,11 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
 
             if (info is not null && user is null)
             {
-                ApplicationUser _user = new ApplicationUser
-                {
-                    UserName = info.Principal.Identity.Name,
-                    Email = info.Principal.GetClaimValue(ClaimConstants.EmailClaimType),
-                    PictureUri = info.Principal.GetClaimValue(ClaimConstants.PictureClaimType)
-                };
+                var name = info.Principal.Identity.Name;
+                var mail = info.Principal.GetClaimValue(ClaimConstants.EmailClaimType);
+                var pictureUri = info.Principal.GetClaimValue(ClaimConstants.PictureClaimType);
+
+                ApplicationUser _user = ApplicationUser.Create(name, mail, pictureUri);
 
                 var createUserCommand = new CreateNewUser { User = _user };
                 await commandDispatcher.DispatchAsync(createUserCommand);

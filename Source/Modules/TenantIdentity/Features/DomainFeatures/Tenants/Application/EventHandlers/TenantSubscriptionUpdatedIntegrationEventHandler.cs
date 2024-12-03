@@ -13,7 +13,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Eve
         public async Task HandleAsync(TenantSubscriptionPlanUpdatedIntegrationEvent integrationEvent, CancellationToken cancellation)
         {
             var tenant = await module.TenantIdentityDbContext.Tenants.FirstAsync(tenant => tenant.Id == integrationEvent.TenantId);
-            tenant.SubscriptionPlanType = integrationEvent.SubscriptionPlanType;
+            tenant.UpdateSubscriptionPlan(integrationEvent.SubscriptionPlanType);
 
             await module.TenantIdentityDbContext.SaveChangesAsync();
         }
