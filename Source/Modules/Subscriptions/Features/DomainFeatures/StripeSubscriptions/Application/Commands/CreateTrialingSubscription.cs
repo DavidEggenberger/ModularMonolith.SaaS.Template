@@ -8,7 +8,6 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Appl
 {
     public class CreateTrialingSubscription : Command
     {
-        public Guid UserId { get; set; }
         public Guid TenantId { get; set; }
         public string StripeCustomerId { get; set; }
         public Stripe.Subscription CreatedStripeSubscription { get; set; }

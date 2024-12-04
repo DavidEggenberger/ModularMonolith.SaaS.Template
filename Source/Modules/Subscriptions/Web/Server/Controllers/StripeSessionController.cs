@@ -11,10 +11,7 @@ namespace Modules.Subscriptions.Server.Controllers
     [AuthorizeTenantAdmin]
     public class StripeSessionController : BaseController
     {
-        public StripeSessionController(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            
-        }
+        public StripeSessionController(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         [HttpPost("checkout/{subscriptionPlanType}")]
         public async Task<ActionResult> RedirectToStripePremiumSubscription([FromRoute] SubscriptionPlanType subscriptionPlanType)

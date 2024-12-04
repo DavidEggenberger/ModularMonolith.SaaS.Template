@@ -19,9 +19,9 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Appl
 
             if (stripeSubscription.Status != StripeSubscriptionStatus.Active)
             {
-                stripeSubscription.Status = StripeSubscriptionStatus.Active;
+                stripeSubscription.UpdateStatus(StripeSubscriptionStatus.Active);
             }
-            stripeSubscription.ExpirationDate = command.Subscription.CurrentPeriodEnd;
+            stripeSubscription.UpdateExpirationDate(command.Subscription.CurrentPeriodEnd);
 
             await module.SubscriptionsDbContext.SaveChangesAsync(cancellationToken);
         }
