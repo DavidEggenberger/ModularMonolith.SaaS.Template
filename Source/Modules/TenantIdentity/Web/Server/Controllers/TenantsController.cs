@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
@@ -17,7 +16,7 @@ using Modules.TenantIdentity.Shared.DTOs.Tenant.Operations;
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = AuthConstant.ApplicationAuthenticationScheme)]
+    [Authorize(Policy = PolicyConstants.TenantAdminPolicy)]
     [ApiController]
     public class TenantsController : BaseController
     {
@@ -29,7 +28,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         }
 
         [HttpGet("{tenantId}")]
-        [AuthorizeTenantAdmin]
         public async Task<ActionResult<TenantDTO>> GetTenant([FromRoute] Guid tenantId)
         {
             var tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
@@ -38,9 +36,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         }
 
         [HttpGet("{tenantId}/details")]
-        public async Task<ActionResult<TenantDetailDTO>> GetTenantDetail([FromRoute] Guid tenantId)
+        public async Task<ActionResult<TenantExtendedDTO>> GetTenantDetail([FromRoute] Guid tenantId)
         {
-            TenantDetailDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantDetailDTO>(new GetTenantDetailsByID { TenantId = tenantId });
+            TenantExtendedDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantExtendedDTO>(new GetTenantDetailsByID { TenantId = tenantId });
 
             return Ok(tenantDetail);
         }
@@ -66,7 +64,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
             };
             var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(createTenant);
 
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { ExecutingUserId = executionContext.UserId });
+            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser { ExecutingUserId = executionContext.UserId });
             await signInManager.RefreshSignInAsync(user);
             
             return CreatedAtAction(nameof(CreateTenant), createdTenant);

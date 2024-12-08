@@ -13,7 +13,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure
 
         public async Task<ClaimsPrincipal> CreateAsync(TUser user)
         {
-            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForUser, IEnumerable<Claim>>(new GetClaimsForUser { UserId = user.Id });
+            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForExecutingUser, IEnumerable<Claim>>(new GetClaimsForExecutingUser { ExecutingUserId = user.Id });
             
             var claimsIdentity = new ClaimsIdentity(
                 claims: claimsForUser, 

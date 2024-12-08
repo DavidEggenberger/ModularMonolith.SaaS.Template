@@ -58,7 +58,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             }
 
             TenantMembership tenantMembership = memberships.Single(m => m.UserId == userId);
-            tenantMembership.Role = newRole;
+            tenantMembership.UpdateRole(newRole);
         }
 
         public void RemoveUser(Guid userId)
@@ -82,7 +82,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
                 throw new DomainException("");
             }
 
-            invitations.Add(new TenantInvitation { Email = email, Role = role });
+            invitations.Add(TenantInvitation.Create(this, email, role));
         }
 
         public void DeleteTenantMembership(Guid membershipId)
@@ -114,7 +114,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
         }
 
         public TenantDTO ToDTO() => new TenantDTO();
-        public TenantDetailDTO ToDetailDTO() => new TenantDetailDTO();
+        public TenantExtendedDTO ToDetailDTO() => new TenantExtendedDTO();
 
     }
 

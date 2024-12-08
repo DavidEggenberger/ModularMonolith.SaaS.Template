@@ -4,14 +4,14 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries
 {
-    public class GetUserById : Query<ApplicationUser>
+    public class GetExecutingUser : Query<ApplicationUser>
     {
     }
-    public class GetUserByIdHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetUserById, ApplicationUser>
+    public class GetUserByIdHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetExecutingUser, ApplicationUser>
     {
         public GetUserByIdHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
-        public async Task<ApplicationUser> HandleAsync(GetUserById query, CancellationToken cancellation)
+        public async Task<ApplicationUser> HandleAsync(GetExecutingUser query, CancellationToken cancellation)
         {
             return await module.TenantIdentityDbContext.GetUserByIdAsync(query.ExecutingUserId);
         }

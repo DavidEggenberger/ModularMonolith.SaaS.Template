@@ -6,15 +6,15 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 {
-    public class GetTenantDetailsByID : Query<TenantDetailDTO>
+    public class GetTenantDetailsByID : Query<TenantExtendedDTO>
     {
         public Guid TenantId { get; set; }
     }
-    public class GetTenantDetailsByIDQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetTenantDetailsByID, TenantDetailDTO>
+    public class GetTenantDetailsByIDQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetTenantDetailsByID, TenantExtendedDTO>
     {
         public GetTenantDetailsByIDQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
-        public async Task<TenantDetailDTO> HandleAsync(GetTenantDetailsByID query, CancellationToken cancellation)
+        public async Task<TenantExtendedDTO> HandleAsync(GetTenantDetailsByID query, CancellationToken cancellation)
         {
             var tenantDetail = await module.TenantIdentityDbContext.Tenants.Where(t => t.TenantId == query.TenantId).SingleAsync();
             return tenantDetail.ToDetailDTO();

@@ -45,7 +45,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
         [HttpGet("selectTenant/{TenantId}")]
         public async Task<ActionResult> SelectTenant([FromRoute] Guid tenantId, [FromQuery] string redirectUri)
         {
-            var user = await queryDispatcher.DispatchAsync<GetUserById, ApplicationUser>(new GetUserById { ExecutingUserId = executionContext.UserId });
+            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser { ExecutingUserId = executionContext.UserId });
 
             var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { ExecutingUserId = user.Id };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(tenantMembershipsOfUserQuery);
