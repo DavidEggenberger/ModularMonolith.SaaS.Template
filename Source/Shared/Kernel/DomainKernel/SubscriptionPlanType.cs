@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Auth
+﻿namespace Shared.Kernel.DomainKernel
 {
     public enum SubscriptionPlanType
     {

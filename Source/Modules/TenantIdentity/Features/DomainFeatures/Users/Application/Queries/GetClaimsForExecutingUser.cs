@@ -6,18 +6,17 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries
 {
-    public class GetClaimsForUser : Query<IEnumerable<Claim>>
+    public class GetClaimsForExecutingUser : Query<IEnumerable<Claim>>
     {
-        public Guid UserId { get; set; }
     }
 
-    public class ClaimsForUserQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetClaimsForUser, IEnumerable<Claim>>
+    public class ClaimsForUserQueryHandler : ServerExecutionBase<TenantIdentityModule>, IQueryHandler<GetClaimsForExecutingUser, IEnumerable<Claim>>
     {
         public ClaimsForUserQueryHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
-        public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForUser query, CancellationToken cancellation)
+        public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForExecutingUser query, CancellationToken cancellation)
         {
-            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(query.UserId);
+            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(query.ExecutingUserId);
 
             List<Claim> claims = new List<Claim>
             {

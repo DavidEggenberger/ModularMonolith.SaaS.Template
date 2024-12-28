@@ -9,6 +9,7 @@ using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Shared.Kernel.BuildingBlocks;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
+using Shared.Kernel.Errors;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
@@ -78,7 +79,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             var user = await Users.FirstOrDefaultAsync(t => t.Id == userId);
             if (user == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(ApplicationUser), userId);
             }
             return user;
         }
@@ -88,7 +89,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             var tenant = await Tenants.FirstOrDefaultAsync(t => t.TenantId == tenantId);
             if (tenant == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(Tenant), tenantId);
             }
             return tenant;
         }
@@ -97,12 +98,13 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         {
             var tenant = await Tenants
                 .Include(t => t.Memberships)
-                //.Include(t => t.Invitations)
+                .Include(t => t.Invitations)
                 .FirstOrDefaultAsync(t => t.TenantId == tenantId);
             if (tenant == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(Tenant), tenantId);
             }
+
             return tenant;
         }
     }

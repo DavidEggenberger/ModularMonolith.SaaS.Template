@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 using Modules.Subscriptions.Features.Infrastructure.StripePayments;
 using Shared.Features.Server;
+using Shared.Kernel.DomainKernel;
+using Microsoft.AspNetCore.Authorization;
+using Shared.Kernel.BuildingBlocks.Auth.Constants;
 
 namespace Modules.Subscriptions.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AuthorizeTenantAdmin]
+    [Authorize(Policy = PolicyConstants.TenantAdminPolicy)]
     public class StripeSessionController : BaseController
     {
-        public StripeSessionController(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            
-        }
+        public StripeSessionController(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         [HttpPost("checkout/{subscriptionPlanType}")]
         public async Task<ActionResult> RedirectToStripePremiumSubscription([FromRoute] SubscriptionPlanType subscriptionPlanType)

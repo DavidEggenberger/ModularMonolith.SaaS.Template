@@ -5,16 +5,17 @@ using Modules.TenantIdentity.Shared.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel;
+using Shared.Kernel.Errors;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 {
     public class Tenant : Entity
     {
-        public Tenant() { }
+        private Tenant() { }
 
-        public override Guid TenantId { get => base.TenantId; }
-        public string Name { get; set; }
-        public SubscriptionPlanType SubscriptionPlanType { get; set; }
+        public string Name { get; private set; }
+        public SubscriptionPlanType SubscriptionPlanType { get; private set; }
         public IReadOnlyCollection<TenantMembership> Memberships => memberships.AsReadOnly();
         private List<TenantMembership> memberships = new List<TenantMembership>();
         public IReadOnlyCollection<TenantInvitation> Invitations => invitations.AsReadOnly();
@@ -57,7 +58,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             }
 
             TenantMembership tenantMembership = memberships.Single(m => m.UserId == userId);
-            tenantMembership.Role = newRole;
+            tenantMembership.UpdateRole(newRole);
         }
 
         public void RemoveUser(Guid userId)
@@ -81,7 +82,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
                 throw new DomainException("");
             }
 
-            invitations.Add(new TenantInvitation { Email = email, Role = role });
+            invitations.Add(TenantInvitation.Create(this, email, role));
         }
 
         public void DeleteTenantMembership(Guid membershipId)
@@ -91,7 +92,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             var tenantMembership = Memberships.SingleOrDefault(t => t.Id == membershipId);
             if (tenantMembership == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(TenantMembership), membershipId);
             }
 
             memberships.Remove(tenantMembership);
@@ -102,13 +103,18 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             return memberships.Any(membership => membership.UserId == userId);
         }
 
+        public void UpdateSubscriptionPlan(SubscriptionPlanType subscriptionPlanType)
+        {
+            SubscriptionPlanType = subscriptionPlanType;
+        }
+
         public void ThrowIfUserCantDeleteTenant()
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
         }
 
         public TenantDTO ToDTO() => new TenantDTO();
-        public TenantDetailDTO ToDetailDTO() => new TenantDetailDTO();
+        public TenantExtendedDTO ToDetailDTO() => new TenantExtendedDTO();
 
     }
 

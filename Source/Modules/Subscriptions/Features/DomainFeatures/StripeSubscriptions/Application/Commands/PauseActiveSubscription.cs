@@ -17,7 +17,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Appl
         {
             var stripeSubscription = await module.SubscriptionsDbContext.StripeSubscriptions.FirstAsync(stripeSubscription => stripeSubscription.StripePortalSubscriptionId == command.Subscription.Id);
 
-            stripeSubscription.Status = StripeSubscriptionStatus.Paused;
+            stripeSubscription.UpdateStatus(StripeSubscriptionStatus.Paused);
 
             await module.SubscriptionsDbContext.SaveChangesAsync(cancellationToken);
         }

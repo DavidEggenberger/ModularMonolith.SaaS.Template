@@ -15,10 +15,14 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             Role = role;
         }
 
-        public Guid UserId { get; set; }
-        public Guid TenantId { get; set; }
-        public Tenant Tenant { get; set; }
-        public TenantRole Role { get; set; }
+        public Guid UserId { get; private set; }
+        public Tenant Tenant { get; private set; }
+        public TenantRole Role { get; private set; }
+
+        public void UpdateRole(TenantRole role)
+        {
+            Role = role;
+        }
 
         public TenantMembershipDTO ToDTO()
         {

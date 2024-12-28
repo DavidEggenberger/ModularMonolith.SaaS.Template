@@ -4,7 +4,7 @@ using Shared.Features.Messaging.IntegrationEvents;
 using Shared.Features.Server;
 using System.Threading;
 
-namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.IntegrationEvents
+namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.EventHandlers
 {
     public class TenantSubscriptionUpdatedIntegrationEventHandler : ServerExecutionBase<TenantIdentityModule>, IIntegrationEventHandler<TenantSubscriptionPlanUpdatedIntegrationEvent>
     {
@@ -13,7 +13,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Int
         public async Task HandleAsync(TenantSubscriptionPlanUpdatedIntegrationEvent integrationEvent, CancellationToken cancellation)
         {
             var tenant = await module.TenantIdentityDbContext.Tenants.FirstAsync(tenant => tenant.Id == integrationEvent.TenantId);
-            tenant.SubscriptionPlanType = integrationEvent.SubscriptionPlanType;
+            tenant.UpdateSubscriptionPlan(integrationEvent.SubscriptionPlanType);
 
             await module.TenantIdentityDbContext.SaveChangesAsync();
         }

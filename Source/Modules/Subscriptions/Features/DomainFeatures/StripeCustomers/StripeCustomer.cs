@@ -7,8 +7,8 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers
 {
     public class StripeCustomer : Entity
     {
-        public Guid UserId { get; set; }
-        public string StripePortalCustomerId { get; set; }
+        public Guid UserId { get; private set; }
+        public string StripePortalCustomerId { get; private set; }
 
         public static StripeCustomer Create(Guid userId, string stripePortalCustomerId)
         {

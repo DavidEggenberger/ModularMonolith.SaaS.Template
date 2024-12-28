@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.Kernel.BuildingBlocks;
-using Shared.Kernel.BuildingBlocks.Auth.Attributes;
 
 namespace Shared.Features.Messaging.Query
 {
@@ -16,10 +16,7 @@ namespace Shared.Features.Messaging.Query
         public Task<TQueryResult> DispatchAsync<TQuery, TQueryResult>(TQuery query, CancellationToken cancellation = default) where TQuery : Query<TQueryResult>
         {
             var handler = serviceProvider.GetRequiredService<IQueryHandler<TQuery, TQueryResult>>();
-            var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
-
-            var authorizationAttribute = Attribute.GetCustomAttributes(typeof(TQuery)).First(a => a is AuthorizationAttribute) as AuthorizationAttribute;
-            
+            var executionContext = serviceProvider.GetRequiredService<IExecutionContext>();            
 
             return handler.HandleAsync(query, cancellation);
         }

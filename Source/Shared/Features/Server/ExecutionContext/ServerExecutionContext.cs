@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 
 namespace Shared.Features.Server.ExecutionContext

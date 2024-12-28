@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shared.Features.Messaging.Command;
-using Shared.Features.Domain.Exceptions;
 using System.Threading;
 using Shared.Features.Server;
+using Shared.Kernel.Errors;
+using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
@@ -17,10 +18,10 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Com
 
         public async Task HandleAsync(DeleteTenant command, CancellationToken cancellationToken)
         {
-            var tenant = await module.TenantIdentityDbContext.Tenants.SingleAsync(t => t.TenantId == command.TenantId);
+            var tenant = await module.TenantIdentityDbContext.Tenants.SingleAsync(t => t.Id == command.TenantId);
             if (tenant == null)
             {
-                throw new NotFoundException();
+                throw Errors.NotFound(nameof(Tenant), command.TenantId);
             }
 
             tenant.ThrowIfUserCantDeleteTenant();

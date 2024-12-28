@@ -1,25 +1,26 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using Shared.Features.Messaging.Query;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
+using Shared.Features.Server;
 
 namespace Modules.TenantIdentity.Features.Infrastructure
 {
-    public class ContextUserClaimsPrincipalFactory<TUser> : IUserClaimsPrincipalFactory<TUser> where TUser : ApplicationUser
+    public class ContextUserClaimsPrincipalFactory<TUser> : ServerExecutionBase<TenantIdentityModule>, IUserClaimsPrincipalFactory<TUser> where TUser : ApplicationUser
     {
-        private readonly IQueryDispatcher queryDispatcher;
-        public ContextUserClaimsPrincipalFactory(IQueryDispatcher queryDispatcher)
-        {
-            this.queryDispatcher = queryDispatcher;
-        }
+        public ContextUserClaimsPrincipalFactory(IServiceProvider serviceProvider) : base(serviceProvider) { }
+
         public async Task<ClaimsPrincipal> CreateAsync(TUser user)
         {
-            var claimsForUserQuery = new GetClaimsForUser { UserId = user.Id };
-            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForUser, IEnumerable<Claim>>(claimsForUserQuery);
+            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForExecutingUser, IEnumerable<Claim>>(new GetClaimsForExecutingUser { ExecutingUserId = user.Id });
             
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claimsForUser, IdentityConstants.ApplicationScheme, nameType: ClaimConstants.UserNameClaimType, ClaimConstants.UserRoleInTenantClaimType);
+            var claimsIdentity = new ClaimsIdentity(
+                claims: claimsForUser, 
+                authenticationType: IdentityConstants.ApplicationScheme, 
+                nameType: ClaimConstants.UserNameClaimType, 
+                roleType: ClaimConstants.UserRoleInTenantClaimType);
+
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             
             return claimsPrincipal;

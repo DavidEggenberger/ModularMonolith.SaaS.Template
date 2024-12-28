@@ -9,6 +9,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Comma
         public ApplicationUser User { get; set; }
         public ExternalLoginInfo LoginInfo { get; set; }
     }
+
     public class CreateNewUserCommandHandler : ICommandHandler<CreateNewUser>
     {
         private readonly UserManager<ApplicationUser> userManager;

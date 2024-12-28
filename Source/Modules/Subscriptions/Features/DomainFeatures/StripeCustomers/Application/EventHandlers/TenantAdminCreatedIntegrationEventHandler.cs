@@ -4,7 +4,7 @@ using Modules.TenantIdentity.IntegrationEvents;
 using Shared.Features.Messaging.IntegrationEvents;
 using Stripe;
 
-namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.IntegrationEvents
+namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.EventHandlers
 {
     public class TenantAdminCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminCreatedIntegrationEvent>
     {
