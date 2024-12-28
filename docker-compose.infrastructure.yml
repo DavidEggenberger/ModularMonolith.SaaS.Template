@@ -1,5 +1,5 @@
 version: '3.4'
-name: ModularMonolith_Infrastructure
+name: modularmonolith_infrastructure
 
 services:
   sqlserver:
