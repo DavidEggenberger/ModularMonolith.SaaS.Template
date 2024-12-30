@@ -1,5 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks.Auth.Constants;
+﻿using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Shared.Kernel.DomainKernel;
 using Shared.Kernel.Extensions.ClaimsPrincipal.Exceptions;
 using System.ComponentModel;

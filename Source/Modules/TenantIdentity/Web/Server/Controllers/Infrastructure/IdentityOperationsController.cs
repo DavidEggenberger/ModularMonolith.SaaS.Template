@@ -5,15 +5,15 @@ using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Modules.TenantIdentity.Shared.DTOs.IdentityOperations;
 using Shared.Features.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Modules.TenantIdentity.Shared.DTOs.Tenant;
+using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
+using Modules.TenantIdentity.Public.DTOs.Tenant;
 
-namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
+namespace Modules.TenantIdentity.Web.Server.Controllers.Infrastructure
 {
     [Route("api/[controller]")]
     [Authorize]

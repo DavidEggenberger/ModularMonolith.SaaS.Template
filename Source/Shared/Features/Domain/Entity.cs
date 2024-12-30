@@ -1,9 +1,9 @@
-﻿using Shared.Kernel.BuildingBlocks.Auth;
-using Shared.Kernel.BuildingBlocks;
+﻿using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
+using Shared.Kernel.DomainKernel;
 
 namespace Shared.Features.Domain
 {

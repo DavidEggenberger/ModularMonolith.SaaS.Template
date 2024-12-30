@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.Reflection;
-using Shared.Features.Messaging.Query;
-using Shared.Features.Messaging.Command;
 using Shared.Features.Messaging.IntegrationEvents;
+using Shared.Features.Messaging.Commands;
+using Shared.Features.Messaging.Queries;
 
 namespace Shared.Features.Messaging
 {

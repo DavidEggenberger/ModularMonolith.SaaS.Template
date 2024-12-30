@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
 using Shared.Kernel.Constants.Endpoints;
-using Modules.TenantIdentity.Shared.DTOs.IdentityOperations;
+using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
 
 namespace Web.Client.BuildingBlocks.Auth
 {

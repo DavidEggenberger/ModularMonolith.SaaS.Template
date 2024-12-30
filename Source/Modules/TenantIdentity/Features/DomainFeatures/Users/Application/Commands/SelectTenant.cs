@@ -1,4 +1,4 @@
-﻿using Shared.Features.Messaging.Command;
+﻿using Shared.Features.Messaging.Commands;
 using Shared.Features.Server;
 using System.Threading;
 

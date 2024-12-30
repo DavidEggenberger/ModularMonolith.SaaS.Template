@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.Messaging.Command
+﻿namespace Shared.Features.Messaging.Commands
 {
     public interface ICommandDispatcher
     {

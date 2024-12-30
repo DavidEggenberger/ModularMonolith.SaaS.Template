@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Modules.LandingPages.Web.Server.Pages
+namespace Modules.LandingPages.Web.Pages
 {
     public partial class LandingPage : ComponentBase
     {
@@ -59,7 +59,7 @@ namespace Modules.LandingPages.Web.Server.Pages
                     return;
                 }
                 var currentIndex = (int)SelectedFeature;
-                SelectedFeature = (DomainFeaturesection)((currentIndex % 4) + 1);
+                SelectedFeature = (DomainFeaturesection)(currentIndex % 4 + 1);
                 StateHasChanged();
             }
         }

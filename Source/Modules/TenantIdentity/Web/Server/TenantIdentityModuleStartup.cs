@@ -19,7 +19,7 @@ using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Shared.Features.Configuration;
 
-namespace Modules.TenantIdentity.Server
+namespace Modules.TenantIdentity.Web.Server
 {
     public class TenantIdentityModuleStartup : IModuleStartup
     {
@@ -122,7 +122,7 @@ namespace Modules.TenantIdentity.Server
 
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
-            
+
         }
     }
 }

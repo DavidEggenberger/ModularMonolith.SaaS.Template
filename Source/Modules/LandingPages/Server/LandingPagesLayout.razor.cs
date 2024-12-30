@@ -2,7 +2,7 @@
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace Modules.LandingPages.Web.Server
+namespace Modules.LandingPages.Web
 {
     public partial class LandingPageLayout
     {
@@ -12,7 +12,7 @@ namespace Modules.LandingPages.Web.Server
         private IModalReference modalReference;
 
         private bool collapseNavMenu = true;
-        private string? NavMenuCssClass => collapseNavMenu ? "mobile:hidden" : null;
+        private string NavMenuCssClass => collapseNavMenu ? "mobile:hidden" : null;
 
         private void ToggleNavMenu()
         {

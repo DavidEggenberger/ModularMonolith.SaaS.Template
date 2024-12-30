@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
-namespace Modules.LandingPages.Web.Server.Components
+namespace Modules.LandingPages.Web.Components
 {
     public partial class SignInModal : ComponentBase
     {

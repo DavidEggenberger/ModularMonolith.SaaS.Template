@@ -10,8 +10,8 @@ using Shared.Features.Server;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Modules.TenantIdentity.Shared.DTOs.Tenant;
-using Modules.TenantIdentity.Shared.DTOs.Tenant.Operations;
+using Modules.TenantIdentity.Public.DTOs.Tenant.Operations;
+using Modules.TenantIdentity.Public.DTOs.Tenant;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {

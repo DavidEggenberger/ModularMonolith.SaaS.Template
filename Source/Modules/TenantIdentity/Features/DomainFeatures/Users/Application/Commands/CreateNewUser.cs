@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands

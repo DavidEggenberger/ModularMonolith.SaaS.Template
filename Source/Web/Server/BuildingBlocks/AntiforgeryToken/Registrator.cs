@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebServer.Modules.AntiforgeryToken
+namespace Web.Server.BuildingBlocks.AntiforgeryToken
 {
     public static class Registrator
     {

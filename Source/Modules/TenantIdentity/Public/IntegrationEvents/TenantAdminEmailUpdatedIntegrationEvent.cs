@@ -1,7 +1,7 @@
 ﻿using Shared.Kernel.BuildingBlocks;
 using System;
 
-namespace Modules.TenantIdentity.IntegrationEvents
+namespace Modules.TenantIdentity.Public.IntegrationEvents
 {
     public class TenantAdminEmailUpdatedIntegrationEvent : IIntegrationEvent
     {

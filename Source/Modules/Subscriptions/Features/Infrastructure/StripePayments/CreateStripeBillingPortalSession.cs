@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 using Stripe.BillingPortal;
 
 namespace Modules.Subscriptions.Features.Infrastructure.StripePayments

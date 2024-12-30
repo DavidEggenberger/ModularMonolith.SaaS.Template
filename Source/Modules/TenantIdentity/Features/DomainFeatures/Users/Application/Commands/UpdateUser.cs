@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands
 {

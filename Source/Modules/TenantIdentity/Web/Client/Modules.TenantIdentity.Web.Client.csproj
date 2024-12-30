@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Shared\Kernel\Shared.Kernel.csproj" />
-    <ProjectReference Include="..\..\Shared\Modules.TenantIdentity.Shared.csproj" />
   </ItemGroup>
 
 </Project>

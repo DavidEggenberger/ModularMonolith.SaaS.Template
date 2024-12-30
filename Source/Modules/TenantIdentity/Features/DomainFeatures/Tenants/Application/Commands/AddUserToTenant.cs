@@ -1,7 +1,7 @@
 ﻿using Shared.Features.EFCore;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 using Shared.Features.Server;
-using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands

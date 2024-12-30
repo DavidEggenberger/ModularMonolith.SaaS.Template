@@ -6,7 +6,7 @@ using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Applicat
 using Modules.Subscriptions.Features;
 using Stripe.V2;
 
-namespace Modules.Subscriptions.Server.WebHooks
+namespace Modules.Subscriptions.Web.Server.WebHooks
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -54,7 +54,7 @@ namespace Modules.Subscriptions.Server.WebHooks
 
                     var updateSubscriptionPeriod = new UpdateSubscriptionPeriod
                     {
-                        Subscription = subscription 
+                        Subscription = subscription
                     };
 
                     await commandDispatcher.DispatchAsync(updateSubscriptionPeriod);

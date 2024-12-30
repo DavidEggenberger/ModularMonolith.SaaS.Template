@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Hosting;
-using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.DomainKernel;
 
 

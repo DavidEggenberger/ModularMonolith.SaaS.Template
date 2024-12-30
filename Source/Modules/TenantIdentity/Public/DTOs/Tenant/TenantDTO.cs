@@ -1,7 +1,7 @@
 ﻿using Shared.Kernel.DomainKernel;
 using System.Collections.Generic;
 
-namespace Modules.TenantIdentity.Shared.DTOs.Tenant
+namespace Modules.TenantIdentity.Public.DTOs.Tenant
 {
     public class TenantDTO
     {

@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\TenantIdentity\Shared\Modules.TenantIdentity.Shared.csproj" />
+    <ProjectReference Include="..\..\Modules\TenantIdentity\IntegrationEvents\Modules.TenantIdentity.Public.csproj" />
+    <ProjectReference Include="..\..\Modules\TenantIdentity\Public\Modules.TenantIdentity.Public.csproj" />
     <ProjectReference Include="..\..\Modules\TenantIdentity\Web\Client\Modules.TenantIdentity.Web.Client.csproj" />
     <ProjectReference Include="..\..\Shared\Client\Shared.Client.csproj" />
   </ItemGroup>

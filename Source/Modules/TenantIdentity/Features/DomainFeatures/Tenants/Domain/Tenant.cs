@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain.Exceptions;
-using Modules.TenantIdentity.Shared.DTOs.Tenant;
+using Modules.TenantIdentity.Public.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Domain.Exceptions;
-using Shared.Kernel.BuildingBlocks.Auth;
 using Shared.Kernel.DomainKernel;
 using Shared.Kernel.Errors;
 

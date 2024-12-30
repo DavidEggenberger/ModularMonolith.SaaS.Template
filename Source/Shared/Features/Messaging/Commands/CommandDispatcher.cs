@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Features.Messaging.Command
+namespace Shared.Features.Messaging.Commands
 {
     public class CommandDispatcher : ICommandDispatcher
     {

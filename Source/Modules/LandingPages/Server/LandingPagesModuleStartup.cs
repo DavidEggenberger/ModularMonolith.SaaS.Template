@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Shared.Features.Modules;
 using System.Reflection;
 
-namespace Modules.LandingPages.Web.Server
+namespace Modules.LandingPages.Web
 {
     public class LandingPagesModuleStartup : IModuleStartup
     {

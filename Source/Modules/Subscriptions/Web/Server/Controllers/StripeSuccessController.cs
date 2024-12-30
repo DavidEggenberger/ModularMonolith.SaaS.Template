@@ -6,7 +6,7 @@ using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
 using Shared.Features.Server;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.Queries;
 
-namespace Modules.Subscriptions.Server.Controllers
+namespace Modules.Subscriptions.Web.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -15,7 +15,7 @@ namespace Modules.Subscriptions.Server.Controllers
         private readonly SignInManager<IApplicationUser> signInManager;
         private readonly UserManager<IApplicationUser> userManager;
 
-        public StripeSuccessController(SignInManager<IApplicationUser> signInManager, UserManager<IApplicationUser> userManager, IServiceProvider serviceProvider) : base(serviceProvider) 
+        public StripeSuccessController(SignInManager<IApplicationUser> signInManager, UserManager<IApplicationUser> userManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
@@ -25,7 +25,7 @@ namespace Modules.Subscriptions.Server.Controllers
         public async Task<ActionResult> OrderSuccess([FromQuery] string session_id)
         {
             var stripeCheckoutSession = await new SessionService().GetAsync(session_id);
-            
+
             var getStripeCustomer = new GetStripeCustomerByStripePortalId() { StripeCustomerStripePortalId = stripeCheckoutSession.CustomerId };
             var stripeCustomer = await queryDispatcher.DispatchAsync<GetStripeCustomerByStripePortalId, StripeCustomer>(getStripeCustomer);
 

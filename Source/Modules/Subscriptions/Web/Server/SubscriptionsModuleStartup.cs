@@ -9,7 +9,7 @@ using Shared.Features.EFCore;
 using Shared.Features.Modules;
 using Stripe;
 
-namespace Modules.Subscriptions.Server
+namespace Modules.Subscriptions.Web.Server
 {
     public class SubscriptionsModuleStartup : IModuleStartup
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.TenantIdentity.Shared.DTOs.Tenant;
-using Shared.Features.Messaging.Query;
+using Modules.TenantIdentity.Public.DTOs.Tenant;
+using Shared.Features.Messaging.Queries;
 using Shared.Features.Server;
 using System.Threading;
 

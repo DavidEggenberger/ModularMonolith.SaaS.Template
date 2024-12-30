@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
 
-namespace Modules.TenantIdentity.Web.Server.Controllers.IdentityOperations
+namespace Modules.TenantIdentity.Web.Server.Controllers.Infrastructure
 {
     [Route("api/[controller]")]
     [AllowAnonymous]

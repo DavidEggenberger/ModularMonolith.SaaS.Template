@@ -5,7 +5,7 @@ using Shared.Kernel.DomainKernel;
 using Microsoft.AspNetCore.Authorization;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 
-namespace Modules.Subscriptions.Server.Controllers
+namespace Modules.Subscriptions.Web.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -17,8 +17,8 @@ namespace Modules.Subscriptions.Server.Controllers
         [HttpPost("checkout/{subscriptionPlanType}")]
         public async Task<ActionResult> RedirectToStripePremiumSubscription([FromRoute] SubscriptionPlanType subscriptionPlanType)
         {
-            var createStripeCheckoutSession = new CreateStripeCheckoutSession 
-            { 
+            var createStripeCheckoutSession = new CreateStripeCheckoutSession
+            {
                 SubscriptionPlanType = subscriptionPlanType,
                 UserId = executionContext.UserId,
                 TenantId = executionContext.TenantId,

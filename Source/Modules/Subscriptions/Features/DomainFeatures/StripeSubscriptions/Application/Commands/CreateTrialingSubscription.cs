@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Subscriptions.IntegrationEvents;
-using Shared.Features.Messaging.Command;
+using Modules.Subscriptions.Public.IntegrationEvents;
+using Shared.Features.Messaging.Commands;
 using Shared.Features.Server;
 using Stripe;
 

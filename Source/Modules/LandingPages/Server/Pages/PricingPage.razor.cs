@@ -2,7 +2,7 @@
 using Blazored.Modal;
 using Microsoft.AspNetCore.Components;
 
-namespace Modules.LandingPages.Web.Server.Pages
+namespace Modules.LandingPages.Web.Pages
 {
     public partial class PricingPage : ComponentBase
     {

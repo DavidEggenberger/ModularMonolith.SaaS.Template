@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 using Shared.Features.Messaging.IntegrationEvents;
-using Shared.Features.Messaging.Query;
+using Shared.Features.Messaging.Queries;
 using Shared.Kernel.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 

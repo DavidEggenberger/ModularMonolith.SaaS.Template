@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shared.Features.Messaging.Command;
+using Shared.Features.Messaging.Commands;
 using Shared.Features.Server;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands
