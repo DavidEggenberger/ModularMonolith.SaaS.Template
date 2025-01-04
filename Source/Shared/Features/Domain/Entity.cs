@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using Shared.Kernel.DomainKernel;
+using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Features.Errors;
 
 namespace Shared.Features.Domain
 {
@@ -28,7 +30,7 @@ namespace Shared.Features.Domain
         {
             if (ExecutionContext.TenantRole != role)
             {
-                throw new UnauthorizedException();
+                throw Error.UnAuthorized;
             }
         }
     }

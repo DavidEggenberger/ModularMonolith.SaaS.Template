@@ -31,7 +31,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queri
 
             claims.AddRange(new List<Claim>
             {
-                new Claim(ClaimConstants.TenantPlanClaimType, tenant.SubscriptionPlanType.ToString()),
+                new Claim(ClaimConstants.TenantPlanClaimType, tenant.SubscriptionPlan.ToString()),
                 new Claim(ClaimConstants.TenantNameClaimType, tenant.Name),
                 new Claim(ClaimConstants.TenantIdClaimType, tenant.Id.ToString()),
                 new Claim(ClaimConstants.UserRoleInTenantClaimType, tenantMembership.Role.ToString()),

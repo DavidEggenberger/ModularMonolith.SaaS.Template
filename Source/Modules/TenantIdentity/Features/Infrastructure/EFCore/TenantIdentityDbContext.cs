@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Shared.Features.Domain.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
@@ -9,7 +8,7 @@ using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Shared.Kernel.BuildingBlocks;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
-using Shared.Kernel.Errors;
+using Shared.Features.Errors;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {
@@ -79,7 +78,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             var user = await Users.FirstOrDefaultAsync(t => t.Id == userId);
             if (user == null)
             {
-                throw Errors.NotFound(nameof(ApplicationUser), userId);
+                throw Error.NotFound(nameof(ApplicationUser), userId);
             }
             return user;
         }
@@ -89,7 +88,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
             var tenant = await Tenants.FirstOrDefaultAsync(t => t.TenantId == tenantId);
             if (tenant == null)
             {
-                throw Errors.NotFound(nameof(Tenant), tenantId);
+                throw Error.NotFound(nameof(Tenant), tenantId);
             }
             return tenant;
         }
@@ -102,7 +101,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
                 .FirstOrDefaultAsync(t => t.TenantId == tenantId);
             if (tenant == null)
             {
-                throw Errors.NotFound(nameof(Tenant), tenantId);
+                throw Error.NotFound(nameof(Tenant), tenantId);
             }
 
             return tenant;

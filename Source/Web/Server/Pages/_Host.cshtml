@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href=@($"{TailwindSourceConstant.TailwindOutputPath}") />
 </head>
-<body class="from-white to-primary-100 grid h-screen place-content-center bg-gradient-to-b">
+<body class="grid h-screen place-content-center bg-gradient-to-b from-primary-100 to-primary-200">
     @if (User.Identity.IsAuthenticated)
     {
         <component type="typeof(ClientApp)" render-mode="WebAssembly" />

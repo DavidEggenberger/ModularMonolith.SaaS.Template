@@ -18,7 +18,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Com
 
         public async Task<TenantDTO> HandleAsync(CreateTenantWithAdmin createTenant, CancellationToken cancellationToken)
         {
-            var tenant = Tenant.CreateTenantWithAdmin(createTenant.Name, Guid.Empty);
+            var tenant = Tenant.CreateTenant(createTenant.Name, Guid.Empty);
 
             module.TenantIdentityDbContext.Tenants.Add(tenant);
             await module.TenantIdentityDbContext.SaveChangesAsync(cancellationToken);

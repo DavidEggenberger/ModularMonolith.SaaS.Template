@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Shared.Features.Domain;
-using Shared.Kernel.Errors;
+using Shared.Features.Errors;
 
 namespace Shared.Features.EFCore
 {
@@ -12,11 +12,11 @@ namespace Shared.Features.EFCore
             var entity = await dbSet.FirstOrDefaultAsync(t => t.Id == entityId);
             if (entity == null)
             {
-                throw Errors.NotFound(typeof(TEntity).Name, entityId); 
+                throw Error.NotFound(typeof(TEntity).Name, entityId); 
             }
             if (entity.TenantId != owningTenantId)
             {
-                throw Errors.UnAuthorized;
+                throw Error.UnAuthorized;
             }
 
             return entity;
@@ -27,11 +27,11 @@ namespace Shared.Features.EFCore
             var entity = await dbSet.FirstOrDefaultAsync(t => t.Id == entityId);
             if (entity == null)
             {
-                throw Errors.NotFound(typeof(TEntity).Name, entityId);
+                throw Error.NotFound(typeof(TEntity).Name, entityId);
             }
             if (entity.TenantId != tenantId)
             {
-                throw Errors.UnAuthorized;
+                throw Error.UnAuthorized;
             }
 
             return entity;
