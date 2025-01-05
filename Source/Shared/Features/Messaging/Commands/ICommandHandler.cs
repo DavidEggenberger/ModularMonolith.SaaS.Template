@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Shared.Features.Modules;
-using Shared.Features.Server;
-
-namespace Shared.Features.Messaging.Commands
+﻿namespace Shared.Features.Messaging.Commands
 {
     public interface ICommandHandler<in TCommand> where TCommand : Command
     {

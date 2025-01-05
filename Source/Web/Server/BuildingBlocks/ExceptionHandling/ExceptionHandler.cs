@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shared.Features.Errors.Exceptions;
-using Shared.Kernel.BuildingBlocks.Auth.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -24,7 +23,8 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             exceptionHandlers = new Dictionary<Type, Func<Exception, Task<ActionResult>>>
             {
                 [typeof(NotFoundException)] = HandleNotFoundException,
-                [typeof(UnauthorizedException)] = HandleUnauthorizedException
+                [typeof(UnAuthorizedException)] = HandleUnauthorizedException,
+                [typeof(DomainException)] = HandleDomainException
             };
         }
 
@@ -54,6 +54,7 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             };
             return new ObjectResult(problemDetails);
         }
+
         private async Task<ActionResult> HandleUnauthorizedException(Exception exception)
         {
             ProblemDetails problemDetails = new ProblemDetails
@@ -63,6 +64,18 @@ namespace Web.Server.BuildingBlocks.ExceptionHandling
             };
             return new ObjectResult(exception.Message);
         }
+
+        private async Task<ActionResult> HandleDomainException(Exception exception)
+        {
+            var domainException = exception as DomainException;
+            ProblemDetails problemDetails = new ProblemDetails
+            {
+                Status = domainException.StatusCode,
+                Title = domainException.Message
+            };
+            return new ObjectResult(exception.Message);
+        }
+
         private async Task<ActionResult> HandleUnknownExceptionAsync(Exception exception)
         {
             ProblemDetails problemDetails = new ProblemDetails

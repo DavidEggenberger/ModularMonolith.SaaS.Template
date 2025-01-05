@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.Interfaces
+﻿namespace Shared.Kernel.DomainKernel.Interfaces
 {
     public interface IAuditable
     {

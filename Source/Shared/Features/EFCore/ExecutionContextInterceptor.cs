@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Shared.Features.Domain;
-using Shared.Kernel.BuildingBlocks;
+using Shared.Features.Server.ExecutionContext;
 
 namespace Shared.Features.EFCore
 {

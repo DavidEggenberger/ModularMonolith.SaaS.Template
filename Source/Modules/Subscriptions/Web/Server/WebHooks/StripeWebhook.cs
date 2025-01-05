@@ -4,7 +4,6 @@ using Stripe;
 using Shared.Features.Server;
 using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands;
 using Modules.Subscriptions.Features;
-using Stripe.V2;
 
 namespace Modules.Subscriptions.Web.Server.WebHooks
 {

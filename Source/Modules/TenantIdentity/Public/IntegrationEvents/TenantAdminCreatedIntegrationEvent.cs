@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks;
+﻿using Shared.Kernel.BuildingBlocks.IntegrationEvents;
 using System;
 
 namespace Modules.TenantIdentity.Public.IntegrationEvents

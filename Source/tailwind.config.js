@@ -19,13 +19,13 @@ module.exports = {
             'primary-800': '#075985',
             'primary-900': '#0c4a6e'
         },
-     screens: {
-         'xs': { 'raw': '(min-width: 0px)' },
-         'sm': { 'raw': '(min-width: 480px)' },
-         'md': { 'raw': '(min-width: 768px)' },
-         'lg': { 'raw': '(min-width: 1024px)' },
-         'xl': { 'raw': '(min-width: 1280px)' }
-     }
+         screens: {
+             'xs': { 'raw': '(min-width: 0px)' },
+             'sm': { 'raw': '(min-width: 480px)' },
+             'md': { 'raw': '(min-width: 768px)' },
+             'lg': { 'raw': '(min-width: 1024px)' },
+             'xl': { 'raw': '(min-width: 1280px)' }
+         }
   },
   plugins: [],
 }

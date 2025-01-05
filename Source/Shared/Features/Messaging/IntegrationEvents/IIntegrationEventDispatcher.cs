@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks;
+﻿using Shared.Kernel.BuildingBlocks.IntegrationEvents;
 
 namespace Shared.Features.Messaging.IntegrationEvents
 {

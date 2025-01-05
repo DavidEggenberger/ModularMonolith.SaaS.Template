@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Shared.Features.Server.ExecutionContext;
 
 namespace Shared.Features.Messaging.Queries
 {

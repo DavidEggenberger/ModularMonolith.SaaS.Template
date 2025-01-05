@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Shared.Kernel.DomainKernel;
 
-
-namespace Shared.Kernel.BuildingBlocks
+namespace Shared.Features.Server.ExecutionContext
 {
     public interface IExecutionContext
     {

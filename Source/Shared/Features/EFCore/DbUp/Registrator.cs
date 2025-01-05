@@ -1,9 +1,8 @@
 ﻿using DbUp;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
-using Shared.Kernel.BuildingBlocks;
+using Shared.Features.Server.ExecutionContext;
 using System.Reflection;
 
 namespace Shared.Features.EFCore.DbUp

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks;
 
 namespace Shared.Features.Server.ExecutionContext
 {
