@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain.Exceptions;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
 using Shared.Features.Domain;
 using Shared.Features.Errors;
@@ -28,7 +27,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             };
         }
 
-        public void AddUser(Guid userId, TenantRole role)
+        public void AddMember(Guid userId, TenantRole role)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
@@ -43,26 +42,32 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             }
         }
 
-        public void ChangeRoleOfTenantMember(Guid userId, TenantRole newRole)
+        public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             if (CheckIfUserIsMember(userId) is false)
             {
-                throw new MemberNotFoundException();
+                throw Error.DomainException("User is not a member of the tenant", StatusCodes.Status409Conflict);
             }
 
             TenantMembership tenantMembership = Memberships.Single(m => m.UserId == userId);
+            
+            if (tenantMembership.Role == TenantRole.Admin && newRole != TenantRole.Admin && Memberships.Count(m => m.Role == TenantRole.Admin) == 1)
+            {
+                throw Error.DomainException("Cant remove only admin from tenant", StatusCodes.Status409Conflict);
+            }
+
             tenantMembership.UpdateRole(newRole);
         }
 
-        public void RemoveUser(Guid userId)
+        public void RemoveMember(Guid userId)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
             if (CheckIfUserIsMember(userId) is false)
             {
-                throw new MemberNotFoundException();
+                throw Error.DomainException("User is not a member of the tenant", StatusCodes.Status409Conflict);
             }
 
             var membership = Memberships.Single(m => m.UserId == userId);
@@ -74,7 +79,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             Memberships.Remove(Memberships.Single(m => m.UserId == userId));
         }
 
-        public void InviteUserToRole(string email, TenantRole role)
+        public void InviteUser(string email, TenantRole role)
         {
             ThrowIfCallerIsNotInRole(TenantRole.Admin);
 
@@ -84,19 +89,6 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             }
 
             Invitations.Add(TenantInvitation.Create(this, email, role));
-        }
-
-        public void DeleteTenantMembership(Guid membershipId)
-        {
-            ThrowIfCallerIsNotInRole(TenantRole.Admin);
-
-            var tenantMembership = Memberships.SingleOrDefault(t => t.Id == membershipId);
-            if (tenantMembership == null)
-            {
-                throw Error.NotFound(nameof(TenantMembership), membershipId);
-            }
-
-            Memberships.Remove(tenantMembership);
         }
 
         public bool CheckIfUserIsMember(Guid userId)
@@ -109,10 +101,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
             SubscriptionPlan = subscriptionPlanType;
         }
 
-
         public TenantDTO ToDTO() => new TenantDTO();
-        public TenantExtendedDTO ToDetailDTO() => new TenantExtendedDTO();
-
     }
 
     public class TenantEFConfiguration : IEntityTypeConfiguration<Tenant>

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
-using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain.Exceptions;
 using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users
@@ -46,7 +45,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users
         {
             if (CountOfOpenTabs == 0)
             {
-                throw new TabsAlreadyClosedException("User has no tabs to close");
+                return;
             }
             CountOfOpenTabs--;
         }

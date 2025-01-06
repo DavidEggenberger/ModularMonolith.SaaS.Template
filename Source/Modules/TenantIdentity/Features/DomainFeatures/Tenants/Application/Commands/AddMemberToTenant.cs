@@ -6,21 +6,21 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class AddUserToTenant : Command
+    public class AddMemberToTenant : Command
     {
         public Guid TenantId { get; set; }
         public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
-    public class AddUserToTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<AddUserToTenant>
+    public class AddMemberToTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<AddMemberToTenant>
     {
-        public AddUserToTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
+        public AddMemberToTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
-        public async Task HandleAsync(AddUserToTenant command, CancellationToken cancellationToken)
+        public async Task HandleAsync(AddMemberToTenant command, CancellationToken cancellationToken)
         {
             var tenant = await module.TenantIdentityDbContext.Tenants.GetEntityAsync(command.TenantId, command.TenantId);
 
-            tenant.AddUser(command.UserId, command.Role);
+            tenant.AddMember(command.UserId, command.Role);
 
             await module.TenantIdentityDbContext.SaveChangesAsync(cancellationToken);
         }

@@ -4,6 +4,7 @@ using Shared.Features.Server;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
 using Shared.Features.Messaging.Commands;
 using Shared.Features.Errors;
+using Shared.Kernel.DomainKernel;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
@@ -22,6 +23,11 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Com
             if (tenant == null)
             {
                 throw Error.NotFound(nameof(Tenant), command.TenantId);
+            }
+
+            if (executionContext.TenantRole != TenantRole.Admin)
+            {
+                throw Error.UnAuthorized;
             }
 
             module.TenantIdentityDbContext.Entry(tenant.Id).State = EntityState.Deleted;

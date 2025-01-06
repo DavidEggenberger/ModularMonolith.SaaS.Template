@@ -4,21 +4,21 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class RemoveUserFromTenant : Command
+    public class RemoveMemberFromTenant : Command
     {
         public Guid UserId { get; set; }
         public Guid TenantId { get; set; }
     }
 
-    public class RemoveUserFromTenantommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<RemoveUserFromTenant>
+    public class RemoveMemberFromTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<RemoveMemberFromTenant>
     {
-        public RemoveUserFromTenantommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) {}
+        public RemoveMemberFromTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) {}
 
-        public async Task HandleAsync(RemoveUserFromTenant command, CancellationToken cancellationToken)
+        public async Task HandleAsync(RemoveMemberFromTenant command, CancellationToken cancellationToken)
         {
             var tenant = await module.TenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
 
-            tenant.DeleteTenantMembership(command.UserId);
+            tenant.RemoveMember(command.UserId);
 
             module.TenantIdentityDbContext.Remove(tenant);
             await module.TenantIdentityDbContext.SaveChangesAsync();

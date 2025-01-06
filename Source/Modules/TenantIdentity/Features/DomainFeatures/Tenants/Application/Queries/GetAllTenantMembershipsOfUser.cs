@@ -14,7 +14,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Que
 
         public async Task<List<TenantMembershipDTO>> HandleAsync(GetAllTenantMembershipsOfUser query, CancellationToken cancellation)
         {
-            var tenantMemberships = await module.TenantIdentityDbContext.TenantMeberships.Where(tm => tm.UserId == query.ExecutingUserId).ToListAsync();
+            var tenantMemberships = await module.TenantIdentityDbContext.TenantMemberships.Where(tm => tm.UserId == query.ExecutingUserId).ToListAsync();
             return tenantMemberships.Select(tm => tm.ToDTO()).ToList();
         }
     }

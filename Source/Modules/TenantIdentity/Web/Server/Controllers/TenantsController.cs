@@ -30,26 +30,9 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         [HttpGet("{tenantId}")]
         public async Task<ActionResult<TenantDTO>> GetTenant([FromRoute] Guid tenantId)
         {
-            var tenant = await queryDispatcher.DispatchAsync<GetTenantByID, TenantDTO>(new GetTenantByID { TenantId = tenantId });
+            var tenant = await queryDispatcher.DispatchAsync<GetTenant, TenantDTO>(new GetTenant { TenantId = tenantId });
 
             return Ok(tenant);
-        }
-
-        [HttpGet("{tenantId}/details")]
-        public async Task<ActionResult<TenantExtendedDTO>> GetTenantDetail([FromRoute] Guid tenantId)
-        {
-            TenantExtendedDTO tenantDetail = await queryDispatcher.DispatchAsync<GetTenantDetailsByID, TenantExtendedDTO>(new GetTenantDetailsByID { TenantId = tenantId });
-
-            return Ok(tenantDetail);
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<TenantDTO>>> GetTenantMemberships()
-        {
-            var getTenantMemberships = new GetAllTenantMembershipsOfUser { ExecutingUserId = executionContext.UserId };
-            List<TenantMembershipDTO> tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(getTenantMemberships);
-            
-            return Ok(tenantMemberships);
         }
 
         [HttpPost]
@@ -57,12 +40,12 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             validationService.ThrowIfInvalidModel(createTenantDTO);
 
-            var createTenant = new CreateTenantWithAdmin
+            var createTenant = new CreateTenant
             {
                 AdminId = executionContext.UserId,
                 Name = createTenantDTO.Name
             };
-            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenantWithAdmin, TenantDTO>(createTenant);
+            var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, TenantDTO>(createTenant);
 
             var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser { ExecutingUserId = executionContext.UserId });
             await signInManager.RefreshSignInAsync(user);
@@ -78,28 +61,44 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
             return Ok();
         }
 
-        [HttpPost("memberships")]
-        public async Task<ActionResult> CreateTenantMembership(InviteUserToTenantDTO inviteUserToGroupDTO)
+        [HttpPost("{tenantId}/memberships")]
+        public async Task<ActionResult> AddMember([FromRoute] Guid tenantId, InviteUserToTenantDTO inviteUserToGroupDTO)
         {
-            
+            var addMember = new AddMemberToTenant
+            {
+                ExecutingUserId = executionContext.UserId,
+                
+            };
 
-            await commandDispatcher.DispatchAsync<AddUserToTenant>(null);
+            await commandDispatcher.DispatchAsync<AddMemberToTenant>(null);
             
             return Ok();
         }
 
-        [HttpPut("memberships")]
-        public async Task<ActionResult> UpdateTenantMembership(ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
+        [HttpPut("{tenantId}/memberships")]
+        public async Task<ActionResult> UpdateTenantMembership([FromRoute] Guid tenantId, ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
         {
-            await commandDispatcher.DispatchAsync<UpdateTenantMembership>(new UpdateTenantMembership { });
+            var updateRoleOfMemberInTenant = new UpdateRoleOfMemberInTenant
+            {
+
+            };
+
+            await commandDispatcher.DispatchAsync<UpdateRoleOfMemberInTenant>(updateRoleOfMemberInTenant);
 
             return Ok();
         }
 
-        [HttpDelete("memberships/{userId}")]
-        public async Task<ActionResult> DeleteTenantMembership(Guid id)
+        [HttpDelete("{tenantId}/memberships/{userId}")]
+        public async Task<ActionResult> RemoveMember([FromRoute] Guid tenantId, [FromRoute] Guid userId)
         {
-            await commandDispatcher.DispatchAsync<RemoveUserFromTenant>(new RemoveUserFromTenant { });
+            var removeMember = new RemoveMemberFromTenant
+            {
+                ExecutingUserId = executionContext.UserId,
+                TenantId = tenantId,
+                UserId = userId
+            };
+
+            await commandDispatcher.DispatchAsync<RemoveMemberFromTenant>(removeMember);
 
             return Ok();
         }

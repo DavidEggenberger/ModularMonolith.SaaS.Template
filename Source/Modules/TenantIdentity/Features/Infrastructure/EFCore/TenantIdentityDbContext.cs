@@ -28,7 +28,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
         public override DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<TenantInvitation> TenantInvitations { get; set; }
-        public DbSet<TenantMembership> TenantMeberships { get; set; }
+        public DbSet<TenantMembership> TenantMemberships { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
