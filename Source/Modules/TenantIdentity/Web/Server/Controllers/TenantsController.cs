@@ -53,21 +53,29 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
             return CreatedAtAction(nameof(CreateTenant), createdTenant);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteTenant([FromRoute] Guid id)
+        [HttpDelete("{tenantId}")]
+        public async Task<ActionResult> DeleteTenant([FromRoute] Guid tenantId)
         {
-            await commandDispatcher.DispatchAsync<DeleteTenant>(new DeleteTenant { ExecutingUserId = executionContext.UserId, TenantId = id });
+            var deleteTenant = new DeleteTenant
+            {
+                ExecutingUserId = executionContext.UserId,
+                TenantId = tenantId
+            };
+
+            await commandDispatcher.DispatchAsync<DeleteTenant>(deleteTenant);
 
             return Ok();
         }
 
         [HttpPost("{tenantId}/memberships")]
-        public async Task<ActionResult> AddMember([FromRoute] Guid tenantId, InviteUserToTenantDTO inviteUserToGroupDTO)
+        public async Task<ActionResult> AddMemberToTenant([FromRoute] Guid tenantId, InviteUserToTenantDTO inviteUserToGroupDTO)
         {
             var addMember = new AddMemberToTenant
             {
                 ExecutingUserId = executionContext.UserId,
-                
+                UserId = inviteUserToGroupDTO.UserId,
+                TenantId = inviteUserToGroupDTO.TenantId,
+                Role = inviteUserToGroupDTO.Role,
             };
 
             await commandDispatcher.DispatchAsync<AddMemberToTenant>(null);
@@ -75,21 +83,24 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
             return Ok();
         }
 
-        [HttpPut("{tenantId}/memberships")]
-        public async Task<ActionResult> UpdateTenantMembership([FromRoute] Guid tenantId, ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
+        [HttpPut("{tenantId}/memberships/{userId}")]
+        public async Task<ActionResult> UpdateTenantMembership([FromRoute] Guid tenantId, [FromRoute] Guid userId, ChangeRoleOfTenantMemberDTO changeRoleOfTeamMemberDTO)
         {
-            var updateRoleOfMemberInTenant = new UpdateRoleOfMemberInTenant
+            var updateTenantMembership = new UpdateTenantMembership
             {
-
+                ExecutingUserId = executionContext.UserId,
+                TenantId = tenantId,
+                Role = changeRoleOfTeamMemberDTO.Role,
+                UserId = userId
             };
 
-            await commandDispatcher.DispatchAsync<UpdateRoleOfMemberInTenant>(updateRoleOfMemberInTenant);
+            await commandDispatcher.DispatchAsync<UpdateTenantMembership>(updateTenantMembership);
 
             return Ok();
         }
 
         [HttpDelete("{tenantId}/memberships/{userId}")]
-        public async Task<ActionResult> RemoveMember([FromRoute] Guid tenantId, [FromRoute] Guid userId)
+        public async Task<ActionResult> RemoveMemberFromTenant([FromRoute] Guid tenantId, [FromRoute] Guid userId)
         {
             var removeMember = new RemoveMemberFromTenant
             {

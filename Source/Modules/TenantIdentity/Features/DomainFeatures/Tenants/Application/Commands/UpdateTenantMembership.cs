@@ -5,16 +5,16 @@ using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands
 {
-    public class UpdateRoleOfMemberInTenant : Command
+    public class UpdateTenantMembership : Command
     {
         public Guid TenantId { get; set; }
         public Guid UserId { get; set; }
         public TenantRole Role { get; set; }
     }
-    public class UpdateRoleOfMemberInTenantCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<UpdateRoleOfMemberInTenant>
+    public class UpdateTenantMembershipCommandHandler : ServerExecutionBase<TenantIdentityModule>, ICommandHandler<UpdateTenantMembership>
     {
-        public UpdateRoleOfMemberInTenantCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
-        public async Task HandleAsync(UpdateRoleOfMemberInTenant command, CancellationToken cancellationToken)
+        public UpdateTenantMembershipCommandHandler(IServiceProvider serviceProvider) : base(serviceProvider) { }
+        public async Task HandleAsync(UpdateTenantMembership command, CancellationToken cancellationToken)
         {
             var tenant = await module.TenantIdentityDbContext.GetTenantExtendedByIdAsync(command.TenantId);
 
