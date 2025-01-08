@@ -1,5 +1,6 @@
 ﻿using Shared.Features.Messaging.Commands;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands
@@ -15,7 +16,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Comma
 
         public async Task HandleAsync(SelectTenant command, CancellationToken cancellationToken)
         {
-            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(command.ExecutingUserId);
+            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(executionContext.UserId);
 
             if (user.SelectedTenantId == command.SelectedTenantId)
             {

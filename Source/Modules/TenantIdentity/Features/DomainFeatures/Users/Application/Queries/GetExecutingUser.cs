@@ -1,5 +1,6 @@
 ﻿using Shared.Features.Messaging.Queries;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries
@@ -13,7 +14,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queri
 
         public async Task<ApplicationUser> HandleAsync(GetExecutingUser query, CancellationToken cancellation)
         {
-            return await module.TenantIdentityDbContext.GetUserByIdAsync(query.ExecutingUserId);
+            return await module.TenantIdentityDbContext.GetUserByIdAsync(executionContext.UserId);
         }
     }
 }

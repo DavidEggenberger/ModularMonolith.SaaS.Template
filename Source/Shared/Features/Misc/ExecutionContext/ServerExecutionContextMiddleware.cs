@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Features.Server.ExecutionContext
+namespace Shared.Features.Misc.ExecutionContext
 {
     public class ServerExecutionContextMiddleware : IMiddleware
     {

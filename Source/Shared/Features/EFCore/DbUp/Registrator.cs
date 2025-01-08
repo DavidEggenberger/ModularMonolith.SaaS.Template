@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
-using Shared.Features.Server.ExecutionContext;
+using Shared.Features.Misc.ExecutionContext;
 using System.Reflection;
 
 namespace Shared.Features.EFCore.DbUp

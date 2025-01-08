@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Shared.Kernel.DomainKernel;
-using Shared.Features.Errors;
-using Shared.Features.Server.ExecutionContext;
 using Shared.Kernel.DomainKernel.Interfaces;
+using Shared.Features.Misc.ExecutionContext;
+using Shared.Features.Misc.Errors;
 
-namespace Shared.Features.Domain
+namespace Shared.Features.Misc.Domain
 {
     public abstract class Entity : IAuditable, IIdentifiable, IConcurrent
     {

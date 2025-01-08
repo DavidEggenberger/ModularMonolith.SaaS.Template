@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.Domain
+﻿namespace Shared.Features.Misc.Domain
 {
     public abstract class ValueObject
     {

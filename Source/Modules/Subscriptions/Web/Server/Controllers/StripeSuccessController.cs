@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
-using Shared.Features.Server;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.Queries;
+using Shared.Features.Misc;
 
 namespace Modules.Subscriptions.Web.Server.Controllers
 {

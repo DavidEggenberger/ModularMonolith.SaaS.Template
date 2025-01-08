@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Shared.Features.Errors.Exceptions
+namespace Shared.Features.Misc.Errors.Exceptions
 {
     public class InvalidEntityDeleteException : DomainException
     {

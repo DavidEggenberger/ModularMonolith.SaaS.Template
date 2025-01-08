@@ -3,7 +3,8 @@ using System.Security.Claims;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 
 namespace Modules.TenantIdentity.Features.Infrastructure
 {
@@ -13,7 +14,7 @@ namespace Modules.TenantIdentity.Features.Infrastructure
 
         public async Task<ClaimsPrincipal> CreateAsync(TUser user)
         {
-            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForExecutingUser, IEnumerable<Claim>>(new GetClaimsForExecutingUser { ExecutingUserId = user.Id });
+            var claimsForUser = await queryDispatcher.DispatchAsync<GetClaimsForExecutingUser, IEnumerable<Claim>>(new GetClaimsForExecutingUser { });
             
             var claimsIdentity = new ClaimsIdentity(
                 claims: claimsForUser, 

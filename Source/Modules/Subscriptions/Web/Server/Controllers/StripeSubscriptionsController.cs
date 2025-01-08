@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Queries;
-using Shared.Features.Server;
+using Shared.Features.Misc;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 
 namespace Modules.Subscriptions.Web.Server.Controllers

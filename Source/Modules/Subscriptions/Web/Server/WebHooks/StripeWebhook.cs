@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
-using Shared.Features.Server;
 using Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions.Application.Commands;
 using Modules.Subscriptions.Features;
+using Shared.Features.Misc;
 
 namespace Modules.Subscriptions.Web.Server.WebHooks
 {
@@ -37,7 +37,6 @@ namespace Modules.Subscriptions.Web.Server.WebHooks
 
                     var createTrialingSubscription = new CreateTrialingSubscription
                     {
-                        ExecutingUserId = Guid.Parse(userId),
                         StripeCustomerId = subscription.CustomerId,
                         CreatedStripeSubscription = subscription
                     };

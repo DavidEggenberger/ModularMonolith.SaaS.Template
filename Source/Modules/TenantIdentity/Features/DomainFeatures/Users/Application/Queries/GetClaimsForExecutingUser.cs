@@ -1,5 +1,6 @@
 ﻿using Shared.Features.Messaging.Queries;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
 using System.Threading;
@@ -16,7 +17,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queri
 
         public async Task<IEnumerable<Claim>> HandleAsync(GetClaimsForExecutingUser query, CancellationToken cancellation)
         {
-            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(query.ExecutingUserId);
+            var user = await module.TenantIdentityDbContext.GetUserByIdAsync(executionContext.UserId);
 
             List<Claim> claims = new List<Claim>
             {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.Server.ExecutionContext;
+using Shared.Features.Misc.ExecutionContext;
 
 namespace Shared.Features.Messaging.Queries
 {

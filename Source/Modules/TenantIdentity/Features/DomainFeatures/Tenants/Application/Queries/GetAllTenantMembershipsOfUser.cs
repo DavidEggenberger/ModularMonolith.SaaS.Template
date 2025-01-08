@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
 using Shared.Features.Messaging.Queries;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
@@ -14,7 +15,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Que
 
         public async Task<List<TenantMembershipDTO>> HandleAsync(GetAllTenantMembershipsOfUser query, CancellationToken cancellation)
         {
-            var tenantMemberships = await module.TenantIdentityDbContext.TenantMemberships.Where(tm => tm.UserId == query.ExecutingUserId).ToListAsync();
+            var tenantMemberships = await module.TenantIdentityDbContext.TenantMemberships.Where(tm => tm.UserId == executionContext.UserId).ToListAsync();
             return tenantMemberships.Select(tm => tm.ToDTO()).ToList();
         }
     }

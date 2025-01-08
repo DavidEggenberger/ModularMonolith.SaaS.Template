@@ -1,4 +1,4 @@
-﻿using Shared.Kernel.BuildingBlocks.IntegrationEvents;
+﻿using Shared.Kernel.BuildingBlocks.IntegrationMessages;
 using Shared.Kernel.DomainKernel;
 
 namespace Modules.Subscriptions.Public.IntegrationEvents

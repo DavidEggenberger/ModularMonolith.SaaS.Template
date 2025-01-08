@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.IntegrationEvents
+﻿namespace Shared.Kernel.BuildingBlocks.IntegrationMessages
 {
     public interface IIntegrationRequest<TResponse>
     {

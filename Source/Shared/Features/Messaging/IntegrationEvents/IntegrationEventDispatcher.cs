@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.IntegrationEvents;
+using Shared.Kernel.BuildingBlocks.IntegrationMessages;
 
 namespace Shared.Features.Messaging.IntegrationEvents
 {

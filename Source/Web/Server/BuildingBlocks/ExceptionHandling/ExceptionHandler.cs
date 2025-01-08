@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Shared.Features.Errors.Exceptions;
+using Shared.Features.Misc.Errors.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Shared.Kernel.DomainKernel;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 
-namespace Shared.Features.Server.ExecutionContext
+namespace Shared.Features.Misc.ExecutionContext
 {
     public class ServerExecutionContext : IExecutionContext
     {

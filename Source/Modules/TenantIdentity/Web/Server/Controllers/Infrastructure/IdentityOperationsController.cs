@@ -5,13 +5,13 @@ using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Shared.Features.Server;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
+using Shared.Features.Misc;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Infrastructure
 {
@@ -45,14 +45,14 @@ namespace Modules.TenantIdentity.Web.Server.Controllers.Infrastructure
         [HttpGet("selectTenant/{TenantId}")]
         public async Task<ActionResult> SelectTenant([FromRoute] Guid tenantId, [FromQuery] string redirectUri)
         {
-            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser { ExecutingUserId = executionContext.UserId });
+            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser());
 
-            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() { ExecutingUserId = user.Id };
+            var tenantMembershipsOfUserQuery = new GetAllTenantMembershipsOfUser() {  };
             var tenantMemberships = await queryDispatcher.DispatchAsync<GetAllTenantMembershipsOfUser, List<TenantMembershipDTO>>(tenantMembershipsOfUserQuery);
 
             if (tenantMemberships.Select(t => t.TenantId).Contains(tenantId))
             {
-                await commandDispatcher.DispatchAsync(new SelectTenant { ExecutingUserId = user.Id, SelectedTenantId = tenantId });
+                await commandDispatcher.DispatchAsync(new SelectTenant { SelectedTenantId = tenantId });
                 await signInManager.RefreshSignInAsync(user);
             }
             else

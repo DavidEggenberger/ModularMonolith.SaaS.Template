@@ -1,6 +1,6 @@
-﻿using Shared.Features.Errors.Exceptions;
+﻿using Shared.Features.Misc.Errors.Exceptions;
 
-namespace Shared.Features.Errors
+namespace Shared.Features.Misc.Errors
 {
     public static class Error
     {

@@ -3,11 +3,10 @@ using Shared.Features.Messaging.Commands;
 using Shared.Features.Messaging.IntegrationEvents;
 using Shared.Features.Messaging.Queries;
 using Shared.Features.Modules;
-using Shared.Features.Server.ExecutionContext;
 using Shared.Features.SignalR;
 using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 
-namespace Shared.Features.Server
+namespace Shared.Features.Misc.ExecutionContext
 {
     public class ServerExecutionBase<TModule> : ServerExecutionBase where TModule : IModule
     {

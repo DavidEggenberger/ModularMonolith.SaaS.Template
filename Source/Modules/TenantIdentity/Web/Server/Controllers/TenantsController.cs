@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System;
 using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
-using Shared.Features.Server;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Commands;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
 using Modules.TenantIdentity.Public.DTOs.Tenant.Operations;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
+using Shared.Features.Misc;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers
 {
@@ -47,7 +47,7 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
             };
             var createdTenant = await commandDispatcher.DispatchAsync<CreateTenant, TenantDTO>(createTenant);
 
-            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser { ExecutingUserId = executionContext.UserId });
+            var user = await queryDispatcher.DispatchAsync<GetExecutingUser, ApplicationUser>(new GetExecutingUser());
             await signInManager.RefreshSignInAsync(user);
             
             return CreatedAtAction(nameof(CreateTenant), createdTenant);
@@ -58,7 +58,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             var deleteTenant = new DeleteTenant
             {
-                ExecutingUserId = executionContext.UserId,
                 TenantId = tenantId
             };
 
@@ -72,7 +71,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             var addMember = new AddMemberToTenant
             {
-                ExecutingUserId = executionContext.UserId,
                 UserId = inviteUserToGroupDTO.UserId,
                 TenantId = inviteUserToGroupDTO.TenantId,
                 Role = inviteUserToGroupDTO.Role,
@@ -88,7 +86,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             var updateTenantMembership = new UpdateTenantMembership
             {
-                ExecutingUserId = executionContext.UserId,
                 TenantId = tenantId,
                 Role = changeRoleOfTeamMemberDTO.Role,
                 UserId = userId
@@ -104,7 +101,6 @@ namespace Modules.TenantIdentity.Web.Server.Controllers
         {
             var removeMember = new RemoveMemberFromTenant
             {
-                ExecutingUserId = executionContext.UserId,
                 TenantId = tenantId,
                 UserId = userId
             };

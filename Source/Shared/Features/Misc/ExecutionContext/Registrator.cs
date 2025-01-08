@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Shared.Features.Server.ExecutionContext
+namespace Shared.Features.Misc.ExecutionContext
 {
     public static class Registrator
     {

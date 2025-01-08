@@ -7,8 +7,8 @@ using Shared.Features.EFCore.Configuration;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
-using Shared.Features.Errors;
-using Shared.Features.Server.ExecutionContext;
+using Shared.Features.Misc.ExecutionContext;
+using Shared.Features.Misc.Errors;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.EFCore
 {

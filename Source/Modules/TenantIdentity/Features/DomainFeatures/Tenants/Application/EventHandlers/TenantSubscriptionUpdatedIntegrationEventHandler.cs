@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Public.IntegrationEvents;
 using Shared.Features.Messaging.IntegrationEvents;
-using Shared.Features.Server;
+using Shared.Features.Misc;
+using Shared.Features.Misc.ExecutionContext;
 using System.Threading;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.EventHandlers
