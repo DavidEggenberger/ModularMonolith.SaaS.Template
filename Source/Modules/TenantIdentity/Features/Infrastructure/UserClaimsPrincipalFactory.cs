@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
-using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
 using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
+using Shared.Kernel.Constants.Auth;
 
 namespace Modules.TenantIdentity.Features.Infrastructure
 {

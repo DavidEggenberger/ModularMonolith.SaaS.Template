@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Auth.Constants
+﻿namespace Shared.Kernel.Constants.Auth
 {
     public class PolicyConstants
     {

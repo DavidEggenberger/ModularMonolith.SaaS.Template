@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using System.Security.Claims;
 using Modules.TenantIdentity.Features.Infrastructure;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
@@ -18,6 +17,7 @@ using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
 using Shared.Features.Configuration;
+using Shared.Kernel.Constants.Auth;
 
 namespace Modules.TenantIdentity.Web.Server
 {

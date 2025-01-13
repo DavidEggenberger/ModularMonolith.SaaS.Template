@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Kernel.BuildingBlocks.Auth.Constants;
 using Shared.Kernel.Extensions.ClaimsPrincipal;
 using System;
 using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Commands;
 using Shared.Features.Misc;
+using Shared.Kernel.Constants.Auth;
 
 namespace Modules.TenantIdentity.Web.Server.Controllers.Infrastructure
 {

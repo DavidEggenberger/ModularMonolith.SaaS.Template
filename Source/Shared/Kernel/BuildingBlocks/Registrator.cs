@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Shared.Kernel.BuildingBlocks.Auth;
 
 namespace Shared.Kernel.BuildingBlocks
 {
