@@ -6,9 +6,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
-using Shared.Kernel.Constants.Endpoints;
 using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
 using Shared.Kernel.Constants.Auth;
+using Shared.Kernel.Constants;
 
 namespace Web.Client.BuildingBlocks.Auth
 {

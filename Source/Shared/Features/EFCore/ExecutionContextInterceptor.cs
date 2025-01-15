@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Shared.Features.Misc.Domain;
+using Shared.Features.Misc.Errors;
 using Shared.Features.Misc.ExecutionContext;
 
 namespace Shared.Features.EFCore
@@ -16,6 +17,11 @@ namespace Shared.Features.EFCore
                 entity.ExecutionContext = materializationData
                     .Context
                     .GetService<IExecutionContext>();
+
+                if (entity.TenantId != entity.ExecutionContext.TenantId)
+                {
+                    throw Error.UnAuthorized;
+                }
             }
 
             return instance;

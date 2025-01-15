@@ -14,10 +14,6 @@ namespace Shared.Features.EFCore
             {
                 throw Error.NotFound(typeof(TEntity).Name, entityId); 
             }
-            if (entity.TenantId != owningTenantId)
-            {
-                throw Error.UnAuthorized;
-            }
 
             return entity;
         }
@@ -28,10 +24,6 @@ namespace Shared.Features.EFCore
             if (entity == null)
             {
                 throw Error.NotFound(typeof(TEntity).Name, entityId);
-            }
-            if (entity.TenantId != tenantId)
-            {
-                throw Error.UnAuthorized;
             }
 
             return entity;
