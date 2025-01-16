@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.MultiTenancy;
 using Shared.Features.EFCore.MultiTenancy.Exceptions;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using Shared.Kernel.DomainKernel.Interfaces;
 

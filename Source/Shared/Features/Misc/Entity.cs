@@ -5,7 +5,7 @@ using Shared.Kernel.DomainKernel.Interfaces;
 using Shared.Features.Misc.ExecutionContext;
 using Shared.Features.Misc.Errors;
 
-namespace Shared.Features.Misc.Domain
+namespace Shared.Features.Misc
 {
     public abstract class Entity : IAuditable, IIdentifiable, IConcurrent
     {
@@ -24,7 +24,7 @@ namespace Shared.Features.Misc.Domain
         [NotMapped]
         public IExecutionContext ExecutionContext { get; set; }
 
-        public void ThrowIfCallerIsNotInRole(TenantRole role)
+        public void EnsureCallerRole(TenantRole role)
         {
             if (ExecutionContext.TenantRole != role)
             {

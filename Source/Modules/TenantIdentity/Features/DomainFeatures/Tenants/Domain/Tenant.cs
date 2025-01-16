@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 using Shared.Features.Misc.Errors;
 using Shared.Kernel.DomainKernel;
 
@@ -29,7 +29,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 
         public void AddMember(Guid userId, TenantRole role)
         {
-            ThrowIfCallerIsNotInRole(TenantRole.Admin);
+            EnsureCallerRole(TenantRole.Admin);
 
             TenantMembership tenantMembership;
             if ((tenantMembership = Memberships.SingleOrDefault(m => m.UserId == userId)) is not null)
@@ -44,7 +44,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 
         public void ChangeRoleOfMember(Guid userId, TenantRole newRole)
         {
-            ThrowIfCallerIsNotInRole(TenantRole.Admin);
+            EnsureCallerRole(TenantRole.Admin);
 
             if (CheckIfUserIsMember(userId) is false)
             {
@@ -63,7 +63,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 
         public void RemoveMember(Guid userId)
         {
-            ThrowIfCallerIsNotInRole(TenantRole.Admin);
+            EnsureCallerRole(TenantRole.Admin);
 
             if (CheckIfUserIsMember(userId) is false)
             {
@@ -81,7 +81,7 @@ namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 
         public void InviteUser(string email, TenantRole role)
         {
-            ThrowIfCallerIsNotInRole(TenantRole.Admin);
+            EnsureCallerRole(TenantRole.Admin);
 
             if (Invitations.Any(invitation => invitation.Email == email))
             {

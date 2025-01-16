@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Public.DTOs.Tenant;
 using Shared.Kernel.DomainKernel;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain
 {

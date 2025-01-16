@@ -1,4 +1,4 @@
-﻿using Shared.Features.Configuration;
+﻿using Shared.Features.Misc.Configuration;
 
 namespace Shared.Features.EFCore.Configuration
 {

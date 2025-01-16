@@ -1,6 +1,4 @@
-﻿@using Shared.Client.Components.Modals
-@inherits LayoutComponentBase
-@inject IModalService modalService
+﻿@inherits LayoutComponentBase
 
 <div class="h-screen w-screen text-primary-500">
     <nav class="ml-auto mr-auto flex h-[65px] w-full max-w-[1400px] flex-row content-start items-end justify-between p-5 pb-0">
@@ -25,17 +23,3 @@
         @Body
     </main>
 </div>
-
-@code {
-    private IModalReference modalReference;
-
-    public void OpenSignUpModal()
-    {
-        var modelParameters = new ModalParameters
-        {
-            { nameof(SignInModal.CancelRequestedCallback), new EventCallback(this, () => modalReference.Close()) },
-        };
-
-        modalReference = modalService.Show<SignInModal>(string.Empty, modelParameters, DefaultModalOptions.Modal);
-    }
-}

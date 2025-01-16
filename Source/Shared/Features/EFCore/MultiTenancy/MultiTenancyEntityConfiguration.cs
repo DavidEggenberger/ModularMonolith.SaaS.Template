@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 using System.Reflection;
 
 namespace Shared.Features.EFCore.MultiTenancy

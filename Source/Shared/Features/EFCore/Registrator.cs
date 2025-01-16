@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Features.Configuration;
 using Shared.Features.EFCore.Configuration;
 using Shared.Features.EFCore.DbUp;
+using Shared.Features.Misc.Configuration;
 
 namespace Shared.Features.EFCore
 {

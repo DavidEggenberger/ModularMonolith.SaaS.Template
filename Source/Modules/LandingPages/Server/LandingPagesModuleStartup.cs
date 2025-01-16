@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Modules;
 using System.Reflection;
 
 namespace Modules.LandingPages.Web

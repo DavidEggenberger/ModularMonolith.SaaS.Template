@@ -9,7 +9,7 @@ using Modules.Subscriptions.Web.Server;
 using Modules.TenantIdentity.Features;
 using Modules.TenantIdentity.Web.Server;
 using Shared.Features;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Modules;
 using Shared.Kernel.BuildingBlocks;
 using Web.Server.BuildingBlocks;
 

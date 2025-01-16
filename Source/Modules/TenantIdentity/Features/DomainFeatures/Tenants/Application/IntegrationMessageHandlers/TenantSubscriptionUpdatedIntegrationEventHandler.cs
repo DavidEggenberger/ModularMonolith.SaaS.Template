@@ -5,7 +5,7 @@ using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using System.Threading;
 
-namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.EventHandlers
+namespace Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.IntegrationMessageHandlers
 {
     public class TenantSubscriptionUpdatedIntegrationEventHandler : ServerExecutionBase<TenantIdentityModule>, IIntegrationEventHandler<TenantSubscriptionPlanUpdatedIntegrationEvent>
     {

@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Modules.Subscriptions.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
-using Shared.Features.Configuration;
 using Shared.Features.EFCore;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Configuration;
+using Shared.Features.Misc.Modules;
 using Stripe;
 
 namespace Modules.Subscriptions.Web.Server

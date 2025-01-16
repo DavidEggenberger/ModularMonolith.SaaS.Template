@@ -1,6 +1,8 @@
 ﻿using Blazored.Modal;
 using Blazored.Modal.Services;
 using Microsoft.AspNetCore.Components;
+using Modules.LandingPages.Web.Components;
+using Shared.Client.Components.Modals;
 
 namespace Modules.LandingPages.Web
 {
@@ -31,12 +33,12 @@ namespace Modules.LandingPages.Web
 
         public void OpenSignUpModal()
         {
-            //var modelParameters = new ModalParameters
-            //{
-            //    { nameof(SignInModal.CancelRequestedCallback), new EventCallback(this, () => modalReference.Close()) }
-            //};
+            var modelParameters = new ModalParameters
+            {
+                { nameof(SignInModal.CancelRequestedCallback), new EventCallback(null, () => modalReference.Close()) }
+            };
 
-            //modalReference = ModalService.Show<SignUpModal>(string.Empty, modelParameters, DefaultModalOptions.Options);
+            modalReference = ModalService.Show<SignUpModal>(string.Empty, modelParameters, DefaultModalOptions.Modal);
         }
     }
 }

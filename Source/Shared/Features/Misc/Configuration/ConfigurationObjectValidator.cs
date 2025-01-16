@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace Shared.Features.Configuration
+namespace Shared.Features.Misc.Configuration
 {
     public abstract class ConfigurationObjectValidator<TConfiguration> : IValidateOptions<TConfiguration> where TConfiguration : ConfigurationObject
     {

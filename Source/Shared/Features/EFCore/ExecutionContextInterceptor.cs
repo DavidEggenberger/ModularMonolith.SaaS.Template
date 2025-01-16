@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 using Shared.Features.Misc.Errors;
 using Shared.Features.Misc.ExecutionContext;
 

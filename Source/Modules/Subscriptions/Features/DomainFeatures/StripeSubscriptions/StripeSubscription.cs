@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
 using Shared.Kernel.DomainKernel;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeSubscriptions
 {

@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
 using Modules.TenantIdentity.Features.Infrastructure;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Modules;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -16,8 +15,9 @@ using System.Threading.Tasks;
 using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Shared.Features.EFCore;
-using Shared.Features.Configuration;
 using Shared.Kernel.Constants.Auth;
+using Shared.Features.Misc.Modules;
+using Shared.Features.Misc.Configuration;
 
 namespace Modules.TenantIdentity.Web.Server
 {

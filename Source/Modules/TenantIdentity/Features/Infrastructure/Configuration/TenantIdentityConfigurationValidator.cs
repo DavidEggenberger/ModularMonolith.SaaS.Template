@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
-using Shared.Features.Configuration;
+using Shared.Features.Misc.Configuration;
 
 namespace Modules.TenantIdentity.Features.Infrastructure.Configuration
 {

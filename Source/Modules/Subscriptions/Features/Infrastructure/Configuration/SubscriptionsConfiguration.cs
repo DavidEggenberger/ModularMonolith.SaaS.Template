@@ -1,5 +1,5 @@
 ﻿using Modules.Subscriptions.Features.Infrastructure.StripePayments;
-using Shared.Features.Configuration;
+using Shared.Features.Misc.Configuration;
 using Shared.Kernel.DomainKernel;
 
 namespace Modules.Subscriptions.Features.Infrastructure.Configuration

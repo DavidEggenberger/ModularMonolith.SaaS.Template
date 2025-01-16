@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 using Shared.Features.Misc.Errors;
 
 namespace Shared.Features.EFCore

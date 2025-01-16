@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using Shared.Features.Misc.Domain;
+using Shared.Features.Misc;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers
 {

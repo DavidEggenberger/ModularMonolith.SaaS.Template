@@ -2,7 +2,7 @@
 using Shared.Features.Messaging.Commands;
 using Shared.Features.Messaging.IntegrationEvents;
 using Shared.Features.Messaging.Queries;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Modules;
 using Shared.Features.SignalR;
 using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
 

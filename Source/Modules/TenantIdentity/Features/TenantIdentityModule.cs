@@ -1,6 +1,6 @@
 ﻿using Modules.TenantIdentity.Features.Infrastructure.Configuration;
 using Modules.TenantIdentity.Features.Infrastructure.EFCore;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Modules;
 using System.Reflection;
 
 namespace Modules.TenantIdentity.Features

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Shared.Features.Configuration
+namespace Shared.Features.Misc.Configuration
 {
     public static class Registrator
     {
@@ -19,8 +19,8 @@ namespace Shared.Features.Configuration
             return services;
         }
 
-        public static IServiceCollection RegisterConfiguration<TConfiguration, TConfigurationValidator>(this IServiceCollection services, IConfiguration configuration) 
-            where TConfiguration : ConfigurationObject, new() 
+        public static IServiceCollection RegisterConfiguration<TConfiguration, TConfigurationValidator>(this IServiceCollection services, IConfiguration configuration)
+            where TConfiguration : ConfigurationObject, new()
             where TConfigurationValidator : ConfigurationObjectValidator<TConfiguration>, new()
         {
             services.AddScoped(sp =>

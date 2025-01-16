@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shared.Features.Messaging;
 
-namespace Shared.Features.Modules
+namespace Shared.Features.Misc.Modules
 {
     public static class Registrator
     {
@@ -23,7 +23,7 @@ namespace Shared.Features.Modules
         }
 
         public static IServiceCollection AddModule<TModule, TModuleStartup>(this IServiceCollection services, IConfiguration config = null)
-            where TModule : class, IModule 
+            where TModule : class, IModule
             where TModuleStartup : IModuleStartup
         {
             // Register assembly in MVC so it can find controllers of the module

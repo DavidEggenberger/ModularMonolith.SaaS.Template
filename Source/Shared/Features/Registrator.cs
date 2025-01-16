@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.Messaging;
 using Shared.Features.EFCore;
 using Shared.Features.EmailSender;
-using Shared.Features.Modules;
 using Shared.Features.SignalR;
 using Shared.Features.Misc.ExecutionContext;
+using Shared.Features.Misc.Modules;
 
 namespace Shared.Features
 {

@@ -1,4 +1,4 @@
-﻿namespace Shared.Features.Configuration
+﻿namespace Shared.Features.Misc.Configuration
 {
     public class ConfigurationObject
     {

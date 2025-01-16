@@ -1,6 +1,6 @@
 ﻿using Modules.Subscriptions.Features.Infrastructure.Configuration;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
-using Shared.Features.Modules;
+using Shared.Features.Misc.Modules;
 using System.Reflection;
 
 namespace Modules.Subscriptions.Features
