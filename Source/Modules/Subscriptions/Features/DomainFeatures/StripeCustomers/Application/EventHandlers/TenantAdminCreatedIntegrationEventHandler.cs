@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Features.Infrastructure.EFCore;
-using Modules.TenantIdentity.Public.IntegrationEvents;
-using Shared.Features.Messaging.IntegrationEvents;
+using Modules.TenantIdentity.Public.IntegrationMessages;
+using Shared.Features.Messaging.IntegrationMessages;
 using Stripe;
 
 namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.EventHandlers
 {
-    public class TenantAdminCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminCreatedIntegrationEvent>
+    public class TenantAdminCreatedIntegrationEventHandler : IIntegrationEventHandler<TenantAdminCreatedEvent>
     {
         private readonly SubscriptionsDbContext subscriptionsDbContext;
 
@@ -15,7 +15,7 @@ namespace Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Applicat
             this.subscriptionsDbContext = subscriptionsDbContext;
         }
 
-        public async Task HandleAsync(TenantAdminCreatedIntegrationEvent tenantAdminCreatedIntegrationEvent, CancellationToken cancellation)
+        public async Task HandleAsync(TenantAdminCreatedEvent tenantAdminCreatedIntegrationEvent, CancellationToken cancellation)
         {
             var stripeCustomer = await subscriptionsDbContext.StripeCustomers.FirstOrDefaultAsync(stripeCustomer => stripeCustomer.UserId == tenantAdminCreatedIntegrationEvent.UserId);
             if (stripeCustomer == null)

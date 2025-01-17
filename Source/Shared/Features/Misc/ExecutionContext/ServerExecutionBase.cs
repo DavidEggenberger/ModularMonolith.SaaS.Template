@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Features.Messaging.Commands;
-using Shared.Features.Messaging.IntegrationEvents;
+using Shared.Features.Messaging.IntegrationMessages;
 using Shared.Features.Messaging.Queries;
 using Shared.Features.Misc.Modules;
 using Shared.Features.SignalR;
@@ -23,7 +23,7 @@ namespace Shared.Features.Misc.ExecutionContext
         protected readonly IExecutionContext executionContext;
         protected readonly ICommandDispatcher commandDispatcher;
         protected readonly IQueryDispatcher queryDispatcher;
-        protected readonly IIntegrationEventDispatcher integrationEventDispatcher;
+        protected readonly IIntegrationMessageDispatcher integrationMessageDispatcher;
         protected readonly IValidationService validationService;
         protected readonly INotificationHubService notificationHubService;
 
@@ -32,7 +32,7 @@ namespace Shared.Features.Misc.ExecutionContext
             executionContext = serviceProvider.GetRequiredService<IExecutionContext>();
             commandDispatcher = serviceProvider.GetRequiredService<ICommandDispatcher>();
             queryDispatcher = serviceProvider.GetRequiredService<IQueryDispatcher>();
-            integrationEventDispatcher = serviceProvider.GetRequiredService<IIntegrationEventDispatcher>();
+            integrationMessageDispatcher = serviceProvider.GetRequiredService<IIntegrationMessageDispatcher>();
             validationService = serviceProvider.GetRequiredService<IValidationService>();
             notificationHubService = serviceProvider.GetRequiredService<INotificationHubService>();
         }

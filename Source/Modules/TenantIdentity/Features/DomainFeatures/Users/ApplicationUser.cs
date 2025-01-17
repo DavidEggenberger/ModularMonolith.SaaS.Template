@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Domain;
-using Shared.Kernel.BuildingBlocks.Auth;
+using Shared.Kernel.DomainKernel.Interfaces;
 
 namespace Modules.TenantIdentity.Features.DomainFeatures.Users
 {

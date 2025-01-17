@@ -6,7 +6,7 @@ using Shared.Client.Components.Modals;
 
 namespace Modules.LandingPages.Web
 {
-    public partial class LandingPageLayout
+    public partial class LandingPagesLayout : LayoutComponentBase
     {
         [Inject]
         public IModalService ModalService { get; set; }

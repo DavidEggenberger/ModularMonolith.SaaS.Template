@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Kernel.BuildingBlocks.Auth;
 using Stripe.Checkout;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers;
 using Modules.Subscriptions.Features.DomainFeatures.StripeCustomers.Application.Queries;
 using Shared.Features.Misc;
+using Shared.Kernel.DomainKernel.Interfaces;
 
 namespace Modules.Subscriptions.Web.Server.Controllers
 {
