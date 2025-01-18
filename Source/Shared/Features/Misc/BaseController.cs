@@ -4,7 +4,7 @@ using Shared.Features.Messaging.Commands;
 using Shared.Features.Messaging.IntegrationMessages;
 using Shared.Features.Messaging.Queries;
 using Shared.Features.Misc.ExecutionContext;
-using Shared.Kernel.BuildingBlocks.Services.ModelValidation;
+using Shared.Features.Misc.Services.ModelValidation;
 
 namespace Shared.Features.Misc
 {

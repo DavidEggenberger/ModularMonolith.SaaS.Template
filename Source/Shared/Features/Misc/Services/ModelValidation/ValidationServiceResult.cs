@@ -1,4 +1,4 @@
-﻿namespace Shared.Kernel.BuildingBlocks.Services.ModelValidation
+﻿namespace Shared.Features.Misc.Services.ModelValidation
 {
     public class ValidationServiceResult
     {

@@ -3,16 +3,16 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc;
+using Shared.Client.Types;
 
-namespace Web.Client.BuildingBlocks.Http
+namespace Shared.Client.BuildingBlocks.Http
 {
-    public class AuthorizedHttpClientService
+    public class HttpClientService
     {
         private HttpClient httpClient;
-        public AuthorizedHttpClientService(IHttpClientFactory httpClientFactory)
+        public HttpClientService(IHttpClientFactory httpClientFactory)
         {
-            httpClient = httpClientFactory.CreateClient(HttpClientConstants.AuthenticatedHttpClient);
+            httpClient = httpClientFactory.CreateClient(HttpClientConstants.DefaultHttpClient);
             httpClient.BaseAddress = new Uri(httpClient.BaseAddress.ToString());
         }
         public async Task<T> GetFromAPIAsync<T>(string route)
@@ -76,6 +76,13 @@ namespace Web.Client.BuildingBlocks.Http
         public void AddDefaultHeader(string name, string value)
         {
             httpClient.DefaultRequestHeaders.Add(name, value);
+        }
+    }
+    public class HttpClientServiceException : Exception
+    {
+        public HttpClientServiceException(string message) : base(message)
+        {
+
         }
     }
 }

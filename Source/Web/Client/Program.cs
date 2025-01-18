@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Threading.Tasks;
-using Web.Client.BuildingBlocks;
 using Shared.Kernel.BuildingBlocks;
+using Shared.Client.BuildingBlocks;
 
 namespace Web.Client
 {

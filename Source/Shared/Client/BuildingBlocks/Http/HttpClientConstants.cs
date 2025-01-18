@@ -1,4 +1,4 @@
-﻿namespace Web.Client.BuildingBlocks.Http
+﻿namespace Shared.Client.BuildingBlocks.Http
 {
     public class HttpClientConstants
     {

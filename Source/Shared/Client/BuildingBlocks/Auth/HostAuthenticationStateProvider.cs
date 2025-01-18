@@ -10,7 +10,7 @@ using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
 using Shared.Kernel.Constants.Auth;
 using Shared.Kernel.Constants;
 
-namespace Web.Client.BuildingBlocks.Auth
+namespace Shared.Client.BuildingBlocks.Auth
 {
     public class HostAuthenticationStateProvider : AuthenticationStateProvider
     {
@@ -34,7 +34,7 @@ namespace Web.Client.BuildingBlocks.Auth
 
         private async ValueTask<ClaimsPrincipal> GetUser()
         {
-            if (DateTime.Now < (userLastCheck + UserCacheRefreshInterval))
+            if (DateTime.Now < userLastCheck + UserCacheRefreshInterval)
             {
                 return cachedUser;
             }

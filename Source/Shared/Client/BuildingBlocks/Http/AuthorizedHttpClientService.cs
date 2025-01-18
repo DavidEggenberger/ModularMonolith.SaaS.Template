@@ -3,16 +3,20 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System;
 using System.Net.Http.Json;
-using Microsoft.AspNetCore.Mvc;
+using Shared.Client.Types;
+using Blazored.Modal;
+using Shared.Client.Components.Modals;
+using System.Net;
+using Shared.Client.Layouts.MainLayout;
 
-namespace Web.Client.BuildingBlocks.Http
+namespace Shared.Client.BuildingBlocks.Http
 {
-    public class HttpClientService
+    public class AuthorizedHttpClientService
     {
         private HttpClient httpClient;
-        public HttpClientService(IHttpClientFactory httpClientFactory)
+        public AuthorizedHttpClientService(IHttpClientFactory httpClientFactory)
         {
-            httpClient = httpClientFactory.CreateClient(HttpClientConstants.DefaultHttpClient);
+            httpClient = httpClientFactory.CreateClient(HttpClientConstants.AuthenticatedHttpClient);
             httpClient.BaseAddress = new Uri(httpClient.BaseAddress.ToString());
         }
         public async Task<T> GetFromAPIAsync<T>(string route)
@@ -32,6 +36,16 @@ namespace Web.Client.BuildingBlocks.Http
             if (httpResponseMessage.IsSuccessStatusCode is false)
             {
                 ProblemDetails problemDetails = JsonSerializer.Deserialize<ProblemDetails>(await httpResponseMessage.Content.ReadAsStringAsync());
+
+                var parameters = new ModalParameters
+                {
+                    { nameof(ErrorModal.ModalExitedCallback), () => { MainLayout.ModalReference.Close(); } },
+                    { nameof(ErrorModal.Title), problemDetails.Title },
+                    { nameof(ErrorModal.Detail), problemDetails.Detail }
+                };
+
+                MainLayout.ModalReference = MainLayout.ModalService.Show<ErrorModal>(string.Empty, parameters, DefaultModalOptions.Modal);
+
                 throw new HttpClientServiceException(problemDetails.Detail);
             }
             return default;
@@ -76,13 +90,6 @@ namespace Web.Client.BuildingBlocks.Http
         public void AddDefaultHeader(string name, string value)
         {
             httpClient.DefaultRequestHeaders.Add(name, value);
-        }
-    }
-    public class HttpClientServiceException : Exception
-    {
-        public HttpClientServiceException(string message) : base(message)
-        {
-
         }
     }
 }

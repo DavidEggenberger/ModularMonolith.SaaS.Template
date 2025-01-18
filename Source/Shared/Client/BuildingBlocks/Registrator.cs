@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Shared.Client.BuildingBlocks.Auth;
+using Shared.Client.BuildingBlocks.Auth.Antiforgery;
+using Shared.Client.BuildingBlocks.Http;
 using System;
 using System.Net.Http.Headers;
-using Web.Client.BuildingBlocks.Auth;
-using Web.Client.BuildingBlocks.Auth.Antiforgery;
-using Web.Client.BuildingBlocks.Http;
 
-namespace Web.Client.BuildingBlocks
+namespace Shared.Client.BuildingBlocks
 {
     public static class Registrator
     {

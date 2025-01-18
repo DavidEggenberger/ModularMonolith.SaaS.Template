@@ -1,14 +1,14 @@
-﻿﻿using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
-namespace Web.Client.BuildingBlocks.Auth.Antiforgery
+namespace Shared.Client.BuildingBlocks.Auth.Antiforgery
 {
     public class AntiforgeryTokenService
     {
         private readonly IJSRuntime jSRuntime;
         public AntiforgeryTokenService(IJSRuntime jsRuntime)
         {
-            this.jSRuntime = jsRuntime;
+            jSRuntime = jsRuntime;
         }
         public async Task<string> GetAntiforgeryTokenAsync()
         {
