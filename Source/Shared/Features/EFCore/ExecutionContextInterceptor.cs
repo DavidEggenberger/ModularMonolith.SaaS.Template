@@ -6,7 +6,7 @@ using Shared.Features.Misc.ExecutionContext;
 
 namespace Shared.Features.EFCore
 {
-    public class ExecutionContextInterceptor : SaveChangesInterceptor
+    public class ExecutionContextInterceptor : IMaterializationInterceptor
     {
         public object InitializedInstance(
             MaterializationInterceptionData materializationData,
