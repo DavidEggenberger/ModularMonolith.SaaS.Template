@@ -2,7 +2,7 @@
 
 namespace Shared.Client.Components.Modals
 {
-    public partial class ErrorModal
+    public partial class ErrorModal : ComponentBase
     {
         [Parameter]
         public string Title { get; set; }
@@ -11,6 +11,6 @@ namespace Shared.Client.Components.Modals
         public string Detail { get; set; }
 
         [Parameter]
-        public Action ModalExitedCallback { get; set; }
+        public EventCallback ModalExitedCallback { get; set; }
     }
 }

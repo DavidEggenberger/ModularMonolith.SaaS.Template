@@ -1,5 +1,4 @@
 ﻿using Microsoft.JSInterop;
-using System.Threading.Tasks;
 
 namespace Shared.Client.BuildingBlocks.Auth.Antiforgery
 {

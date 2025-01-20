@@ -1,5 +1,4 @@
 ﻿using Shared.Features.Messaging.Commands;
-using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using Shared.Kernel.DomainKernel;
 using System.Threading;

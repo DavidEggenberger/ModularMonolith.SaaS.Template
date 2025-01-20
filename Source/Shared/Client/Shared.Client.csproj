@@ -32,4 +32,8 @@
     <ProjectReference Include="..\Kernel\Shared.Kernel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Input\" />
+  </ItemGroup>
+
 </Project>

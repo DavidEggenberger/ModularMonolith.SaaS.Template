@@ -1,12 +1,8 @@
-﻿using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using System;
+﻿using System.Text.Json;
 using System.Net.Http.Json;
 using Shared.Client.Types;
 using Blazored.Modal;
 using Shared.Client.Components.Modals;
-using System.Net;
 using Shared.Client.Layouts.MainLayout;
 
 namespace Shared.Client.BuildingBlocks.Http

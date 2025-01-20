@@ -1,5 +1,4 @@
 ﻿using Shared.Features.Messaging.Queries;
-using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using Shared.Kernel.Constants.Auth;
 using System.Security.Claims;

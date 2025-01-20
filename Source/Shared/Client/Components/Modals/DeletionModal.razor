@@ -1,1 +1,25 @@
-﻿
+﻿<div class="">
+    <div class="grid-cols-[60px_1fr] grid max-w-[350px] gap-x-5 p-5 pt-7">
+        <div>
+            <img src="/icons/app/warning.png" />
+        </div>
+        <div class="flex flex-col">
+            <div>
+                <h3 class="mb-1 font-bold">@Title</h3>
+            </div>
+            <div class="mb-7">
+                <h3>@Text</h3>
+            </div>
+        </div>
+    </div>
+    <div class="bg-gray-100 flex flex-row justify-end gap-x-3 rounded-b-md p-3.5">
+        <button @onclick="async() => await DeletionNotRequestedCallback.InvokeAsync()"
+                class="w-[65px] font-semibold rounded-[3px] shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 p-[5px] text-[15px] bg-white">
+            Cancel
+        </button>
+        <button @onclick="async() => await DeletionRequestedCallback.InvokeAsync()"
+                class="font-semibold text-white rounded-[3px] p-[5px] text-[15px] bg-danger-600 hover:bg-danger-500">
+            Yes, @RemoveDeleteButtonNaming
+        </button>
+    </div>
+</div>

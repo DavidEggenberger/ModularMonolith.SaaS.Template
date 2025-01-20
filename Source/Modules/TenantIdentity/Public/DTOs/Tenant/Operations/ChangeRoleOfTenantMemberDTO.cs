@@ -1,5 +1,4 @@
 ﻿using Shared.Kernel.DomainKernel;
-using System;
 
 namespace Modules.TenantIdentity.Public.DTOs.Tenant.Operations
 {

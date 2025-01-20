@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Shared.Client.BuildingBlocks.Auth;
 using Shared.Client.BuildingBlocks.Auth.Antiforgery;
 using Shared.Client.BuildingBlocks.Http;
-using System;
 using System.Net.Http.Headers;
 
 namespace Shared.Client.BuildingBlocks

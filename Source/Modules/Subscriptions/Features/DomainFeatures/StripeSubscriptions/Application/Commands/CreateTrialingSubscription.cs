@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Modules.Subscriptions.Public.IntegrationMessages;
 using Shared.Features.Messaging.Commands;
-using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using Stripe;
 

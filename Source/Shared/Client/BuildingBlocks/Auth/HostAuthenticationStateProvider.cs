@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components;
-using System.Net.Http;
 using System.Net;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using System;
 using System.Net.Http.Json;
 using Modules.TenantIdentity.Public.DTOs.IdentityOperations;
 using Shared.Kernel.Constants.Auth;

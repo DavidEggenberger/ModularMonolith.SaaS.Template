@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using System;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Tenants.Application.Queries;

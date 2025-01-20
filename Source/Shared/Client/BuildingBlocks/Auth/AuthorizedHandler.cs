@@ -1,10 +1,4 @@
-﻿using System.Net.Http;
-using System.Net;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Text.Json;
-using Shared.Client.Components.Modals;
-using Blazored.Modal;
+﻿using System.Net;
 using Shared.Client.BuildingBlocks.Auth.Antiforgery;
 
 namespace Shared.Client.BuildingBlocks.Auth

@@ -2,7 +2,6 @@
 using System.Security.Claims;
 using Modules.TenantIdentity.Features.DomainFeatures.Users;
 using Modules.TenantIdentity.Features.DomainFeatures.Users.Application.Queries;
-using Shared.Features.Misc;
 using Shared.Features.Misc.ExecutionContext;
 using Shared.Kernel.Constants.Auth;
 

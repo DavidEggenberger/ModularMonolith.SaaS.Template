@@ -2,7 +2,7 @@
 
 namespace Shared.Client.Components.Modals
 {
-    public partial class DeletionModal
+    public partial class DeletionModal : ComponentBase
     {
         [Parameter]
         public string Title { get; set; }
